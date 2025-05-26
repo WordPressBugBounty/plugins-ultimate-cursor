@@ -296,6 +296,18 @@
          "General Settings": [
             ""
          ],
+         "Customize Your Cursor": [
+            ""
+         ],
+         "Cursor Configuration": [
+            ""
+         ],
+         "Preview": [
+            ""
+         ],
+         "Move your cursor here to preview": [
+            ""
+         ],
          "Deactivate Cursor": [
             ""
          ],
@@ -303,12 +315,6 @@
             ""
          ],
          "Save Changes": [
-            ""
-         ],
-         "Customize Appearance": [
-            ""
-         ],
-         "General": [
             ""
          ],
          "Type": [
@@ -323,28 +329,13 @@
          "Font Size": [
             ""
          ],
-         "Border Type": [
+         "Border Style": [
             ""
          ],
          "Border Color": [
             ""
          ],
          "Border Width": [
-            ""
-         ],
-         "Enable Typography": [
-            ""
-         ],
-         "Line Height": [
-            ""
-         ],
-         "Font Weight": [
-            ""
-         ],
-         "Text Decoration": [
-            ""
-         ],
-         "Text Transform": [
             ""
          ],
          "Bubble Size": [
@@ -356,16 +347,13 @@
          "Stroke Color": [
             ""
          ],
-         "Icon Size": [
-            ""
-         ],
          "Advanced": [
             ""
          ],
          "Hide the browser's default cursor and show only your custom cursor": [
             ""
          ],
-         "DISPLAY SETTINGS": [
+         "TARGET SCOPE": [
             ""
          ],
          "Apply Cursor On": [
@@ -389,19 +377,10 @@
          "Example: a, button, input": [
             ""
          ],
-         "Live Preview": [
-            ""
-         ],
-         "Move your cursor over the elements below to see how it will appear": [
-            ""
-         ],
          "Multiple Cursors Preview Mode": [
             ""
          ],
-         "You can create and preview multiple cursor configurations in this tab. Add different cursor styles and see how they look before upgrading to PRO.": [
-            ""
-         ],
-         "Important: Your configurations can be previewed but won't be saved until you upgrade to the PRO version.": [
+         "You can create and preview multiple cursor configurations in this tab. Add different cursor styles and see how they look.": [
             ""
          ],
          "Manage Cursor Configurations": [
@@ -410,49 +389,43 @@
          "Create multiple cursor configurations for different parts of your website. Each configuration has its own cursor type and display settings.": [
             ""
          ],
-         "Preview Only": [
+         "Saved Configurations": [
             ""
          ],
-         "Configuration Name": [
+         "Add New Configuration": [
+            ""
+         ],
+         "Selectors:": [
+            ""
+         ],
+         "Elements:": [
+            ""
+         ],
+         "Pages:": [
+            ""
+         ],
+         "Edit": [
             ""
          ],
          "Remove": [
             ""
          ],
-         "Add New Cursor Configuration": [
+         "No cursor configurations saved. Click \"Add New Configuration\" to create one.": [
             ""
          ],
-         "You can add and preview multiple configurations, but upgrading to PRO is required to save them.": [
+         "Edit Configuration": [
             ""
          ],
-         "Cursor Previews": [
+         "New Configuration": [
             ""
          ],
-         "See how each cursor configuration will appear on your website": [
+         "Save Configuration": [
             ""
          ],
-         "Selectors": [
+         "Cancel": [
             ""
          ],
-         "None specified": [
-            ""
-         ],
-         "Elements": [
-            ""
-         ],
-         "Pages": [
-            ""
-         ],
-         "Hover to see": [
-            ""
-         ],
-         "Hover to see image cursor": [
-            ""
-         ],
-         "Hover to see icon cursor": [
-            ""
-         ],
-         "effect": [
+         "Configuration Name": [
             ""
          ],
          "Unlock Advanced Cursor Features": [

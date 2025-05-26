@@ -4,7 +4,7 @@
  * Plugin Name:                 Ultimate Cursor – Best Cursor Animation Plugin for WordPress
  * Plugin URI:                  https://wordpress.org/plugins/ultimate-cursor
  * Description:                 Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀
- * Version:                     1.4.0
+ * Version:                     1.4.1
  * Author:                      WPXERO
  * Author URI:                  https://wpxero.com/ultimate-cursor
  * Requires at least:           6.0
@@ -22,7 +22,7 @@ if (! defined('ABSPATH')) {
 }
 
 if (! defined('UCA_VERSION')) {
-	define('UCA_VERSION', '1.4.0');
+	define('UCA_VERSION', '1.4.1');
 }
 
 
@@ -139,7 +139,7 @@ class UltimateCursor {
 
 		// Add action to show feedback form before deactivation
 		add_action('admin_footer', function () {
-			$analytics = uc_analytics_init();
+			$analytics = wpxero_analytics_init();
 
 			// Show the feedback form
 			$analytics->deactivate_feedback_form();

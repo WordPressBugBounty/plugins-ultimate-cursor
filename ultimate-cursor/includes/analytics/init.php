@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Ultimate Cursor Analytics Initialization
  *
@@ -7,23 +8,23 @@
  */
 
 if (!defined('ABSPATH')) {
-    exit;
+	exit;
 }
 
-if (!function_exists('uc_analytics_init')) {
-    function uc_analytics_init($custom_params = array()) {
-        if (!is_admin()) {
-            return;
-        }
+if (!function_exists('wpxero_analytics_init')) {
+	function wpxero_analytics_init($custom_params = array()) {
+		if (!is_admin()) {
+			return;
+		}
 
-        require_once dirname(__FILE__) . '/class-analytics-core.php';
-        require_once dirname(__FILE__) . '/config.php';
+		require_once dirname(__FILE__) . '/class-analytics-core.php';
+		require_once dirname(__FILE__) . '/config.php';
 
-        // Get default parameters from config
-        $params = wp_parse_args($custom_params, uc_get_analytics_config());
+		// Get default parameters from config
+		$params = wp_parse_args($custom_params, wpxero_get_analytics_config());
 
-        $analytics = new UltimateCursor_Analytics($params);
+		$analytics = new WPXERO_Analytics($params);
 
-        return $analytics;
-    }
+		return $analytics;
+	}
 }

@@ -177,7 +177,7 @@ class Ultimate_Cursor_Admin {
 
 	public  function extenderx_sdk_xero_plugin() {
 		require_once ultimate_cursor()->plugin_path . 'includes/analytics/init.php';
-		uc_analytics_init();
+		wpxero_analytics_init();
 	}
 }
 
