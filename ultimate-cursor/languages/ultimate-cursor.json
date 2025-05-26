@@ -1,0 +1,628 @@
+{
+   "domain": "ultimate-cursor",
+   "locale_data": {
+      "ultimate-cursor": {
+         "": {
+            "domain": "ultimate-cursor"
+         },
+         "Ultimate Cursor – Best Cursor Animation Plugin for WordPress": [
+            ""
+         ],
+         "https://wordpress.org/plugins/ultimate-cursor": [
+            ""
+         ],
+         "Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀": [
+            ""
+         ],
+         "WPXERO": [
+            ""
+         ],
+         "https://wpxero.com/ultimate-cursor": [
+            ""
+         ],
+         "Ultimate Cursor": [
+            ""
+         ],
+         "Welcome": [
+            ""
+         ],
+         "Settings": [
+            ""
+         ],
+         "Multiple Cursors": [
+            ""
+         ],
+         "Discussions": [
+            ""
+         ],
+         "\"%1$s\" requires \"%2$s\" to be installed and activated.": [
+            ""
+         ],
+         "Elementor": [
+            ""
+         ],
+         "Enable Cursors?": [
+            ""
+         ],
+         "Layout": [
+            ""
+         ],
+         "Cursor Type": [
+            ""
+         ],
+         "Default": [
+            ""
+         ],
+         "Text": [
+            ""
+         ],
+         "Image": [
+            ""
+         ],
+         "Icons": [
+            ""
+         ],
+         "Style": [
+            ""
+         ],
+         "Style 1": [
+            ""
+         ],
+         "Style 2": [
+            ""
+         ],
+         "Style 3": [
+            ""
+         ],
+         "Text Label": [
+            ""
+         ],
+         "Speed": [
+            ""
+         ],
+         "Disable Default Cursor": [
+            ""
+         ],
+         "Primary": [
+            ""
+         ],
+         "Color": [
+            ""
+         ],
+         "Size": [
+            ""
+         ],
+         "Secondary": [
+            ""
+         ],
+         "Background": [
+            ""
+         ],
+         "Padding": [
+            ""
+         ],
+         "Border": [
+            ""
+         ],
+         "Border Radius": [
+            ""
+         ],
+         "Typography": [
+            ""
+         ],
+         "User don't have permissions to change options.": [
+            ""
+         ],
+         "You don't have permissions to request Ultimate Cursor API.": [
+            ""
+         ],
+         "Provide OpenAI key in the plugin settings.": [
+            ""
+         ],
+         "Provide request to receive AI response.": [
+            ""
+         ],
+         "Replace cursor with text": [
+            ""
+         ],
+         "Use any image as your cursor": [
+            ""
+         ],
+         "Icon": [
+            ""
+         ],
+         "Choose from our icon library": [
+            ""
+         ],
+         "Shapes": [
+            ""
+         ],
+         "Geometric shapes as cursors": [
+            ""
+         ],
+         "Animated": [
+            ""
+         ],
+         "Add motion effects to cursor": [
+            ""
+         ],
+         "None": [
+            ""
+         ],
+         "Solid": [
+            ""
+         ],
+         "Dotted": [
+            ""
+         ],
+         "Dashed": [
+            ""
+         ],
+         "Double": [
+            ""
+         ],
+         "Groove": [
+            ""
+         ],
+         "Underline": [
+            ""
+         ],
+         "Overline": [
+            ""
+         ],
+         "Line through": [
+            ""
+         ],
+         "Uppercase": [
+            ""
+         ],
+         "Lowercase": [
+            ""
+         ],
+         "Capitalize": [
+            ""
+         ],
+         "Entire Website": [
+            ""
+         ],
+         "Specific Pages (pro feature)": [
+            ""
+         ],
+         "CSS Selectors (pro feature)": [
+            ""
+         ],
+         "HTML Elements (pro feature)": [
+            ""
+         ],
+         "Documentation": [
+            ""
+         ],
+         "Support": [
+            ""
+         ],
+         "About Ultimate Cursor": [
+            ""
+         ],
+         "Ultimate Cursor is a lightweight, powerful plugin that enhances your website with dynamic cursor effects for an interactive and engaging user experience.": [
+            ""
+         ],
+         "Meet the Developer": [
+            ""
+         ],
+         "Hello! I'm the solo developer behind Ultimate Cursor. I'm passionate about creating tools that help website owners add unique touches to their sites without compromising performance.": [
+            ""
+         ],
+         "I'm constantly working to bring new features and improvements to Ultimate Cursor, so stay tuned for exciting updates!": [
+            ""
+         ],
+         "Leave a Review": [
+            ""
+         ],
+         "If you enjoy Ultimate Cursor, a positive review would be greatly appreciated. It helps me continue developing and making it even better for you.": [
+            ""
+         ],
+         "Write a Review": [
+            ""
+         ],
+         "Get Support": [
+            ""
+         ],
+         "Having trouble with Ultimate Cursor? Visit our support forum to get help or report any issues you encounter.": [
+            ""
+         ],
+         "Visit Support Forum": [
+            ""
+         ],
+         "Check out our documentation to learn more about how to get the most out of Ultimate Cursor.": [
+            ""
+         ],
+         "Read Documentation": [
+            ""
+         ],
+         "What's Coming Next?": [
+            ""
+         ],
+         "I'm always working on new features and improvements. Here's a sneak peek at what's coming soon:": [
+            ""
+         ],
+         "More cursor animation effects": [
+            ""
+         ],
+         "Enhanced customization options": [
+            ""
+         ],
+         "Improved mobile device compatibility": [
+            ""
+         ],
+         "Performance optimizations": [
+            ""
+         ],
+         "Ready to Create Amazing Cursor Effects?": [
+            ""
+         ],
+         "Customize your cursor settings now and take your website experience to the next level.": [
+            ""
+         ],
+         "Go to Settings": [
+            ""
+         ],
+         "Select Cursor Type": [
+            ""
+         ],
+         "Need Multiple Cursors?": [
+            ""
+         ],
+         "PRO": [
+            ""
+         ],
+         "Enable Multiple Cursors": [
+            ""
+         ],
+         "Use different cursor styles for different parts of your website": [
+            ""
+         ],
+         "✓ Multiple cursor mode is enabled. ": [
+            ""
+         ],
+         "Configure your cursor styles →": [
+            ""
+         ],
+         "Multiple cursor mode allows you to create and preview different cursor styles for different elements or pages. You can try out the feature in preview mode before upgrading to PRO.": [
+            ""
+         ],
+         "Multiple cursor mode allows you to use different cursor styles for different elements or pages. For example, you can have a text cursor on buttons, an animated cursor on images, and more.": [
+            ""
+         ],
+         "General Settings": [
+            ""
+         ],
+         "Deactivate Cursor": [
+            ""
+         ],
+         "Save (Pro Feature Not Active)": [
+            ""
+         ],
+         "Save Changes": [
+            ""
+         ],
+         "Customize Appearance": [
+            ""
+         ],
+         "General": [
+            ""
+         ],
+         "Type": [
+            ""
+         ],
+         "Effect": [
+            ""
+         ],
+         "Image Size": [
+            ""
+         ],
+         "Font Size": [
+            ""
+         ],
+         "Border Type": [
+            ""
+         ],
+         "Border Color": [
+            ""
+         ],
+         "Border Width": [
+            ""
+         ],
+         "Enable Typography": [
+            ""
+         ],
+         "Line Height": [
+            ""
+         ],
+         "Font Weight": [
+            ""
+         ],
+         "Text Decoration": [
+            ""
+         ],
+         "Text Transform": [
+            ""
+         ],
+         "Bubble Size": [
+            ""
+         ],
+         "Fill Color": [
+            ""
+         ],
+         "Stroke Color": [
+            ""
+         ],
+         "Icon Size": [
+            ""
+         ],
+         "Advanced": [
+            ""
+         ],
+         "Hide the browser's default cursor and show only your custom cursor": [
+            ""
+         ],
+         "DISPLAY SETTINGS": [
+            ""
+         ],
+         "Apply Cursor On": [
+            ""
+         ],
+         "Page IDs or Slugs (comma separated)": [
+            ""
+         ],
+         "Example: home, about, contact, 42": [
+            ""
+         ],
+         "CSS Selectors (comma separated)": [
+            ""
+         ],
+         "Example: .hero-section, #content, .entry-content": [
+            ""
+         ],
+         "HTML Elements (comma separated)": [
+            ""
+         ],
+         "Example: a, button, input": [
+            ""
+         ],
+         "Live Preview": [
+            ""
+         ],
+         "Move your cursor over the elements below to see how it will appear": [
+            ""
+         ],
+         "Multiple Cursors Preview Mode": [
+            ""
+         ],
+         "You can create and preview multiple cursor configurations in this tab. Add different cursor styles and see how they look before upgrading to PRO.": [
+            ""
+         ],
+         "Important: Your configurations can be previewed but won't be saved until you upgrade to the PRO version.": [
+            ""
+         ],
+         "Manage Cursor Configurations": [
+            ""
+         ],
+         "Create multiple cursor configurations for different parts of your website. Each configuration has its own cursor type and display settings.": [
+            ""
+         ],
+         "Preview Only": [
+            ""
+         ],
+         "Configuration Name": [
+            ""
+         ],
+         "Remove": [
+            ""
+         ],
+         "Add New Cursor Configuration": [
+            ""
+         ],
+         "You can add and preview multiple configurations, but upgrading to PRO is required to save them.": [
+            ""
+         ],
+         "Cursor Previews": [
+            ""
+         ],
+         "See how each cursor configuration will appear on your website": [
+            ""
+         ],
+         "Selectors": [
+            ""
+         ],
+         "None specified": [
+            ""
+         ],
+         "Elements": [
+            ""
+         ],
+         "Pages": [
+            ""
+         ],
+         "Hover to see": [
+            ""
+         ],
+         "Hover to see image cursor": [
+            ""
+         ],
+         "Hover to see icon cursor": [
+            ""
+         ],
+         "effect": [
+            ""
+         ],
+         "Unlock Advanced Cursor Features": [
+            ""
+         ],
+         "Get multiple cursor configurations, element-specific cursors, and more premium features.": [
+            ""
+         ],
+         "View Pro Features": [
+            ""
+         ],
+         "Unlock the Full Power of Ultimate Cursor": [
+            ""
+         ],
+         "Take your website to the next level with multiple cursor configurations and advanced targeting.": [
+            ""
+         ],
+         "Multiple Cursor Types": [
+            ""
+         ],
+         "Use different cursor styles for different elements - text cursors for buttons, animated cursors for images, and more.": [
+            ""
+         ],
+         "Element-Specific Targeting": [
+            ""
+         ],
+         "Apply unique cursors to specific elements using CSS selectors for a targeted user experience.": [
+            ""
+         ],
+         "Page-Specific Cursors": [
+            ""
+         ],
+         "Create different cursor experiences for different pages of your website.": [
+            ""
+         ],
+         "Advanced Animation Options": [
+            ""
+         ],
+         "Access premium animations and effects to create truly unique cursor experiences.": [
+            ""
+         ],
+         "Get Ultimate Cursor Pro": [
+            ""
+         ],
+         "Button": [
+            ""
+         ],
+         "Text Content": [
+            ""
+         ],
+         "Welcome to Ultimate Cursor": [
+            ""
+         ],
+         "Ultimate Cursor enhances your website with dynamic cursor effects for an interactive and engaging experience. Transform your standard cursor into an eye-catching design element that captivates your visitors.": [
+            ""
+         ],
+         "Interactive Cursors": [
+            ""
+         ],
+         "Choose from various cursor effects including animated bubbles, splashes, text labels, and more to create an engaging user experience.": [
+            ""
+         ],
+         "Use text, images, icons, or animations as your cursor. Mix and match different cursor styles for different parts of your website.": [
+            ""
+         ],
+         "Selective Targeting": [
+            ""
+         ],
+         "Apply cursors to specific elements, pages, or sections of your website for targeted interactions that enhance user engagement.": [
+            ""
+         ],
+         "Getting Started in 3 Simple Steps": [
+            ""
+         ],
+         "Choose Your Cursor Type": [
+            ""
+         ],
+         "Select from text cursors, image cursors, icon cursors, or animated effects to match your website's style.": [
+            ""
+         ],
+         "Customize the Appearance": [
+            ""
+         ],
+         "Adjust colors, sizes, effects, and other properties to create the perfect cursor for your brand.": [
+            ""
+         ],
+         "Set Display Options": [
+            ""
+         ],
+         "Choose where your cursor appears - across the entire site or on specific elements for a tailored experience.": [
+            ""
+         ],
+         "Ready to Transform Your Website?": [
+            ""
+         ],
+         "Create a unique browsing experience that sets your website apart with custom cursor effects.": [
+            ""
+         ],
+         "Get Started Now": [
+            ""
+         ],
+         "Get started with Ultimate Cursor": [
+            ""
+         ],
+         "Configure your cursor settings": [
+            ""
+         ],
+         "About": [
+            ""
+         ],
+         "Learn more about Ultimate Cursor": [
+            ""
+         ],
+         "Change Image": [
+            ""
+         ],
+         "Upload Image": [
+            ""
+         ],
+         "Ultimate Cursor: Free vs Pro": [
+            ""
+         ],
+         "Feature": [
+            ""
+         ],
+         "Free": [
+            ""
+         ],
+         "Pro": [
+            ""
+         ],
+         "Basic Cursor Customization": [
+            ""
+         ],
+         "Text Cursor": [
+            ""
+         ],
+         "Image Cursor": [
+            ""
+         ],
+         "Icon Cursor": [
+            ""
+         ],
+         "Animated Cursor Effects": [
+            ""
+         ],
+         "Multiple Cursor Configurations": [
+            ""
+         ],
+         "Use different cursor types for different elements": [
+            ""
+         ],
+         "Element-Specific Cursors": [
+            ""
+         ],
+         "Apply unique cursors to buttons, images, etc.": [
+            ""
+         ],
+         "Different cursors for different pages": [
+            ""
+         ],
+         "More effects and customization options": [
+            ""
+         ],
+         "Premium Support": [
+            ""
+         ],
+         "Upgrade to Pro": [
+            ""
+         ]
+      }
+   }
+}

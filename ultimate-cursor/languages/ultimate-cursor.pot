@@ -1,0 +1,918 @@
+# Copyright (C) 2025 WPXERO
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ultimate Cursor – Best Cursor Animation Plugin for WordPress 1.4.0\n"
+"Report-Msgid-Bugs-To: https://github.com/WPXERO/ultimate-cursor/issues\n"
+"Last-Translator: Lazy Blocks Team\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-05-14T18:41:34+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: ultimate-cursor\n"
+
+#. Plugin Name of the plugin
+#: ultimate-cursor.php
+msgid "Ultimate Cursor – Best Cursor Animation Plugin for WordPress"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: ultimate-cursor.php
+msgid "https://wordpress.org/plugins/ultimate-cursor"
+msgstr ""
+
+#. Description of the plugin
+#: ultimate-cursor.php
+msgid "Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀"
+msgstr ""
+
+#. Author of the plugin
+#: ultimate-cursor.php
+msgid "WPXERO"
+msgstr ""
+
+#. Author URI of the plugin
+#: ultimate-cursor.php
+msgid "https://wpxero.com/ultimate-cursor"
+msgstr ""
+
+#: classes/class-admin.php:85
+#: classes/class-admin.php:86
+#: classes/class-elementor.php:45
+#: classes/class-elementor.php:73
+#: classes/class-elementor.php:176
+#: src/admin/index.js:136
+#: src/admin/index.js:171
+msgid "Ultimate Cursor"
+msgstr ""
+
+#: classes/class-admin.php:98
+#: src/admin/pages/index.js:42
+msgid "Welcome"
+msgstr ""
+
+#: classes/class-admin.php:105
+#: src/admin/pages/index.js:47
+msgid "Settings"
+msgstr ""
+
+#: classes/class-admin.php:112
+#: src/admin/page-settings/index.js:336
+msgid "Multiple Cursors"
+msgstr ""
+
+#: classes/class-admin.php:119
+msgid "Discussions"
+msgstr ""
+
+#. translators: 1: Plugin name 2: Elementor
+#: classes/class-elementor.php:44
+msgid "\"%1$s\" requires \"%2$s\" to be installed and activated."
+msgstr ""
+
+#: classes/class-elementor.php:46
+msgid "Elementor"
+msgstr ""
+
+#: classes/class-elementor.php:81
+msgid "Enable Cursors?"
+msgstr ""
+
+#: classes/class-elementor.php:96
+msgid "Layout"
+msgstr ""
+
+#: classes/class-elementor.php:105
+#: src/admin/page-settings/multiple/manager.js:254
+msgid "Cursor Type"
+msgstr ""
+
+#: classes/class-elementor.php:111
+msgid "Default"
+msgstr ""
+
+#: classes/class-elementor.php:112
+#: src/admin/constants/index.js:21
+msgid "Text"
+msgstr ""
+
+#: classes/class-elementor.php:113
+#: classes/class-elementor.php:124
+#: src/admin/constants/index.js:26
+#: src/admin/page-welcome/index.js:71
+msgid "Image"
+msgstr ""
+
+#: classes/class-elementor.php:114
+#: classes/class-elementor.php:139
+msgid "Icons"
+msgstr ""
+
+#: classes/class-elementor.php:155
+#: classes/class-elementor.php:232
+#: src/admin/page-settings/multiple/controls.js:201
+#: src/admin/page-settings/multiple/manager.js:464
+msgid "Style"
+msgstr ""
+
+#: classes/class-elementor.php:159
+msgid "Style 1"
+msgstr ""
+
+#: classes/class-elementor.php:160
+msgid "Style 2"
+msgstr ""
+
+#: classes/class-elementor.php:161
+msgid "Style 3"
+msgstr ""
+
+#: classes/class-elementor.php:174
+#: src/admin/page-settings/multiple/controls.js:64
+#: src/admin/page-settings/multiple/manager.js:289
+msgid "Text Label"
+msgstr ""
+
+#: classes/class-elementor.php:190
+msgid "Speed"
+msgstr ""
+
+#: classes/class-elementor.php:216
+#: src/admin/page-settings/multiple/controls.js:860
+#: src/admin/page-settings/multiple/manager.js:533
+msgid "Disable Default Cursor"
+msgstr ""
+
+#: classes/class-elementor.php:241
+msgid "Primary"
+msgstr ""
+
+#: classes/class-elementor.php:252
+#: classes/class-elementor.php:289
+#: classes/class-elementor.php:316
+#: src/admin/page-settings/multiple/controls.js:210
+#: src/admin/page-settings/multiple/manager.js:476
+msgid "Color"
+msgstr ""
+
+#: classes/class-elementor.php:265
+#: classes/class-elementor.php:302
+#: classes/class-elementor.php:391
+#: classes/class-elementor.php:430
+msgid "Size"
+msgstr ""
+
+#: classes/class-elementor.php:278
+msgid "Secondary"
+msgstr ""
+
+#: classes/class-elementor.php:330
+#: src/admin/page-settings/multiple/controls.js:230
+msgid "Background"
+msgstr ""
+
+#: classes/class-elementor.php:341
+#: src/admin/page-settings/multiple/controls.js:274
+msgid "Padding"
+msgstr ""
+
+#: classes/class-elementor.php:356
+#: classes/class-elementor.php:405
+msgid "Border"
+msgstr ""
+
+#: classes/class-elementor.php:366
+#: classes/class-elementor.php:415
+#: src/admin/page-settings/multiple/controls.js:293
+#: src/admin/page-settings/multiple/controls.js:831
+msgid "Border Radius"
+msgstr ""
+
+#: classes/class-elementor.php:381
+msgid "Typography"
+msgstr ""
+
+#: classes/class-rest.php:73
+msgid "User don't have permissions to change options."
+msgstr ""
+
+#: classes/class-rest.php:86
+msgid "You don't have permissions to request Ultimate Cursor API."
+msgstr ""
+
+#: classes/class-rest.php:201
+msgid "Provide OpenAI key in the plugin settings."
+msgstr ""
+
+#: classes/class-rest.php:206
+msgid "Provide request to receive AI response."
+msgstr ""
+
+#: src/admin/constants/index.js:22
+msgid "Replace cursor with text"
+msgstr ""
+
+#: src/admin/constants/index.js:27
+msgid "Use any image as your cursor"
+msgstr ""
+
+#: src/admin/constants/index.js:31
+msgid "Icon"
+msgstr ""
+
+#: src/admin/constants/index.js:32
+msgid "Choose from our icon library"
+msgstr ""
+
+#: src/admin/constants/index.js:35
+msgid "Shapes"
+msgstr ""
+
+#: src/admin/constants/index.js:37
+msgid "Geometric shapes as cursors"
+msgstr ""
+
+#: src/admin/constants/index.js:41
+msgid "Animated"
+msgstr ""
+
+#: src/admin/constants/index.js:42
+msgid "Add motion effects to cursor"
+msgstr ""
+
+#: src/admin/constants/index.js:154
+#: src/admin/constants/index.js:214
+#: src/admin/constants/index.js:224
+#: src/admin/page-settings/multiple/controls.js:559
+#: src/admin/page-settings/multiple/controls.js:609
+msgid "None"
+msgstr ""
+
+#: src/admin/constants/index.js:158
+msgid "Solid"
+msgstr ""
+
+#: src/admin/constants/index.js:162
+msgid "Dotted"
+msgstr ""
+
+#: src/admin/constants/index.js:166
+msgid "Dashed"
+msgstr ""
+
+#: src/admin/constants/index.js:171
+msgid "Double"
+msgstr ""
+
+#: src/admin/constants/index.js:175
+msgid "Groove"
+msgstr ""
+
+#: src/admin/constants/index.js:215
+#: src/admin/page-settings/multiple/controls.js:566
+msgid "Underline"
+msgstr ""
+
+#: src/admin/constants/index.js:216
+#: src/admin/page-settings/multiple/controls.js:573
+msgid "Overline"
+msgstr ""
+
+#: src/admin/constants/index.js:217
+#: src/admin/page-settings/multiple/controls.js:580
+msgid "Line through"
+msgstr ""
+
+#: src/admin/constants/index.js:225
+#: src/admin/page-settings/multiple/controls.js:616
+msgid "Uppercase"
+msgstr ""
+
+#: src/admin/constants/index.js:226
+#: src/admin/page-settings/multiple/controls.js:623
+msgid "Lowercase"
+msgstr ""
+
+#: src/admin/constants/index.js:227
+#: src/admin/page-settings/multiple/controls.js:630
+msgid "Capitalize"
+msgstr ""
+
+#: src/admin/constants/index.js:234
+msgid "Entire Website"
+msgstr ""
+
+#: src/admin/constants/index.js:235
+msgid "Specific Pages (pro feature)"
+msgstr ""
+
+#: src/admin/constants/index.js:236
+msgid "CSS Selectors (pro feature)"
+msgstr ""
+
+#: src/admin/constants/index.js:237
+msgid "HTML Elements (pro feature)"
+msgstr ""
+
+#: src/admin/index.js:172
+#: src/admin/page-about/index.js:109
+msgid "Documentation"
+msgstr ""
+
+#: src/admin/index.js:173
+msgid "Support"
+msgstr ""
+
+#: src/admin/page-about/index.js:35
+msgid "About Ultimate Cursor"
+msgstr ""
+
+#: src/admin/page-about/index.js:37
+msgid "Ultimate Cursor is a lightweight, powerful plugin that enhances your website with dynamic cursor effects for an interactive and engaging user experience."
+msgstr ""
+
+#: src/admin/page-about/index.js:47
+msgid "Meet the Developer"
+msgstr ""
+
+#: src/admin/page-about/index.js:49
+msgid "Hello! I'm the solo developer behind Ultimate Cursor. I'm passionate about creating tools that help website owners add unique touches to their sites without compromising performance."
+msgstr ""
+
+#: src/admin/page-about/index.js:55
+msgid "I'm constantly working to bring new features and improvements to Ultimate Cursor, so stay tuned for exciting updates!"
+msgstr ""
+
+#: src/admin/page-about/index.js:71
+msgid "Leave a Review"
+msgstr ""
+
+#: src/admin/page-about/index.js:73
+msgid "If you enjoy Ultimate Cursor, a positive review would be greatly appreciated. It helps me continue developing and making it even better for you."
+msgstr ""
+
+#: src/admin/page-about/index.js:84
+msgid "Write a Review"
+msgstr ""
+
+#: src/admin/page-about/index.js:90
+msgid "Get Support"
+msgstr ""
+
+#: src/admin/page-about/index.js:92
+msgid "Having trouble with Ultimate Cursor? Visit our support forum to get help or report any issues you encounter."
+msgstr ""
+
+#: src/admin/page-about/index.js:103
+msgid "Visit Support Forum"
+msgstr ""
+
+#: src/admin/page-about/index.js:111
+msgid "Check out our documentation to learn more about how to get the most out of Ultimate Cursor."
+msgstr ""
+
+#: src/admin/page-about/index.js:122
+msgid "Read Documentation"
+msgstr ""
+
+#: src/admin/page-about/index.js:128
+msgid "What's Coming Next?"
+msgstr ""
+
+#: src/admin/page-about/index.js:130
+msgid "I'm always working on new features and improvements. Here's a sneak peek at what's coming soon:"
+msgstr ""
+
+#: src/admin/page-about/index.js:138
+msgid "More cursor animation effects"
+msgstr ""
+
+#: src/admin/page-about/index.js:142
+msgid "Enhanced customization options"
+msgstr ""
+
+#: src/admin/page-about/index.js:146
+msgid "Improved mobile device compatibility"
+msgstr ""
+
+#: src/admin/page-about/index.js:150
+msgid "Performance optimizations"
+msgstr ""
+
+#: src/admin/page-about/index.js:157
+msgid "Ready to Create Amazing Cursor Effects?"
+msgstr ""
+
+#: src/admin/page-about/index.js:158
+msgid "Customize your cursor settings now and take your website experience to the next level."
+msgstr ""
+
+#: src/admin/page-about/index.js:166
+msgid "Go to Settings"
+msgstr ""
+
+#: src/admin/page-settings/cursorTypes.js:32
+msgid "Select Cursor Type"
+msgstr ""
+
+#: src/admin/page-settings/index.js:44
+msgid "Need Multiple Cursors?"
+msgstr ""
+
+#: src/admin/page-settings/index.js:46
+#: src/admin/page-settings/index.js:339
+#: src/admin/page-settings/multiple/manager.js:48
+#: src/admin/page-settings/multiple/manager.js:689
+msgid "PRO"
+msgstr ""
+
+#: src/admin/page-settings/index.js:53
+#: src/admin/page-settings/multiple/manager.js:90
+msgid "Enable Multiple Cursors"
+msgstr ""
+
+#: src/admin/page-settings/index.js:54
+msgid "Use different cursor styles for different parts of your website"
+msgstr ""
+
+#: src/admin/page-settings/index.js:108
+msgid "✓ Multiple cursor mode is enabled. "
+msgstr ""
+
+#: src/admin/page-settings/index.js:120
+msgid "Configure your cursor styles →"
+msgstr ""
+
+#: src/admin/page-settings/index.js:130
+msgid "Multiple cursor mode allows you to create and preview different cursor styles for different elements or pages. You can try out the feature in preview mode before upgrading to PRO."
+msgstr ""
+
+#: src/admin/page-settings/index.js:134
+msgid "Multiple cursor mode allows you to use different cursor styles for different elements or pages. For example, you can have a text cursor on buttons, an animated cursor on images, and more."
+msgstr ""
+
+#: src/admin/page-settings/index.js:320
+msgid "General Settings"
+msgstr ""
+
+#: src/admin/page-settings/index.js:401
+msgid "Deactivate Cursor"
+msgstr ""
+
+#: src/admin/page-settings/index.js:412
+msgid "Save (Pro Feature Not Active)"
+msgstr ""
+
+#: src/admin/page-settings/index.js:413
+msgid "Save Changes"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:30
+msgid "Customize Appearance"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:34
+msgid "General"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:39
+#: src/admin/page-settings/multiple/manager.js:262
+msgid "Type"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:82
+#: src/admin/page-settings/multiple/manager.js:314
+msgid "Effect"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:116
+#: src/admin/page-settings/multiple/manager.js:356
+msgid "Image Size"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:256
+msgid "Font Size"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:314
+#: src/admin/page-settings/multiple/controls.js:757
+msgid "Border Type"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:340
+#: src/admin/page-settings/multiple/controls.js:782
+msgid "Border Color"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:369
+#: src/admin/page-settings/multiple/controls.js:809
+msgid "Border Width"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:398
+msgid "Enable Typography"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:419
+msgid "Line Height"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:439
+msgid "Font Weight"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:550
+msgid "Text Decoration"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:600
+msgid "Text Transform"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:660
+msgid "Bubble Size"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:679
+msgid "Fill Color"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:704
+msgid "Stroke Color"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:738
+msgid "Icon Size"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:854
+#: src/admin/page-settings/multiple/manager.js:524
+msgid "Advanced"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:864
+#: src/admin/page-settings/multiple/manager.js:537
+msgid "Hide the browser's default cursor and show only your custom cursor"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:880
+#: src/admin/page-settings/multiple/manager.js:556
+msgid "DISPLAY SETTINGS"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:883
+#: src/admin/page-settings/multiple/manager.js:563
+msgid "Apply Cursor On"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:905
+#: src/admin/page-settings/multiple/manager.js:590
+msgid "Page IDs or Slugs (comma separated)"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:909
+#: src/admin/page-settings/multiple/manager.js:594
+msgid "Example: home, about, contact, 42"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:928
+#: src/admin/page-settings/multiple/manager.js:619
+msgid "CSS Selectors (comma separated)"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:932
+#: src/admin/page-settings/multiple/manager.js:623
+msgid "Example: .hero-section, #content, .entry-content"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:953
+#: src/admin/page-settings/multiple/manager.js:648
+msgid "HTML Elements (comma separated)"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:957
+#: src/admin/page-settings/multiple/manager.js:652
+msgid "Example: a, button, input"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:988
+msgid "Live Preview"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:990
+msgid "Move your cursor over the elements below to see how it will appear"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:50
+msgid "Multiple Cursors Preview Mode"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:53
+msgid "You can create and preview multiple cursor configurations in this tab. Add different cursor styles and see how they look before upgrading to PRO."
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:61
+msgid "Important: Your configurations can be previewed but won't be saved until you upgrade to the PRO version."
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:177
+msgid "Manage Cursor Configurations"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:181
+msgid "Create multiple cursor configurations for different parts of your website. Each configuration has its own cursor type and display settings."
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:196
+msgid "Preview Only"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:201
+msgid "Configuration Name"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:244
+msgid "Remove"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:684
+msgid "Add New Cursor Configuration"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:694
+msgid "You can add and preview multiple configurations, but upgrading to PRO is required to save them."
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:704
+msgid "Cursor Previews"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:710
+msgid "See how each cursor configuration will appear on your website"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:734
+msgid "Selectors"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:740
+#: src/admin/page-settings/multiple/manager.js:755
+#: src/admin/page-settings/multiple/manager.js:770
+msgid "None specified"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:749
+msgid "Elements"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:764
+msgid "Pages"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:784
+#: src/admin/page-settings/multiple/manager.js:845
+msgid "Hover to see"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:805
+msgid "Hover to see image cursor"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:825
+#: src/admin/page-settings/multiple/manager.js:870
+msgid "Hover to see icon cursor"
+msgstr ""
+
+#: src/admin/page-settings/multiple/manager.js:850
+msgid "effect"
+msgstr ""
+
+#: src/admin/page-settings/upgrade-banner.js:10
+msgid "Unlock Advanced Cursor Features"
+msgstr ""
+
+#: src/admin/page-settings/upgrade-banner.js:12
+msgid "Get multiple cursor configurations, element-specific cursors, and more premium features."
+msgstr ""
+
+#: src/admin/page-settings/upgrade-banner.js:20
+msgid "View Pro Features"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:28
+msgid "Unlock the Full Power of Ultimate Cursor"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:29
+msgid "Take your website to the next level with multiple cursor configurations and advanced targeting."
+msgstr ""
+
+#: src/admin/page-welcome/index.js:35
+#: src/admin/page-welcome/index.js:172
+msgid "Multiple Cursor Types"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:36
+msgid "Use different cursor styles for different elements - text cursors for buttons, animated cursors for images, and more."
+msgstr ""
+
+#: src/admin/page-welcome/index.js:41
+msgid "Element-Specific Targeting"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:42
+msgid "Apply unique cursors to specific elements using CSS selectors for a targeted user experience."
+msgstr ""
+
+#: src/admin/page-welcome/index.js:47
+#: src/utils/ProFeaturesTable.js:74
+msgid "Page-Specific Cursors"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:48
+msgid "Create different cursor experiences for different pages of your website."
+msgstr ""
+
+#: src/admin/page-welcome/index.js:53
+#: src/utils/ProFeaturesTable.js:83
+msgid "Advanced Animation Options"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:54
+msgid "Access premium animations and effects to create truly unique cursor experiences."
+msgstr ""
+
+#: src/admin/page-welcome/index.js:60
+msgid "Get Ultimate Cursor Pro"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:70
+msgid "Button"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:72
+msgid "Text Content"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:145
+msgid "Welcome to Ultimate Cursor"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:147
+msgid "Ultimate Cursor enhances your website with dynamic cursor effects for an interactive and engaging experience. Transform your standard cursor into an eye-catching design element that captivates your visitors."
+msgstr ""
+
+#: src/admin/page-welcome/index.js:166
+msgid "Interactive Cursors"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:167
+msgid "Choose from various cursor effects including animated bubbles, splashes, text labels, and more to create an engaging user experience."
+msgstr ""
+
+#: src/admin/page-welcome/index.js:173
+msgid "Use text, images, icons, or animations as your cursor. Mix and match different cursor styles for different parts of your website."
+msgstr ""
+
+#: src/admin/page-welcome/index.js:178
+msgid "Selective Targeting"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:179
+msgid "Apply cursors to specific elements, pages, or sections of your website for targeted interactions that enhance user engagement."
+msgstr ""
+
+#: src/admin/page-welcome/index.js:184
+msgid "Getting Started in 3 Simple Steps"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:188
+msgid "Choose Your Cursor Type"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:189
+msgid "Select from text cursors, image cursors, icon cursors, or animated effects to match your website's style."
+msgstr ""
+
+#: src/admin/page-welcome/index.js:194
+msgid "Customize the Appearance"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:195
+msgid "Adjust colors, sizes, effects, and other properties to create the perfect cursor for your brand."
+msgstr ""
+
+#: src/admin/page-welcome/index.js:200
+msgid "Set Display Options"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:201
+msgid "Choose where your cursor appears - across the entire site or on specific elements for a tailored experience."
+msgstr ""
+
+#: src/admin/page-welcome/index.js:208
+msgid "Ready to Transform Your Website?"
+msgstr ""
+
+#: src/admin/page-welcome/index.js:209
+msgid "Create a unique browsing experience that sets your website apart with custom cursor effects."
+msgstr ""
+
+#: src/admin/page-welcome/index.js:217
+msgid "Get Started Now"
+msgstr ""
+
+#: src/admin/pages/index.js:44
+msgid "Get started with Ultimate Cursor"
+msgstr ""
+
+#: src/admin/pages/index.js:49
+msgid "Configure your cursor settings"
+msgstr ""
+
+#: src/admin/pages/index.js:52
+msgid "About"
+msgstr ""
+
+#: src/admin/pages/index.js:54
+msgid "Learn more about Ultimate Cursor"
+msgstr ""
+
+#: src/utils/MediaUploader.js:33
+msgid "Change Image"
+msgstr ""
+
+#: src/utils/MediaUploader.js:33
+msgid "Upload Image"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:9
+msgid "Ultimate Cursor: Free vs Pro"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:19
+msgid "Feature"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:20
+msgid "Free"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:21
+msgid "Pro"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:25
+msgid "Basic Cursor Customization"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:31
+msgid "Text Cursor"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:37
+msgid "Image Cursor"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:43
+msgid "Icon Cursor"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:49
+msgid "Animated Cursor Effects"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:56
+msgid "Multiple Cursor Configurations"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:57
+msgid "Use different cursor types for different elements"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:65
+msgid "Element-Specific Cursors"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:66
+msgid "Apply unique cursors to buttons, images, etc."
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:75
+msgid "Different cursors for different pages"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:84
+msgid "More effects and customization options"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:92
+msgid "Premium Support"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:106
+msgid "Upgrade to Pro"
+msgstr ""
