@@ -353,6 +353,24 @@
          "Hide the browser's default cursor and show only your custom cursor": [
             ""
          ],
+         "Hide Cursor on Touch Devices": [
+            ""
+         ],
+         "Hide the custom cursor on all touch-enabled devices (recommended)": [
+            ""
+         ],
+         "Hide on Small Screens (<600px)": [
+            ""
+         ],
+         "Hide on mobile-sized screens": [
+            ""
+         ],
+         "Hide on Medium Screens (600-781px)": [
+            ""
+         ],
+         "Hide on tablet-sized screens": [
+            ""
+         ],
          "TARGET SCOPE": [
             ""
          ],

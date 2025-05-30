@@ -1,5 +1,5 @@
 === Ultimate Cursor – Best Cursor Animation Plugin for WordPress ===
-Version: 1.4.1
+Version: 1.4.2
 Author: WPXERO
 Author URI: https://wpxero.com/plugins/ultimate-cursor
 Donate link: https://wpxero.com/pricing
@@ -7,7 +7,7 @@ Contributors: WPXERO
 Tags: cursor, mouse, pointer, custom cursor, cursor plugin
 Requires at least: 5.0.0
 Tested up to: 6.8.1
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 Requires PHP: 7.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -82,6 +82,11 @@ Upgrade your **WordPress website** today with the **Ultimate Cursor Plugin** and
 9. **Choose Your Cursor Type** 📱 – Text, image, or animated – pick your style and hover to preview live!
 
 == Changelog ==
+
+#### 1.4.2 [[30th May 2025]]
+- Added: New loading cursor animation with smooth transitions
+- Added: Option to hide custom cursor on touch devices, mobile, and tablets for better user experience
+- Enhanced: Improved cursor performance and reduced lag
 
 #### 1.4.1 [[26th May 2025]]
 - Fixed: Various control-related bugs and UI inconsistencies

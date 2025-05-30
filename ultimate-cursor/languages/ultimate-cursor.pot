@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Cursor – Best Cursor Animation Plugin for WordPress 1.4.1\n"
+"Project-Id-Version: Ultimate Cursor – Best Cursor Animation Plugin for WordPress 1.4.2\n"
 "Report-Msgid-Bugs-To: https://github.com/WPXERO/ultimate-cursor/issues\n"
 "Last-Translator: Lazy Blocks Team\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-26T15:23:17+00:00\n"
+"POT-Creation-Date: 2025-05-30T10:28:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: ultimate-cursor\n"
@@ -139,7 +139,7 @@ msgid "Speed"
 msgstr ""
 
 #: classes/class-elementor.php:216
-#: src/admin/page-settings/multiple/controls.js:352
+#: src/admin/page-settings/multiple/controls.js:318
 msgid "Disable Default Cursor"
 msgstr ""
 
@@ -501,55 +501,79 @@ msgstr ""
 msgid "Border Width"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:266
+#: src/admin/page-settings/multiple/controls.js:260
 msgid "Bubble Size"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:274
+#: src/admin/page-settings/multiple/controls.js:268
 msgid "Fill Color"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:295
+#: src/admin/page-settings/multiple/controls.js:289
 msgid "Stroke Color"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:346
+#: src/admin/page-settings/multiple/controls.js:312
 msgid "Advanced"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:353
+#: src/admin/page-settings/multiple/controls.js:319
 msgid "Hide the browser's default cursor and show only your custom cursor"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:359
+#: src/admin/page-settings/multiple/controls.js:326
+msgid "Hide Cursor on Touch Devices"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:327
+msgid "Hide the custom cursor on all touch-enabled devices (recommended)"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:344
+msgid "Hide on Small Screens (<600px)"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:345
+msgid "Hide on mobile-sized screens"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:352
+msgid "Hide on Medium Screens (600-781px)"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:353
+msgid "Hide on tablet-sized screens"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:361
 msgid "TARGET SCOPE"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:362
+#: src/admin/page-settings/multiple/controls.js:364
 msgid "Apply Cursor On"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:374
+#: src/admin/page-settings/multiple/controls.js:376
 msgid "Page IDs or Slugs (comma separated)"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:375
+#: src/admin/page-settings/multiple/controls.js:377
 msgid "Example: home, about, contact, 42"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:385
+#: src/admin/page-settings/multiple/controls.js:387
 msgid "CSS Selectors (comma separated)"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:386
+#: src/admin/page-settings/multiple/controls.js:388
 msgid "Example: .hero-section, #content, .entry-content"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:396
+#: src/admin/page-settings/multiple/controls.js:398
 msgid "HTML Elements (comma separated)"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:397
+#: src/admin/page-settings/multiple/controls.js:399
 msgid "Example: a, button, input"
 msgstr ""
 
