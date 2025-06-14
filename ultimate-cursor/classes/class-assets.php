@@ -55,7 +55,7 @@ class Ultimate_Cursor_Assets {
 		if (isset($settings['effect']) && $settings['effect'] !== 'none' || isset($settings['cursorType']) && $settings['cursorType'] !== null) {
 
 			wp_enqueue_script(
-				'ultimate-cursor-editor',
+				'ultimate-cursor-frontend',
 				ultimate_cursor()->plugin_url . 'build/frontend.js',
 				$asset_data['dependencies'],
 				$asset_data['version'],
@@ -65,7 +65,7 @@ class Ultimate_Cursor_Assets {
 
 
 		wp_localize_script(
-			'ultimate-cursor-editor',
+			'ultimate-cursor-frontend',
 			'ultimateCursorData',
 			$settings
 		);
@@ -132,6 +132,8 @@ class Ultimate_Cursor_Assets {
 				'plugin_url' => ultimate_cursor()->plugin_url,
 				'version' => UCA_VERSION,
 				'shapes' => $cursor_shapes,
+				'isPro' => class_exists('Ultimate_Cursor_Pro'),
+				'proUrl' => 'https://wpxero.com/ultimate-cursor-pro/',
 			]
 		);
 

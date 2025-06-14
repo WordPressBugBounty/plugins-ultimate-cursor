@@ -1,5 +1,5 @@
 === Ultimate Cursor – Best Cursor Animation Plugin for WordPress ===
-Version: 1.4.2
+Version: 1.4.3
 Author: WPXERO
 Author URI: https://wpxero.com/plugins/ultimate-cursor
 Donate link: https://wpxero.com/pricing
@@ -7,7 +7,7 @@ Contributors: WPXERO
 Tags: cursor, mouse, pointer, custom cursor, cursor plugin
 Requires at least: 5.0.0
 Tested up to: 6.8.1
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 Requires PHP: 7.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -51,7 +51,7 @@ Designed for **all WordPress users**, the Ultimate Cursor Plugin works seamlessl
 
 **✅ Works for All WordPress Users**: Compatible with **Elementor, Gutenberg, WPBakery, and other page builders**. Customize the cursor directly in your preferred page builder or via the WordPress Customizer.
 
-**✅ New Cursor Effects**: Added **Splash Cursor, Bubble Cursor**, and **Follow Text Cursor** effects to enhance your website's interactivity and visual appeal.
+**✅ New Cursor Effects**: Added **Splash Cursor, Bubble Cursor, Trail Cursor**, and **Follow Text Cursor** effects to enhance your website's interactivity and visual appeal.
 
 **✅ SEO Optimized**: Ensure your site's performance is fast, even with these rich interactive elements.
 
@@ -82,6 +82,13 @@ Upgrade your **WordPress website** today with the **Ultimate Cursor Plugin** and
 9. **Choose Your Cursor Type** 📱 – Text, image, or animated – pick your style and hover to preview live!
 
 == Changelog ==
+
+#### 1.4.3 [[14th June 2025]]
+- Added: New Trail cursor functionality for enhanced user interaction
+- Added: Advanced customization options for Shaped Cursor including color and size parameters
+- Enhanced: Optimized cursor performance and reduced latency for smoother operation
+- Fixed: Refined UI/UX elements in the settings panel for improved usability
+- Fixed: Resolved compatibility issues with the latest WordPress version
 
 #### 1.4.2 [[30th May 2025]]
 - Added: New loading cursor animation with smooth transitions
