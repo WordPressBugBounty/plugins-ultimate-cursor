@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Cursor – Best Cursor Animation Plugin for WordPress 1.4.3\n"
+"Project-Id-Version: Ultimate Cursor – Best Cursor Animation Plugin for WordPress 1.4.4\n"
 "Report-Msgid-Bugs-To: https://github.com/WPXERO/ultimate-cursor/issues\n"
 "Last-Translator: Lazy Blocks Team\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-14T06:18:01+00:00\n"
+"POT-Creation-Date: 2025-06-20T12:41:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ultimate-cursor\n"
@@ -140,7 +140,7 @@ msgid "Speed"
 msgstr ""
 
 #: classes/class-elementor.php:216
-#: src/admin/page-settings/multiple/controls.js:787
+#: src/admin/page-settings/multiple/controls.js:1223
 msgid "Disable Default Cursor"
 msgstr ""
 
@@ -152,7 +152,7 @@ msgstr ""
 #: classes/class-elementor.php:289
 #: classes/class-elementor.php:316
 #: src/admin/page-settings/multiple/controls.js:186
-#: src/admin/page-settings/multiple/controls.js:593
+#: src/admin/page-settings/multiple/controls.js:595
 msgid "Color"
 msgstr ""
 
@@ -240,69 +240,69 @@ msgstr ""
 msgid "Add motion effects to cursor"
 msgstr ""
 
-#: src/admin/constants/index.js:154
-#: src/admin/constants/index.js:214
-#: src/admin/constants/index.js:224
+#: src/admin/constants/index.js:152
+#: src/admin/constants/index.js:212
+#: src/admin/constants/index.js:222
 msgid "None"
 msgstr ""
 
-#: src/admin/constants/index.js:158
+#: src/admin/constants/index.js:156
 msgid "Solid"
 msgstr ""
 
-#: src/admin/constants/index.js:162
+#: src/admin/constants/index.js:160
 msgid "Dotted"
 msgstr ""
 
-#: src/admin/constants/index.js:166
+#: src/admin/constants/index.js:164
 msgid "Dashed"
 msgstr ""
 
-#: src/admin/constants/index.js:171
+#: src/admin/constants/index.js:169
 msgid "Double"
 msgstr ""
 
-#: src/admin/constants/index.js:175
+#: src/admin/constants/index.js:173
 msgid "Groove"
 msgstr ""
 
-#: src/admin/constants/index.js:215
+#: src/admin/constants/index.js:213
 msgid "Underline"
 msgstr ""
 
-#: src/admin/constants/index.js:216
+#: src/admin/constants/index.js:214
 msgid "Overline"
 msgstr ""
 
-#: src/admin/constants/index.js:217
+#: src/admin/constants/index.js:215
 msgid "Line through"
 msgstr ""
 
-#: src/admin/constants/index.js:225
+#: src/admin/constants/index.js:223
 msgid "Uppercase"
 msgstr ""
 
-#: src/admin/constants/index.js:226
+#: src/admin/constants/index.js:224
 msgid "Lowercase"
 msgstr ""
 
-#: src/admin/constants/index.js:227
+#: src/admin/constants/index.js:225
 msgid "Capitalize"
 msgstr ""
 
-#: src/admin/constants/index.js:234
+#: src/admin/constants/index.js:232
 msgid "Entire Website"
 msgstr ""
 
-#: src/admin/constants/index.js:235
+#: src/admin/constants/index.js:233
 msgid "Specific Pages (pro feature)"
 msgstr ""
 
-#: src/admin/constants/index.js:236
+#: src/admin/constants/index.js:234
 msgid "CSS Selectors (pro feature)"
 msgstr ""
 
-#: src/admin/constants/index.js:237
+#: src/admin/constants/index.js:235
 msgid "HTML Elements (pro feature)"
 msgstr ""
 
@@ -414,7 +414,10 @@ msgstr ""
 #: src/admin/page-settings/index.js:46
 #: src/admin/page-settings/index.js:351
 #: src/admin/page-settings/multiple/controls.js:415
-#: src/admin/page-settings/multiple/controls.js:642
+#: src/admin/page-settings/multiple/controls.js:645
+#: src/admin/page-settings/multiple/controls.js:785
+#: src/admin/page-settings/multiple/controls.js:925
+#: src/admin/page-settings/multiple/controls.js:1065
 msgid "PRO"
 msgstr ""
 
@@ -498,12 +501,12 @@ msgid "Border Style"
 msgstr ""
 
 #: src/admin/page-settings/multiple/controls.js:277
-#: src/admin/page-settings/multiple/controls.js:614
+#: src/admin/page-settings/multiple/controls.js:617
 msgid "Border Color"
 msgstr ""
 
 #: src/admin/page-settings/multiple/controls.js:300
-#: src/admin/page-settings/multiple/controls.js:571
+#: src/admin/page-settings/multiple/controls.js:573
 msgid "Border Width"
 msgstr ""
 
@@ -520,17 +523,26 @@ msgid "Stroke Color"
 msgstr ""
 
 #: src/admin/page-settings/multiple/controls.js:420
-#: src/admin/page-settings/multiple/controls.js:647
+#: src/admin/page-settings/multiple/controls.js:650
+#: src/admin/page-settings/multiple/controls.js:790
+#: src/admin/page-settings/multiple/controls.js:930
+#: src/admin/page-settings/multiple/controls.js:1070
 msgid "Splash Colors"
 msgstr ""
 
 #: src/admin/page-settings/multiple/controls.js:442
-#: src/admin/page-settings/multiple/controls.js:669
+#: src/admin/page-settings/multiple/controls.js:672
+#: src/admin/page-settings/multiple/controls.js:812
+#: src/admin/page-settings/multiple/controls.js:952
+#: src/admin/page-settings/multiple/controls.js:1092
 msgid "Add Color"
 msgstr ""
 
 #: src/admin/page-settings/multiple/controls.js:519
-#: src/admin/page-settings/multiple/controls.js:746
+#: src/admin/page-settings/multiple/controls.js:749
+#: src/admin/page-settings/multiple/controls.js:889
+#: src/admin/page-settings/multiple/controls.js:1029
+#: src/admin/page-settings/multiple/controls.js:1169
 msgid "Pro Feature"
 msgstr ""
 
@@ -539,7 +551,10 @@ msgid "Upgrade to Pro to unlock multiple splash colors and more advanced feature
 msgstr ""
 
 #: src/admin/page-settings/multiple/controls.js:539
-#: src/admin/page-settings/multiple/controls.js:766
+#: src/admin/page-settings/multiple/controls.js:769
+#: src/admin/page-settings/multiple/controls.js:909
+#: src/admin/page-settings/multiple/controls.js:1049
+#: src/admin/page-settings/multiple/controls.js:1189
 #: src/utils/ProFeaturesTable.js:106
 msgid "Upgrade to Pro"
 msgstr ""
@@ -548,71 +563,91 @@ msgstr ""
 msgid "Shape Size"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:752
+#: src/admin/page-settings/multiple/controls.js:755
 msgid "Upgrade to Pro to unlock more advanced features."
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:781
+#: src/admin/page-settings/multiple/controls.js:895
+msgid "Upgrade to Pro to access advanced SnowFlake cursor features including custom icons and size controls."
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:1035
+msgid "Upgrade to Pro to access advanced Character cursor features including custom text, colors, and animation controls."
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:1175
+msgid "Upgrade to Pro to access advanced Rainbow cursor features including custom colors, trail effects, and animation controls."
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:1204
 msgid "Advanced"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:791
+#: src/admin/page-settings/multiple/controls.js:1210
+msgid "Enable Transition"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:1211
+msgid "Apply smooth transition effect to cursor movement"
+msgstr ""
+
+#: src/admin/page-settings/multiple/controls.js:1227
 msgid "Hide the browser's default cursor and show only your custom cursor"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:803
+#: src/admin/page-settings/multiple/controls.js:1239
 msgid "Hide Cursor on Touch Devices"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:807
+#: src/admin/page-settings/multiple/controls.js:1243
 msgid "Hide the custom cursor on all touch-enabled devices (recommended)"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:842
+#: src/admin/page-settings/multiple/controls.js:1278
 msgid "Hide on Small Screens (<600px)"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:846
+#: src/admin/page-settings/multiple/controls.js:1282
 msgid "Hide on mobile-sized screens"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:865
+#: src/admin/page-settings/multiple/controls.js:1301
 msgid "Hide on Medium Screens (600-781px)"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:869
+#: src/admin/page-settings/multiple/controls.js:1305
 msgid "Hide on tablet-sized screens"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:889
+#: src/admin/page-settings/multiple/controls.js:1325
 msgid "TARGET SCOPE"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:892
+#: src/admin/page-settings/multiple/controls.js:1328
 msgid "Apply Cursor On"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:915
+#: src/admin/page-settings/multiple/controls.js:1351
 msgid "Page IDs or Slugs (comma separated)"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:919
+#: src/admin/page-settings/multiple/controls.js:1355
 msgid "Example: home, about, contact, 42"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:934
+#: src/admin/page-settings/multiple/controls.js:1370
 msgid "CSS Selectors (comma separated)"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:938
+#: src/admin/page-settings/multiple/controls.js:1374
 msgid "Example: .hero-section, #content, .entry-content"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:953
+#: src/admin/page-settings/multiple/controls.js:1389
 msgid "HTML Elements (comma separated)"
 msgstr ""
 
-#: src/admin/page-settings/multiple/controls.js:957
+#: src/admin/page-settings/multiple/controls.js:1393
 msgid "Example: a, button, input"
 msgstr ""
 

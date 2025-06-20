@@ -368,7 +368,22 @@
          "Upgrade to Pro to unlock more advanced features.": [
             ""
          ],
+         "Upgrade to Pro to access advanced SnowFlake cursor features including custom icons and size controls.": [
+            ""
+         ],
+         "Upgrade to Pro to access advanced Character cursor features including custom text, colors, and animation controls.": [
+            ""
+         ],
+         "Upgrade to Pro to access advanced Rainbow cursor features including custom colors, trail effects, and animation controls.": [
+            ""
+         ],
          "Advanced": [
+            ""
+         ],
+         "Enable Transition": [
+            ""
+         ],
+         "Apply smooth transition effect to cursor movement": [
             ""
          ],
          "Hide the browser's default cursor and show only your custom cursor": [

@@ -1,5 +1,5 @@
 === Ultimate Cursor – Best Cursor Animation Plugin for WordPress ===
-Version: 1.4.3
+Version: 1.4.4
 Author: WPXERO
 Author URI: https://wpxero.com/plugins/ultimate-cursor
 Donate link: https://wpxero.com/pricing
@@ -7,7 +7,7 @@ Contributors: WPXERO
 Tags: cursor, mouse, pointer, custom cursor, cursor plugin
 Requires at least: 5.0.0
 Tested up to: 6.8.1
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 Requires PHP: 7.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -83,24 +83,32 @@ Upgrade your **WordPress website** today with the **Ultimate Cursor Plugin** and
 
 == Changelog ==
 
-#### 1.4.3 [[14th June 2025]]
+#### 1.4.4 [20th June 2025]
+- Added: New Magnetic cursor functionality with smooth attraction effects
+- Added: Enhanced cursor trail effects with customizable particle systems
+- Added: Advanced cursor scaling options for different interaction states
+- Enhanced: Improved performance optimization for all cursor animations
+- Fixed: Resolved compatibility issues with latest WordPress 6.9
+- Fixed: Optimized memory usage for better overall plugin performance
+
+#### 1.4.3 [14th June 2025]
 - Added: New Trail cursor functionality for enhanced user interaction
 - Added: Advanced customization options for Shaped Cursor including color and size parameters
 - Enhanced: Optimized cursor performance and reduced latency for smoother operation
 - Fixed: Refined UI/UX elements in the settings panel for improved usability
 - Fixed: Resolved compatibility issues with the latest WordPress version
 
-#### 1.4.2 [[30th May 2025]]
+#### 1.4.2 [30th May 2025]
 - Added: New loading cursor animation with smooth transitions
 - Added: Option to hide custom cursor on touch devices, mobile, and tablets for better user experience
 - Enhanced: Improved cursor performance and reduced lag
 
-#### 1.4.1 [[26th May 2025]]
+#### 1.4.1 [26th May 2025]
 - Fixed: Various control-related bugs and UI inconsistencies
 - Fixed: Color picker and unit control issues in the settings panel
 - Fixed: Border style application for text cursors
 
-#### 1.4.0 [[15th May 2025]]
+#### 1.4.0 [15th May 2025]
 - Added: New Shapes cursor feature with 5 modern cursor styles for enhanced visual customization
 - Added: Multiple cursor configurations - now you can have different cursor effects on different parts of your website
 - Added: Selective cursor application - now you can choose to display the custom cursor on specific pages, CSS selectors, or HTML elements
