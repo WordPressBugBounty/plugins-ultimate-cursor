@@ -4,7 +4,7 @@
  * Plugin Name:                 Ultimate Cursor – Best Cursor Animation Plugin for WordPress
  * Plugin URI:                  https://wordpress.org/plugins/ultimate-cursor
  * Description:                 Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀
- * Version:                     1.4.4
+ * Version:                     1.5.0
  * Author:                      WPXERO
  * Author URI:                  https://wpxero.com/ultimate-cursor
  * Requires at least:           6.0
@@ -22,7 +22,7 @@ if (! defined('ABSPATH')) {
 }
 
 if (! defined('UCA_VERSION')) {
-	define('UCA_VERSION', '1.4.4');
+	define('UCA_VERSION', '1.5.0');
 }
 
 
@@ -89,8 +89,72 @@ class UltimateCursor {
 		$this->include_dependencies();
 
 		// hooks.
-		add_action('init', [$this, 'init_hook']);
 		add_filter('user_has_cap', [$this, 'user_has_cap'], 10, 4);
+
+		// Disable Freemius license activation notice
+		add_filter('fs_show_trial_notice_ultimate_cursor', '__return_false');
+
+		// init freemius.
+		$this->init_freemius();
+	}
+
+	public function init_freemius() {
+		if (! function_exists('ultimate_cursor_fs')) {
+			// Create a helper function for easy SDK access.
+			function ultimate_cursor_fs() {
+				global $ultimate_cursor_fs;
+
+				if (! isset($ultimate_cursor_fs)) {
+					// Activate multisite network integration.
+					if (! defined('WP_FS__PRODUCT_19720_MULTISITE')) {
+						define('WP_FS__PRODUCT_19720_MULTISITE', true);
+					}
+
+					// Include Freemius SDK.
+					$ultimate_cursor_fs = fs_dynamic_init(array(
+						'id'                  => '19720',
+						'slug'                => 'ultimate-cursor',
+						'premium_slug'        => 'ultimate-cursor-pro',
+						'type'                => 'plugin',
+						'public_key'          => 'pk_fb94765a4f619e83979c2825626c2',
+						'is_premium'          => false,
+						'is_premium_only'     => false,
+						'has_addons'          => false,
+						'has_paid_plans'      => true,
+						'is_require_optin'    => false,
+						'is_org_compliant'    => true,
+						'is_live'             => true,
+						'menu'                => array(
+							'slug'           => 'ultimate-cursor',
+							'contact'        => false,
+							'support'        => false,
+							'parent'         => array(
+								'slug' => 'ultimate-cursor',
+							),
+						),
+						'navigation'          => 'menu',
+						'permissions'         => array(
+							'newsletter' => false,
+							'is_tracking_prohibited' => true,
+						),
+					));
+
+					// Skip the connection/opt-in screen.
+					$ultimate_cursor_fs->skip_connection();
+				}
+
+				return $ultimate_cursor_fs;
+			}
+
+			// Init Freemius.
+			ultimate_cursor_fs();
+
+			// Disable opt-in completely if needed
+			add_filter('ultimate_cursor_fs_skip_activation', '__return_true');
+
+			// Signal that SDK was initiated.
+			do_action('ultimate_cursor_fs_loaded');
+		}
 	}
 
 
@@ -108,19 +172,11 @@ class UltimateCursor {
 		require_once $this->plugin_path . 'classes/class-admin.php';
 		require_once $this->plugin_path . 'classes/class-assets.php';
 		require_once $this->plugin_path . 'classes/class-rest.php';
+		require_once $this->plugin_path . 'includes/freemius/start.php';
 		if (did_action('elementor/loaded')) {
 			require_once $this->plugin_path . 'classes/class-elementor.php';
 		}
 	}
-
-	/**
-	 * Init Hook
-	 */
-	public function init_hook() {
-		// load textdomain.
-		load_plugin_textdomain('ultimate-cursor', false, basename(dirname(__FILE__)) . '/languages');
-	}
-
 
 	/**
 	 * Activation Hook
@@ -134,16 +190,6 @@ class UltimateCursor {
 	 * Deactivation Hook
 	 */
 	public function deactivation_hook() {
-		// Initialize analytics to handle deactivation feedback
-		require_once $this->plugin_path . 'includes/analytics/init.php';
-
-		// Add action to show feedback form before deactivation
-		add_action('admin_footer', function () {
-			$analytics = wpxero_analytics_init();
-
-			// Show the feedback form
-			$analytics->deactivate_feedback_form();
-		});
 	}
 }
 

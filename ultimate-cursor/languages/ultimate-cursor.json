@@ -188,10 +188,19 @@
          "Specific Pages (pro feature)": [
             ""
          ],
+         "Specific Pages": [
+            ""
+         ],
          "CSS Selectors (pro feature)": [
             ""
          ],
+         "CSS Selectors": [
+            ""
+         ],
          "HTML Elements (pro feature)": [
+            ""
+         ],
+         "HTML Elements": [
             ""
          ],
          "Documentation": [
@@ -311,7 +320,13 @@
          "Deactivate Cursor": [
             ""
          ],
+         "Save all configurations to your website": [
+            ""
+         ],
          "Save (Pro Feature Not Active)": [
+            ""
+         ],
+         "Save All Changes": [
             ""
          ],
          "Save Changes": [
@@ -321,6 +336,129 @@
             ""
          ],
          "Effect": [
+            ""
+         ],
+         "Characters": [
+            ""
+         ],
+         "Enter characters or words separated by comma to display as the cursor. This is a pro feature.": [
+            ""
+         ],
+         "Speed of the cursor trail. This is a pro feature.": [
+            ""
+         ],
+         "Delay": [
+            ""
+         ],
+         "Delay of the cursor trail. This is a pro feature.": [
+            ""
+         ],
+         "Length": [
+            ""
+         ],
+         "Length of the cursor trail. This is a pro feature.": [
+            ""
+         ],
+         "Size of the cursor trail. This is a pro feature.": [
+            ""
+         ],
+         "Trail Speed": [
+            ""
+         ],
+         "Trail speed of the cursor trail. This is a pro feature.": [
+            ""
+         ],
+         "Blur": [
+            ""
+         ],
+         "Blur of the cursor trail. This is a pro feature.": [
+            ""
+         ],
+         "Emoji Characters": [
+            ""
+         ],
+         "Click to select emoji characters for snowflakes. This is a pro feature.": [
+            ""
+         ],
+         "selected": [
+            ""
+         ],
+         "No emojis selected": [
+            ""
+         ],
+         "Clear All": [
+            ""
+         ],
+         "Maximum Reached": [
+            ""
+         ],
+         "Add Emoji": [
+            ""
+         ],
+         "Select Emoji": [
+            ""
+         ],
+         "Click an emoji to add it to your snowflakes (max 8)": [
+            ""
+         ],
+         "Search emojis...": [
+            ""
+         ],
+         "Done": [
+            ""
+         ],
+         "Emoji Size": [
+            ""
+         ],
+         "Size of the snowflake emoji. This is a pro feature.": [
+            ""
+         ],
+         "Particle Count": [
+            ""
+         ],
+         "Number of snowflakes to show per cursor movement. This is a pro feature.": [
+            ""
+         ],
+         "Lifespan": [
+            ""
+         ],
+         "How long snowflakes remain visible. This is a pro feature.": [
+            ""
+         ],
+         "Trail Emoji": [
+            ""
+         ],
+         "Select an emoji character for the cursor trail. This is a pro feature.": [
+            ""
+         ],
+         "Current emoji:": [
+            ""
+         ],
+         "No emoji selected": [
+            ""
+         ],
+         "Reset": [
+            ""
+         ],
+         "Choose Emoji": [
+            ""
+         ],
+         "Select Trail Emoji": [
+            ""
+         ],
+         "Click an emoji to use for your cursor trail": [
+            ""
+         ],
+         "Size of the trail emoji. This is a pro feature.": [
+            ""
+         ],
+         "Number of particles in the trail. This is a pro feature.": [
+            ""
+         ],
+         "Opacity": [
+            ""
+         ],
+         "Opacity of the trail particles. This is a pro feature.": [
             ""
          ],
          "Image Size": [
@@ -365,13 +503,16 @@
          "Shape Size": [
             ""
          ],
-         "Upgrade to Pro to unlock more advanced features.": [
-            ""
-         ],
          "Upgrade to Pro to access advanced SnowFlake cursor features including custom icons and size controls.": [
             ""
          ],
+         "Character Colors": [
+            ""
+         ],
          "Upgrade to Pro to access advanced Character cursor features including custom text, colors, and animation controls.": [
+            ""
+         ],
+         "Colors": [
             ""
          ],
          "Upgrade to Pro to access advanced Rainbow cursor features including custom colors, trail effects, and animation controls.": [
@@ -437,6 +578,12 @@
          "You can create and preview multiple cursor configurations in this tab. Add different cursor styles and see how they look.": [
             ""
          ],
+         "Disable Multiple Cursors": [
+            ""
+         ],
+         "Configuration applied! Remember to click \"Save Changes\" at the bottom of the page to save all your configurations.": [
+            ""
+         ],
          "Manage Cursor Configurations": [
             ""
          ],
@@ -473,7 +620,10 @@
          "New Configuration": [
             ""
          ],
-         "Save Configuration": [
+         "Apply this configuration to your list of cursor configurations": [
+            ""
+         ],
+         "Apply Configuration": [
             ""
          ],
          "Cancel": [

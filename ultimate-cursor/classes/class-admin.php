@@ -27,7 +27,6 @@ class Ultimate_Cursor_Admin {
 		add_action('admin_enqueue_scripts', [$this, 'enqueue_media_uploader']);
 
 		add_filter('plugin_action_links_ultimate-cursor/ultimate-cursor.php', [$this, 'ultimate_cursor_settings_link']);
-		add_action('admin_init', [$this, 'extenderx_sdk_xero_plugin']);
 	}
 
 
@@ -163,21 +162,6 @@ class Ultimate_Cursor_Admin {
 		}
 
 		return $classes;
-	}
-
-
-	/**
-	 * SDK Integration
-	 */
-
-
-	/**
-	 * SDK Integration
-	 */
-
-	public  function extenderx_sdk_xero_plugin() {
-		require_once ultimate_cursor()->plugin_path . 'includes/analytics/init.php';
-		wpxero_analytics_init();
 	}
 }
 
