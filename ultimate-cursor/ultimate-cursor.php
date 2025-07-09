@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Plugin Name:                 Ultimate Cursor – Best Cursor Animation Plugin for WordPress
+ * Plugin Name:                 Ultimate Cursor – Interactive and Animated Cursor Effects Toolkit
  * Plugin URI:                  https://wordpress.org/plugins/ultimate-cursor
  * Description:                 Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀
- * Version:                     1.5.0
+ * Version:                     1.5.1
  * Author:                      WPXERO
  * Author URI:                  https://wpxero.com/ultimate-cursor
  * Requires at least:           6.0
  * Requires PHP:                7.4
- * License:                     GPL v2 or later
- * License URI:                 https://www.gnu.org/licenses/gpl-2.0.html
+ * License:                     GPL3
+ * License URI:                 http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:                 ultimate-cursor
  * Elementor requires at least: 3.0.0
  * Elementor tested up to:      3.28.4
@@ -22,7 +22,7 @@ if (! defined('ABSPATH')) {
 }
 
 if (! defined('UCA_VERSION')) {
-	define('UCA_VERSION', '1.5.0');
+	define('UCA_VERSION', '1.5.1');
 }
 
 
@@ -87,6 +87,7 @@ class UltimateCursor {
 
 		// include helper files.
 		$this->include_dependencies();
+		$this->init_freemius();
 
 		// hooks.
 		add_filter('user_has_cap', [$this, 'user_has_cap'], 10, 4);
@@ -95,7 +96,6 @@ class UltimateCursor {
 		add_filter('fs_show_trial_notice_ultimate_cursor', '__return_false');
 
 		// init freemius.
-		$this->init_freemius();
 	}
 
 	public function init_freemius() {
@@ -172,7 +172,7 @@ class UltimateCursor {
 		require_once $this->plugin_path . 'classes/class-admin.php';
 		require_once $this->plugin_path . 'classes/class-assets.php';
 		require_once $this->plugin_path . 'classes/class-rest.php';
-		require_once $this->plugin_path . 'includes/freemius/start.php';
+		require_once $this->plugin_path . 'vendor/freemius/wordpress-sdk/start.php';
 		if (did_action('elementor/loaded')) {
 			require_once $this->plugin_path . 'classes/class-elementor.php';
 		}

@@ -1,22 +1,22 @@
 # Copyright (C) 2025 WPXERO
-# This file is distributed under the GPL v2 or later.
+# This file is distributed under the GPL3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Cursor – Best Cursor Animation Plugin for WordPress 1.5.0\n"
+"Project-Id-Version: Ultimate Cursor – Interactive and Animated Cursor Effects Toolkit 1.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/WPXERO/ultimate-cursor/issues\n"
 "Last-Translator: Lazy Blocks Team\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-06T14:13:55+00:00\n"
+"POT-Creation-Date: 2025-07-09T13:54:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ultimate-cursor\n"
 
 #. Plugin Name of the plugin
 #: ultimate-cursor.php
-msgid "Ultimate Cursor – Best Cursor Animation Plugin for WordPress"
+msgid "Ultimate Cursor – Interactive and Animated Cursor Effects Toolkit"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -41,9 +41,8 @@ msgstr ""
 
 #: classes/class-admin.php:84
 #: classes/class-admin.php:85
-#: classes/class-elementor.php:45
-#: classes/class-elementor.php:73
-#: classes/class-elementor.php:176
+#: classes/class-elementor.php:51
+#: classes/class-elementor.php:154
 #: src/admin/index.js:136
 #: src/admin/index.js:171
 msgid "Ultimate Cursor"
@@ -68,129 +67,119 @@ msgstr ""
 msgid "Discussions"
 msgstr ""
 
-#. translators: 1: Plugin name 2: Elementor
-#: classes/class-elementor.php:44
-#, php-format
-msgid "\"%1$s\" requires \"%2$s\" to be installed and activated."
-msgstr ""
-
-#: classes/class-elementor.php:46
-msgid "Elementor"
-msgstr ""
-
-#: classes/class-elementor.php:81
+#: classes/class-elementor.php:59
 msgid "Enable Cursors?"
 msgstr ""
 
-#: classes/class-elementor.php:96
+#: classes/class-elementor.php:74
 msgid "Layout"
 msgstr ""
 
-#: classes/class-elementor.php:105
+#: classes/class-elementor.php:83
 #: src/admin/page-settings/multiple/controls.js:61
 msgid "Cursor Type"
 msgstr ""
 
-#: classes/class-elementor.php:111
+#: classes/class-elementor.php:89
 msgid "Default"
 msgstr ""
 
-#: classes/class-elementor.php:112
+#: classes/class-elementor.php:90
 #: src/admin/constants/index.js:22
 msgid "Text"
 msgstr ""
 
-#: classes/class-elementor.php:113
-#: classes/class-elementor.php:124
+#: classes/class-elementor.php:91
+#: classes/class-elementor.php:102
 #: src/admin/constants/index.js:27
 #: src/admin/page-welcome/index.js:72
 msgid "Image"
 msgstr ""
 
-#: classes/class-elementor.php:114
-#: classes/class-elementor.php:139
+#: classes/class-elementor.php:92
+#: classes/class-elementor.php:117
 msgid "Icons"
 msgstr ""
 
-#: classes/class-elementor.php:155
-#: classes/class-elementor.php:232
+#: classes/class-elementor.php:133
+#: classes/class-elementor.php:210
 #: src/admin/page-settings/multiple/controls.js:816
 msgid "Style"
 msgstr ""
 
-#: classes/class-elementor.php:159
+#: classes/class-elementor.php:137
 msgid "Style 1"
 msgstr ""
 
-#: classes/class-elementor.php:160
+#: classes/class-elementor.php:138
 msgid "Style 2"
 msgstr ""
 
-#: classes/class-elementor.php:161
+#: classes/class-elementor.php:139
 msgid "Style 3"
 msgstr ""
 
-#: classes/class-elementor.php:174
+#: classes/class-elementor.php:152
 #: src/admin/page-settings/multiple/controls.js:81
 msgid "Text Label"
 msgstr ""
 
-#: classes/class-elementor.php:190
+#: classes/class-elementor.php:168
 #: src/admin/page-settings/multiple/controls.js:140
 msgid "Speed"
 msgstr ""
 
-#: classes/class-elementor.php:216
+#: classes/class-elementor.php:194
 #: src/admin/page-settings/multiple/controls.js:1712
 msgid "Disable Default Cursor"
 msgstr ""
 
-#: classes/class-elementor.php:241
+#: classes/class-elementor.php:219
 msgid "Primary"
 msgstr ""
 
-#: classes/class-elementor.php:252
-#: classes/class-elementor.php:289
-#: classes/class-elementor.php:316
+#: classes/class-elementor.php:230
+#: classes/class-elementor.php:267
+#: classes/class-elementor.php:294
 #: src/admin/page-settings/multiple/controls.js:825
 #: src/admin/page-settings/multiple/controls.js:1232
 msgid "Color"
 msgstr ""
 
-#: classes/class-elementor.php:265
-#: classes/class-elementor.php:302
-#: classes/class-elementor.php:391
-#: classes/class-elementor.php:430
+#: classes/class-elementor.php:243
+#: classes/class-elementor.php:280
+#: classes/class-elementor.php:369
+#: classes/class-elementor.php:408
 #: src/admin/page-settings/multiple/controls.js:214
 msgid "Size"
 msgstr ""
 
-#: classes/class-elementor.php:278
+#: classes/class-elementor.php:256
 msgid "Secondary"
 msgstr ""
 
-#: classes/class-elementor.php:330
+#: classes/class-elementor.php:308
 #: src/admin/page-settings/multiple/controls.js:842
 msgid "Background"
 msgstr ""
 
-#: classes/class-elementor.php:341
+#: classes/class-elementor.php:319
 #: src/admin/page-settings/multiple/controls.js:873
 msgid "Padding"
 msgstr ""
 
-#: classes/class-elementor.php:356
-#: classes/class-elementor.php:405
+#: classes/class-elementor.php:334
+#: classes/class-elementor.php:383
 msgid "Border"
 msgstr ""
 
-#: classes/class-elementor.php:366
-#: classes/class-elementor.php:415
+#: classes/class-elementor.php:344
+#: classes/class-elementor.php:393
 #: src/admin/page-settings/multiple/controls.js:959
 msgid "Border Radius"
 msgstr ""
 
-#: classes/class-elementor.php:381
+#: classes/class-elementor.php:359
 msgid "Typography"
 msgstr ""
 

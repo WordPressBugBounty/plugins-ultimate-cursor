@@ -31,8 +31,8 @@ class Ultimate_Cursor_Admin {
 
 
 	public function disable_admin_notices() {
-
-		if (isset($_GET['page']) && $_GET['page'] === 'ultimate-cursor') {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Simple page check, not processing form data
+		if (isset($_GET['page']) && sanitize_text_field(wp_unslash($_GET['page'])) === 'ultimate-cursor') {
 			remove_all_actions('admin_notices');
 			remove_all_actions('all_admin_notices');
 			remove_all_actions('network_admin_notices');
@@ -147,10 +147,10 @@ class Ultimate_Cursor_Admin {
 		// Sub page.
 		$page_name = 'welcome';
 
-		// phpcs:ignore WordPress.Security.NonceVerification
-		if (isset($_GET['sub_page']) && $_GET['sub_page']) {
-			// phpcs:ignore WordPress.Security.NonceVerification
-			$page_name = esc_attr(sanitize_text_field($_GET['sub_page']));
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Simple page check, not processing form data
+		if (isset($_GET['sub_page']) && sanitize_text_field(wp_unslash($_GET['sub_page']))) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Simple page check, not processing form data
+			$page_name = esc_attr(sanitize_text_field(wp_unslash($_GET['sub_page'])));
 		}
 
 		$classes .= ' ultimate-cursor-admin-page-' . $page_name;

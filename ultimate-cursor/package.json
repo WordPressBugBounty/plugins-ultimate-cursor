@@ -11,7 +11,8 @@
 		"includes",
 		"languages",
 		"ultimate-cursor.php",
-		"readme.txt"
+		"readme.txt",
+		"vendor/freemius"
 	],
 	"scripts": {
 		"dev": "wp-scripts start",

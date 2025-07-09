@@ -19,37 +19,15 @@ class Extend_Cursor {
         add_action('elementor/frontend/widget/before_render', [$this, 'should_script_enqueue']);
         add_action('elementor/preview/enqueue_scripts', [$this, 'enqueue_scripts']);
 
-			// Check if Elementor installed and activated
-		if (!did_action('elementor/loaded')) {
-			add_action('admin_notices', array($this, 'admin_notice_missing_main_plugin'));
-			return;
-		}
-
 		// Check for required Elementor version
 		if (!version_compare(ELEMENTOR_VERSION, ultimate_cursor()->minimum_elementor_version, '>=')) {
 			add_action('admin_notices', array($this, 'admin_notice_minimum_elementor_version'));
 			return;
 		}
 	}
-
-
-
-	public function admin_notice_missing_main_plugin() {
-		if (isset($_GET['activate'])) {
-			unset($_GET['activate']);
-		}
-
-		$message = sprintf(
-			/* translators: 1: Plugin name 2: Elementor */
-			esc_html__('"%1$s" requires "%2$s" to be installed and activated.', 'ultimate-cursor'),
-			'<strong>' . esc_html__('Ultimate Cursor', 'ultimate-cursor') . '</strong>',
-			'<strong>' . esc_html__('Elementor', 'ultimate-cursor') . '</strong>'
-		);
-		printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
-	}
     public function enqueue_scripts() {
         $suffix       = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
-        wp_enqueue_script('cotton-js', ultimate_cursor()->plugin_url . 'assets/js/cotton' . $suffix . '.js', '5.3.5', true);
+        wp_enqueue_script('cotton-js', ultimate_cursor()->plugin_url . 'assets/js/cotton' . $suffix . '.js', [], '5.3.5', true);
         wp_enqueue_style('uce-cursor-css', ultimate_cursor()->plugin_url . 'assets/css/ultimate-cursor.css', null, UCA_VERSION);
         wp_enqueue_script('uce-cursor-js', ultimate_cursor()->plugin_url . 'assets/js/ultimate-cursor.js', ['jquery'], UCA_VERSION, true);
     }
