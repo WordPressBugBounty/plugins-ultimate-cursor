@@ -1,5 +1,5 @@
 === Ultimate Cursor – Interactive and Animated Cursor Effects Toolkit ===
-Version: 1.5.1
+Version: 1.5.2
 Author: WPXERO
 Author URI: https://wpxero.com/plugins/ultimate-cursor
 Donate link: https://wpxero.com/pricing
@@ -7,12 +7,12 @@ Contributors: WPXERO
 Tags: cursor, mouse, pointer, custom cursor, cursor plugin
 Requires at least: 6.0
 Tested up to: 6.8
-Stable tag: 1.5.1
+Stable tag: 1.5.2
 Requires PHP: 7.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.28.4
+Elementor tested up to: 3.32.2
 
 **Enhance your site with Ultimate Cursor Plugin—customize your cursor with icons, text & images for an engaging experience.**✅
 
@@ -21,6 +21,20 @@ Elementor tested up to: 3.28.4
 Transform your **WordPress website** and captivate your audience with the **Ultimate Cursor Plugin**, the all-in-one solution for creating **custom cursors** that enhance user interactions. This **feature-rich WordPress plugin** allows you to integrate **dynamic icons**, **interactive text**, and **engaging images** directly into your cursor, delivering an unforgettable browsing experience.
 
 Designed for **all WordPress users**, the Ultimate Cursor Plugin works seamlessly with **Elementor, Gutenberg, WPBakery, and other page builders**. It allows you to add a personalized, interactive cursor that aligns with your **brand identity** and boosts **website engagement**. Whether you're aiming to improve user navigation, increase interactivity, or add a unique visual element to your website, this plugin offers seamless customization right from the **WordPress interface**—no coding required.
+
+### 🚀 **TRUSTED BY 1600+ ACTIVE WEBSITES**
+
+Join the growing community of web designers, developers, and business owners who have transformed their websites with Ultimate Cursor. Our plugin is actively used on over 1000 WordPress sites worldwide, helping businesses increase engagement and create memorable user experiences.
+
+### 🏆 **WHY PROFESSIONALS CHOOSE ULTIMATE CURSOR PRO**
+
+Professional web designers and developers choose our premium version for:
+
+👉 **Multiple Cursor Configurations** - Create different cursor effects for different parts of your website
+👉 **Element-Specific Targeting** - Apply custom cursors to specific elements, buttons, or sections
+👉 **Advanced Animation Controls** - Fine-tune every aspect of your cursor animations
+👉 **Priority Support** - Get expert help when you need it most
+👉 **Regular Premium Updates** - Access to the latest cursor effects and features first
 
 ### Why Choose Ultimate Cursor Plugin?
 
@@ -59,29 +73,71 @@ Designed for **all WordPress users**, the Ultimate Cursor Plugin works seamlessl
 
 **✅ Multiple Cursor Configurations:** Create multiple different cursor effects for different parts of your website - use text cursors for buttons, animated cursors for images, and more!
 
+### 🔥 **UPGRADE TO PRO AND UNLOCK PREMIUM FEATURES**
+
+Take your website to the next level with [Ultimate Cursor Pro](https://wpxero.com/pricing):
+
+* **Unlimited Cursor Configurations** - Create as many custom cursors as you need
+* **Advanced Animation Effects** - Access exclusive premium animations
+* **Element-Specific Targeting** - Apply different cursors to different elements
+* **Priority Support** - Get expert help when you need it
+* **Regular Premium Updates** - Be the first to access new features
+
+[**UPGRADE TO PRO TODAY →**](https://wpxero.com/pricing)
+
 == Installation ==
 
 1. Upload the `ultimate-cursor` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Start customizing your cursor from the **WordPress settings panel** or inside your preferred page builder (**Elementor, Gutenberg, WPBakery, etc.**).
 
+== Frequently Asked Questions ==
+
+= Will Ultimate Cursor slow down my website? =
+
+No! Ultimate Cursor is optimized for performance. Our code is lightweight and loads only what's needed, ensuring your site remains fast and responsive.
+
+= Does it work with all themes and page builders? =
+
+Yes! Ultimate Cursor is compatible with all major WordPress themes and page builders including Elementor, Gutenberg, WPBakery, Divi, and more.
+
+= What's the difference between the free and pro versions? =
+
+The free version includes essential cursor customization options. The pro version adds multiple cursor configurations, element-specific targeting, advanced animation controls, priority support, and regular premium updates.
+
+= Can I apply different cursors to different parts of my website? =
+
+Yes! With the pro version, you can create multiple cursor configurations and apply them to specific elements, pages, or sections of your website.
+
+= Is there a money-back guarantee? =
+
+Yes! We offer a 14-day money-back guarantee if you're not completely satisfied with the pro version.
+
 == Upgrade Notice ==
 
-Upgrade your **WordPress website** today with the **Ultimate Cursor Plugin** and create a unique, memorable interaction that drives engagement and improves **website user experience**.
+Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configurations, element-specific targeting, advanced animations, and priority support. Transform your website with premium cursor effects that boost engagement and conversion rates!
 
 == Screenshots ==
-
-1. **Cursor Type Text** ✏️ – Use stylish text as your cursor for a sleek, modern touch.
-2. **Cursor Type Image** 🖼️ – Replace the default pointer with any custom image for a branded look.
-3. **Cursor Type Animated** 🎞️ – Add life to your site with animated cursors that move and respond.
-4. **Splash Cursor Preview** 💥 – Instantly preview splash effects for hover animations that pop.
-5. **Insert Any Widget (e.g., Heading Widget)** ✨ – Apply unique cursor effects to any widget for dynamic animations.
-6. **Click to Advanced Tab** 🪂 – Access powerful options under the Ultimate Cursor section in the Advanced tab.
-7. **Turn on Ultimate Cursor** 🌀 – Enable the effect to see interactive cursors in real-time.
-8. **Explore Customization Options** 🎨 – Choose from styles, animations, sizes, and more to match your brand.
-9. **Choose Your Cursor Type** 📱 – Text, image, or animated – pick your style and hover to preview live!
+1. **Features Overview** 📊 – Text, Image, Icon, Shapes, Preset, and Animated Cursor options all available in one plugin.
+2. **Multiple Cursors Configurations** - Apply different cursor styles to different parts of your website.
+3. **Splash Cursor Preview** 💥 – Add eye-catching splash effects that activate on hover interactions.
+4. **SnowFlake Cursor Preview** ❄️ – Delight visitors with snowflake particles that follow cursor movement.
+5. **Trail Cursor Preview** ✨ – Create elegant trailing effects that follow cursor movement.
+6. **Rainbow Cursor Preview** 🌈 – Add colorful rainbow trails that make your cursor visually striking.
+7. **Bubble Cursor Preview** 🫧 – Implement playful bubble animations that float around your cursor.
+8. **Character Cursor Preview** 🔤 – Use custom characters that follow your cursor for unique visual effects.
+9. **Shapes Cursor Preview** 🔷 – Choose from 5 modern geometric cursor styles for visual enhancement.
+10. **Cursor Type Image** 🖼️ – Replace the default pointer with any custom image for a branded look.
+11. **Cursor Type Icon** 🖼️ – Replace the default pointer with any custom icon from your library.
+12. **Cursor Type Text** ✏️ – Use stylish text as your cursor for a sleek, modern touch.
 
 == Changelog ==
+
+#### 1.5.2 [16th August 2025]
+- Added: Splash Cursor Size option added
+- Added: Compatibility with Elementor latest version
+- Improved: Performance optimization for cursor animations
+- Updated: Translation files with new strings
 
 #### 1.5.1 [09th July 2025]
 - Fixed: Security vulnerabilities in cursor rendering functions
