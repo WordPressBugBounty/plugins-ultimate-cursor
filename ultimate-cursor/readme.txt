@@ -1,5 +1,5 @@
 === Ultimate Cursor – Interactive and Animated Cursor Effects Toolkit ===
-Version: 1.5.2
+Version: 1.6.0
 Author: WPXERO
 Author URI: https://wpxero.com/plugins/ultimate-cursor
 Donate link: https://wpxero.com/pricing
@@ -7,7 +7,7 @@ Contributors: WPXERO
 Tags: cursor, mouse, pointer, custom cursor, cursor plugin
 Requires at least: 6.0
 Tested up to: 6.8
-Stable tag: 1.5.2
+Stable tag: 1.6.0
 Requires PHP: 7.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -22,7 +22,7 @@ Transform your **WordPress website** and captivate your audience with the **Ulti
 
 Designed for **all WordPress users**, the Ultimate Cursor Plugin works seamlessly with **Elementor, Gutenberg, WPBakery, and other page builders**. It allows you to add a personalized, interactive cursor that aligns with your **brand identity** and boosts **website engagement**. Whether you're aiming to improve user navigation, increase interactivity, or add a unique visual element to your website, this plugin offers seamless customization right from the **WordPress interface**—no coding required.
 
-### 🚀 **TRUSTED BY 1600+ ACTIVE WEBSITES**
+### 🚀 **TRUSTED BY 1700+ ACTIVE WEBSITES**
 
 Join the growing community of web designers, developers, and business owners who have transformed their websites with Ultimate Cursor. Our plugin is actively used on over 1000 WordPress sites worldwide, helping businesses increase engagement and create memorable user experiences.
 
@@ -66,6 +66,8 @@ Professional web designers and developers choose our premium version for:
 **✅ Works for All WordPress Users**: Compatible with **Elementor, Gutenberg, WPBakery, and other page builders**. Customize the cursor directly in your preferred page builder or via the WordPress Customizer.
 
 **✅ New Cursor Effects**: Added **Splash Cursor, Bubble Cursor, Trail Cursor**, and **Follow Text Cursor** effects to enhance your website's interactivity and visual appeal.
+
+**✅ New Click Spark Effects**: Added **Click Spark** effects to enhance your website's interactivity and visual appeal.
 
 **✅ SEO Optimized**: Ensure your site's performance is fast, even with these rich interactive elements.
 
@@ -132,6 +134,12 @@ Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configur
 12. **Cursor Type Text** ✏️ – Use stylish text as your cursor for a sleek, modern touch.
 
 == Changelog ==
+
+#### 1.6.0 [31st August 2025]
+- Added: Click Spark feature added
+- Added: Click Spark customization options added (premium version)
+- Added: Compatibility with Elementor latest version
+- Enhanced: Significant performance optimization for all cursor animations
 
 #### 1.5.2 [16th August 2025]
 - Added: Splash Cursor Size option added
