@@ -1,5 +1,5 @@
 === Ultimate Cursor – Interactive and Animated Cursor Effects Toolkit ===
-Version: 1.6.0
+Version: 1.6.1
 Author: WPXERO
 Author URI: https://wpxero.com/plugins/ultimate-cursor
 Donate link: https://wpxero.com/pricing
@@ -7,7 +7,7 @@ Contributors: WPXERO
 Tags: cursor, mouse, pointer, custom cursor, cursor plugin
 Requires at least: 6.0
 Tested up to: 6.8
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 Requires PHP: 7.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -134,6 +134,11 @@ Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configur
 12. **Cursor Type Text** ✏️ – Use stylish text as your cursor for a sleek, modern touch.
 
 == Changelog ==
+
+#### 1.6.1 [03rd September 2025]
+- Fixed: Resolved Click Spark cursor effects compatibility issues with default WordPress themes
+- Enhanced: Optimized plugin initialization sequence for improved cross-theme compatibility
+- Improved: Enhanced cursor rendering performance across various WordPress environments
 
 #### 1.6.0 [31st August 2025]
 - Added: Click Spark feature added
