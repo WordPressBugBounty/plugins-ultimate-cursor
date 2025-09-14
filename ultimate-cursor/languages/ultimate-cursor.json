@@ -326,6 +326,12 @@
          "Save Changes": [
             ""
          ],
+         "Pro": [
+            ""
+         ],
+         "Upgrade to Pro": [
+            ""
+         ],
          "Type": [
             ""
          ],
@@ -353,19 +359,28 @@
          "Length of the cursor trail. This is a pro feature.": [
             ""
          ],
-         "Size of the cursor trail. This is a pro feature.": [
+         "Size of the cursor trail (Pro feature)": [
+            ""
+         ],
+         "Size of the cursor trail": [
             ""
          ],
          "Trail Speed": [
             ""
          ],
-         "Trail speed of the cursor trail. This is a pro feature.": [
+         "Trail speed of the cursor trail (Pro feature)": [
+            ""
+         ],
+         "Trail speed of the cursor trail": [
             ""
          ],
          "Blur": [
             ""
          ],
-         "Blur of the cursor trail. This is a pro feature.": [
+         "Blur of the cursor trail (Pro feature)": [
+            ""
+         ],
+         "Blur of the cursor trail": [
             ""
          ],
          "Emoji Characters": [
@@ -455,6 +470,54 @@
          "Opacity of the trail particles. This is a pro feature.": [
             ""
          ],
+         "Splash Size": [
+            ""
+         ],
+         "Size of the splash effect": [
+            ""
+         ],
+         "Splash Force": [
+            ""
+         ],
+         "Intensity of the splash effect": [
+            ""
+         ],
+         "Spark Size": [
+            ""
+         ],
+         "Size of individual spark lines (Pro feature)": [
+            ""
+         ],
+         "Size of individual spark lines": [
+            ""
+         ],
+         "Spark Count": [
+            ""
+         ],
+         "Number of sparks per click (Pro feature)": [
+            ""
+         ],
+         "Number of sparks per click": [
+            ""
+         ],
+         "Animation Duration": [
+            ""
+         ],
+         "How long the spark animation lasts (Pro feature)": [
+            ""
+         ],
+         "How long the spark animation lasts": [
+            ""
+         ],
+         "Particle Speed": [
+            ""
+         ],
+         "Particle speed (Pro feature)": [
+            ""
+         ],
+         "Particle speed": [
+            ""
+         ],
          "Image Size": [
             ""
          ],
@@ -468,6 +531,9 @@
             ""
          ],
          "Border Width": [
+            ""
+         ],
+         "Shape Size": [
             ""
          ],
          "Bubble Size": [
@@ -485,43 +551,112 @@
          "Add Color": [
             ""
          ],
-         "Splash Size": [
+         "Splash Effects": [
             ""
          ],
-         "Size of the splash effect": [
+         "Create vibrant splash trails with customizable colors, gradients, and smooth animations.": [
             ""
          ],
-         "Splash Force": [
+         "Custom splash colors": [
             ""
          ],
-         "Intensity of the splash effect": [
+         "Animation speed controls": [
             ""
          ],
-         "Pro Feature": [
-            ""
-         ],
-         "Upgrade to Pro to unlock multiple splash colors and more advanced features.": [
-            ""
-         ],
-         "Upgrade to Pro": [
-            ""
-         ],
-         "Shape Size": [
-            ""
-         ],
-         "Upgrade to Pro to access advanced SnowFlake cursor features including custom icons and size controls.": [
+         "Trail length adjustment": [
             ""
          ],
          "Character Colors": [
             ""
          ],
-         "Upgrade to Pro to access advanced Character cursor features including custom text, colors, and animation controls.": [
+         "Character Cursor": [
+            ""
+         ],
+         "Create vibrant character cursor with customizable colors, characters, and smooth animations.": [
+            ""
+         ],
+         "Custom characters": [
+            ""
+         ],
+         "Custom character colors": [
+            ""
+         ],
+         "Delay character animation": [
             ""
          ],
          "Colors": [
             ""
          ],
-         "Upgrade to Pro to access advanced Rainbow cursor features including custom colors, trail effects, and animation controls.": [
+         "Rainbow Effects": [
+            ""
+         ],
+         "Create vibrant rainbow trails with customizable colors, gradients, and smooth animations.": [
+            ""
+         ],
+         "Custom rainbow colors": [
+            ""
+         ],
+         "Gradient trail effects": [
+            ""
+         ],
+         "Spark Color": [
+            ""
+         ],
+         "Easing": [
+            ""
+         ],
+         "Animation timing function": [
+            ""
+         ],
+         "Extra Scale": [
+            ""
+         ],
+         "Additional scaling factor for the effect": [
+            ""
+         ],
+         "Spark Radius": [
+            ""
+         ],
+         "Distance sparks travel from click point": [
+            ""
+         ],
+         "ClickSpark Effects": [
+            ""
+         ],
+         "Create stunning spark effects with customizable colors, sizes, and animations.": [
+            ""
+         ],
+         "Custom spark colors": [
+            ""
+         ],
+         "Spark size controls": [
+            ""
+         ],
+         "Spark count controls": [
+            ""
+         ],
+         "Animation duration controls": [
+            ""
+         ],
+         "Particle Color": [
+            ""
+         ],
+         "ClickParticles Effects": [
+            ""
+         ],
+         "Create stunning particle effects with customizable colors, sizes, and animations.": [
+            ""
+         ],
+         "Custom particle colors": [
+            ""
+         ],
+         "Particle speed controls": [
+            ""
+         ],
+         "Particle size controls": [
+            ""
+         ],
+         "Particle Background controls": [
             ""
          ],
          "Advanced": [
@@ -780,9 +915,6 @@
             ""
          ],
          "Free": [
-            ""
-         ],
-         "Pro": [
             ""
          ],
          "Basic Cursor Customization": [

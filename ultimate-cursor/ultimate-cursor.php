@@ -4,7 +4,7 @@
  * Plugin Name:                 Ultimate Cursor – Interactive and Animated Cursor Effects Toolkit
  * Plugin URI:                  https://wordpress.org/plugins/ultimate-cursor
  * Description:                 Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀
- * Version:                     1.6.1
+ * Version:                     1.7.0
  * Author:                      WPXERO
  * Author URI:                  https://wpxero.com/ultimate-cursor
  * Requires at least:           6.0
@@ -22,7 +22,7 @@ if (! defined('ABSPATH')) {
 }
 
 if (! defined('UCA_VERSION')) {
-	define('UCA_VERSION', '1.6.1');
+	define('UCA_VERSION', '1.7.0');
 }
 
 
@@ -99,14 +99,14 @@ class UltimateCursor {
 	}
 
 	public function init_freemius() {
-		if (! function_exists('ultimate_cursor_fs')) {
+		if (!function_exists('ultimate_cursor_fs')) {
 			// Create a helper function for easy SDK access.
 			function ultimate_cursor_fs() {
 				global $ultimate_cursor_fs;
 
-				if (! isset($ultimate_cursor_fs)) {
+				if (!isset($ultimate_cursor_fs)) {
 					// Activate multisite network integration.
-					if (! defined('WP_FS__PRODUCT_19720_MULTISITE')) {
+					if (!defined('WP_FS__PRODUCT_19720_MULTISITE')) {
 						define('WP_FS__PRODUCT_19720_MULTISITE', true);
 					}
 
@@ -119,26 +119,21 @@ class UltimateCursor {
 						'public_key'          => 'pk_fb94765a4f619e83979c2825626c2',
 						'is_premium'          => false,
 						'is_premium_only'     => false,
-						'has_addons'          => false,
 						'has_paid_plans'      => true,
-						'is_require_optin'    => false,
-						'is_org_compliant'    => true,
 						'is_live'             => true,
-						'menu'                => array(
-							'slug'           => 'ultimate-cursor',
-							'contact'        => false,
-							'support'        => false,
-							'parent'         => array(
-								'slug' => 'ultimate-cursor',
-							),
+						'is_org_compliant'    => true,
+						'parallel_activation' => array(
+							'enabled'                  => true,
+							'premium_version_basename' => 'ultimate-cursor-pro/ultimate-cursor-pro.php',
 						),
-						'navigation'          => 'menu',
-						'permissions'         => array(
-							'newsletter' => false,
-							'is_tracking_prohibited' => true,
+						'menu'                => array(
+							'slug'        => 'ultimate-cursor',
+							'first-path'  => 'admin.php?page=ultimate-cursor',
+							'support'     => false,
+							'contact'     => false,
+							'pricing'     => true,
 						),
 					));
-
 					// Skip the connection/opt-in screen.
 					$ultimate_cursor_fs->skip_connection();
 				}
@@ -148,7 +143,6 @@ class UltimateCursor {
 
 			// Init Freemius.
 			ultimate_cursor_fs();
-
 			// Disable opt-in completely if needed
 			add_filter('ultimate_cursor_fs_skip_activation', '__return_true');
 
@@ -156,6 +150,8 @@ class UltimateCursor {
 			do_action('ultimate_cursor_fs_loaded');
 		}
 	}
+
+
 
 
 	public function user_has_cap($allcaps, $caps, $args, $user) {
@@ -202,6 +198,25 @@ function ultimate_cursor() {
 	return UltimateCursor::instance();
 }
 add_action('plugins_loaded', 'ultimate_cursor');
-
+add_action('admin_notices', function () {
+	if (function_exists('ultimate_cursor_fs')) {
+		ultimate_cursor_fs();
+	}
+});
 register_activation_hook(__FILE__, [ultimate_cursor(), 'activation_hook']);
 register_deactivation_hook(__FILE__, [ultimate_cursor(), 'deactivation_hook']);
+
+/**
+ * Get menu parameters for premium features
+ * This function is called when the pro version is active
+ */
+function get_menu_params__premium_only() {
+	return array(
+		'slug'        => 'ultimate-cursor',
+		'first-path'  => 'admin.php?page=ultimate-cursor',
+		'account'     => true,
+		'support'     => false,
+		'contact'     => false,
+		'pricing'     => true,
+	);
+}
