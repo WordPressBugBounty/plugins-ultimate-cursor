@@ -4,7 +4,7 @@
  * Plugin Name:                 Ultimate Cursor – Interactive and Animated Cursor Effects Toolkit
  * Plugin URI:                  https://wordpress.org/plugins/ultimate-cursor
  * Description:                 Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀
- * Version:                     1.7.0
+ * Version:                     1.7.1
  * Author:                      WPXERO
  * Author URI:                  https://wpxero.com/ultimate-cursor
  * Requires at least:           6.0
@@ -22,7 +22,7 @@ if (! defined('ABSPATH')) {
 }
 
 if (! defined('UCA_VERSION')) {
-	define('UCA_VERSION', '1.7.0');
+	define('UCA_VERSION', '1.7.1');
 }
 
 
@@ -93,7 +93,7 @@ class UltimateCursor {
 		add_filter('user_has_cap', [$this, 'user_has_cap'], 10, 4);
 
 		// Disable Freemius license activation notice
-		add_filter('fs_show_trial_notice_ultimate_cursor', '__return_false');
+		// add_filter('fs_show_trial_notice_ultimate_cursor', '__return_false');
 
 		// init freemius.
 	}
@@ -134,8 +134,6 @@ class UltimateCursor {
 							'pricing'     => true,
 						),
 					));
-					// Skip the connection/opt-in screen.
-					$ultimate_cursor_fs->skip_connection();
 				}
 
 				return $ultimate_cursor_fs;
@@ -143,10 +141,6 @@ class UltimateCursor {
 
 			// Init Freemius.
 			ultimate_cursor_fs();
-			// Disable opt-in completely if needed
-			add_filter('ultimate_cursor_fs_skip_activation', '__return_true');
-
-			// Signal that SDK was initiated.
 			do_action('ultimate_cursor_fs_loaded');
 		}
 	}
