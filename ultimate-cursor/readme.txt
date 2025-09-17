@@ -1,5 +1,5 @@
 === Ultimate Cursor – Interactive and Animated Cursor Effects Toolkit ===
-Version: 1.7.1
+Version: 1.7.2
 Author: WPXERO
 Author URI: https://wpxero.com/plugins/ultimate-cursor
 Donate link: https://wpxero.com/pricing
@@ -7,7 +7,7 @@ Contributors: WPXERO
 Tags: cursor, mouse, pointer, custom cursor, cursor plugin
 Requires at least: 6.0
 Tested up to: 6.8
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 Requires PHP: 7.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -134,6 +134,10 @@ Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configur
 12. **Cursor Type Text** ✏️ – Use stylish text as your cursor for a sleek, modern touch.
 
 == Changelog ==
+
+#### 1.7.2 [September 17, 2025]
+- Fixed: Custom cursor now properly displays in all modal overlays and popup elements across all themes by ensuring correct z-index layering
+- Thanks: Special appreciation to [logaen](https://wordpress.org/support/users/logaen/) for reporting this issue
 
 #### 1.7.1 [September 15, 2025]
 - Enhanced: The Freemius SDK has been updated to ensure the plugin's reliance on the SDK is maintained in a professional manner.

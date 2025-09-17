@@ -8,14 +8,14 @@
 
 .uce-cursor-enabled-yes .uce-cursor-enabled {
     position: fixed;
-    z-index: 99999
+    z-index: 9999999
 }
 
 .uce-cursor-enabled-yes .uce-cursor-enabled .cotton-init.ultimate-cursor-default.cotton-active {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 9999999;
     pointer-events: none;
     transform: translate(-20px, -20px)
 }
