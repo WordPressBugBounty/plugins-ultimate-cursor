@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="140px" height="140px" viewBox="0 0 140 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Diamond cursor shape -->
+    <title>Diamond</title>
+    <desc>Diamond cursor shape</desc>
+    <defs></defs>
+    <g id="Diamond" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="7" transform="translate(28.000000, 28.000000)">
+            <rect id="Diamond-bg" fill="#E5E5E5" stroke="#2A2A2A" stroke-width="3" x="18" y="18" width="48" height="48" transform="rotate(45 42 42)"></rect>
+            <circle id="Diamond-dot" fill="#2A2A2A" cx="42" cy="42" r="6"></circle>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="140px" height="140px" viewBox="0 0 140 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Triangle cursor shape -->
+    <title>Triangle</title>
+    <desc>Triangle cursor shape</desc>
+    <defs></defs>
+    <g id="Triangle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="6" transform="translate(28.000000, 28.000000)">
+            <polygon id="Triangle-bg" fill="#E5E5E5" stroke="#2A2A2A" stroke-width="3" points="42 8 76 68 8 68"></polygon>
+            <circle id="Triangle-dot" fill="#2A2A2A" cx="42" cy="48" r="6"></circle>
+        </g>
+    </g>
+</svg>

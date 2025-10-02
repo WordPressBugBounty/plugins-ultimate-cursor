@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="140px" height="140px" viewBox="0 0 140 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Star cursor shape -->
+    <title>Star</title>
+    <desc>Star cursor shape</desc>
+    <defs></defs>
+    <g id="Star" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="9" transform="translate(28.000000, 28.000000)">
+            <polygon id="Star-bg" fill="#E5E5E5" stroke="#2A2A2A" stroke-width="3" points="42 4 52.854 27.146 78 27.146 58.573 42.708 69.427 65.854 42 50.292 14.573 65.854 25.427 42.708 6 27.146 31.146 27.146"></polygon>
+            <circle id="Star-dot" fill="#2A2A2A" cx="42" cy="42" r="6"></circle>
+        </g>
+    </g>
+</svg>
