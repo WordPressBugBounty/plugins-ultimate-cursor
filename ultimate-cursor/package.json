@@ -10,7 +10,7 @@
 		"classes",
 		"includes",
 		"languages",
-		"ultimate-cursor.php",
+		"*.php",
 		"readme.txt",
 		"vendor/freemius"
 	],

@@ -4,16 +4,14 @@
  * Plugin Name:                 Ultimate Cursor – Interactive and Animated Cursor Effects Toolkit
  * Plugin URI:                  https://wordpress.org/plugins/ultimate-cursor
  * Description:                 Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀
- * Version:                     1.7.4
+ * Version:                     1.9.1
  * Author:                      WPXERO
- * Author URI:                  https://wpxero.com/ultimate-cursor
+ * Author URI:                  https://wpxero.com/plugins/ultimate-cursor
  * Requires at least:           6.0
  * Requires PHP:                7.4
  * License:                     GPL3
  * License URI:                 http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:                 ultimate-cursor
- * Elementor requires at least: 3.0.0
- * Elementor tested up to:      3.28.4
  */
 
 
@@ -22,7 +20,7 @@ if (! defined('ABSPATH')) {
 }
 
 if (! defined('UCA_VERSION')) {
-	define('UCA_VERSION', '1.7.4');
+	define('UCA_VERSION', '1.9.1');
 }
 
 
@@ -162,9 +160,17 @@ class UltimateCursor {
 		require_once $this->plugin_path . 'classes/class-admin.php';
 		require_once $this->plugin_path . 'classes/class-assets.php';
 		require_once $this->plugin_path . 'classes/class-rest.php';
+
+		// CRITICAL: Handles CDN CORS headers and prevents "Delay JS" from breaking the cursor
+		// Do not remove this unless you want to break compatibility with WP Rocket, LiteSpeed, etc.
+		require_once $this->plugin_path . 'classes/class-cache-compatibility.php';
 		require_once $this->plugin_path . 'vendor/freemius/wordpress-sdk/start.php';
 		if (did_action('elementor/loaded')) {
 			require_once $this->plugin_path . 'classes/class-elementor.php';
+		}
+
+		if (!class_exists('Ultimate_Cursor_Pro')) {
+			require_once $this->plugin_path . 'classes/class-dashboard-widget.php';
 		}
 	}
 
@@ -178,8 +184,13 @@ class UltimateCursor {
 
 	/**
 	 * Deactivation Hook
+	 * Note: We only clean up temporary data here.
+	 * Settings are preserved so users don't lose configuration when deactivating/reactivating.
 	 */
 	public function deactivation_hook() {
+		delete_transient('_ultimate_cursor_welcome_screen_activation_redirect');
+		// Settings are intentionally NOT deleted here - they persist through deactivation
+		// Settings will only be deleted if user uninstalls (deletes) the plugin via uninstall.php
 	}
 }
 
@@ -197,20 +208,20 @@ add_action('admin_notices', function () {
 		ultimate_cursor_fs();
 	}
 });
-register_activation_hook(__FILE__, [ultimate_cursor(), 'activation_hook']);
-register_deactivation_hook(__FILE__, [ultimate_cursor(), 'deactivation_hook']);
 
 /**
- * Get menu parameters for premium features
- * This function is called when the pro version is active
+ * Activation hook callback
  */
-function get_menu_params__premium_only() {
-	return array(
-		'slug'        => 'ultimate-cursor',
-		'first-path'  => 'admin.php?page=ultimate-cursor',
-		'account'     => true,
-		'support'     => false,
-		'contact'     => false,
-		'pricing'     => true,
-	);
+function ultimate_cursor_activation_hook() {
+	ultimate_cursor()->activation_hook();
 }
+
+/**
+ * Deactivation hook callback
+ */
+function ultimate_cursor_deactivation_hook() {
+	ultimate_cursor()->deactivation_hook();
+}
+
+register_activation_hook(__FILE__, 'ultimate_cursor_activation_hook');
+register_deactivation_hook(__FILE__, 'ultimate_cursor_deactivation_hook');

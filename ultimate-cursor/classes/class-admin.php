@@ -15,9 +15,26 @@ if (! defined('ABSPATH')) {
  */
 class Ultimate_Cursor_Admin {
 	/**
+	 * The single class instance.
+	 *
+	 * @var $instance
+	 */
+	private static $instance = null;
+
+	/**
+	 * Get instance
+	 */
+	public static function instance() {
+		if (is_null(self::$instance)) {
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
+
+	/**
 	 * Ultimate_Cursor_Admin constructor.
 	 */
-	public function __construct() {
+	private function __construct() {
 		add_action('admin_init', [$this, 'redirect_to_welcome_screen']);
 		add_action('admin_menu', [$this, 'register_admin_menu'], 20);
 		add_action('in_admin_header', [$this, 'disable_admin_notices'], PHP_INT_MAX);
@@ -93,28 +110,28 @@ class Ultimate_Cursor_Admin {
 
 		add_submenu_page(
 			'ultimate-cursor',
-			'',
+			esc_html__('Welcome', 'ultimate-cursor'),
 			esc_html__('Welcome', 'ultimate-cursor'),
 			'manage_options',
 			'ultimate-cursor'
 		);
 		add_submenu_page(
 			'ultimate-cursor',
-			'',
+			esc_html__('Settings', 'ultimate-cursor'),
 			esc_html__('Settings', 'ultimate-cursor'),
 			'manage_options',
 			'admin.php?page=ultimate-cursor&sub_page=settings'
 		);
 		add_submenu_page(
 			'ultimate-cursor',
-			'',
+			esc_html__('Multiple Cursors', 'ultimate-cursor'),
 			esc_html__('Multiple Cursors', 'ultimate-cursor'),
 			'manage_options',
 			'admin.php?page=ultimate-cursor&sub_page=settings&tab=multiple'
 		);
 		add_submenu_page(
 			'ultimate-cursor',
-			'',
+			esc_html__('Discussions', 'ultimate-cursor'),
 			esc_html__('Discussions', 'ultimate-cursor'),
 			'manage_options',
 			'https://wordpress.org/support/plugin/ultimate-cursor/'
@@ -166,4 +183,4 @@ class Ultimate_Cursor_Admin {
 }
 
 
-new Ultimate_Cursor_Admin();
+Ultimate_Cursor_Admin::instance();

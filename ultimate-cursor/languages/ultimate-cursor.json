@@ -17,7 +17,7 @@
          "WPXERO": [
             ""
          ],
-         "https://wpxero.com/ultimate-cursor": [
+         "https://wpxero.com/plugins/ultimate-cursor": [
             ""
          ],
          "Ultimate Cursor": [
@@ -33,6 +33,60 @@
             ""
          ],
          "Discussions": [
+            ""
+         ],
+         "Ultimate Cursor Halloween Sale!": [
+            ""
+         ],
+         "Ultimate Cursor Black Friday Sale!": [
+            ""
+         ],
+         "Halloween Spooky Sale!": [
+            ""
+         ],
+         "👻 Upgrade to Ultimate Cursor Pro - Spooky good deals with haunting cursor effects!": [
+            ""
+         ],
+         "🎃 Get Pro Now - 25% OFF": [
+            ""
+         ],
+         "Black Friday Mega Sale!": [
+            ""
+         ],
+         "🚀 Upgrade to Ultimate Cursor Pro - 10+ premium effects, advanced customization & priority support!": [
+            ""
+         ],
+         "🛒 Get Pro Now - 25% OFF": [
+            ""
+         ],
+         "⏰ Sale ends in:": [
+            ""
+         ],
+         "🎟️ Use Coupon Code:": [
+            ""
+         ],
+         "✅ Coupon code copied!": [
+            ""
+         ],
+         "🎃 Halloween Spooky Sale - Ultimate Cursor Pro!": [
+            ""
+         ],
+         "Get 25% OFF on Ultimate Cursor Pro! Spooky good deals with haunting cursor effects. Limited time offer!": [
+            ""
+         ],
+         "🛒 Black Friday Mega Sale - Ultimate Cursor Pro!": [
+            ""
+         ],
+         "Get 25% OFF on Ultimate Cursor Pro! 10+ premium effects, advanced customization & priority support. Don't miss out!": [
+            ""
+         ],
+         "Ends in: ": [
+            ""
+         ],
+         "COUPON CODE:": [
+            ""
+         ],
+         "Get Pro Now": [
             ""
          ],
          "Enable Cursors?": [
@@ -107,15 +161,6 @@
          "User don't have permissions to change options.": [
             ""
          ],
-         "You don't have permissions to request Ultimate Cursor API.": [
-            ""
-         ],
-         "Provide OpenAI key in the plugin settings.": [
-            ""
-         ],
-         "Provide request to receive AI response.": [
-            ""
-         ],
          "Replace cursor with text": [
             ""
          ],
@@ -174,6 +219,18 @@
             ""
          ],
          "Capitalize": [
+            ""
+         ],
+         "Normal": [
+            ""
+         ],
+         "Circular": [
+            ""
+         ],
+         "Clockwise": [
+            ""
+         ],
+         "Counter Clockwise": [
             ""
          ],
          "Entire Website": [
@@ -333,6 +390,60 @@
             ""
          ],
          "Type": [
+            ""
+         ],
+         "Circular Background": [
+            ""
+         ],
+         "Use circular background instead of rectangular. This is a pro feature.": [
+            ""
+         ],
+         "Use circular background instead of rectangular": [
+            ""
+         ],
+         "Circle Size": [
+            ""
+         ],
+         "Diameter of the circular background (Pro feature)": [
+            ""
+         ],
+         "Diameter of the circular background": [
+            ""
+         ],
+         "Circle Radius": [
+            ""
+         ],
+         "Radius of the circular text path": [
+            ""
+         ],
+         "Size of the background circle": [
+            ""
+         ],
+         "Rotation": [
+            ""
+         ],
+         "Rotation angle in degrees": [
+            ""
+         ],
+         "Direction": [
+            ""
+         ],
+         "Show Circle": [
+            ""
+         ],
+         "Show background circle behind text": [
+            ""
+         ],
+         "Auto Rotate": [
+            ""
+         ],
+         "Enable automatic rotation animation": [
+            ""
+         ],
+         "Rotation Speed": [
+            ""
+         ],
+         "Speed of the rotation animation": [
             ""
          ],
          "Effect": [

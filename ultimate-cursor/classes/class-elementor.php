@@ -11,10 +11,26 @@ use Elementor\Utils;
 defined('ABSPATH') || die();
 
 class Extend_Cursor {
+    /**
+     * The single class instance.
+     *
+     * @var $instance
+     */
+    private static $instance = null;
+
+    /**
+     * Get instance
+     */
+    public static function instance() {
+        if (is_null(self::$instance)) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
 
     static $should_script_enqueue = false;
 
-    public function __construct() {
+    private function __construct() {
         add_action('elementor/element/common/_section_style/after_section_end', [$this, 'add_controls_section'], 1);
         add_action('elementor/frontend/widget/before_render', [$this, 'should_script_enqueue']);
         add_action('elementor/preview/enqueue_scripts', [$this, 'enqueue_scripts']);
@@ -421,4 +437,4 @@ class Extend_Cursor {
         $element->end_controls_section();
     }
 }
-new Extend_Cursor();
+Extend_Cursor::instance();
