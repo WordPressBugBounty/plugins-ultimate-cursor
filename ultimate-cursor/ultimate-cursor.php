@@ -4,7 +4,7 @@
  * Plugin Name:                 Ultimate Cursor – Interactive and Animated Cursor Effects Toolkit
  * Plugin URI:                  https://wordpress.org/plugins/ultimate-cursor
  * Description:                 Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀
- * Version:                     1.9.1
+ * Version:                     1.9.2
  * Author:                      WPXERO
  * Author URI:                  https://wpxero.com/plugins/ultimate-cursor
  * Requires at least:           6.0
@@ -20,7 +20,7 @@ if (! defined('ABSPATH')) {
 }
 
 if (! defined('UCA_VERSION')) {
-	define('UCA_VERSION', '1.9.1');
+	define('UCA_VERSION', '1.9.2');
 }
 
 
@@ -29,6 +29,11 @@ if (! defined('UCA_VERSION')) {
  * UltimateCursor Class
  */
 class UltimateCursor {
+	/**
+	 * Freemius instance
+	 * @var object
+	 */
+	private $freemius;
 	/**
 	 * The single class instance.
 	 *
@@ -89,27 +94,27 @@ class UltimateCursor {
 
 		// hooks.
 		add_filter('user_has_cap', [$this, 'user_has_cap'], 10, 4);
-
-		// Disable Freemius license activation notice
-		// add_filter('fs_show_trial_notice_ultimate_cursor', '__return_false');
-
-		// init freemius.
 	}
 
-	public function init_freemius() {
-		if (!function_exists('ultimate_cursor_fs')) {
-			// Create a helper function for easy SDK access.
-			function ultimate_cursor_fs() {
-				global $ultimate_cursor_fs;
+	/**
+	 * Initialize Freemius SDK
+	 */
+	private function init_freemius() {
+		if (!isset($this->freemius)) {
+			// Skip Freemius init during plugin upgrade/install to prevent memory exhaustion.
+			if (
+				(defined('WP_INSTALLING') && WP_INSTALLING) ||
+				(isset($_REQUEST['action']) && in_array($_REQUEST['action'], array('upload-plugin', 'update-plugin', 'delete-plugin'), true))
+			) {
+				return $this->freemius;
+			}
 
-				if (!isset($ultimate_cursor_fs)) {
-					// Activate multisite network integration.
-					if (!defined('WP_FS__PRODUCT_19720_MULTISITE')) {
-						define('WP_FS__PRODUCT_19720_MULTISITE', true);
-					}
+			// Include Freemius SDK
+			if (file_exists(dirname(__FILE__) . '/vendor/freemius/wordpress-sdk/start.php')) {
+				require_once dirname(__FILE__) . '/vendor/freemius/wordpress-sdk/start.php';
 
-					// Include Freemius SDK.
-					$ultimate_cursor_fs = fs_dynamic_init(array(
+				try {
+					$this->freemius = fs_dynamic_init(array(
 						'id'                  => '19720',
 						'slug'                => 'ultimate-cursor',
 						'premium_slug'        => 'ultimate-cursor-pro',
@@ -132,17 +137,30 @@ class UltimateCursor {
 							'pricing'     => true,
 						),
 					));
+
+					// Signal that Freemius SDK is initiated
+					do_action('ultimate_cursor_fs_loaded');
+				} catch (Exception $e) {
+					// Log error but don't break the plugin
+					if (defined('WP_DEBUG') && WP_DEBUG) {
+						error_log('Ultimate Cursor Freemius Error: ' . $e->getMessage());
+					}
 				}
-
-				return $ultimate_cursor_fs;
 			}
-
-			// Init Freemius.
-			ultimate_cursor_fs();
-			do_action('ultimate_cursor_fs_loaded');
 		}
+
+		return $this->freemius;
 	}
 
+
+	/**
+	 * Get Freemius instance
+	 *
+	 * @return object|null
+	 */
+	public function get_freemius() {
+		return $this->freemius;
+	}
 
 
 
@@ -164,7 +182,6 @@ class UltimateCursor {
 		// CRITICAL: Handles CDN CORS headers and prevents "Delay JS" from breaking the cursor
 		// Do not remove this unless you want to break compatibility with WP Rocket, LiteSpeed, etc.
 		require_once $this->plugin_path . 'classes/class-cache-compatibility.php';
-		require_once $this->plugin_path . 'vendor/freemius/wordpress-sdk/start.php';
 		if (did_action('elementor/loaded')) {
 			require_once $this->plugin_path . 'classes/class-elementor.php';
 		}
@@ -202,12 +219,18 @@ class UltimateCursor {
 function ultimate_cursor() {
 	return UltimateCursor::instance();
 }
+
 add_action('plugins_loaded', 'ultimate_cursor');
-add_action('admin_notices', function () {
-	if (function_exists('ultimate_cursor_fs')) {
-		ultimate_cursor_fs();
-	}
-});
+
+/**
+ * Get Freemius instance for free plugin
+ *
+ * @return object|null
+ */
+function ultimate_cursor_fs() {
+	$plugin = ultimate_cursor();
+	return $plugin ? $plugin->get_freemius() : null;
+}
 
 /**
  * Activation hook callback
