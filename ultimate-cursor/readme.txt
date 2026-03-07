@@ -1,5 +1,5 @@
 === Ultimate Cursor – Interactive and Animated Cursor Effects Toolkit ===
-Version: 1.9.2
+Version: 2.0.0
 Author: WPXERO
 Author URI: https://wpxero.com/plugins/ultimate-cursor
 Donate link: https://wpxero.com/plugins/ultimate-cursor/pricing
@@ -7,22 +7,22 @@ Contributors: WPXERO
 Tags: cursor, mouse, pointer, custom cursor, cursor plugin
 Requires at least: 6.0
 Tested up to: 6.9.1
-Stable tag: 1.9.2
+Stable tag: 2.0.0
 Requires PHP: 7.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-**Enhance your site with Ultimate Cursor Plugin—customize your cursor with icons, text & images for an engaging experience.**✅
+**Enhance your site with Ultimate Cursor Plugin—customize your cursor pointer with icons, text & images for an engaging experience.**✅
 
 == Description ==
 
 https://youtu.be/mGOVAyi9ip4
 
-== THE #1 CUSTOM CURSOR PLUGIN FOR WORDPRESS WEBSITES POWERING OVER 2900+ ACTIVE SITES WORLDWIDE. ==
+== THE #1 CUSTOM CURSOR PLUGIN FOR WORDPRESS WEBSITES POWERING OVER 3000+ ACTIVE SITES WORLDWIDE. ==
 
-Transform your **WordPress website** and captivate your audience with the **Ultimate Cursor Plugin**, the all-in-one solution for creating **custom cursors** that enhance user interactions. This **feature-rich WordPress plugin** allows you to integrate **dynamic icons**, **interactive text**, and **engaging images** directly into your cursor, delivering an unforgettable browsing experience.
+Transform your **WordPress website** and captivate your audience with the **Ultimate Cursor Plugin**, the all-in-one solution for creating **custom cursors** that enhance user mouse interactions. This **feature-rich WordPress plugin** allows you to integrate **dynamic icons**, **interactive text**, and **engaging images** directly into your cursor pointer, delivering an unforgettable browsing experience.
 
-Designed for **all WordPress users**, the Ultimate Cursor Plugin works seamlessly with **Elementor, Gutenberg, WPBakery, and other page builders**. It allows you to add a personalized, interactive cursor that aligns with your **brand identity** and boosts **website engagement**. Whether you're aiming to improve user navigation, increase interactivity, or add a unique visual element to your website, this plugin offers seamless customization right from the **WordPress interface**—no coding required.
+Designed for **all WordPress users**, the Ultimate Cursor Plugin works seamlessly with **Elementor, Gutenberg, WPBakery, and other page builders**. It allows you to add a personalized, interactive mouse cursor that aligns with your **brand identity** and boosts **website engagement**. Whether you're aiming to improve user navigation, increase interactivity, or add a unique visual element to your website with custom mouse effects, this plugin offers seamless customization right from the **WordPress interface**—no coding required.
 
 Unlock all features with [Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing).
 
@@ -38,7 +38,7 @@ Professional web designers and developers choose our premium version for:
 
 ✅ **Priority Support** - Get expert help when you need it most
 
-✅ **Regular Premium Updates** - Access to the latest cursor effects and features first
+✅ **Regular Premium Updates** - Access to the latest mouse / cursor effects and features first
 
 ### 🎯 **Key Features of Ultimate Cursor**
 
@@ -129,6 +129,14 @@ Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configur
 12. **Cursor Type Text** ✏️ – Use stylish text as your cursor for a sleek, modern touch.
 
 == Changelog ==
+
+#### 2.0.0 [March 07, 2026]
+- Added: Completely redesigned Dashboard UI for a cleaner, more intuitive experience
+- Fixed: Shape cursor sizing issues that caused incorrect display on some configurations
+- Fixed: Splash cursor colors not applying correctly from color picker
+- Fixed: Trail cursor not updating in real-time when changing settings
+- Improved: Significantly enhanced cursor performance and responsiveness
+- Improved: Reduced memory usage for smoother animations across all cursor types
 
 #### 1.9.2 [February 20, 2026]
 - Improved: Enhanced cursor performance and reduced memory usage

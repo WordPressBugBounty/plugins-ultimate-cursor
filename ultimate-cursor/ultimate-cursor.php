@@ -4,7 +4,7 @@
  * Plugin Name:                 Ultimate Cursor – Interactive and Animated Cursor Effects Toolkit
  * Plugin URI:                  https://wordpress.org/plugins/ultimate-cursor
  * Description:                 Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀
- * Version:                     1.9.2
+ * Version:                     2.0.0
  * Author:                      WPXERO
  * Author URI:                  https://wpxero.com/plugins/ultimate-cursor
  * Requires at least:           6.0
@@ -20,7 +20,7 @@ if (! defined('ABSPATH')) {
 }
 
 if (! defined('UCA_VERSION')) {
-	define('UCA_VERSION', '1.9.2');
+	define('UCA_VERSION', '2.0.0');
 }
 
 
@@ -169,6 +169,130 @@ class UltimateCursor {
 			$allcaps['upload_files'] = true;
 		}
 		return $allcaps;
+	}
+
+	/**
+	 * Check if the user has a valid premium license.
+	 *
+	 * This is the SINGLE SOURCE OF TRUTH for premium feature gating.
+	 * It verifies BOTH conditions:
+	 *   1. The pro plugin class is loaded (plugin is active)
+	 *   2. Freemius reports a valid license or trial
+	 *
+	 * @return bool True only if pro plugin is active AND license is valid.
+	 */
+	public static function is_premium_active() {
+		// Cache the result to avoid repeated Freemius calls within a single request
+		static $result = null;
+		if ($result !== null) {
+			return $result;
+		}
+
+		// Condition 1: Pro plugin must be active
+		if (!class_exists('Ultimate_Cursor_Pro')) {
+			$result = false;
+			return $result;
+		}
+
+		// Condition 2: Freemius must confirm a valid license
+		try {
+			$fs = null;
+
+			// Try getting Freemius from the pro plugin first
+			if (function_exists('ultimate_cursor_pro_fs')) {
+				$fs = ultimate_cursor_pro_fs();
+			}
+
+			// Fallback to free plugin's Freemius instance
+			if (!$fs && function_exists('ultimate_cursor_fs')) {
+				$fs = ultimate_cursor_fs();
+			}
+
+			if (!$fs) {
+				$result = false;
+				return $result;
+			}
+
+			// can_use_premium_code() covers both paid licenses and trials
+			$result = $fs->can_use_premium_code();
+		} catch (\Exception $e) {
+			if (defined('WP_DEBUG') && WP_DEBUG) {
+				error_log('Ultimate Cursor: Premium validation error - ' . $e->getMessage());
+			}
+			$result = false;
+		}
+
+		return $result;
+	}
+
+	/**
+	 * List of setting keys that are premium-only.
+	 *
+	 * These settings will be stripped/blocked when no valid premium license exists.
+	 *
+	 * @return array
+	 */
+	public static function get_premium_setting_keys() {
+		return array(
+			'enableMultipleCursors',
+			'cursorConfigurations',
+		);
+	}
+
+	/**
+	 * List of setting values that are premium-only.
+	 *
+	 * Specific field => values that require a premium license.
+	 *
+	 * @return array
+	 */
+	public static function get_premium_setting_values() {
+		return array(
+			'cursorScope' => array('specific-pages', 'css-selectors', 'html-elements'),
+		);
+	}
+
+	/**
+	 * Sanitize settings by stripping premium-only fields if no valid license.
+	 *
+	 * @param array $settings The settings array to sanitize.
+	 * @return array Sanitized settings.
+	 */
+	public static function sanitize_premium_settings($settings) {
+		if (!is_array($settings)) {
+			return $settings;
+		}
+
+		// If premium is active, allow everything
+		if (self::is_premium_active()) {
+			return $settings;
+		}
+
+		// Strip premium-only keys
+		$premium_keys = self::get_premium_setting_keys();
+		foreach ($premium_keys as $key) {
+			if (isset($settings[$key])) {
+				unset($settings[$key]);
+			}
+		}
+
+		// Strip premium-only values (revert to defaults)
+		$premium_values = self::get_premium_setting_values();
+		foreach ($premium_values as $field => $blocked_values) {
+			if (isset($settings[$field]) && in_array($settings[$field], $blocked_values, true)) {
+				$settings[$field] = 'entire-website'; // Safe default
+			}
+		}
+
+		// Also sanitize cursorConfigurations inside settings if somehow present
+		if (isset($settings['cursorConfigurations'])) {
+			unset($settings['cursorConfigurations']);
+		}
+
+		// Force disable multiple cursors
+		$settings['enableMultipleCursors'] = false;
+
+		return $settings;
 	}
 
 	/**

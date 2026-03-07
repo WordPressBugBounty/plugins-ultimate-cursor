@@ -76,15 +76,21 @@ class Ultimate_Cursor_Assets {
 		$settings = get_option('ultimate_cursor_settings', array());
 		$asset_data = $this->get_asset_file('build/frontend');
 
+		// SERVER-SIDE PREMIUM GATE: Sanitize settings before sending to frontend.
+		// This strips premium-only fields if no valid license exists,
+		// preventing bypasses even if premium values were injected into the DB.
+		$settings = UltimateCursor::sanitize_premium_settings($settings);
+
 		// Normalize enableMultipleCursors to boolean
 		$enable_multiple = isset($settings['enableMultipleCursors']) &&
 			($settings['enableMultipleCursors'] === true || $settings['enableMultipleCursors'] === '1' || $settings['enableMultipleCursors'] === 1);
 
-		// FORCE CHECK: If Pro plugin is not active, disable multiple cursors
+		// FORCE CHECK: If premium is not valid, disable multiple cursors
 		// This ensures the feature doesn't work even if enabled in DB
-		if (!class_exists('Ultimate_Cursor_Pro')) {
+		if (!UltimateCursor::is_premium_active()) {
 			$enable_multiple = false;
 			$settings['enableMultipleCursors'] = false;
+			unset($settings['cursorConfigurations']);
 		}
 
 		// Check if we should load the script
@@ -100,7 +106,7 @@ class Ultimate_Cursor_Assets {
 			// Get frontend.js file path for cache busting
 			$frontend_js_path = ultimate_cursor()->plugin_path . 'build/frontend.js';
 			$frontend_js_url = ultimate_cursor()->plugin_url . 'build/frontend.js';
-			
+
 			// Add filemtime-based cache busting to version
 			$version = $asset_data['version'];
 			if (file_exists($frontend_js_path)) {
@@ -126,7 +132,7 @@ class Ultimate_Cursor_Assets {
 				'window.__ultimateCursorPublicPath = %s;',
 				wp_json_encode(ultimate_cursor()->plugin_url . 'build/')
 			);
-			
+
 			wp_add_inline_script(
 				'ultimate-cursor-frontend',
 				$public_path_script,
@@ -201,20 +207,38 @@ class Ultimate_Cursor_Assets {
 			'ultimate-cursor-admin',
 			'ultimateCursorAdminData',
 			[
-				'settings' => (function() {
+				'settings' => (function () {
 					$settings = get_option('ultimate_cursor_settings', array());
-					// FORCE CHECK: If Pro plugin is not active, disable multiple cursors in admin too
-					if (!class_exists('Ultimate_Cursor_Pro') && isset($settings['enableMultipleCursors'])) {
-						$settings['enableMultipleCursors'] = false;
-					}
+					// SERVER-SIDE PREMIUM GATE: Sanitize admin settings output.
+					// This ensures premium fields are stripped if license is invalid.
+					$settings = UltimateCursor::sanitize_premium_settings($settings);
 					return $settings;
 				})(),
 				'cursors' => $cursor_images,
 				'plugin_url' => ultimate_cursor()->plugin_url,
 				'version' => UCA_VERSION,
 				'shapes' => $cursor_shapes,
-				'isPro' => class_exists('Ultimate_Cursor_Pro'),
+				// isPro requires BOTH pro plugin active AND valid Freemius license
+				'isPro' => UltimateCursor::is_premium_active(),
+				'isLicenseValid' => UltimateCursor::is_premium_active(),
 				'proUrl' => 'https://wpxero.com/plugins/ultimate-cursor/pricing',
+				'ajaxUrl' => admin_url('admin-ajax.php'),
+				'nonce' => wp_create_nonce('ultimate_cursor_admin_nonce'),
+				'activePlugins' => (function () {
+					require_once ABSPATH . 'wp-admin/includes/plugin.php';
+					$active = get_option('active_plugins', array());
+					if (is_multisite()) {
+						$active = array_merge($active, array_keys(get_site_option('active_sitewide_plugins', array())));
+					}
+					$slugs = array();
+					foreach ($active as $plugin) {
+						$dirname = dirname($plugin);
+						if ($dirname !== '.') {
+							$slugs[] = $dirname;
+						}
+					}
+					return $slugs;
+				})(),
 			]
 		);
 

@@ -94,8 +94,18 @@ class Ultimate_Cursor_Rest extends WP_REST_Controller {
 		$new_settings = $req->get_param('settings');
 
 		if (is_array($new_settings)) {
+			// SERVER-SIDE PREMIUM GATE: Strip premium-only settings if no valid license.
+			// This prevents bypassing client-side UI restrictions via direct API calls.
+			$new_settings = UltimateCursor::sanitize_premium_settings($new_settings);
+
 			$current_settings = get_option('ultimate_cursor_settings', []);
-			update_option('ultimate_cursor_settings', array_merge($current_settings, $new_settings));
+			$merged = array_merge($current_settings, $new_settings);
+
+			// Double-check: sanitize the final merged result as well,
+			// in case existing DB values contained premium fields that should now be blocked.
+			$merged = UltimateCursor::sanitize_premium_settings($merged);
+
+			update_option('ultimate_cursor_settings', $merged);
 		}
 
 		return $this->success(true);

@@ -44,6 +44,7 @@ class Ultimate_Cursor_Admin {
 		add_action('admin_enqueue_scripts', [$this, 'enqueue_media_uploader']);
 
 		add_filter('plugin_action_links_ultimate-cursor/ultimate-cursor.php', [$this, 'ultimate_cursor_settings_link']);
+		add_action('wp_ajax_ultimate_cursor_install_plugin', [$this, 'ajax_install_plugin']);
 	}
 
 
@@ -63,6 +64,71 @@ class Ultimate_Cursor_Admin {
 
 	public function enqueue_media_uploader() {
 		wp_enqueue_media();
+	}
+
+	public function ajax_install_plugin() {
+		check_ajax_referer('ultimate_cursor_admin_nonce', 'nonce');
+		
+		if (!current_user_can('install_plugins') || !current_user_can('activate_plugins')) {
+			wp_send_json_error(__('You do not have permission to install plugins.', 'ultimate-cursor'));
+		}
+
+		$slug = isset($_POST['slug']) ? sanitize_text_field(wp_unslash($_POST['slug'])) : '';
+		if (empty($slug)) {
+			wp_send_json_error(__('No plugin slug provided.', 'ultimate-cursor'));
+		}
+
+		include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+		include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+		include_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+		// Check if already installed
+		$plugin_file = $this->get_plugin_file($slug);
+		
+		if (!$plugin_file) {
+			// Needs installation
+			$api = plugins_api('plugin_information', ['slug' => $slug, 'fields' => ['sections' => false]]);
+			if (is_wp_error($api)) {
+				wp_send_json_error($api->get_error_message());
+			}
+
+			$status = install_plugin_install_status($api);
+			if ($status['status'] === 'install' || $status['status'] === 'update_available') {
+				$upgrader = new Plugin_Upgrader(new Automatic_Upgrader_Skin());
+				$result = $upgrader->install($api->download_link);
+				if (is_wp_error($result)) {
+					wp_send_json_error($result->get_error_message());
+				} elseif ($result === false) {
+					wp_send_json_error(__('Installation failed.', 'ultimate-cursor'));
+				}
+			}
+			
+			// Find installed file
+			$plugin_file = $this->get_plugin_file($slug);
+		}
+
+		if ($plugin_file) {
+			if (!is_plugin_active($plugin_file)) {
+				$activate = activate_plugin($plugin_file);
+				if (is_wp_error($activate)) {
+					wp_send_json_error($activate->get_error_message());
+				}
+			}
+			wp_send_json_success(['message' => __('Plugin installed and activated successfully!', 'ultimate-cursor')]);
+		}
+
+		wp_send_json_error(__('Could not locate the plugin file after installation.', 'ultimate-cursor'));
+	}
+
+	private function get_plugin_file($slug) {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		$plugins = get_plugins();
+		foreach ($plugins as $plugin_path => $plugin_data) {
+			if (strpos($plugin_path, $slug . '/') === 0) {
+				return $plugin_path;
+			}
+		}
+		return false;
 	}
 
 	/**
