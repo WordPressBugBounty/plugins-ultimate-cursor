@@ -1,7 +1,12 @@
 <?php
 
 /**
- * Dashboard Widget for Ultimate Cursor Plugin
+ * Dashboard Widget & Admin Promotional Notice for Ultimate Cursor Plugin.
+ *
+ * Displays a seasonal upgrade CTA on the WP Dashboard (widget) and on other
+ * admin pages (admin notice) when the user does not have a Pro license.
+ * Both widget and notice can be dismissed for 30 days, after which they
+ * automatically re-appear.
  *
  * @package ultimate-cursor
  */
@@ -9,19 +14,23 @@
 if (! defined('ABSPATH')) {
 	exit;
 }
+
 /**
  * Ultimate Cursor Dashboard Widget class.
  */
 class Ultimate_Cursor_Dashboard_Widget {
-	/**
-	 * The single class instance.
-	 *
-	 * @var $instance
-	 */
+
+	/** @var self|null Singleton instance. */
 	private static $instance = null;
 
+	/** @var string Pricing page URL. */
+	const PRICING_URL = 'https://wpxero.com/plugins/ultimate-cursor/pricing';
+
+	/** @var int Number of days before a dismissed promo re-appears. */
+	const DISMISS_DAYS = 30;
+
 	/**
-	 * Get instance
+	 * Get singleton instance.
 	 */
 	public static function instance() {
 		if (is_null(self::$instance)) {
@@ -31,1319 +40,982 @@ class Ultimate_Cursor_Dashboard_Widget {
 	}
 
 	/**
-	 * Ultimate_Cursor_Dashboard_Widget constructor.
+	 * Constructor — register hooks.
 	 */
 	private function __construct() {
+		// Never show promos to Pro users.
+		if (class_exists('UltimateCursor') && UltimateCursor::is_premium_active()) {
+			return;
+		}
 
 		add_action('wp_dashboard_setup', [$this, 'add_dashboard_widget']);
-		add_action('admin_enqueue_scripts', [$this, 'enqueue_dashboard_styles']);
+		add_action('admin_enqueue_scripts', [$this, 'enqueue_assets']);
 		add_action('admin_notices', [$this, 'show_promotional_notice']);
+		add_action('wp_ajax_uc_dismiss_promo_widget', [$this, 'ajax_dismiss_widget']);
+		add_action('wp_ajax_uc_dismiss_promo_notice', [$this, 'ajax_dismiss_notice']);
+	}
+
+	/* ------------------------------------------------------------------
+	 * Campaign configuration (single source of truth)
+	 * ----------------------------------------------------------------*/
+
+	/**
+	 * Get the active campaign configuration or null when outside promo windows.
+	 *
+	 * @return array|null {
+	 *     @type string $key               Internal key.
+	 *     @type int    $discount           Discount percentage.
+	 *     @type string $end_date           Y-m-d sale end date.
+	 *     @type string $coupon             Coupon code.
+	 *     @type string $widget_title       Dashboard widget title.
+	 *     @type string $notice_title       Admin notice headline.
+	 *     @type string $description        Short CTA text.
+	 *     @type string $button_text        CTA button label.
+	 *     @type string $accent             Primary accent hex colour.
+	 *     @type string $accent_secondary   Secondary accent hex colour.
+	 *     @type string $gradient           CSS background gradient.
+	 *     @type string $icon               Campaign icon/emoji.
+	 *     @type array  $features           Feature highlight list.
+	 * }
+	 */
+	private function get_campaign() {
+		// Allow testing via URL parameter.
+		$test_halloween = isset($_GET['halloween']) && current_user_can('manage_options');
+		$test_black_friday = isset($_GET['black_friday']) && current_user_can('manage_options');
+		$now  = current_time('Y-m-d');
+		$year = current_time('Y');
+
+		$features = [
+			__('Multiple Cursor & Background Effects Configurations', 'ultimate-cursor'),
+			__('Element-Specific Cursors & Background Effects', 'ultimate-cursor'),
+			__('Custom Cursor & Background Effects for Specific Pages', 'ultimate-cursor'),
+			__('Advanced Animation Options', 'ultimate-cursor'),
+			__('Priority Support', 'ultimate-cursor'),
+		];
+
+		// Halloween: October 15 – October 31.
+		if ($test_halloween || ($now >= "$year-10-15" && $now <= "$year-10-31")) {
+			return [
+				'key'              => 'halloween',
+				'discount'         => 25,
+				'end_date'         => "$year-10-31",
+				'coupon'           => 'HALLOWEEN',
+				'widget_title'     => __('Ultimate Cursor — Halloween Sale 🎃', 'ultimate-cursor'),
+				'notice_title'     => __('Halloween Sale — Ultimate Cursor Pro', 'ultimate-cursor'),
+				'description'      => __('Unlock spooky-good premium cursor effects, advanced customisation & priority support this Halloween!', 'ultimate-cursor'),
+				'button_text'      => __('Grab 25% OFF', 'ultimate-cursor'),
+				'accent'           => '#ff6600',
+				'accent_secondary' => '#a855f7',
+				'gradient'         => 'linear-gradient(135deg, #1a0a2e 0%, #2d1150 35%, #4c1d95 70%, #7c3aed 100%)',
+				'icon'             => '🎃',
+				'features'         => $features,
+			];
+		}
+
+		// Black Friday / Cyber Monday: November 1 – December 5.
+		if ($test_black_friday || ($now >= "$year-11-01" && $now <= "$year-12-05")) {
+			return [
+				'key'              => 'black_friday',
+				'discount'         => 25,
+				'end_date'         => "$year-12-05",
+				'coupon'           => 'BFCM',
+				'widget_title'     => __('Ultimate Cursor — Black Friday Sale 🔥', 'ultimate-cursor'),
+				'notice_title'     => __('Black Friday Sale — Ultimate Cursor Pro', 'ultimate-cursor'),
+				'description'      => __('The biggest sale of the year! Unlock 10+ premium cursor effects, advanced customisation & priority support.', 'ultimate-cursor'),
+				'button_text'      => __('Grab 25% OFF', 'ultimate-cursor'),
+				'accent'           => '#f43f5e',
+				'accent_secondary' => '#ec4899',
+				'gradient'         => 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #581c87 75%, #7c3aed 100%)',
+				'icon'             => '🔥',
+				'features'         => $features,
+			];
+		}
+
+		// Regular promo windows: 20th of current month to 10th of next month.
+		$day   = (int) current_time('j');
+		$month = (int) current_time('n');
+
+		if ($day >= 20 || $day <= 10) {
+			if ($day >= 20) {
+				$next_month = $month === 12 ? 1 : $month + 1;
+				$next_year  = $month === 12 ? (int) $year + 1 : (int) $year;
+				$end_date   = sprintf('%04d-%02d-10', $next_year, $next_month);
+			} else {
+				$end_date = sprintf('%s-%02d-10', $year, $month);
+			}
+
+			return [
+				'key'              => 'regular',
+				'discount'         => 20,
+				'end_date'         => $end_date,
+				'coupon'           => 'UNLOCKPRO',
+				'widget_title'     => __('Ultimate Cursor — Limited Offer 🚀', 'ultimate-cursor'),
+				'notice_title'     => __('Limited Time Offer — Ultimate Cursor Pro', 'ultimate-cursor'),
+				'description'      => __('Upgrade to Ultimate Cursor Pro — premium effects, advanced customisation & priority support.', 'ultimate-cursor'),
+				'button_text'      => __('Get Pro — 20% OFF', 'ultimate-cursor'),
+				'accent'           => '#6366f1',
+				'accent_secondary' => '#818cf8',
+				'gradient'         => 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
+				'icon'             => '🚀',
+				'features'         => $features,
+			];
+		}
+
+		return null;
+	}
+
+	/* ------------------------------------------------------------------
+	 * 30-day dismiss helpers (server-side via user meta)
+	 * ----------------------------------------------------------------*/
+
+	/**
+	 * Check if a promo type was dismissed within the last 30 days.
+	 *
+	 * @param string $type 'widget' or 'notice'.
+	 * @return bool
+	 */
+	private function is_dismissed($type) {
+		$meta_key  = 'uc_dismissed_promo_' . $type;
+		$dismissed = get_user_meta(get_current_user_id(), $meta_key, true);
+
+		if (empty($dismissed)) {
+			return false;
+		}
+
+		$dismissed_time = (int) $dismissed;
+		$elapsed_days   = (time() - $dismissed_time) / DAY_IN_SECONDS;
+
+		if ($elapsed_days >= self::DISMISS_DAYS) {
+			// Expired — remove stale meta and allow display.
+			delete_user_meta(get_current_user_id(), $meta_key);
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
-	 * Add dashboard widget
+	 * Record a dismissal timestamp for a promo type.
+	 *
+	 * @param string $type 'widget' or 'notice'.
+	 */
+	private function dismiss($type) {
+		$meta_key = 'uc_dismissed_promo_' . $type;
+		update_user_meta(get_current_user_id(), $meta_key, time());
+	}
+
+	/* ------------------------------------------------------------------
+	 * Dashboard Widget
+	 * ----------------------------------------------------------------*/
+
+	/**
+	 * Register the dashboard widget.
 	 */
 	public function add_dashboard_widget() {
-		// Debug: Always add the widget for testing
-
-		// Only show to users who can manage options
 		if (!current_user_can('manage_options')) {
 			return;
 		}
 
-		// Check if user has dismissed the widget for this year
-		if (get_user_meta(get_current_user_id(), 'uc_dismissed_bf_widget_' . gmdate('Y'), true)) {
+		$campaign = $this->get_campaign();
+		if (!$campaign) {
 			return;
 		}
 
-		// Check if it's promotional season (Halloween or Black Friday)
-		if (!$this->is_promotional_season()) {
+		if ($this->is_dismissed('widget')) {
 			return;
 		}
-		$campaign = $this->get_current_campaign();
-		$widget_title = $campaign === 'halloween'
-			? __('Ultimate Cursor Halloween Sale!', 'ultimate-cursor')
-			: __('Ultimate Cursor Black Friday Sale!', 'ultimate-cursor');
 
 		wp_add_dashboard_widget(
 			'ultimate_cursor_promo_widget',
-			$widget_title,
-			[$this, 'render_dashboard_widget'],
-			null,
-			null,
-			'column4',
-			'high'
+			$campaign['widget_title'],
+			[$this, 'render_dashboard_widget']
 		);
 	}
 
 	/**
-	 * Check if it's promotional season (Halloween or Black Friday)
-	 */
-	private function is_promotional_season() {
-		// Allow testing with URL parameter for development
-		if (isset($_GET['uc_test_promo_widget']) && current_user_can('manage_options')) {
-			return true;
-		}
-
-		$current_date = current_time('Y-m-d');
-		$current_year = gmdate('Y');
-
-		// Halloween season: October 15th to October 31st
-		// Black Friday season: November 1st to December 5th
-		$halloween_start = $current_year . '-10-15';
-		$halloween_end = $current_year . '-10-31';
-		$bf_start = $current_year . '-11-01';
-		$bf_end = $current_year . '-12-05';
-
-		return ($current_date >= $halloween_start && $current_date <= $halloween_end) ||
-			($current_date >= $bf_start && $current_date <= $bf_end);
-	}
-
-	/**
-	 * Get current promotional campaign type
-	 */
-	private function get_current_campaign() {
-		$current_date = current_time('Y-m-d');
-		$current_year = gmdate('Y');
-
-		// Halloween season: October 15th to October 31st
-		$halloween_start = $current_year . '-10-15';
-		$halloween_end = $current_year . '-10-31';
-
-		if ($current_date >= $halloween_start && $current_date <= $halloween_end) {
-			return 'halloween';
-		}
-
-		// Default to Black Friday for November-December period
-		return 'black_friday';
-	}
-
-	/**
-	 * Render the dashboard widget content
+	 * Render the dashboard widget body.
 	 */
 	public function render_dashboard_widget() {
-		$campaign = $this->get_current_campaign();
-
-		// Dynamic content based on campaign
-		if ($campaign === 'halloween') {
-			$discount_percentage = 25;
-			$sale_end_date = gmdate('Y') . '-10-30';
-			$title = __('Halloween Spooky Sale!', 'ultimate-cursor');
-			$description = __('👻 Upgrade to Ultimate Cursor Pro - Spooky good deals with haunting cursor effects!', 'ultimate-cursor');
-			$coupon_code = 'HALLOWEEN25';
-			$button_text = __('🎃 Get Pro Now - 25% OFF', 'ultimate-cursor');
-			$widget_class = 'ultimate-cursor-halloween-widget';
-		} else {
-			$discount_percentage = 25;
-			$sale_end_date = gmdate('Y') . '-12-05';
-			$title = __('Black Friday Mega Sale!', 'ultimate-cursor');
-			$description = __('🚀 Upgrade to Ultimate Cursor Pro - 10+ premium effects, advanced customization & priority support!', 'ultimate-cursor');
-			$coupon_code = 'BFCM25';
-			$button_text = __('🛒 Get Pro Now - 25% OFF', 'ultimate-cursor');
-			$widget_class = 'ultimate-cursor-black-friday-widget';
+		$c = $this->get_campaign();
+		if (!$c) {
+			return;
 		}
-
+		$nonce = wp_create_nonce('uc_dismiss_promo_widget');
+		$campaign_class = 'uc-campaign-' . esc_attr($c['key']);
 ?>
-		<div class="<?php echo esc_attr($widget_class); ?>">
-			<div class="uc-bf-header">
-				<div class="uc-bf-badge">
-					<span class="uc-bf-discount"><?php echo esc_html($discount_percentage); ?>% OFF</span>
-				</div>
-				<h3 class="uc-bf-title">
-					<?php echo esc_html($title); ?>
-				</h3>
+		<div class="uc-promo-widget <?php echo $campaign_class; ?>"
+			style="--uc-accent:<?php echo esc_attr($c['accent']); ?>;--uc-accent-secondary:<?php echo esc_attr($c['accent_secondary']); ?>;background:<?php echo esc_attr($c['gradient']); ?>">
+
+			<div class="uc-pw-glow"></div>
+
+			<button type="button" class="uc-pw-dismiss" data-nonce="<?php echo esc_attr($nonce); ?>" title="<?php esc_attr_e('Dismiss for 30 days', 'ultimate-cursor'); ?>">
+				<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+					<path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+				</svg>
+			</button>
+
+			<div class="uc-pw-header">
+				<span class="uc-pw-icon"><?php echo esc_html($c['icon']); ?></span>
+				<span class="uc-pw-badge"><?php echo esc_html($c['discount']); ?>% OFF</span>
 			</div>
 
-			<div class="uc-bf-content">
-				<p class="uc-bf-description">
-					<?php echo esc_html($description); ?>
-				</p>
+			<p class="uc-pw-desc"><?php echo esc_html($c['description']); ?></p>
 
-				<div class="uc-bf-countdown">
-					<p class="uc-bf-countdown-label">
-						<?php esc_html_e('⏰ Sale ends in:', 'ultimate-cursor'); ?>
-					</p>
-					<div class="uc-bf-countdown-timer" id="uc-countdown-timer" data-end-date="<?php echo esc_attr($sale_end_date); ?>">
-						<div class="uc-countdown-item">
-							<span class="uc-countdown-number" id="uc-days">00</span>
-							<span class="uc-countdown-label">Days</span>
-						</div>
-						<div class="uc-countdown-item">
-							<span class="uc-countdown-number" id="uc-hours">00</span>
-							<span class="uc-countdown-label">Hours</span>
-						</div>
-						<div class="uc-countdown-item">
-							<span class="uc-countdown-number" id="uc-minutes">00</span>
-							<span class="uc-countdown-label">Minutes</span>
-						</div>
-						<div class="uc-countdown-item">
-							<span class="uc-countdown-number" id="uc-seconds">00</span>
-							<span class="uc-countdown-label">Seconds</span>
-						</div>
-					</div>
-				</div>
+			<ul class="uc-pw-features">
+				<?php foreach ($c['features'] as $feature) : ?>
+					<li>
+						<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+							<path d="M2.5 7l3 3 6-6" stroke="var(--uc-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+						<?php echo esc_html($feature); ?>
+					</li>
+				<?php endforeach; ?>
+			</ul>
 
-				<div class="uc-bf-coupon">
-					<p class="uc-bf-coupon-label">
-						<?php esc_html_e('🎟️ Use Coupon Code:', 'ultimate-cursor'); ?>
-					</p>
-					<div class="uc-bf-coupon-code" onclick="ucCopyCouponCode(this)" title="Click to copy">
-						<span class="uc-coupon-text"><?php echo esc_html($coupon_code); ?></span>
-						<span class="uc-copy-icon">📋</span>
-					</div>
-					<p class="uc-bf-coupon-copied" id="uc-coupon-copied" style="display: none;">
-						<?php esc_html_e('✅ Coupon code copied!', 'ultimate-cursor'); ?>
-					</p>
-				</div>
-
-				<div class="uc-bf-actions">
-					<?php
-					$pricing_url = function_exists('ultimate_cursor_fs') ? ultimate_cursor_fs()->get_upgrade_url() : 'https://wpxero.com/plugins/ultimate-cursor/pricing';
-					?>
-					<a href="<?php echo esc_url($pricing_url); ?>"
-						class="uc-bf-btn uc-bf-btn-primary uc-bf-btn-full">
-						<?php echo esc_html($button_text); ?>
-					</a>
-				</div>
+			<div class="uc-pw-countdown" data-end="<?php echo esc_attr($c['end_date']); ?>">
+				<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+					<circle cx="7" cy="7" r="6" stroke="#94a3b8" stroke-width="1.2" />
+					<path d="M7 4v3.5l2.5 1.5" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+				</svg>
+				<span class="uc-pw-cd-label"><?php esc_html_e('Ends in:', 'ultimate-cursor'); ?></span>
+				<span class="uc-pw-cd-value" data-role="countdown">--</span>
 			</div>
+
+			<div class="uc-pw-coupon">
+				<span class="uc-pw-coupon-label"><?php esc_html_e('Use coupon:', 'ultimate-cursor'); ?></span>
+				<button type="button" class="uc-pw-coupon-code" data-code="<?php echo esc_attr($c['coupon']); ?>">
+					<span class="uc-pw-code-text"><?php echo esc_html($c['coupon']); ?></span>
+					<span class="uc-pw-code-copied"><?php esc_html_e('Copied!', 'ultimate-cursor'); ?></span>
+					<svg class="uc-pw-copy-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+						<rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2" />
+						<path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2" />
+					</svg>
+				</button>
+			</div>
+
+			<a href="<?php echo esc_url(self::PRICING_URL); ?>" class="uc-pw-cta" target="_blank" rel="noopener">
+				<?php echo esc_html($c['button_text']); ?>
+				<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+					<path d="M3 7h8m0 0L8 4m3 3L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+				</svg>
+			</a>
 		</div>
 	<?php
 	}
 
+	/* ------------------------------------------------------------------
+	 * Admin Notice (non-dashboard pages)
+	 * ----------------------------------------------------------------*/
+
 	/**
-	 * Show promotional notice in admin
+	 * Show a slim promotional admin notice.
 	 */
 	public function show_promotional_notice() {
-		// Only show to users who can manage options
 		if (!current_user_can('manage_options')) {
 			return;
 		}
 
-		// Check if it's promotional season
-		if (!$this->is_promotional_season()) {
-			return;
-		}
-
-		// Don't show on dashboard page (widget is already there)
+		// Don't show on dashboard — the widget is already there.
 		global $pagenow;
 		if ($pagenow === 'index.php') {
 			return;
 		}
 
-		$campaign = $this->get_current_campaign();
-
-		// Get campaign-specific content
-		if ($campaign === 'halloween') {
-			$title = __('🎃 Halloween Spooky Sale - Ultimate Cursor Pro!', 'ultimate-cursor');
-			$message = __('Get 25% OFF on Ultimate Cursor Pro! Spooky good deals with haunting cursor effects. Limited time offer!', 'ultimate-cursor');
-			$coupon_code = 'HALLOWEEN25';
-			$end_date = gmdate('Y') . '-10-30';
-			$notice_class = 'uc-halloween-notice uc-promo-notice';
-		} else {
-			$title = __('🛒 Black Friday Mega Sale - Ultimate Cursor Pro!', 'ultimate-cursor');
-			$message = __('Get 25% OFF on Ultimate Cursor Pro! 10+ premium effects, advanced customization & priority support. Don\'t miss out!', 'ultimate-cursor');
-			$coupon_code = 'BFCM25';
-			$end_date = gmdate('Y') . '-12-05';
-			$notice_class = 'uc-black-friday-notice uc-promo-notice';
+		$c = $this->get_campaign();
+		if (!$c) {
+			return;
 		}
 
-		$pricing_url = function_exists('ultimate_cursor_fs') ? ultimate_cursor_fs()->get_upgrade_url() : 'https://wpxero.com/plugins/ultimate-cursor/pricing';
+		if ($this->is_dismissed('notice')) {
+			return;
+		}
 
-		// Check if notice should be hidden based on localStorage (server-side check)
-		$notice_id = 'uc-notice-' . $campaign . '-' . gmdate('Y');
+		$notice_id     = 'uc-promo-notice-' . $c['key'] . '-' . current_time('Y');
+		$nonce          = wp_create_nonce('uc_dismiss_promo_notice');
+		$campaign_class = 'uc-campaign-' . esc_attr($c['key']);
 	?>
-		<script type="text/javascript">
-			// Immediately hide notice if dismissed (before DOM ready)
-			(function() {
-				const campaign = '<?php echo esc_js($campaign); ?>';
-				const dismissKey = 'uc_dismissed_' + campaign + '_notice_' + new Date().getFullYear();
-				const dismissData = localStorage.getItem(dismissKey);
+		<div id="<?php echo esc_attr($notice_id); ?>"
+			class="notice uc-promo-notice <?php echo $campaign_class; ?>"
+			style="--uc-accent:<?php echo esc_attr($c['accent']); ?>;--uc-accent-secondary:<?php echo esc_attr($c['accent_secondary']); ?>;background:<?php echo esc_attr($c['gradient']); ?>"
+			data-campaign="<?php echo esc_attr($c['key']); ?>"
+			data-nonce="<?php echo esc_attr($nonce); ?>">
 
-				if (dismissData) {
-					const dismissInfo = JSON.parse(dismissData);
-					const now = new Date().getTime();
-					const dismissTime = dismissInfo.timestamp;
-					const hoursPassed = (now - dismissTime) / (1000 * 60 * 60);
+			<div class="uc-pn-glow"></div>
 
-					// Hide if less than 24 hours have passed
-					if (hoursPassed < 24) {
-						document.write('<style>#<?php echo esc_js($notice_id); ?> { display: none !important; }</style>');
-					} else {
-						// Remove expired dismissal
-						localStorage.removeItem(dismissKey);
-					}
-				}
-			})();
-		</script>
-		<div id="<?php echo esc_attr($notice_id); ?>" class="notice notice-info is-dismissible <?php echo esc_attr($notice_class); ?>" data-campaign="<?php echo esc_attr($campaign); ?>">
-			<div class="uc-promo-notice-content">
-				<div class="uc-promo-notice-left">
-					<div class="uc-promo-notice-header">
-						<h3><?php echo esc_html($title); ?></h3>
-						<span class="uc-promo-badge">25% OFF</span>
-					</div>
-					<span class="uc-promo-countdown" data-end-date="<?php echo esc_attr($end_date); ?>">
-						<?php esc_html_e('Ends in: ', 'ultimate-cursor'); ?><strong id="uc-notice-countdown">Loading...</strong>
+			<div class="uc-pn-inner">
+				<div class="uc-pn-badge-wrap">
+					<span class="uc-pn-icon"><?php echo esc_html($c['icon']); ?></span>
+					<span class="uc-pn-discount"><?php echo esc_html($c['discount']); ?>% OFF</span>
+				</div>
+
+				<div class="uc-pn-content">
+					<strong class="uc-pn-title"><?php echo esc_html($c['notice_title']); ?></strong>
+					<span class="uc-pn-desc"><?php echo esc_html($c['description']); ?></span>
+				</div>
+
+				<div class="uc-pn-actions">
+					<span class="uc-pn-timer" data-end="<?php echo esc_attr($c['end_date']); ?>">
+						<svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+							<circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
+							<path d="M7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+						<strong data-role="countdown">--</strong>
 					</span>
 
-				</div>
-				<div class="uc-promo-notice-actions">
-					<div class="uc-promo-coupon">
-						<strong><?php esc_html_e('COUPON CODE:', 'ultimate-cursor'); ?></strong>
-						<code class="uc-promo-coupon-code" onclick="ucCopyNoticeCode(this)" title="Click to copy"><?php echo esc_html($coupon_code); ?></code>
-						<span class="uc-copy-feedback" style="display: none;">✅ Copied</span>
-					</div>
-					<a href="<?php echo esc_url($pricing_url); ?>" class="button button-primary uc-promo-btn">
-						<?php esc_html_e('Get Pro Now', 'ultimate-cursor'); ?>
+					<a href="<?php echo esc_url(self::PRICING_URL); ?>" class="uc-pn-btn" target="_blank" rel="noopener">
+						<?php echo esc_html($c['button_text']); ?>
+						<svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+							<path d="M3 7h8m0 0L8 4m3 3L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
 					</a>
 				</div>
+
+				<button type="button" class="uc-pn-dismiss" title="<?php esc_attr_e('Dismiss for 30 days', 'ultimate-cursor'); ?>">
+					<svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+						<path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+					</svg>
+				</button>
 			</div>
 		</div>
 	<?php
 	}
 
+	/* ------------------------------------------------------------------
+	 * AJAX dismiss handlers (30-day server-side persistence)
+	 * ----------------------------------------------------------------*/
 
 	/**
-	 * Enqueue dashboard styles
+	 * Persist widget dismissal for 30 days.
 	 */
-	public function enqueue_dashboard_styles($hook) {
-		// Only load if promotional season and user can manage options
-		if (!$this->is_promotional_season() || !current_user_can('manage_options')) {
-			return;
-		}
-
-		// Load notice styles on all admin pages
-		wp_enqueue_style('admin-bar');
-		wp_add_inline_style('admin-bar', $this->get_notice_css());
-
-		// Fallback: Add notice CSS directly to head
-		add_action('admin_head', [$this, 'add_notice_css_to_head']);
-
-		// Load widget styles only on dashboard
-		if ('index.php' === $hook) {
-			// Check if user hasn't dismissed the widget
-			if (!get_user_meta(get_current_user_id(), 'uc_dismissed_bf_widget_' . gmdate('Y'), true)) {
-				// Enqueue a dummy style to attach our CSS to
-				wp_enqueue_style('dashboard');
-				wp_add_inline_style('dashboard', $this->get_dashboard_widget_css());
-
-				// Alternative: Add CSS directly to head if inline style doesn't work
-				add_action('admin_head', [$this, 'add_dashboard_widget_css_to_head']);
-			}
-		}
-
-		// Add JavaScript for coupon copy functionality and notice handling
-		add_action('admin_footer', [$this, 'add_promo_scripts']);
-
-		// Add AJAX handler for dismissing widget
-		add_action('wp_ajax_uc_dismiss_black_friday_widget', [$this, 'dismiss_widget_ajax']);
-	}
-
-	/**
-	 * AJAX handler for dismissing the widget
-	 */
-	public function dismiss_widget_ajax() {
-		check_ajax_referer('uc_dismiss_bf_widget', 'nonce');
+	public function ajax_dismiss_widget() {
+		check_ajax_referer('uc_dismiss_promo_widget', 'nonce');
 
 		if (!current_user_can('manage_options')) {
-			wp_die();
+			wp_send_json_error('Forbidden', 403);
 		}
 
-		update_user_meta(get_current_user_id(), 'uc_dismissed_bf_widget_' . gmdate('Y'), true);
-
+		$this->dismiss('widget');
 		wp_send_json_success();
 	}
 
 	/**
-	 * Add CSS directly to admin head as fallback
+	 * Persist notice dismissal for 30 days.
 	 */
-	public function add_dashboard_widget_css_to_head() {
-		echo '<style type="text/css">' . $this->get_dashboard_widget_css() . '</style>';
+	public function ajax_dismiss_notice() {
+		check_ajax_referer('uc_dismiss_promo_notice', 'nonce');
+
+		if (!current_user_can('manage_options')) {
+			wp_send_json_error('Forbidden', 403);
+		}
+
+		$this->dismiss('notice');
+		wp_send_json_success();
+	}
+
+	/* ------------------------------------------------------------------
+	 * Assets (CSS + JS)
+	 * ----------------------------------------------------------------*/
+
+	/**
+	 * Enqueue inline styles and footer scripts on relevant admin pages.
+	 */
+	public function enqueue_assets($hook) {
+		if (!current_user_can('manage_options')) {
+			return;
+		}
+
+		$campaign = $this->get_campaign();
+		if (!$campaign) {
+			return;
+		}
+
+		// Attach inline CSS to an existing core handle.
+		wp_add_inline_style('wp-admin', $this->get_css());
+
+		// Print JS in footer.
+		add_action('admin_footer', [$this, 'print_scripts']);
 	}
 
 	/**
-	 * Add notice CSS directly to admin head as fallback
+	 * All CSS in one method — widget + notice.
 	 */
-	public function add_notice_css_to_head() {
-		echo '<style type="text/css">' . $this->get_notice_css() . '</style>';
-	}
-
-	/**
-	 * Get CSS for promotional notices
-	 */
-	private function get_notice_css() {
+	private function get_css() {
 		return '
-		/* Enhanced Admin Notice Styles */
-		.uc-halloween-notice,
-		.uc-black-friday-notice {
-			border: none !important;
-			border-radius: 12px !important;
-			box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
-			padding: 0 !important;
-			margin: 15px 20px 15px 2px !important;
-			position: relative;
-			overflow: hidden;
-		}
+/* === Ultimate Cursor Promo Widget === */
+#ultimate_cursor_promo_widget .inside { padding: 0; margin:0;  }
+#ultimate_cursor_promo_widget .postbox-header { display: none; }
 
-		.uc-halloween-notice {
-			background: linear-gradient(135deg, #1a0a1a 0%, #2d1a2d 30%, #4a0e4a 70%, #8b008b 100%) !important;
-		}
+.uc-promo-widget {
+	position: relative;
+	color: #f1f5f9;
+	// border-radius: 14px;
+	padding: 28px 22px 22px;
+	text-align: center;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+	overflow: hidden;
+}
 
-		.uc-black-friday-notice {
-			background: linear-gradient(135deg, #1a1a1a 0%, #2d1b69 30%, #8b0000 70%, #ff4500 100%) !important;
-		}
+/* Ambient glow effect */
+.uc-pw-glow {
+	position: absolute;
+	top: -40%;
+	right: -20%;
+	width: 200px;
+	height: 200px;
+	background: var(--uc-accent, #6366f1);
+	border-radius: 50%;
+	opacity: 0.12;
+	filter: blur(60px);
+	pointer-events: none;
+	animation: uc-glow-pulse 4s ease-in-out infinite;
+}
 
-		.uc-halloween-notice::before,
-		.uc-black-friday-notice::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			pointer-events: none;
-			z-index: 1;
-		}
+@keyframes uc-glow-pulse {
+	0%, 100% { opacity: 0.10; transform: scale(1); }
+	50% { opacity: 0.20; transform: scale(1.15); }
+}
 
-		.uc-halloween-notice::before {
-			background:
-				radial-gradient(circle at 20% 20%, rgba(255,102,0,0.3) 0%, transparent 50%),
-				radial-gradient(circle at 80% 80%, rgba(139,0,139,0.2) 0%, transparent 50%);
-		}
+/* Header */
+.uc-pw-header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 16px;
+}
 
-		.uc-black-friday-notice::before {
-			background:
-				radial-gradient(circle at 20% 20%, rgba(255,69,0,0.3) 0%, transparent 50%),
-				radial-gradient(circle at 80% 80%, rgba(255,215,0,0.2) 0%, transparent 50%);
-		}
+.uc-pw-icon {
+	font-size: 28px;
+	line-height: 1;
+	animation: uc-icon-bounce 2s ease-in-out infinite;
+}
 
-		.uc-promo-notice-content {
-			position: relative;
-			z-index: 2;
-			padding: 12px 20px;
-			color: #ffffff;
-			height: 60px;
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			gap: 20px;
-		}
+@keyframes uc-icon-bounce {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-4px); }
+}
 
-		.uc-promo-notice-left {
-			display: flex;
-			align-items: center;
-			gap: 15px;
-			flex: 1;
-		}
+.uc-pw-badge {
+	display: inline-flex;
+	align-items: center;
+	background: var(--uc-accent, #6366f1);
+	color: #fff;
+	font-size: 12px;
+	font-weight: 800;
+	padding: 5px 14px;
+	border-radius: 20px;
+	letter-spacing: 0.8px;
+	text-transform: uppercase;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.15);
+	animation: uc-badge-glow 3s ease-in-out infinite;
+}
 
-		.uc-promo-notice-header {
-			display: flex;
-			align-items: center;
-			gap: 10px;
-		}
+@keyframes uc-badge-glow {
+	0%, 100% { box-shadow: 0 2px 12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.15); }
+	50% { box-shadow: 0 2px 20px var(--uc-accent, rgba(99,102,241,0.5)), inset 0 1px 0 rgba(255,255,255,0.15); }
+}
 
-		.uc-promo-notice-header h3 {
-			margin: 0;
-			font-size: 14px;
-			font-weight: 600;
-			color: #ffffff !important;
-			text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-		}
+/* Description */
+.uc-pw-desc {
+	font-size: 13px;
+	line-height: 1.65;
+	color: #cbd5e1;
+	margin: 0 0 16px;
+}
 
-		.uc-promo-badge {
-			background: linear-gradient(135deg, #ff6b35, #f7931e);
-			color: #000;
-			padding: 3px 8px;
-			border-radius: 12px;
-			font-size: 10px;
-			font-weight: bold;
-			animation: badgePulse 2s infinite;
-			box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
-		}
+/* Feature list */
+.uc-pw-features {
+	list-style: none;
+	margin: 0 0 18px;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
 
-		@keyframes badgePulse {
-			0%, 100% {
-				transform: scale(1);
-				box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
-			}
-			50% {
-				transform: scale(1.05);
-				box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
-			}
-		}
+.uc-pw-features li {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 12px;
+	color: #e2e8f0;
+	justify-content: center;
+}
 
-		.uc-halloween-notice .uc-promo-badge {
-			background: linear-gradient(135deg, #ff6600, #ff4500);
-			color: #fff;
-			box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
-		}
+.uc-pw-features li svg {
+	flex-shrink: 0;
+}
 
-		.uc-promo-notice-actions {
-			display: flex;
-			align-items: center;
-			gap: 12px;
-		}
+/* Countdown */
+.uc-pw-countdown {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 12px;
+	color: #94a3b8;
+	margin-bottom: 16px;
+	background: rgba(255,255,255,0.05);
+	padding: 6px 14px;
+	border-radius: 8px;
+	border: 1px solid rgba(255,255,255,0.08);
+}
 
-		.uc-promo-coupon {
-			display: flex;
-			align-items: center;
-			gap: 6px;
-		}
+.uc-pw-cd-value {
+	color: #f8fafc;
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+	font-size: 13px;
+}
 
-		.uc-promo-coupon strong {
-			color: #ffffff;
-			font-size: 11px;
-			white-space: nowrap;
-		}
+/* Coupon */
+.uc-pw-coupon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	margin-bottom: 18px;
+	font-size: 12px;
+	color: #94a3b8;
+}
 
-		.uc-promo-coupon-code {
-			background: linear-gradient(135deg, #ffd700, #ff8c00);
-			color: #000;
-			padding: 2px 6px;
-			border-radius: 3px;
-			cursor: pointer;
-			transition: all 0.3s ease;
-			font-family: "Courier New", monospace;
-			font-weight: bold;
-			font-size: 16px;
-			border: 1px solid #ff4500;
-			box-shadow: 0 1px 4px rgba(255, 215, 0, 0.3);
-		}
+.uc-pw-coupon-code {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	background: rgba(255,255,255,0.08);
+	border: 1px dashed rgba(255,255,255,0.25);
+	color: #f8fafc;
+	font-family: "SF Mono", "Fira Code", "Courier New", monospace;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	padding: 6px 14px;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.25s ease;
+}
 
-		.uc-promo-coupon-code:hover {
-			transform: translateY(-1px);
-			box-shadow: 0 2px 8px rgba(255, 215, 0, 0.5);
-		}
+.uc-pw-coupon-code:hover {
+	background: rgba(255,255,255,0.15);
+	border-color: rgba(255,255,255,0.4);
+	transform: translateY(-1px);
+}
 
-		.uc-halloween-notice .uc-promo-coupon-code {
-			background: linear-gradient(135deg, #ff6600, #ff4500);
-			color: #fff;
-			border-color: #8b008b;
-			box-shadow: 0 2px 8px rgba(255, 102, 0, 0.4);
-		}
+.uc-pw-copy-icon { opacity: 0.6; transition: opacity 0.2s; }
+.uc-pw-coupon-code:hover .uc-pw-copy-icon { opacity: 1; }
 
-		.uc-halloween-notice .uc-promo-coupon-code:hover {
-			box-shadow: 0 4px 12px rgba(255, 102, 0, 0.6);
-		}
+.uc-pw-code-copied {
+	display: none;
+	position: absolute;
+	inset: 0;
+	background: #22c55e;
+	color: #fff;
+	border-radius: 7px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0;
+	align-items: center;
+	justify-content: center;
+}
 
-		.uc-copy-feedback {
-			color: #4ade80;
-			font-size: 12px;
-			font-weight: bold;
-			text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-		}
+.uc-pw-coupon-code.is-copied .uc-pw-code-copied { display: flex; }
+.uc-pw-coupon-code.is-copied .uc-pw-code-text,
+.uc-pw-coupon-code.is-copied .uc-pw-copy-icon { visibility: hidden; }
 
-		.uc-promo-buttons {
-			display: flex;
-			align-items: center;
-			gap: 15px;
-		}
+/* CTA Button */
+.uc-pw-cta {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	background: var(--uc-accent, #6366f1);
+	color: #fff !important;
+	text-decoration: none !important;
+	font-weight: 700;
+	font-size: 13px;
+	padding: 11px 28px;
+	border-radius: 10px;
+	transition: all 0.25s ease;
+	box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+	width: 100%;
+	box-sizing: border-box;
+}
 
-		.uc-promo-btn {
-			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-			color: #ffffff !important;
-			border: none !important;
-			padding: 6px 12px !important;
-			border-radius: 4px !important;
-			font-weight: 600 !important;
-			text-decoration: none !important;
-			transition: all 0.3s ease !important;
-			box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3) !important;
-			font-size: 11px !important;
-			white-space: nowrap !important;
-		}
+.uc-pw-cta:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+	color: #fff !important;
+	filter: brightness(1.1);
+}
 
-		.uc-promo-btn:hover {
-			transform: translateY(-1px) !important;
-			box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4) !important;
-			color: #ffffff !important;
-		}
+.uc-pw-cta:active {
+	transform: translateY(0);
+}
 
-		.uc-halloween-notice .uc-promo-btn {
-			background: linear-gradient(135deg, #ff6600 0%, #8b008b 100%) !important;
-			box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3) !important;
-		}
+/* Dismiss button */
+.uc-pw-dismiss {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: rgba(255,255,255,0.08);
+	border: none;
+	color: #64748b;
+	font-size: 14px;
+	cursor: pointer;
+	line-height: 1;
+	padding: 5px;
+	border-radius: 6px;
+	transition: all 0.2s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 2;
+}
 
-		.uc-halloween-notice .uc-promo-btn:hover {
-			box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4) !important;
-		}
+.uc-pw-dismiss:hover {
+	color: #f1f5f9;
+	background: rgba(255,255,255,0.15);
+}
 
-		.uc-promo-countdown {
-			font-size: 10px;
-			color: #e0e0e0;
-			white-space: nowrap;
-		}
+/* === Campaign-specific widget styles === */
 
-		.uc-promo-countdown strong {
-			color: #ffffff;
-		}
+/* Halloween */
+.uc-campaign-halloween .uc-pw-glow {
+	background: #ff6600;
+}
 
-		/* Custom dismiss button styling */
-		.uc-promo-notice .notice-dismiss {
-		z-index: 9999 !important;
-		top: -10px !important;
-		right: -10px !important;
-		// width: 20px !important;
-		// height: 20px !important;
-		}
-		.uc-halloween-notice .notice-dismiss::before,
-		.uc-black-friday-notice .notice-dismiss::before {
-			color: #ffffff !important;
-		}
+.uc-campaign-halloween .uc-pw-badge {
+	background: linear-gradient(135deg, #ff6600, #ff8c00);
+}
 
-		.uc-halloween-notice .notice-dismiss:hover::before,
-		.uc-black-friday-notice .notice-dismiss:hover::before {
-			color: #ff6600 !important;
-		}
+.uc-campaign-halloween .uc-pw-cta {
+	background: linear-gradient(135deg, #ff6600, #ff8c00);
+}
 
-		@media (max-width: 782px) {
-			.uc-promo-notice-actions {
-				flex-direction: column;
-				align-items: stretch;
-				gap: 15px;
-			}
+/* Black Friday */
+.uc-campaign-black_friday .uc-pw-glow {
+	background: #f43f5e;
+}
 
-			.uc-promo-buttons {
-				flex-direction: column;
-				gap: 10px;
-			}
+.uc-campaign-black_friday .uc-pw-badge {
+	background: linear-gradient(135deg, #f43f5e, #ec4899);
+}
 
-			.uc-promo-coupon {
-				justify-content: center;
-			}
+.uc-campaign-black_friday .uc-pw-cta {
+	background: linear-gradient(135deg, #f43f5e, #ec4899);
+}
 
-			.uc-halloween-notice,
-			.uc-black-friday-notice {
-				margin: 10px 10px 10px 0 !important;
-			}
+/* Regular */
+.uc-campaign-regular .uc-pw-glow {
+	background: #6366f1;
+}
 
-			.uc-promo-notice-content {
-				padding: 16px;
-			}
+.uc-campaign-regular .uc-pw-badge {
+	background: linear-gradient(135deg, #6366f1, #818cf8);
+}
 
-			.uc-promo-notice-header h3 {
-				font-size: 16px;
-			}
-		}
+.uc-campaign-regular .uc-pw-cta {
+	background: linear-gradient(135deg, #6366f1, #818cf8);
+}
+
+/* === Ultimate Cursor Promo Notice === */
+.uc-promo-notice {
+	border: none !important;
+	border-radius: 8px !important;
+	padding: 0 !important;
+	overflow: hidden;
+	margin: 15px 0 !important;
+	position: relative;
+	box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.uc-pn-glow {
+	position: absolute;
+	top: -50%;
+	right: -10%;
+	width: 160px;
+	height: 160px;
+	background: var(--uc-accent, #6366f1);
+	border-radius: 50%;
+	opacity: 0.1;
+	filter: blur(50px);
+	pointer-events: none;
+	animation: uc-glow-pulse 4s ease-in-out infinite;
+}
+
+.uc-pn-inner {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 14px 20px;
+	color: #f1f5f9;
+	flex-wrap: wrap;
+	position: relative;
+}
+
+.uc-pn-badge-wrap {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-shrink: 0;
+}
+
+.uc-pn-icon {
+	font-size: 22px;
+	line-height: 1;
+	animation: uc-icon-bounce 2s ease-in-out infinite;
+}
+
+.uc-pn-discount {
+	display: inline-flex;
+	align-items: center;
+	background: var(--uc-accent, #6366f1);
+	color: #fff;
+	font-size: 11px;
+	font-weight: 800;
+	padding: 4px 10px;
+	border-radius: 14px;
+	letter-spacing: 0.6px;
+	text-transform: uppercase;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.uc-pn-content {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	flex: 1;
+	min-width: 200px;
+}
+
+.uc-pn-title {
+	font-size: 13px;
+	font-weight: 700;
+	color: #fff;
+	line-height: 1.3;
+}
+
+.uc-pn-desc {
+	font-size: 12px;
+	color: #cbd5e1;
+	line-height: 1.4;
+}
+
+.uc-pn-actions {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	flex-shrink: 0;
+	margin-right:30px;
+}
+
+.uc-pn-timer {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 12px;
+	color: #94a3b8;
+	white-space: nowrap;
+	background: rgba(255,255,255,0.06);
+	padding: 5px 10px;
+	border-radius: 6px;
+}
+
+.uc-pn-timer svg { opacity: 0.7; }
+
+.uc-pn-timer strong {
+	color: #fff;
+	font-variant-numeric: tabular-nums;
+}
+
+.uc-pn-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	background: var(--uc-accent, #6366f1) !important;
+	color: #fff !important;
+	text-decoration: none !important;
+	font-size: 12px;
+	font-weight: 700;
+	padding: 8px 18px;
+	border-radius: 8px;
+	white-space: nowrap;
+	transition: all 0.25s ease;
+	box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.uc-pn-btn:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+	color: #fff !important;
+	filter: brightness(1.1);
+}
+
+.uc-pn-dismiss {
+	position: absolute;
+	top: 10px;
+	right: 0px;
+	transform: translateY(-50%);
+	background: rgba(255,255,255,0.08);
+	border: none;
+	color: #64748b;
+	cursor: pointer;
+	padding: 5px;
+	border-radius: 6px;
+	transition: all 0.2s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 2;
+}
+
+.uc-pn-dismiss:hover {
+	color: #f1f5f9;
+	background: rgba(255,255,255,0.15);
+}
+
+/* Campaign-specific notice styles */
+.uc-promo-notice.uc-campaign-halloween .uc-pn-discount {
+	background: linear-gradient(135deg, #ff6600, #ff8c00);
+}
+.uc-promo-notice.uc-campaign-halloween .uc-pn-btn {
+	background: linear-gradient(135deg, #ff6600, #ff8c00) !important;
+}
+
+.uc-promo-notice.uc-campaign-black_friday .uc-pn-discount {
+	background: linear-gradient(135deg, #f43f5e, #ec4899);
+}
+.uc-promo-notice.uc-campaign-black_friday .uc-pn-btn {
+	background: linear-gradient(135deg, #f43f5e, #ec4899) !important;
+}
+
+.uc-promo-notice.uc-campaign-regular .uc-pn-discount {
+	background: linear-gradient(135deg, #6366f1, #818cf8);
+}
+.uc-promo-notice.uc-campaign-regular .uc-pn-btn {
+	background: linear-gradient(135deg, #6366f1, #818cf8) !important;
+}
+
+@media (max-width: 782px) {
+	.uc-pn-inner {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+		padding: 14px 44px 14px 16px;
+	}
+	.uc-pn-actions { flex-wrap: wrap; gap: 8px; }
+	.uc-pn-btn { margin-left: 0; }
+}
 		';
 	}
 
 	/**
-	 * Add JavaScript for promotional functionality
+	 * Minimal JS — handles countdowns, clipboard copy, and dismiss persistence.
 	 */
-	public function add_promo_scripts() {
+	public function print_scripts() {
 	?>
-		<script type="text/javascript">
-			// Widget coupon copy functionality
-			function ucCopyCouponCode(element) {
-				const couponText = element.querySelector('.uc-coupon-text').textContent;
-				const copiedMessage = document.getElementById('uc-coupon-copied');
-
-				// Try to copy to clipboard
-				if (navigator.clipboard && window.isSecureContext) {
-					// Modern async clipboard API
-					navigator.clipboard.writeText(couponText).then(function() {
-						ucShowCopiedMessage(copiedMessage);
-					}).catch(function(err) {
-						ucFallbackCopyTextToClipboard(couponText, copiedMessage);
-					});
-				} else {
-					// Fallback for older browsers
-					ucFallbackCopyTextToClipboard(couponText, copiedMessage);
-				}
-			}
-
-			// Notice coupon copy functionality
-			function ucCopyNoticeCode(element) {
-				const couponText = element.textContent;
-				const feedback = element.parentNode.querySelector('.uc-copy-feedback');
-
-				// Try to copy to clipboard
-				if (navigator.clipboard && window.isSecureContext) {
-					navigator.clipboard.writeText(couponText).then(function() {
-						ucShowNoticeFeedback(feedback);
-					}).catch(function(err) {
-						ucFallbackCopyNoticeCode(couponText, feedback);
-					});
-				} else {
-					ucFallbackCopyNoticeCode(couponText, feedback);
-				}
-			}
-
-			function ucFallbackCopyNoticeCode(text, feedback) {
-				const textArea = document.createElement("textarea");
-				textArea.value = text;
-				textArea.style.position = "fixed";
-				textArea.style.left = "-999999px";
-				textArea.style.top = "-999999px";
-				document.body.appendChild(textArea);
-				textArea.focus();
-				textArea.select();
-
-				try {
-					document.execCommand('copy');
-					ucShowNoticeFeedback(feedback);
-				} catch (err) {
-					console.error('Failed to copy coupon code: ', err);
-				}
-
-				document.body.removeChild(textArea);
-			}
-
-			function ucShowNoticeFeedback(feedback) {
-				feedback.style.display = 'inline';
-				setTimeout(function() {
-					feedback.style.display = 'none';
-				}, 2000);
-			}
-
-			function ucFallbackCopyTextToClipboard(text, copiedMessage) {
-				const textArea = document.createElement("textarea");
-				textArea.value = text;
-				textArea.style.position = "fixed";
-				textArea.style.left = "-999999px";
-				textArea.style.top = "-999999px";
-				document.body.appendChild(textArea);
-				textArea.focus();
-				textArea.select();
-
-				try {
-					document.execCommand('copy');
-					ucShowCopiedMessage(copiedMessage);
-				} catch (err) {
-					console.error('Failed to copy coupon code: ', err);
-				}
-
-				document.body.removeChild(textArea);
-			}
-
-			function ucShowCopiedMessage(copiedMessage) {
-				copiedMessage.style.display = 'block';
-				setTimeout(function() {
-					copiedMessage.style.display = 'none';
-				}, 2000);
-			}
-
-			// Countdown Timer Functionality
-			function ucInitCountdown() {
-				const countdownElement = document.getElementById('uc-countdown-timer');
-				if (!countdownElement) return;
-
-				const endDate = new Date(countdownElement.getAttribute('data-end-date') + ' 23:59:59').getTime();
-
-				function updateCountdown() {
-					const now = new Date().getTime();
-					const distance = endDate - now;
-
-					if (distance < 0) {
-						document.getElementById('uc-days').textContent = '00';
-						document.getElementById('uc-hours').textContent = '00';
-						document.getElementById('uc-minutes').textContent = '00';
-						document.getElementById('uc-seconds').textContent = '00';
-						return;
-					}
-
-					// Calculate remaining days (excluding today)
-					const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-					const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-					const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-					const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-					document.getElementById('uc-days').textContent = days.toString().padStart(2, '0');
-					document.getElementById('uc-hours').textContent = hours.toString().padStart(2, '0');
-					document.getElementById('uc-minutes').textContent = minutes.toString().padStart(2, '0');
-					document.getElementById('uc-seconds').textContent = seconds.toString().padStart(2, '0');
-				}
-
-				// Update immediately and then every second
-				updateCountdown();
-				setInterval(updateCountdown, 1000);
-			}
-
-			// Notice countdown functionality
-			function ucInitNoticeCountdown() {
-				const noticeCountdown = document.querySelector('.uc-promo-countdown');
-				if (!noticeCountdown) return;
-
-				const endDate = new Date(noticeCountdown.getAttribute('data-end-date') + ' 23:59:59').getTime();
-				const countdownElement = document.getElementById('uc-notice-countdown');
-
-				function updateNoticeCountdown() {
-					const now = new Date().getTime();
-					const distance = endDate - now;
-
-					if (distance < 0) {
-						countdownElement.textContent = 'Sale ended';
-						return;
-					}
-
-					const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-					const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-					if (days > 0) {
-						countdownElement.textContent = days + ' day' + (days !== 1 ? 's' : '') + ', ' + hours + ' hour' + (hours !== 1 ? 's' : '');
-					} else if (hours > 0) {
-						const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-						countdownElement.textContent = hours + ' hour' + (hours !== 1 ? 's' : '') + ', ' + minutes + ' minute' + (minutes !== 1 ? 's' : '');
-					} else {
-						const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-						countdownElement.textContent = minutes + ' minute' + (minutes !== 1 ? 's' : '');
-					}
-				}
-
-				updateNoticeCountdown();
-				setInterval(updateNoticeCountdown, 60000); // Update every minute
-			}
-
-			// Check if notice should be hidden based on localStorage (fallback for any missed notices)
-			function ucCheckNoticeVisibility() {
-				const notices = document.querySelectorAll('.uc-promo-notice');
-
-				notices.forEach(function(notice) {
-					const campaign = notice.getAttribute('data-campaign');
-					const dismissKey = 'uc_dismissed_' + campaign + '_notice_' + new Date().getFullYear();
-					const dismissData = localStorage.getItem(dismissKey);
-
-					if (dismissData) {
-						const dismissInfo = JSON.parse(dismissData);
-						const now = new Date().getTime();
-						const dismissTime = dismissInfo.timestamp;
-						const hoursPassed = (now - dismissTime) / (1000 * 60 * 60);
-
-						// Hide if less than 24 hours have passed
-						if (hoursPassed < 24) {
-							notice.style.display = 'none';
-						} else {
-							// Remove expired dismissal
-							localStorage.removeItem(dismissKey);
+		<script>
+			(function() {
+				/* --- Countdown helper --- */
+				function ucUpdateCountdowns() {
+					document.querySelectorAll('[data-role="countdown"]').forEach(function(el) {
+						var container = el.closest('[data-end]');
+						if (!container) return;
+						var end = new Date(container.getAttribute('data-end') + 'T23:59:59').getTime();
+						var diff = end - Date.now();
+						if (diff <= 0) {
+							el.textContent = '<?php echo esc_js(__('Ended', 'ultimate-cursor')); ?>';
+							return;
 						}
-					}
+						var d = Math.floor(diff / 864e5);
+						var h = Math.floor((diff % 864e5) / 36e5);
+						var m = Math.floor((diff % 36e5) / 6e4);
+						var s = Math.floor((diff % 6e4) / 1e3);
+						if (d > 0) {
+							el.textContent = d + 'd ' + h + 'h ' + m + 'm';
+						} else {
+							el.textContent = h + 'h ' + m + 'm ' + s + 's';
+						}
+					});
+				}
+				ucUpdateCountdowns();
+				setInterval(ucUpdateCountdowns, 1000);
+
+				/* --- Coupon copy --- */
+				document.querySelectorAll('.uc-pw-coupon-code').forEach(function(btn) {
+					btn.addEventListener('click', function() {
+						var code = btn.getAttribute('data-code');
+						if (!code) return;
+						var done = function() {
+							btn.classList.add('is-copied');
+							setTimeout(function() {
+								btn.classList.remove('is-copied');
+							}, 1500);
+						};
+						if (navigator.clipboard) {
+							navigator.clipboard.writeText(code).then(done).catch(done);
+						} else {
+							var ta = document.createElement('textarea');
+							ta.value = code;
+							ta.style.cssText = 'position:fixed;left:-9999px';
+							document.body.appendChild(ta);
+							ta.select();
+							try {
+								document.execCommand('copy');
+							} catch (e) {}
+							document.body.removeChild(ta);
+							done();
+						}
+					});
 				});
-			}
 
-			// Custom notice dismiss handling
-			jQuery(document).ready(function($) {
-				// Check visibility on page load
-				ucCheckNoticeVisibility();
-
-				// Handle notice dismiss
-				$(document).on('click', '.uc-promo-notice .notice-dismiss', function(e) {
-					e.preventDefault();
-
-					const notice = $(this).closest('.notice');
-					const campaign = notice.data('campaign');
-
-					// Hide notice immediately
-					notice.fadeOut(300);
-
-					// Store dismissal in localStorage with timestamp
-					const dismissKey = 'uc_dismissed_' + campaign + '_notice_' + new Date().getFullYear();
-					const dismissData = {
-						timestamp: new Date().getTime(),
-						campaign: campaign
-					};
-
-					localStorage.setItem(dismissKey, JSON.stringify(dismissData));
+				/* --- Widget dismiss (AJAX — 30-day server-side) --- */
+				document.querySelectorAll('.uc-pw-dismiss').forEach(function(btn) {
+					btn.addEventListener('click', function() {
+						var widget = btn.closest('.uc-promo-widget');
+						if (widget) {
+							widget.style.opacity = '0';
+							widget.style.transform = 'scale(0.95)';
+							widget.style.transition = 'all 0.3s ease';
+						}
+						var wrap = btn.closest('.postbox');
+						setTimeout(function() {
+							if (wrap) wrap.style.display = 'none';
+						}, 300);
+						var nonce = btn.getAttribute('data-nonce');
+						var xhr = new XMLHttpRequest();
+						xhr.open('POST', '<?php echo esc_url(admin_url('admin-ajax.php')); ?>');
+						xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+						xhr.send('action=uc_dismiss_promo_widget&nonce=' + encodeURIComponent(nonce));
+					});
 				});
-			});
 
-			// Initialize countdowns when DOM is ready
-			if (document.readyState === 'loading') {
-				document.addEventListener('DOMContentLoaded', function() {
-					ucInitCountdown();
-					ucInitNoticeCountdown();
+				/* --- Notice dismiss (AJAX — 30-day server-side) --- */
+				document.querySelectorAll('.uc-pn-dismiss').forEach(function(btn) {
+					btn.addEventListener('click', function() {
+						var notice = btn.closest('.uc-promo-notice');
+						if (notice) {
+							notice.style.opacity = '0';
+							notice.style.transform = 'translateY(-10px)';
+							notice.style.transition = 'all 0.3s ease';
+							setTimeout(function() {
+								notice.style.display = 'none';
+							}, 300);
+						}
+						var nonce = notice ? notice.getAttribute('data-nonce') : '';
+						if (nonce) {
+							var xhr = new XMLHttpRequest();
+							xhr.open('POST', '<?php echo esc_url(admin_url('admin-ajax.php')); ?>');
+							xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+							xhr.send('action=uc_dismiss_promo_notice&nonce=' + encodeURIComponent(nonce));
+						}
+					});
 				});
-			} else {
-				ucInitCountdown();
-				ucInitNoticeCountdown();
-			}
+			})();
 		</script>
 <?php
-	}
-
-	/**
-	 * Get CSS for the dashboard widget
-	 */
-	private function get_dashboard_widget_css() {
-		return '
-		/* Black Friday Widget Styles */
-		.ultimate-cursor-black-friday-widget {
-			background: linear-gradient(135deg, #1a1a1a 0%, #2d1b69 30%, #8b0000 70%, #ff4500 100%);
-			color: #ffffff;
-			border-radius: 16px;
-			padding: 0;
-			position: relative;
-			overflow: hidden;
-			box-shadow: 0 20px 40px rgba(255, 69, 0, 0.3);
-			animation: widgetFloat 6s ease-in-out infinite;
-			border: 2px solid #ff6b35;
-		}
-
-		/* Halloween Widget Styles */
-		.ultimate-cursor-halloween-widget {
-			background: linear-gradient(135deg, #1a0a1a 0%, #2d1a2d 30%, #4a0e4a 70%, #8b008b 100%);
-			color: #ffffff;
-			border-radius: 16px;
-			padding: 0;
-			position: relative;
-			overflow: hidden;
-			box-shadow: 0 20px 40px rgba(255, 165, 0, 0.4);
-			animation: widgetFloat 6s ease-in-out infinite;
-			border: 2px solid #ff6600;
-		}
-
-		@keyframes widgetFloat {
-			0%, 100% { transform: translateY(0px) rotate(0deg); }
-			50% { transform: translateY(-5px) rotate(0.5deg); }
-		}
-
-		/* Shared styles for both widgets */
-		.ultimate-cursor-black-friday-widget::before,
-		.ultimate-cursor-halloween-widget::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			pointer-events: none;
-		}
-
-		.ultimate-cursor-black-friday-widget::before {
-			background:
-				radial-gradient(circle at 20% 20%, rgba(255,69,0,0.3) 0%, transparent 50%),
-				radial-gradient(circle at 80% 80%, rgba(255,215,0,0.2) 0%, transparent 50%),
-				radial-gradient(circle at 40% 60%, rgba(255,140,0,0.15) 0%, transparent 50%);
-		}
-
-		.ultimate-cursor-halloween-widget::before {
-			background:
-				radial-gradient(circle at 20% 20%, rgba(255,102,0,0.4) 0%, transparent 50%),
-				radial-gradient(circle at 80% 80%, rgba(139,0,139,0.3) 0%, transparent 50%),
-				radial-gradient(circle at 40% 60%, rgba(255,69,0,0.2) 0%, transparent 50%);
-		}
-
-		.ultimate-cursor-black-friday-widget::after,
-		.ultimate-cursor-halloween-widget::after {
-			content: "";
-			position: absolute;
-			top: -50%;
-			left: -50%;
-			width: 200%;
-			height: 200%;
-			animation: shimmer 3s infinite;
-			pointer-events: none;
-		}
-
-		.ultimate-cursor-black-friday-widget::after {
-			background: linear-gradient(45deg, transparent, rgba(255,215,0,0.2), transparent);
-		}
-
-		.ultimate-cursor-halloween-widget::after {
-			background: linear-gradient(45deg, transparent, rgba(255,102,0,0.3), transparent);
-		}
-
-		@keyframes shimmer {
-			0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-			100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-		}
-
-		.uc-bf-header {
-			padding: 16px 20px 12px;
-			text-align: center;
-			position: relative;
-			z-index: 2;
-		}
-
-		.uc-bf-badge {
-			display: inline-block;
-			margin-bottom: 12px;
-			animation: bounceIn 1s ease-out;
-		}
-
-		@keyframes bounceIn {
-			0% { transform: scale(0.3) rotate(-10deg); opacity: 0; }
-			50% { transform: scale(1.05) rotate(5deg); }
-			70% { transform: scale(0.9) rotate(-2deg); }
-			100% { transform: scale(1) rotate(0deg); opacity: 1; }
-		}
-
-		.uc-bf-discount {
-			background: linear-gradient(45deg, #ff4500, #ff6b35);
-			color: #000;
-			padding: 6px 16px;
-			border-radius: 20px;
-			font-weight: bold;
-			font-size: 13px;
-			box-shadow: 0 8px 25px rgba(255, 69, 0, 0.5);
-			animation: pulseGlow 2s infinite;
-			position: relative;
-			overflow: hidden;
-			border: 2px solid #ffd700;
-			display: inline-block;
-		}
-
-		.uc-bf-discount::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: -100%;
-			width: 100%;
-			height: 100%;
-			background: linear-gradient(90deg, transparent, rgba(255,215,0,0.6), transparent);
-			animation: slideShine 2s infinite;
-		}
-
-		@keyframes pulseGlow {
-			0%, 100% {
-				transform: scale(1);
-				box-shadow: 0 8px 25px rgba(255, 69, 0, 0.5);
-			}
-			50% {
-				transform: scale(1.05);
-				box-shadow: 0 12px 35px rgba(255, 69, 0, 0.8);
-			}
-		}
-
-		@keyframes slideShine {
-			0% { left: -100%; }
-			100% { left: 100%; }
-		}
-
-		.uc-bf-title {
-			margin: 0;
-			font-size: 18px;
-			font-weight: 700;
-			background: linear-gradient(45deg, #ffd700, #ff8c00);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
-			animation: titleSlide 1s ease-out 0.3s both;
-			text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-		}
-
-		@keyframes titleSlide {
-			0% { transform: translateY(20px); opacity: 0; }
-			100% { transform: translateY(0); opacity: 1; }
-		}
-
-		.uc-bf-content {
-			padding: 0 20px 16px;
-			position: relative;
-			z-index: 2;
-		}
-
-		.uc-bf-description {
-			font-size: 14px;
-			line-height: 1.5;
-			margin-bottom: 12px;
-			color: #f0f0f0;
-			font-weight: 500;
-			animation: fadeInUp 1s ease-out 0.5s both;
-		}
-
-		@keyframes fadeInUp {
-			0% { transform: translateY(15px); opacity: 0; }
-			100% { transform: translateY(0); opacity: 1; }
-		}
-
-		.uc-bf-features ul {
-			list-style: none;
-			padding: 0;
-			margin: 0 0 20px 0;
-		}
-
-		.uc-bf-features li {
-			padding: 8px 0;
-			font-size: 14px;
-			color: #e0e0e0;
-			font-weight: 500;
-			animation: slideInLeft 0.6s ease-out both;
-			transform: translateX(-20px);
-			opacity: 0;
-		}
-
-		.uc-bf-features li:nth-child(1) { animation-delay: 0.7s; }
-		.uc-bf-features li:nth-child(2) { animation-delay: 0.8s; }
-		.uc-bf-features li:nth-child(3) { animation-delay: 0.9s; }
-		.uc-bf-features li:nth-child(4) { animation-delay: 1.0s; }
-		.uc-bf-features li:nth-child(5) { animation-delay: 1.1s; }
-
-		@keyframes slideInLeft {
-			0% { transform: translateX(-20px); opacity: 0; }
-			100% { transform: translateX(0); opacity: 1; }
-		}
-
-		.uc-bf-countdown {
-			background: linear-gradient(135deg, rgba(255,69,0,0.2), rgba(255,140,0,0.3));
-			backdrop-filter: blur(10px);
-			padding: 12px;
-			border-radius: 8px;
-			margin-bottom: 15px;
-			text-align: center;
-			border: 2px solid #ff8c00;
-			animation: countdownPulse 3s infinite;
-		}
-
-		.ultimate-cursor-halloween-widget .uc-bf-countdown {
-			background: linear-gradient(135deg, rgba(255,102,0,0.3), rgba(139,0,139,0.2));
-			border: 2px solid #ff6600;
-		}
-
-		@keyframes countdownPulse {
-			0%, 100% { transform: scale(1); }
-			50% { transform: scale(1.02); }
-		}
-
-		.uc-bf-countdown-label {
-			margin: 0 0 10px 0;
-			font-size: 13px;
-			color: #ffffff;
-			font-weight: 600;
-		}
-
-		.uc-bf-countdown-timer {
-			display: flex;
-			justify-content: center;
-			gap: 10px;
-			flex-wrap: wrap;
-		}
-
-		.uc-countdown-item {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			min-width: 50px;
-		}
-
-		.uc-countdown-number {
-			background: linear-gradient(135deg, #ffd700, #ff8c00);
-			color: #000;
-			font-size: 18px;
-			font-weight: bold;
-			padding: 6px 10px;
-			border-radius: 6px;
-			min-width: 35px;
-			text-align: center;
-			box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-			animation: numberPulse 2s infinite;
-			font-family: "Arial", sans-serif;
-		}
-
-		.ultimate-cursor-halloween-widget .uc-countdown-number {
-			background: linear-gradient(135deg, #ff6600, #ff4500);
-			color: #fff;
-			box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
-		}
-
-		@keyframes numberPulse {
-			0%, 100% {
-				transform: scale(1);
-				box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-			}
-			50% {
-				transform: scale(1.05);
-				box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
-			}
-		}
-
-		.uc-countdown-label {
-			font-size: 11px;
-			color: #e0e0e0;
-			margin-top: 5px;
-			font-weight: 500;
-			text-transform: uppercase;
-			letter-spacing: 0.5px;
-		}
-
-		.uc-bf-coupon {
-			background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,140,0,0.3));
-			backdrop-filter: blur(10px);
-			padding: 12px;
-			border-radius: 8px;
-			margin-bottom: 15px;
-			text-align: center;
-			border: 2px solid #ffd700;
-			animation: fadeInUp 1s ease-out 1.0s both;
-		}
-
-		.ultimate-cursor-halloween-widget .uc-bf-coupon {
-			background: linear-gradient(135deg, rgba(255,102,0,0.3), rgba(139,0,139,0.2));
-			border: 2px solid #ff6600;
-		}
-
-		.uc-bf-coupon-label {
-			margin: 0 0 8px 0;
-			font-size: 13px;
-			color: #ffffff;
-			font-weight: 600;
-		}
-
-		.uc-bf-coupon-code {
-			background: linear-gradient(135deg, #ffd700, #ff8c00);
-			color: #000;
-			padding: 8px 16px;
-			border-radius: 6px;
-			font-weight: bold;
-			font-size: 14px;
-			cursor: pointer;
-			transition: all 0.3s ease;
-			display: inline-flex;
-			align-items: center;
-			gap: 6px;
-			border: 2px solid #ff4500;
-			box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-			animation: couponGlow 2s infinite;
-		}
-
-		.ultimate-cursor-halloween-widget .uc-bf-coupon-code {
-			background: linear-gradient(135deg, #ff6600, #ff4500);
-			color: #fff;
-			border: 2px solid #8b008b;
-			box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
-		}
-
-		@keyframes couponGlow {
-			0%, 100% {
-				box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-			}
-			50% {
-				box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
-			}
-		}
-
-		.uc-bf-coupon-code:hover {
-			transform: translateY(-2px) scale(1.05);
-			box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
-		}
-
-		.uc-coupon-text {
-			font-family: "Courier New", monospace;
-			letter-spacing: 2px;
-		}
-
-		.uc-copy-icon {
-			font-size: 14px;
-			opacity: 0.8;
-		}
-
-		.uc-bf-coupon-copied {
-			margin: 8px 0 0 0;
-			font-size: 13px;
-			color: #4ade80;
-			font-weight: 600;
-			animation: fadeIn 0.3s ease-in;
-		}
-
-		@keyframes fadeIn {
-			0% { opacity: 0; transform: translateY(-5px); }
-			100% { opacity: 1; transform: translateY(0); }
-		}
-
-		.uc-bf-actions {
-			display: flex;
-			gap: 12px;
-			flex-wrap: wrap;
-			animation: fadeInUp 1s ease-out 1.2s both;
-		}
-
-		.uc-bf-btn {
-			flex: 1;
-			padding: 14px 24px;
-			border-radius: 10px;
-			text-decoration: none;
-			font-weight: 600;
-			text-align: center;
-			transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-			font-size: 14px;
-			min-width: 130px;
-			position: relative;
-			overflow: hidden;
-		}
-
-		.uc-bf-btn::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: -100%;
-			width: 100%;
-			height: 100%;
-			background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
-			transition: left 0.5s;
-		}
-
-		.uc-bf-btn:hover::before {
-			left: 100%;
-		}
-
-		.uc-bf-btn-primary {
-			background: linear-gradient(135deg, #ff4500 0%, #8b0000 100%);
-			color: #fff;
-			box-shadow: 0 8px 25px rgba(255, 69, 0, 0.4);
-			border: 2px solid #ffd700;
-		}
-
-		.uc-bf-btn-primary:hover {
-			background: linear-gradient(135deg, #ff6b35 0%, #a00000 100%);
-			transform: translateY(-3px) scale(1.02);
-			box-shadow: 0 12px 35px rgba(255, 69, 0, 0.6);
-			color: #fff;
-		}
-
-		.uc-bf-btn-secondary {
-			background: linear-gradient(135deg, rgba(255,140,0,0.3), rgba(255,69,0,0.2));
-			backdrop-filter: blur(10px);
-			color: #ffffff;
-			border: 2px solid #ff8c00;
-		}
-
-		.uc-bf-btn-secondary:hover {
-			background: linear-gradient(135deg, rgba(255,140,0,0.5), rgba(255,69,0,0.4));
-			transform: translateY(-3px) scale(1.02);
-			color: #ffffff;
-			box-shadow: 0 8px 25px rgba(255, 140, 0, 0.3);
-		}
-
-		@media (max-width: 782px) {
-			.uc-bf-actions {
-				flex-direction: column;
-			}
-
-			.uc-bf-btn {
-				flex: none;
-			}
-
-			.uc-bf-header {
-				padding: 20px 20px 14px;
-			}
-
-			.uc-bf-content {
-				padding: 0 20px 20px;
-			}
-
-			.uc-bf-title {
-				font-size: 20px;
-			}
-
-			.uc-bf-countdown-timer {
-				gap: 10px;
-			}
-
-			.uc-countdown-item {
-				min-width: 50px;
-			}
-
-			.uc-countdown-number {
-				font-size: 20px;
-				padding: 6px 10px;
-				min-width: 35px;
-			}
-
-			.uc-countdown-label {
-				font-size: 10px;
-			}
-		}
-		';
 	}
 }
 

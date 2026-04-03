@@ -5,7 +5,7 @@
          "": {
             "domain": "ultimate-cursor"
          },
-         "Ultimate Cursor – Interactive and Animated Cursor Effects Toolkit": [
+         "Ultimate Cursor – Interactive and Animated Cursor and Background Effects Toolkit": [
             ""
          ],
          "https://wordpress.org/plugins/ultimate-cursor": [
@@ -41,67 +41,76 @@
          "Welcome": [
             ""
          ],
-         "Settings": [
+         "Cursor Effects": [
             ""
          ],
-         "Multiple Cursors": [
+         "Background Animation": [
             ""
          ],
          "Discussions": [
             ""
          ],
-         "Ultimate Cursor Halloween Sale!": [
+         "Multiple Cursor & Background Effects Configurations": [
             ""
          ],
-         "Ultimate Cursor Black Friday Sale!": [
+         "Element-Specific Cursors & Background Effects": [
             ""
          ],
-         "Halloween Spooky Sale!": [
+         "Custom Cursor & Background Effects for Specific Pages": [
             ""
          ],
-         "👻 Upgrade to Ultimate Cursor Pro - Spooky good deals with haunting cursor effects!": [
+         "Advanced Animation Options": [
             ""
          ],
-         "🎃 Get Pro Now - 25% OFF": [
+         "Priority Support": [
             ""
          ],
-         "Black Friday Mega Sale!": [
+         "Ultimate Cursor — Halloween Sale 🎃": [
             ""
          ],
-         "🚀 Upgrade to Ultimate Cursor Pro - 10+ premium effects, advanced customization & priority support!": [
+         "Halloween Sale — Ultimate Cursor Pro": [
             ""
          ],
-         "🛒 Get Pro Now - 25% OFF": [
+         "Unlock spooky-good premium cursor effects, advanced customisation & priority support this Halloween!": [
             ""
          ],
-         "⏰ Sale ends in:": [
+         "Grab 25% OFF": [
             ""
          ],
-         "🎟️ Use Coupon Code:": [
+         "Ultimate Cursor — Black Friday Sale 🔥": [
             ""
          ],
-         "✅ Coupon code copied!": [
+         "Black Friday Sale — Ultimate Cursor Pro": [
             ""
          ],
-         "🎃 Halloween Spooky Sale - Ultimate Cursor Pro!": [
+         "The biggest sale of the year! Unlock 10+ premium cursor effects, advanced customisation & priority support.": [
             ""
          ],
-         "Get 25% OFF on Ultimate Cursor Pro! Spooky good deals with haunting cursor effects. Limited time offer!": [
+         "Ultimate Cursor — Limited Offer 🚀": [
             ""
          ],
-         "🛒 Black Friday Mega Sale - Ultimate Cursor Pro!": [
+         "Limited Time Offer — Ultimate Cursor Pro": [
             ""
          ],
-         "Get 25% OFF on Ultimate Cursor Pro! 10+ premium effects, advanced customization & priority support. Don't miss out!": [
+         "Upgrade to Ultimate Cursor Pro — premium effects, advanced customisation & priority support.": [
             ""
          ],
-         "Ends in: ": [
+         "Get Pro — 20% OFF": [
             ""
          ],
-         "COUPON CODE:": [
+         "Dismiss for 30 days": [
             ""
          ],
-         "Get Pro Now": [
+         "Ends in:": [
+            ""
+         ],
+         "Use coupon:": [
+            ""
+         ],
+         "Copied!": [
+            ""
+         ],
+         "Ended": [
             ""
          ],
          "Enable Cursors?": [
@@ -362,6 +371,333 @@
          "Created with ❤️ by WPXERO": [
             ""
          ],
+         "Specific Pages (Pro)": [
+            ""
+         ],
+         "CSS Selector (Pro)": [
+            ""
+         ],
+         "CSS Selector": [
+            ""
+         ],
+         "Home (Front Page)": [
+            ""
+         ],
+         "Search and select pages…": [
+            ""
+         ],
+         "No pages found": [
+            ""
+         ],
+         "Where to Display": [
+            ""
+         ],
+         "Display Scope": [
+            ""
+         ],
+         "Select Pages": [
+            ""
+         ],
+         "Search and select pages where the background animation should appear.": [
+            ""
+         ],
+         "Enter CSS selectors where the background animation should appear. The animation will be contained within these elements.": [
+            ""
+         ],
+         "Display Settings": [
+            ""
+         ],
+         "Upgrade to Pro": [
+            ""
+         ],
+         "Position": [
+            ""
+         ],
+         "Fixed (stays in viewport)": [
+            ""
+         ],
+         "Absolute (scrolls with content)": [
+            ""
+         ],
+         "Z-Index": [
+            ""
+         ],
+         "Use negative values to place the animation behind content, or positive values to overlay.": [
+            ""
+         ],
+         "Opacity": [
+            ""
+         ],
+         "Preview unavailable for this environment.": [
+            ""
+         ],
+         "No preview available for this type.": [
+            ""
+         ],
+         "Loading preview…": [
+            ""
+         ],
+         "Add beautiful, interactive background animations to your website without impacting performance.": [
+            ""
+         ],
+         "Enable Background Animation": [
+            ""
+         ],
+         "You have unsaved configuration changes. Switch tabs anyway?": [
+            ""
+         ],
+         "General Settings": [
+            ""
+         ],
+         "Multiple Backgrounds Mode Active": [
+            ""
+         ],
+         "Your background animations are now managed through individual configurations. Go to the Multiple Backgrounds tab to add, edit, or remove background configurations.": [
+            ""
+         ],
+         "Manage Configurations →": [
+            ""
+         ],
+         "Animation Settings": [
+            ""
+         ],
+         "Animation Type": [
+            ""
+         ],
+         "Display Rules": [
+            ""
+         ],
+         "Preview": [
+            ""
+         ],
+         "Live preview is disabled in development mode to keep the admin editor responsive.": [
+            ""
+         ],
+         "Enable Live Preview": [
+            ""
+         ],
+         "Multiple Backgrounds": [
+            ""
+         ],
+         "Background Animation is Disabled": [
+            ""
+         ],
+         "Enable the toggle above to add interactive background animations to your website. The animation is performance-optimized and only loads on pages where it is needed.": [
+            ""
+         ],
+         "Reset": [
+            ""
+         ],
+         "Save Changes": [
+            ""
+         ],
+         "Preview unavailable.": [
+            ""
+         ],
+         "Manage Background Configurations": [
+            ""
+         ],
+         "Create multiple background animation configurations for different parts of your website. Each configuration has its own animation style and display settings.": [
+            ""
+         ],
+         "Saved Configurations": [
+            ""
+         ],
+         "Add New Background": [
+            ""
+         ],
+         "Target:": [
+            ""
+         ],
+         "Unlock Multiple Backgrounds": [
+            ""
+         ],
+         "Get the Pro version to add distinct background animations for different sections or pages of your website.": [
+            ""
+         ],
+         "You can create and manage multiple background configurations here. Add different animation styles for different sections of your website.": [
+            ""
+         ],
+         "Primary Background": [
+            ""
+         ],
+         "Disable Multiple Backgrounds": [
+            ""
+         ],
+         "Enable Multiple Backgrounds": [
+            ""
+         ],
+         "Configuration Applied": [
+            ""
+         ],
+         "Remember to click \"Save Changes\" to save all your configurations.": [
+            ""
+         ],
+         "Create multiple background animation configurations for different parts of your website.": [
+            ""
+         ],
+         "Selector:": [
+            ""
+         ],
+         "Pages:": [
+            ""
+         ],
+         "Scope:": [
+            ""
+         ],
+         "Delete this configuration?": [
+            ""
+         ],
+         "No background configurations saved. Click \"Add New Background\" to create one.": [
+            ""
+         ],
+         "Edit Configuration": [
+            ""
+         ],
+         "New Configuration": [
+            ""
+         ],
+         "Cancel": [
+            ""
+         ],
+         "Apply Configuration": [
+            ""
+         ],
+         "Configuration Name": [
+            ""
+         ],
+         "e.g., Hero Section Background": [
+            ""
+         ],
+         "Capsule": [
+            ""
+         ],
+         "Sphere": [
+            ""
+         ],
+         "Box": [
+            ""
+         ],
+         "Tetrahedron": [
+            ""
+         ],
+         "Colors": [
+            ""
+         ],
+         "Background Color": [
+            ""
+         ],
+         "Particle Color": [
+            ""
+         ],
+         "Particle Settings": [
+            ""
+         ],
+         "Shape": [
+            ""
+         ],
+         "Count": [
+            ""
+         ],
+         "Variance": [
+            ""
+         ],
+         "Interaction & Motion": [
+            ""
+         ],
+         "Magnet Radius": [
+            ""
+         ],
+         "Ring Radius": [
+            ""
+         ],
+         "Field Strength": [
+            ""
+         ],
+         "Wave Speed": [
+            ""
+         ],
+         "Wave Amplitude": [
+            ""
+         ],
+         "Lerp Speed": [
+            ""
+         ],
+         "Pulse Speed": [
+            ""
+         ],
+         "Depth Factor": [
+            ""
+         ],
+         "Rotation Speed": [
+            ""
+         ],
+         "Auto Animate (when idle)": [
+            ""
+         ],
+         "Antigravity Particles": [
+            ""
+         ],
+         "Interactive floating particles that respond to mouse movement": [
+            ""
+         ],
+         "Low": [
+            ""
+         ],
+         "Medium": [
+            ""
+         ],
+         "High": [
+            ""
+         ],
+         "Top Color": [
+            ""
+         ],
+         "Bottom Color": [
+            ""
+         ],
+         "Pillar Shape": [
+            ""
+         ],
+         "Pillar Width": [
+            ""
+         ],
+         "Pillar Height": [
+            ""
+         ],
+         "Pillar Rotation": [
+            ""
+         ],
+         "Motion & Atmosphere": [
+            ""
+         ],
+         "Intensity": [
+            ""
+         ],
+         "Glow Amount": [
+            ""
+         ],
+         "Noise Intensity": [
+            ""
+         ],
+         "Interactive": [
+            ""
+         ],
+         "Rendering": [
+            ""
+         ],
+         "Mix Blend Mode": [
+            ""
+         ],
+         "Quality": [
+            ""
+         ],
+         "Light Pillar": [
+            ""
+         ],
+         "Ethereal rotating light pillar for hero and atmospheric sections": [
+            ""
+         ],
          "Select Cursor Type": [
             ""
          ],
@@ -389,37 +725,19 @@
          "Multiple cursor mode allows you to use different cursor styles for different elements or pages. For example, you can have a text cursor on buttons, an animated cursor on images, and more.": [
             ""
          ],
-         "General Settings": [
-            ""
-         ],
          "Customize Your Cursor": [
-            ""
-         ],
-         "Preview": [
             ""
          ],
          "Move your cursor here to preview": [
             ""
          ],
-         "Reset": [
+         "Multiple Cursors": [
             ""
          ],
          "Save all configurations to your website": [
             ""
          ],
          "Save (Multiple cursor feature not activated)": [
-            ""
-         ],
-         "Save Changes": [
-            ""
-         ],
-         "Home (Front Page)": [
-            ""
-         ],
-         "Search and select pages…": [
-            ""
-         ],
-         "No pages found": [
             ""
          ],
          "Select or type HTML elements…": [
@@ -429,9 +747,6 @@
             ""
          ],
          "Pro": [
-            ""
-         ],
-         "Upgrade to Pro": [
             ""
          ],
          "Type": [
@@ -486,9 +801,6 @@
             ""
          ],
          "Enable automatic rotation animation": [
-            ""
-         ],
-         "Rotation Speed": [
             ""
          ],
          "Speed of the rotation animation": [
@@ -618,9 +930,6 @@
             ""
          ],
          "Number of particles in the trail. This is a pro feature.": [
-            ""
-         ],
-         "Opacity": [
             ""
          ],
          "Opacity of the trail particles. This is a pro feature.": [
@@ -803,9 +1112,6 @@
          "Animation duration controls": [
             ""
          ],
-         "Particle Color": [
-            ""
-         ],
          "ClickParticles Effects": [
             ""
          ],
@@ -860,9 +1166,6 @@
          "Apply Cursor On": [
             ""
          ],
-         "Select Pages": [
-            ""
-         ],
          "Search and select pages where this cursor should appear.": [
             ""
          ],
@@ -876,9 +1179,6 @@
             ""
          ],
          "Create multiple cursor configurations for different parts of your website. Each configuration has its own cursor type and display settings.": [
-            ""
-         ],
-         "Saved Configurations": [
             ""
          ],
          "Add New Configuration": [
@@ -899,34 +1199,10 @@
          "Disable Multiple Cursors": [
             ""
          ],
-         "Configuration Applied": [
-            ""
-         ],
-         "Remember to click \"Save Changes\" to save all your configurations.": [
-            ""
-         ],
          "Selectors:": [
             ""
          ],
-         "Pages:": [
-            ""
-         ],
-         "Delete this configuration?": [
-            ""
-         ],
          "No cursor configurations saved. Click \"Add New Configuration\" to create one.": [
-            ""
-         ],
-         "Edit Configuration": [
-            ""
-         ],
-         "New Configuration": [
-            ""
-         ],
-         "Cancel": [
-            ""
-         ],
-         "Apply Configuration": [
             ""
          ],
          "Ultimate Cursor Pro promotional offer": [
@@ -954,6 +1230,24 @@
             ""
          ],
          "View Pro Features": [
+            ""
+         ],
+         "Get started with Ultimate Cursor": [
+            ""
+         ],
+         "Cursors": [
+            ""
+         ],
+         "Configure your cursor settings": [
+            ""
+         ],
+         "Configure background animation settings": [
+            ""
+         ],
+         "About": [
+            ""
+         ],
+         "Learn more about Ultimate Cursor": [
             ""
          ],
          "Unable to install plugin. Missing configuration.": [
@@ -1064,16 +1358,7 @@
          "Install Now (Free)": [
             ""
          ],
-         "Get started with Ultimate Cursor": [
-            ""
-         ],
-         "Configure your cursor settings": [
-            ""
-         ],
-         "About": [
-            ""
-         ],
-         "Learn more about Ultimate Cursor": [
+         "Something went wrong, please, try again…": [
             ""
          ],
          "Change Image": [
@@ -1122,9 +1407,6 @@
             ""
          ],
          "Different cursors for different pages": [
-            ""
-         ],
-         "Advanced Animation Options": [
             ""
          ],
          "More effects and customization options": [

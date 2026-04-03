@@ -67,6 +67,17 @@ class Ultimate_Cursor_Rest extends WP_REST_Controller {
 				'permission_callback' => [$this, 'update_settings_permission'],
 			]
 		);
+
+		// Update Background Settings.
+		register_rest_route(
+			$namespace,
+			'/update_background_settings/',
+			[
+				'methods'             => ['POST'],
+				'callback'            => [$this, 'update_background_settings'],
+				'permission_callback' => [$this, 'update_settings_permission'],
+			]
+		);
 	}
 
 	/**
@@ -111,6 +122,25 @@ class Ultimate_Cursor_Rest extends WP_REST_Controller {
 		return $this->success(true);
 	}
 
+
+	/**
+	 * Update Background Settings.
+	 *
+	 * @param WP_REST_Request $req  request object.
+	 *
+	 * @return mixed
+	 */
+	public function update_background_settings(WP_REST_Request $req) {
+		$new_settings = $req->get_param('settings');
+
+		if (is_array($new_settings)) {
+			$current_settings = get_option('ultimate_cursor_background_settings', []);
+			$merged = array_merge($current_settings, $new_settings);
+			update_option('ultimate_cursor_background_settings', $merged);
+		}
+
+		return $this->success(true);
+	}
 
 	/**
 	 * Success rest.

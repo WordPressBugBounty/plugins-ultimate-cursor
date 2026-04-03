@@ -68,7 +68,7 @@ class Ultimate_Cursor_Admin {
 
 	public function ajax_install_plugin() {
 		check_ajax_referer('ultimate_cursor_admin_nonce', 'nonce');
-		
+
 		if (!current_user_can('install_plugins') || !current_user_can('activate_plugins')) {
 			wp_send_json_error(__('You do not have permission to install plugins.', 'ultimate-cursor'));
 		}
@@ -84,7 +84,7 @@ class Ultimate_Cursor_Admin {
 
 		// Check if already installed
 		$plugin_file = $this->get_plugin_file($slug);
-		
+
 		if (!$plugin_file) {
 			// Needs installation
 			$api = plugins_api('plugin_information', ['slug' => $slug, 'fields' => ['sections' => false]]);
@@ -102,7 +102,7 @@ class Ultimate_Cursor_Admin {
 					wp_send_json_error(__('Installation failed.', 'ultimate-cursor'));
 				}
 			}
-			
+
 			// Find installed file
 			$plugin_file = $this->get_plugin_file($slug);
 		}
@@ -183,17 +183,24 @@ class Ultimate_Cursor_Admin {
 		);
 		add_submenu_page(
 			'ultimate-cursor',
-			esc_html__('Settings', 'ultimate-cursor'),
-			esc_html__('Settings', 'ultimate-cursor'),
+			esc_html__('Cursor Effects', 'ultimate-cursor'),
+			esc_html__('Cursor Effects', 'ultimate-cursor'),
 			'manage_options',
 			'admin.php?page=ultimate-cursor&sub_page=settings'
 		);
+		// add_submenu_page(
+		// 	'ultimate-cursor',
+		// 	esc_html__('Multiple Cursors', 'ultimate-cursor'),
+		// 	esc_html__('Multiple Cursors', 'ultimate-cursor'),
+		// 	'manage_options',
+		// 	'admin.php?page=ultimate-cursor&sub_page=settings&tab=multiple'
+		// );
 		add_submenu_page(
 			'ultimate-cursor',
-			esc_html__('Multiple Cursors', 'ultimate-cursor'),
-			esc_html__('Multiple Cursors', 'ultimate-cursor'),
+			esc_html__('Background Animation', 'ultimate-cursor'),
+			esc_html__('Background Animation', 'ultimate-cursor'),
 			'manage_options',
-			'admin.php?page=ultimate-cursor&sub_page=settings&tab=multiple'
+			'admin.php?page=ultimate-cursor&sub_page=background'
 		);
 		add_submenu_page(
 			'ultimate-cursor',

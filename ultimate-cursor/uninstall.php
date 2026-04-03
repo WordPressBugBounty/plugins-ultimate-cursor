@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Uninstall Ultimate Cursor
  *
@@ -15,6 +16,7 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 
 // Delete plugin options
 delete_option('ultimate_cursor_settings');
+delete_option('ultimate_cursor_background_settings');
 
 // Delete any transients
 delete_transient('_ultimate_cursor_welcome_screen_activation_redirect');
@@ -31,6 +33,7 @@ if (is_multisite()) {
 
 		// Delete options for this site
 		delete_option('ultimate_cursor_settings');
+		delete_option('ultimate_cursor_background_settings');
 		delete_transient('_ultimate_cursor_welcome_screen_activation_redirect');
 
 		restore_current_blog();

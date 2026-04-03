@@ -37,6 +37,7 @@ class Ultimate_Cursor_Assets {
 	private function __construct() {
 		if (!is_admin()) {
 			add_action('wp_enqueue_scripts', [$this, 'enqueue_frontend_assets']);
+			add_action('wp_enqueue_scripts', [$this, 'enqueue_frontend_background_assets']);
 		}
 		add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_scripts']);
 	}
@@ -150,6 +151,165 @@ class Ultimate_Cursor_Assets {
 
 
 	/**
+	 * Enqueue frontend background animation assets with performance-first approach.
+	 * Three.js is lazy-loaded only when background animation is enabled.
+	 */
+	public function enqueue_frontend_background_assets() {
+		// Prevent multiple executions
+		static $executed = false;
+		if ($executed) {
+			return;
+		}
+		$executed = true;
+
+		$bg_settings = get_option('ultimate_cursor_background_settings', array());
+
+		// Only load if background animation is enabled
+		if (empty($bg_settings['enabled'])) {
+			return;
+		}
+
+		$enable_multiple = !empty($bg_settings['enableMultipleBackgrounds']);
+
+		if ($enable_multiple) {
+			// Multiple backgrounds mode: check each config's scope individually.
+			// Filter out configs that don't match the current page.
+			$configs = isset($bg_settings['backgroundConfigurations']) && is_array($bg_settings['backgroundConfigurations'])
+				? $bg_settings['backgroundConfigurations']
+				: array();
+
+			$filtered_configs = array();
+			foreach ($configs as $config) {
+				$config_scope = isset($config['scope']) ? $config['scope'] : 'entire-website';
+
+				if ($config_scope === 'specific-pages') {
+					$specific_pages = isset($config['specificPages']) ? $config['specificPages'] : '';
+					if ($this->is_matching_page($specific_pages)) {
+						$filtered_configs[] = $config;
+					}
+				} else {
+					// 'entire-website' or 'css-selector' — always include
+					$filtered_configs[] = $config;
+				}
+			}
+
+			// Don't load the script if no configs match the current page
+			if (empty($filtered_configs)) {
+				return;
+			}
+
+			// Pass only the matching configs to the frontend
+			$bg_settings['backgroundConfigurations'] = array_values($filtered_configs);
+		} else {
+			// Single background mode: check top-level scope
+			$scope = isset($bg_settings['scope']) ? $bg_settings['scope'] : 'entire-website';
+
+			if ($scope === 'specific-pages') {
+				$specific_pages = isset($bg_settings['specificPages']) ? $bg_settings['specificPages'] : '';
+				if (!$this->is_matching_page($specific_pages)) {
+					return;
+				}
+			}
+		}
+
+		$asset_data = $this->get_asset_file('build/frontend-background');
+
+		$bg_js_path = ultimate_cursor()->plugin_path . 'build/frontend-background.js';
+		$bg_js_url = ultimate_cursor()->plugin_url . 'build/frontend-background.js';
+
+		// Add filemtime-based cache busting
+		$version = $asset_data['version'];
+		if (file_exists($bg_js_path)) {
+			$version .= '.' . filemtime($bg_js_path);
+		}
+
+		wp_enqueue_script(
+			'ultimate-cursor-frontend-background',
+			$bg_js_url,
+			$asset_data['dependencies'],
+			$version,
+			array(
+				'in_footer' => true,
+				'strategy' => 'defer',
+			)
+		);
+
+		// Inject public path for chunk loading
+		$public_path_script = sprintf(
+			'window.__ultimateCursorBgPublicPath = %s;',
+			wp_json_encode(ultimate_cursor()->plugin_url . 'build/')
+		);
+
+		wp_add_inline_script(
+			'ultimate-cursor-frontend-background',
+			$public_path_script,
+			'before'
+		);
+
+		// Use wp_add_inline_script + wp_json_encode instead of wp_localize_script
+		// to preserve data types (numbers, booleans) in backgroundConfigurations.
+		// wp_localize_script converts all scalar values to strings which breaks rendering.
+		$bg_data_script = sprintf(
+			'var ultimateCursorBgData = %s;',
+			wp_json_encode($bg_settings)
+		);
+
+		wp_add_inline_script(
+			'ultimate-cursor-frontend-background',
+			$bg_data_script,
+			'before'
+		);
+	}
+
+	/**
+	 * Check if the current page matches the specific pages list.
+	 *
+	 * @param string $pages_string Comma-separated list of page slugs, URLs, or IDs.
+	 * @return bool
+	 */
+	private function is_matching_page($pages_string) {
+		if (empty($pages_string)) {
+			return false;
+		}
+
+		$pages = array_map('trim', explode(',', $pages_string));
+		$current_url = $_SERVER['REQUEST_URI'];
+		$current_slug = trim(parse_url($current_url, PHP_URL_PATH), '/');
+
+		foreach ($pages as $page) {
+			$page = trim($page, '/');
+
+			if (empty($page)) {
+				continue;
+			}
+
+			// Match by post ID
+			if (is_numeric($page) && is_single($page)) {
+				return true;
+			}
+
+			// Match by slug or URL path
+			if ($current_slug === $page || $current_url === $page) {
+				return true;
+			}
+
+			// Match home page
+			if ($page === '/' || $page === 'home') {
+				if (is_front_page() || is_home()) {
+					return true;
+				}
+			}
+
+			// Partial match (for nested slugs)
+			if (!empty($page) && strpos($current_slug, $page) !== false) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Enqueue admin pages assets.
 	 */
 	public function admin_enqueue_scripts() {
@@ -214,6 +374,7 @@ class Ultimate_Cursor_Assets {
 					$settings = UltimateCursor::sanitize_premium_settings($settings);
 					return $settings;
 				})(),
+				'backgroundSettings' => get_option('ultimate_cursor_background_settings', array()),
 				'cursors' => $cursor_images,
 				'plugin_url' => ultimate_cursor()->plugin_url,
 				'version' => UCA_VERSION,

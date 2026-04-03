@@ -1,28 +1,28 @@
-=== Ultimate Cursor – Interactive and Animated Cursor Effects Toolkit ===
-Version: 2.0.0
+=== Ultimate Cursor – Interactive and Animated Cursor and Background Effects Toolkit ===
+Version: 2.1.0
 Author: WPXERO
 Author URI: https://wpxero.com/plugins/ultimate-cursor
 Donate link: https://wpxero.com/plugins/ultimate-cursor/pricing
 Contributors: WPXERO
 Tags: cursor, mouse, pointer, custom cursor, cursor plugin
 Requires at least: 6.0
-Tested up to: 6.9.1
-Stable tag: 2.0.0
+Tested up to: 6.9
+Stable tag: 2.1.0
 Requires PHP: 7.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-**Enhance your site with Ultimate Cursor Plugin—customize your cursor pointer with icons, text & images for an engaging experience.**✅
+**Enhance your site with Ultimate Cursor Plugin—customize your cursor pointer with icons, text & images, plus stunning background effects.**✅
 
 == Description ==
 
 https://youtu.be/mGOVAyi9ip4
 
-== THE #1 CUSTOM CURSOR PLUGIN FOR WORDPRESS WEBSITES POWERING OVER 3000+ ACTIVE SITES WORLDWIDE. ==
+== THE #1 CUSTOM CURSOR & BACKGROUND EFFECTS PLUGIN FOR WORDPRESS WEBSITES POWERING OVER 3000+ ACTIVE SITES WORLDWIDE. ==
 
-Transform your **WordPress website** and captivate your audience with the **Ultimate Cursor Plugin**, the all-in-one solution for creating **custom cursors** that enhance user mouse interactions. This **feature-rich WordPress plugin** allows you to integrate **dynamic icons**, **interactive text**, and **engaging images** directly into your cursor pointer, delivering an unforgettable browsing experience.
+Transform your **WordPress website** and captivate your audience with the **Ultimate Cursor Plugin**, the all-in-one solution for creating **custom cursors** and **stunning background effects** that enhance user interactions. This **feature-rich WordPress plugin** allows you to integrate **dynamic icons**, **interactive text**, **engaging images**, and **animated background effects** directly into your website, delivering an unforgettable browsing experience.
 
-Designed for **all WordPress users**, the Ultimate Cursor Plugin works seamlessly with **Elementor, Gutenberg, WPBakery, and other page builders**. It allows you to add a personalized, interactive mouse cursor that aligns with your **brand identity** and boosts **website engagement**. Whether you're aiming to improve user navigation, increase interactivity, or add a unique visual element to your website with custom mouse effects, this plugin offers seamless customization right from the **WordPress interface**—no coding required.
+Designed for **all WordPress users**, the Ultimate Cursor Plugin works seamlessly with **Elementor, Gutenberg, WPBakery, and other page builders**. It allows you to add a personalized, interactive mouse cursor and captivating background animations that align with your **brand identity** and boost **website engagement**. Whether you're aiming to improve user navigation, increase interactivity, or add unique visual elements to your website with custom mouse effects and background animations, this plugin offers seamless customization right from the **WordPress interface**—no coding required.
 
 Unlock all features with [Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing).
 
@@ -35,6 +35,8 @@ Professional web designers and developers choose our premium version for:
 ✅ **Element-Specific Targeting** - Apply custom cursors to specific elements, buttons, or sections
 
 ✅ **Advanced Animation Controls** - Fine-tune every aspect of your cursor animations
+
+✅ **Stunning Background Effects** - Add Antigravity, Pillar, and other animated background effects
 
 ✅ **Priority Support** - Get expert help when you need it most
 
@@ -66,6 +68,20 @@ Professional web designers and developers choose our premium version for:
 
 * ** Advanced Conditional Logic:** Apply different cursor effects based on specific pages, CSS selectors, HTML elements, user roles, device types, and custom conditions for precise targeting.
 
+### 🌟 **Background Effects Features**
+
+* **Antigravity Background Effect:** Create mesmerizing floating particle animations that defy gravity, adding depth and movement to your website sections with customizable particle density, speed, and colors.
+
+* **Pillar Background Effect:** Implement stunning vertical pillar animations that create a dynamic, architectural visual effect perfect for hero sections, landing pages, and feature showcases.
+
+* **Customizable Animation Settings:** Fine-tune background effect parameters including animation speed, particle count, color schemes, opacity levels, and interaction behaviors.
+
+* **Section-Specific Application:** Apply different background effects to specific sections, pages, or elements for targeted visual enhancement without affecting overall site performance.
+
+* **Responsive Background Animations:** All background effects are fully responsive and optimized for mobile, tablet, and desktop devices ensuring consistent visual experiences across all screen sizes.
+
+* **Performance-Optimized Rendering:** Background animations are GPU-accelerated and optimized to maintain smooth 60fps performance without impacting page load times or user experience.
+
 ### 🔥 **UPGRADE TO PRO AND UNLOCK PREMIUM FEATURES**
 
 Take your website to the next level with [Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing):
@@ -73,6 +89,8 @@ Take your website to the next level with [Ultimate Cursor Pro](https://wpxero.co
 👉 **Unlimited Cursor Configurations** - Create as many custom cursors as you need
 
 👉 **Advanced Animation Effects** - Access exclusive premium animations
+
+👉 **Premium Background Effects** - Unlock all background animation styles and customization options
 
 👉 **Element-Specific Targeting** - Apply different cursors to different elements
 
@@ -86,13 +104,13 @@ Take your website to the next level with [Ultimate Cursor Pro](https://wpxero.co
 
 1. Upload the `ultimate-cursor` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Start customizing your cursor from the **WordPress settings panel** or inside your preferred page builder (**Elementor, Gutenberg, WPBakery, etc.**).
+3. Start customizing your cursor and background effects from the **WordPress settings panel** or inside your preferred page builder (**Elementor, Gutenberg, WPBakery, etc.**).
 
 == Frequently Asked Questions ==
 
 = Will Ultimate Cursor slow down my website? =
 
-No! Ultimate Cursor is optimized for performance. Our code is lightweight and loads only what's needed, ensuring your site remains fast and responsive.
+No! Ultimate Cursor is optimized for performance. Our code is lightweight and loads only what's needed, ensuring your site remains fast and responsive. Both cursor and background effects are GPU-accelerated for smooth animations.
 
 = Does it work with all themes and page builders? =
 
@@ -100,11 +118,19 @@ Yes! Ultimate Cursor is compatible with all major WordPress themes and page buil
 
 = What's the difference between the free and pro versions? =
 
-The free version includes essential cursor customization options. The pro version adds multiple cursor configurations, element-specific targeting, advanced animation controls, priority support, and regular premium updates.
+The free version includes essential cursor customization options and basic background effects. The pro version adds multiple cursor configurations, element-specific targeting, advanced animation controls, premium background effects, priority support, and regular premium updates.
 
 = Can I apply different cursors to different parts of my website? =
 
 Yes! With the pro version, you can create multiple cursor configurations and apply them to specific elements, pages, or sections of your website.
+
+= What background effects are available? =
+
+Ultimate Cursor includes stunning background effects such as Antigravity (floating particles) and Pillar (vertical animations) effects. These can be applied to specific sections or entire pages to create immersive visual experiences.
+
+= Can I use background effects and cursor effects together? =
+
+Absolutely! You can combine any cursor effect with any background effect to create unique, engaging visual experiences throughout your website.
 
 = Is there a money-back guarantee? =
 
@@ -112,10 +138,10 @@ Yes! We offer a 14-day money-back guarantee if you're not completely satisfied w
 
 == Upgrade Notice ==
 
-Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configurations, element-specific targeting, advanced animations, and priority support. Transform your website with premium cursor effects that boost engagement and conversion rates!
+Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configurations, element-specific targeting, advanced animations, premium background effects, and priority support. Transform your website with premium cursor and background effects that boost engagement and conversion rates!
 
 == Screenshots ==
-1. **Features Overview** 📊 – Text, Image, Icon, Shapes, Preset, and Animated Cursor options all available in one plugin.
+1. **Features Overview** 📊 – Text, Image, Icon, Shapes, Preset, Animated Cursor, and Background Effects options all available in one plugin.
 2. **Multiple Cursors Configurations** - Apply different cursor styles to different parts of your website.
 3. **Splash Cursor Preview** 💥 – Add eye-catching splash effects that activate on hover interactions.
 4. **SnowFlake Cursor Preview** ❄️ – Delight visitors with snowflake particles that follow cursor movement.
@@ -127,8 +153,16 @@ Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configur
 10. **Cursor Type Image** 🖼️ – Replace the default pointer with any custom image for a branded look.
 11. **Cursor Type Icon** 🖼️ – Replace the default pointer with any custom icon from your library.
 12. **Cursor Type Text** ✏️ – Use stylish text as your cursor for a sleek, modern touch.
+13. **Antigravity Background Effect** 🌌 – Add floating particle animations that create depth and movement.
+14. **Pillar Background Effect** 🏛️ – Implement stunning vertical pillar animations for dynamic visual impact.
 
 == Changelog ==
+
+#### 2.1.0 [April 03, 2026]
+- Added: New Background Animation feature with Antigravity and Pillar effects for enhanced visual website customization
+- Added: Background effects customization options including particle density, speed, colors, and opacity
+- Added: Section-specific background effect application for targeted visual enhancement
+- Added: Responsive background animations optimized for all device types
 
 #### 2.0.0 [March 07, 2026]
 - Added: Completely redesigned Dashboard UI for a cleaner, more intuitive experience
@@ -314,3 +348,4 @@ Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configur
 - Addressed Elementor compatibility issues.
 
 #### 1.0.0 [Initial Release]
+- Initial release of Ultimate Cursor plugin

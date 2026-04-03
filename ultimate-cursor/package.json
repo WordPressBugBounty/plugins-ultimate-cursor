@@ -26,14 +26,18 @@
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip"
 	},
-	"devDependencies": {
-		"@wordpress/scripts": "^31.5.0",
-		"po2json": "^0.4.5"
-	},
+  "devDependencies": {
+    "@wordpress/scripts": "^31.5.0",
+    "ajv": "^8.12.0",
+    "ajv-keywords": "^5.1.0",
+    "po2json": "^0.4.5"
+  },
 	"dependencies": {
+		"@react-three/fiber": "^8.17.10",
 		"@wordpress/icons": "^11.7.0",
 		"antd": "^6.3.1",
 		"emoji-picker-react": "^4.18.0",
-		"react-transition-group": "^4.4.5"
+		"react-transition-group": "^4.4.5",
+		"three": "^0.183.2"
 	}
 }
