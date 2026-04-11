@@ -228,7 +228,11 @@ class Ultimate_Cursor_Dashboard_Widget {
 		wp_add_dashboard_widget(
 			'ultimate_cursor_promo_widget',
 			$campaign['widget_title'],
-			[$this, 'render_dashboard_widget']
+			[$this, 'render_dashboard_widget'],
+			null,
+			null,
+			'column4',
+			'high'
 		);
 	}
 
