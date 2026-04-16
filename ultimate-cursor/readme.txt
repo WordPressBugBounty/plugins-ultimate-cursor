@@ -1,5 +1,5 @@
 === Ultimate Cursor – Interactive and Animated Cursor and Background Effects Toolkit ===
-Version: 2.1.1
+Version: 2.2.0
 Author: WPXERO
 Author URI: https://wpxero.com/plugins/ultimate-cursor
 Donate link: https://wpxero.com/plugins/ultimate-cursor/pricing
@@ -7,7 +7,7 @@ Contributors: WPXERO
 Tags: cursor, mouse, pointer, custom cursor, cursor plugin
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 2.1.1
+Stable tag: 2.2.0
 Requires PHP: 7.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -157,6 +157,11 @@ Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configur
 14. **Pillar Background Effect** 🏛️ – Implement stunning vertical pillar animations for dynamic visual impact.
 
 == Changelog ==
+
+#### 2.2.0 [April 16, 2026]
+- Added: Support for animated cursor targeting on specific elements and CSS selectors for enhanced customization flexibility
+- Enhanced: Overall plugin performance and stability improvements
+- Thanks: Special appreciation to [shelleysimpson](https://wordpress.org/support/topic/target-element-not-showing/) for reporting this feature request
 
 #### 2.1.1 [April 11, 2026]
 - Improved: Compatibility with latest WordPress and PHP versions.
