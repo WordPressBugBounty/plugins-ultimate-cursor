@@ -2,14 +2,14 @@
 # This file is distributed under the GPL3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Cursor – Interactive and Animated Cursor and Background Effects Toolkit 2.2.1\n"
+"Project-Id-Version: Ultimate Cursor – Interactive and Animated Cursor and Background Effects Toolkit 2.2.2\n"
 "Report-Msgid-Bugs-To: https://github.com/WPXERO/ultimate-cursor/issues\n"
 "Last-Translator: Lazy Blocks Team\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-15T14:27:38+00:00\n"
+"POT-Creation-Date: 2026-06-02T15:17:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ultimate-cursor\n"
@@ -189,7 +189,7 @@ msgid "Layout"
 msgstr ""
 
 #: classes/class-elementor.php:99
-#: src/admin/pages/cursor/multiple/controls.js:575
+#: src/admin/pages/cursor/multiple/controls.js:975
 msgid "Cursor Type"
 msgstr ""
 
@@ -215,7 +215,7 @@ msgstr ""
 
 #: classes/class-elementor.php:149
 #: classes/class-elementor.php:226
-#: src/admin/pages/cursor/multiple/controls.js:2135
+#: src/admin/pages/cursor/multiple/controls.js:2541
 msgid "Style"
 msgstr ""
 
@@ -236,12 +236,12 @@ msgid "Text Label"
 msgstr ""
 
 #: classes/class-elementor.php:184
-#: src/admin/pages/cursor/multiple/controls.js:932
+#: src/admin/pages/cursor/multiple/controls.js:1332
 msgid "Speed"
 msgstr ""
 
 #: classes/class-elementor.php:210
-#: src/admin/pages/cursor/multiple/controls.js:3175
+#: src/admin/pages/cursor/multiple/controls.js:3581
 msgid "Disable Default Cursor"
 msgstr ""
 
@@ -252,8 +252,8 @@ msgstr ""
 #: classes/class-elementor.php:246
 #: classes/class-elementor.php:283
 #: classes/class-elementor.php:310
-#: src/admin/pages/cursor/multiple/controls.js:2142
-#: src/admin/pages/cursor/multiple/controls.js:2360
+#: src/admin/pages/cursor/multiple/controls.js:2548
+#: src/admin/pages/cursor/multiple/controls.js:2766
 msgid "Color"
 msgstr ""
 
@@ -262,7 +262,7 @@ msgstr ""
 #: classes/class-elementor.php:385
 #: classes/class-elementor.php:424
 #: src/admin/pages/background/types/antigravity.js:105
-#: src/admin/pages/cursor/multiple/controls.js:1015
+#: src/admin/pages/cursor/multiple/controls.js:1415
 msgid "Size"
 msgstr ""
 
@@ -271,7 +271,7 @@ msgid "Secondary"
 msgstr ""
 
 #: classes/class-elementor.php:324
-#: src/admin/pages/cursor/multiple/controls.js:2149
+#: src/admin/pages/cursor/multiple/controls.js:2555
 #: src/admin/pages/index.js:45
 msgid "Background"
 msgstr ""
@@ -392,40 +392,70 @@ msgstr ""
 msgid "Clockwise"
 msgstr ""
 
-#: src/admin/constants/index.js:183
+#: src/admin/constants/index.js:184
 msgid "Counter Clockwise"
 msgstr ""
 
-#: src/admin/constants/index.js:191
+#: src/admin/constants/index.js:197
+#: src/admin/pages/cursor/multiple/controls.js:598
+msgid "Center"
+msgstr ""
+
+#: src/admin/constants/index.js:199
+#: src/admin/pages/cursor/multiple/controls.js:574
+msgid "Top Left"
+msgstr ""
+
+#: src/admin/constants/index.js:205
+#: src/admin/pages/cursor/multiple/controls.js:586
+msgid "Top Right"
+msgstr ""
+
+#: src/admin/constants/index.js:211
+#: src/admin/pages/cursor/multiple/controls.js:610
+msgid "Bottom Left"
+msgstr ""
+
+#: src/admin/constants/index.js:217
+#: src/admin/pages/cursor/multiple/controls.js:622
+msgid "Bottom Right"
+msgstr ""
+
+#: src/admin/constants/index.js:222
+#: src/admin/pages/cursor/multiple/controls.js:787
+msgid "Custom"
+msgstr ""
+
+#: src/admin/constants/index.js:244
 #: src/admin/pages/background/editor.js:59
 #: src/admin/pages/background/manager.js:820
 msgid "Entire Website"
 msgstr ""
 
-#: src/admin/constants/index.js:194
+#: src/admin/constants/index.js:249
 msgid "Specific Pages (pro feature)"
 msgstr ""
 
-#: src/admin/constants/index.js:195
+#: src/admin/constants/index.js:250
 #: src/admin/pages/background/editor.js:65
 msgid "Specific Pages"
 msgstr ""
 
-#: src/admin/constants/index.js:201
+#: src/admin/constants/index.js:256
 msgid "CSS Selectors (pro feature)"
 msgstr ""
 
-#: src/admin/constants/index.js:202
-#: src/admin/pages/cursor/multiple/controls.js:3339
+#: src/admin/constants/index.js:257
+#: src/admin/pages/cursor/multiple/controls.js:3745
 msgid "CSS Selectors"
 msgstr ""
 
-#: src/admin/constants/index.js:208
+#: src/admin/constants/index.js:263
 msgid "HTML Elements (pro feature)"
 msgstr ""
 
-#: src/admin/constants/index.js:209
-#: src/admin/pages/cursor/multiple/controls.js:3353
+#: src/admin/constants/index.js:264
+#: src/admin/pages/cursor/multiple/controls.js:3759
 msgid "HTML Elements"
 msgstr ""
 
@@ -569,17 +599,17 @@ msgid "CSS Selector"
 msgstr ""
 
 #: src/admin/pages/background/editor.js:142
-#: src/admin/pages/cursor/multiple/controls.js:167
+#: src/admin/pages/cursor/multiple/controls.js:179
 msgid "Home (Front Page)"
 msgstr ""
 
 #: src/admin/pages/background/editor.js:174
-#: src/admin/pages/cursor/multiple/controls.js:201
+#: src/admin/pages/cursor/multiple/controls.js:213
 msgid "Search and select pages…"
 msgstr ""
 
 #: src/admin/pages/background/editor.js:188
-#: src/admin/pages/cursor/multiple/controls.js:216
+#: src/admin/pages/cursor/multiple/controls.js:228
 msgid "No pages found"
 msgstr ""
 
@@ -592,7 +622,7 @@ msgid "Display Scope"
 msgstr ""
 
 #: src/admin/pages/background/editor.js:233
-#: src/admin/pages/cursor/multiple/controls.js:3321
+#: src/admin/pages/cursor/multiple/controls.js:3727
 msgid "Select Pages"
 msgstr ""
 
@@ -613,8 +643,8 @@ msgstr ""
 #: src/admin/pages/background/types/antigravity.js:163
 #: src/admin/pages/background/types/light-pillar.js:147
 #: src/admin/pages/background/types/light-pillar.js:283
-#: src/admin/pages/cursor/multiple/controls.js:529
-#: src/admin/pages/cursor/multiple/controls.js:2934
+#: src/admin/pages/cursor/multiple/controls.js:541
+#: src/admin/pages/cursor/multiple/controls.js:3340
 #: src/admin/pages/cursor/multiple/manager.js:325
 #: src/utils/ProFeaturesTable.js:106
 msgid "Upgrade to Pro"
@@ -641,7 +671,7 @@ msgid "Use negative values to place the animation behind content, or positive va
 msgstr ""
 
 #: src/admin/pages/background/editor.js:379
-#: src/admin/pages/cursor/multiple/controls.js:1720
+#: src/admin/pages/cursor/multiple/controls.js:2120
 msgid "Opacity"
 msgstr ""
 
@@ -703,7 +733,7 @@ msgstr ""
 #: src/admin/pages/background/index.js:623
 #: src/admin/pages/background/manager.js:1041
 #: src/admin/pages/cursor/index.js:453
-#: src/admin/pages/cursor/multiple/manager.js:884
+#: src/admin/pages/cursor/multiple/manager.js:887
 msgid "Preview"
 msgstr ""
 
@@ -729,7 +759,7 @@ msgstr ""
 
 #: src/admin/pages/background/index.js:830
 #: src/admin/pages/cursor/index.js:589
-#: src/admin/pages/cursor/multiple/controls.js:1513
+#: src/admin/pages/cursor/multiple/controls.js:1913
 msgid "Reset"
 msgstr ""
 
@@ -755,7 +785,7 @@ msgstr ""
 #: src/admin/pages/background/manager.js:191
 #: src/admin/pages/background/manager.js:660
 #: src/admin/pages/cursor/multiple/manager.js:106
-#: src/admin/pages/cursor/multiple/manager.js:566
+#: src/admin/pages/cursor/multiple/manager.js:569
 msgid "Saved Configurations"
 msgstr ""
 
@@ -811,7 +841,7 @@ msgid "Selector:"
 msgstr ""
 
 #: src/admin/pages/background/manager.js:789
-#: src/admin/pages/cursor/multiple/manager.js:726
+#: src/admin/pages/cursor/multiple/manager.js:729
 msgid "Pages:"
 msgstr ""
 
@@ -820,7 +850,7 @@ msgid "Scope:"
 msgstr ""
 
 #: src/admin/pages/background/manager.js:842
-#: src/admin/pages/cursor/multiple/manager.js:758
+#: src/admin/pages/cursor/multiple/manager.js:761
 msgid "Delete this configuration?"
 msgstr ""
 
@@ -829,22 +859,22 @@ msgid "No background configurations saved. Click \"Add New Background\" to creat
 msgstr ""
 
 #: src/admin/pages/background/manager.js:901
-#: src/admin/pages/cursor/multiple/manager.js:817
+#: src/admin/pages/cursor/multiple/manager.js:820
 msgid "Edit Configuration"
 msgstr ""
 
 #: src/admin/pages/background/manager.js:905
-#: src/admin/pages/cursor/multiple/manager.js:821
+#: src/admin/pages/cursor/multiple/manager.js:824
 msgid "New Configuration"
 msgstr ""
 
 #: src/admin/pages/background/manager.js:917
-#: src/admin/pages/cursor/multiple/manager.js:833
+#: src/admin/pages/cursor/multiple/manager.js:836
 msgid "Cancel"
 msgstr ""
 
 #: src/admin/pages/background/manager.js:932
-#: src/admin/pages/cursor/multiple/manager.js:848
+#: src/admin/pages/cursor/multiple/manager.js:851
 msgid "Apply Configuration"
 msgstr ""
 
@@ -882,7 +912,7 @@ msgid "Background Color"
 msgstr ""
 
 #: src/admin/pages/background/types/antigravity.js:57
-#: src/admin/pages/cursor/multiple/controls.js:3096
+#: src/admin/pages/cursor/multiple/controls.js:3502
 msgid "Particle Color"
 msgstr ""
 
@@ -940,7 +970,7 @@ msgstr ""
 
 #: src/admin/pages/background/types/antigravity.js:350
 #: src/admin/pages/background/types/light-pillar.js:180
-#: src/admin/pages/cursor/multiple/controls.js:852
+#: src/admin/pages/cursor/multiple/controls.js:1252
 msgid "Rotation Speed"
 msgstr ""
 
@@ -1036,12 +1066,21 @@ msgstr ""
 msgid "Select Cursor Type"
 msgstr ""
 
+#: src/admin/pages/cursor/hotspot-picker.js:111
+msgid "Cursor image hotspot position"
+msgstr ""
+
+#: src/admin/pages/cursor/hotspot-picker.js:143
+msgid "Cursor preview"
+msgstr ""
+
 #: src/admin/pages/cursor/index.js:54
 msgid "Need Multiple Cursors?"
 msgstr ""
 
 #: src/admin/pages/cursor/index.js:60
 #: src/admin/pages/cursor/index.js:537
+#: src/admin/pages/cursor/multiple/controls.js:689
 msgid "PRO"
 msgstr ""
 
@@ -1076,7 +1115,7 @@ msgid "Customize Your Cursor"
 msgstr ""
 
 #: src/admin/pages/cursor/index.js:477
-#: src/admin/pages/cursor/multiple/manager.js:907
+#: src/admin/pages/cursor/multiple/manager.js:910
 msgid "Move your cursor here to preview"
 msgstr ""
 
@@ -1092,622 +1131,670 @@ msgstr ""
 msgid "Save (Multiple cursor feature not activated)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:270
+#: src/admin/pages/cursor/multiple/controls.js:282
 msgid "Select or type HTML elements…"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:298
+#: src/admin/pages/cursor/multiple/controls.js:310
 msgid "Type CSS selectors and press Enter…"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:498
-#: src/admin/pages/cursor/multiple/controls.js:2120
-#: src/admin/pages/cursor/multiple/controls.js:2852
+#: src/admin/pages/cursor/multiple/controls.js:510
+#: src/admin/pages/cursor/multiple/controls.js:2526
+#: src/admin/pages/cursor/multiple/controls.js:3258
 #: src/utils/ProFeaturesTable.js:21
 msgid "Pro"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:579
-msgid "Type"
+#: src/admin/pages/cursor/multiple/controls.js:580
+msgid "Top Center"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:605
-msgid "Cursor Text"
+#: src/admin/pages/cursor/multiple/controls.js:592
+msgid "Middle Left"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:604
+msgid "Middle Right"
 msgstr ""
 
 #: src/admin/pages/cursor/multiple/controls.js:616
-msgid "Circular Background"
+msgid "Bottom Center"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:637
-msgid "Use circular background instead of rectangular. This is a pro feature."
+#: src/admin/pages/cursor/multiple/controls.js:685
+msgid "Cursor Hotspot"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:641
-msgid "Use circular background instead of rectangular"
+#: src/admin/pages/cursor/multiple/controls.js:715
+msgid "Set which point of the image aligns with the real mouse position — like the tip of an arrow."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:654
-#: src/admin/pages/cursor/multiple/controls.js:725
-msgid "Circle Size"
+#: src/admin/pages/cursor/multiple/controls.js:724
+msgid "Hotspot Position"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:677
-msgid "Diameter of the circular background (Pro feature)"
+#: src/admin/pages/cursor/multiple/controls.js:732
+msgid "Choose which point of the image follows the mouse. Upgrade to Pro to unlock."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:681
-msgid "Diameter of the circular background"
+#: src/admin/pages/cursor/multiple/controls.js:771
+msgid "Quick position"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:699
-msgid "Circle Radius"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/controls.js:717
-msgid "Radius of the circular text path"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/controls.js:743
-msgid "Size of the background circle"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/controls.js:751
-msgid "Rotation"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/controls.js:769
-msgid "Rotation angle in degrees"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/controls.js:777
-msgid "Direction"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/controls.js:799
-msgid "Show Circle"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/controls.js:817
-msgid "Show background circle behind text"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/controls.js:825
-msgid "Auto Rotate"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/controls.js:843
-msgid "Enable automatic rotation animation"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/controls.js:870
-msgid "Speed of the rotation animation"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/controls.js:886
-msgid "Effect"
+#: src/admin/pages/cursor/multiple/controls.js:876
+msgid "X (%)"
 msgstr ""
 
 #: src/admin/pages/cursor/multiple/controls.js:901
-msgid "Characters"
+msgid "Y (%)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:921
-msgid "Enter characters or words separated by comma to display as the cursor. This is a pro feature."
+#: src/admin/pages/cursor/multiple/controls.js:925
+msgid "Reset to center"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:946
-#: src/admin/pages/cursor/multiple/controls.js:1708
-msgid "Speed of the cursor trail. This is a pro feature."
+#: src/admin/pages/cursor/multiple/controls.js:979
+msgid "Type"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:958
-msgid "Delay"
+#: src/admin/pages/cursor/multiple/controls.js:1005
+msgid "Cursor Text"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:972
-msgid "Delay of the cursor trail. This is a pro feature."
+#: src/admin/pages/cursor/multiple/controls.js:1016
+msgid "Circular Background"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:989
-msgid "Length"
+#: src/admin/pages/cursor/multiple/controls.js:1037
+msgid "Use circular background instead of rectangular. This is a pro feature."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1003
-msgid "Length of the cursor trail. This is a pro feature."
+#: src/admin/pages/cursor/multiple/controls.js:1041
+msgid "Use circular background instead of rectangular"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1036
-msgid "Size of the cursor trail (Pro feature)"
+#: src/admin/pages/cursor/multiple/controls.js:1054
+#: src/admin/pages/cursor/multiple/controls.js:1125
+msgid "Circle Size"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1040
-msgid "Size of the cursor trail"
+#: src/admin/pages/cursor/multiple/controls.js:1077
+msgid "Diameter of the circular background (Pro feature)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1053
-#: src/admin/pages/cursor/multiple/controls.js:1694
-msgid "Trail Speed"
+#: src/admin/pages/cursor/multiple/controls.js:1081
+msgid "Diameter of the circular background"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1072
-msgid "Trail speed of the cursor trail (Pro feature)"
+#: src/admin/pages/cursor/multiple/controls.js:1099
+msgid "Circle Radius"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1076
-msgid "Trail speed of the cursor trail"
+#: src/admin/pages/cursor/multiple/controls.js:1117
+msgid "Radius of the circular text path"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1089
-msgid "Blur"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/controls.js:1108
-msgid "Blur of the cursor trail (Pro feature)"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/controls.js:1112
-msgid "Blur of the cursor trail"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/controls.js:1130
-msgid "Emoji Characters"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/controls.js:1134
-msgid "Click to select emoji characters for snowflakes. This is a pro feature."
+#: src/admin/pages/cursor/multiple/controls.js:1143
+msgid "Size of the background circle"
 msgstr ""
 
 #: src/admin/pages/cursor/multiple/controls.js:1151
-msgid "selected"
+msgid "Rotation"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1157
-msgid "No emojis selected"
+#: src/admin/pages/cursor/multiple/controls.js:1169
+msgid "Rotation angle in degrees"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1181
-msgid "Clear All"
+#: src/admin/pages/cursor/multiple/controls.js:1177
+msgid "Direction"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1247
-msgid "Maximum Reached"
+#: src/admin/pages/cursor/multiple/controls.js:1199
+msgid "Show Circle"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1251
-msgid "Add Emoji"
+#: src/admin/pages/cursor/multiple/controls.js:1217
+msgid "Show background circle behind text"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1268
-#: src/admin/pages/cursor/multiple/controls.js:1288
-#: src/admin/pages/cursor/multiple/controls.js:1558
-msgid "Select Emoji"
+#: src/admin/pages/cursor/multiple/controls.js:1225
+msgid "Auto Rotate"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1294
-msgid "Click an emoji to add it to your snowflakes (max 8)"
+#: src/admin/pages/cursor/multiple/controls.js:1243
+msgid "Enable automatic rotation animation"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1349
-#: src/admin/pages/cursor/multiple/controls.js:1606
-msgid "Search emojis..."
+#: src/admin/pages/cursor/multiple/controls.js:1270
+msgid "Speed of the rotation animation"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1369
-#: src/admin/pages/cursor/multiple/controls.js:1626
-msgid "Done"
+#: src/admin/pages/cursor/multiple/controls.js:1286
+msgid "Effect"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1381
-#: src/admin/pages/cursor/multiple/controls.js:1638
-msgid "Emoji Size"
+#: src/admin/pages/cursor/multiple/controls.js:1301
+msgid "Characters"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1397
-msgid "Size of the snowflake emoji. This is a pro feature."
+#: src/admin/pages/cursor/multiple/controls.js:1321
+msgid "Enter characters or words separated by comma to display as the cursor. This is a pro feature."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1409
-#: src/admin/pages/cursor/multiple/controls.js:1666
-msgid "Particle Count"
+#: src/admin/pages/cursor/multiple/controls.js:1346
+#: src/admin/pages/cursor/multiple/controls.js:2108
+msgid "Speed of the cursor trail. This is a pro feature."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1425
-msgid "Number of snowflakes to show per cursor movement. This is a pro feature."
+#: src/admin/pages/cursor/multiple/controls.js:1358
+msgid "Delay"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1437
-msgid "Lifespan"
+#: src/admin/pages/cursor/multiple/controls.js:1372
+msgid "Delay of the cursor trail. This is a pro feature."
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1389
+msgid "Length"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1403
+msgid "Length of the cursor trail. This is a pro feature."
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1436
+msgid "Size of the cursor trail (Pro feature)"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1440
+msgid "Size of the cursor trail"
 msgstr ""
 
 #: src/admin/pages/cursor/multiple/controls.js:1453
+#: src/admin/pages/cursor/multiple/controls.js:2094
+msgid "Trail Speed"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1472
+msgid "Trail speed of the cursor trail (Pro feature)"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1476
+msgid "Trail speed of the cursor trail"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1489
+msgid "Blur"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1508
+msgid "Blur of the cursor trail (Pro feature)"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1512
+msgid "Blur of the cursor trail"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1530
+msgid "Emoji Characters"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1534
+msgid "Click to select emoji characters for snowflakes. This is a pro feature."
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1551
+msgid "selected"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1557
+msgid "No emojis selected"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1581
+msgid "Clear All"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1647
+msgid "Maximum Reached"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1651
+msgid "Add Emoji"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1668
+#: src/admin/pages/cursor/multiple/controls.js:1688
+#: src/admin/pages/cursor/multiple/controls.js:1958
+msgid "Select Emoji"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1694
+msgid "Click an emoji to add it to your snowflakes (max 8)"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1749
+#: src/admin/pages/cursor/multiple/controls.js:2006
+msgid "Search emojis..."
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1769
+#: src/admin/pages/cursor/multiple/controls.js:2026
+msgid "Done"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1781
+#: src/admin/pages/cursor/multiple/controls.js:2038
+msgid "Emoji Size"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1797
+msgid "Size of the snowflake emoji. This is a pro feature."
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1809
+#: src/admin/pages/cursor/multiple/controls.js:2066
+msgid "Particle Count"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1825
+msgid "Number of snowflakes to show per cursor movement. This is a pro feature."
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1837
+msgid "Lifespan"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/controls.js:1853
 msgid "How long snowflakes remain visible. This is a pro feature."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1470
+#: src/admin/pages/cursor/multiple/controls.js:1870
 msgid "Trail Emoji"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1474
+#: src/admin/pages/cursor/multiple/controls.js:1874
 msgid "Select an emoji character for the cursor trail. This is a pro feature."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1483
+#: src/admin/pages/cursor/multiple/controls.js:1883
 msgid "Current emoji:"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1492
+#: src/admin/pages/cursor/multiple/controls.js:1892
 msgid "No emoji selected"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1541
+#: src/admin/pages/cursor/multiple/controls.js:1941
 msgid "Choose Emoji"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1576
+#: src/admin/pages/cursor/multiple/controls.js:1976
 msgid "Select Trail Emoji"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1582
+#: src/admin/pages/cursor/multiple/controls.js:1982
 msgid "Click an emoji to use for your cursor trail"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1654
+#: src/admin/pages/cursor/multiple/controls.js:2054
 msgid "Size of the trail emoji. This is a pro feature."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1682
+#: src/admin/pages/cursor/multiple/controls.js:2082
 msgid "Number of particles in the trail. This is a pro feature."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1734
+#: src/admin/pages/cursor/multiple/controls.js:2134
 msgid "Opacity of the trail particles. This is a pro feature."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1751
+#: src/admin/pages/cursor/multiple/controls.js:2151
 msgid "Splash Size"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1771
+#: src/admin/pages/cursor/multiple/controls.js:2171
 msgid "Size of the splash effect"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1780
+#: src/admin/pages/cursor/multiple/controls.js:2180
 msgid "Splash Force"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1800
+#: src/admin/pages/cursor/multiple/controls.js:2200
 msgid "Intensity of the splash effect"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1813
+#: src/admin/pages/cursor/multiple/controls.js:2213
 msgid "Spark Size"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1836
+#: src/admin/pages/cursor/multiple/controls.js:2236
 msgid "Size of individual spark lines (Pro feature)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1840
+#: src/admin/pages/cursor/multiple/controls.js:2240
 msgid "Size of individual spark lines"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1850
+#: src/admin/pages/cursor/multiple/controls.js:2250
 msgid "Spark Count"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1873
+#: src/admin/pages/cursor/multiple/controls.js:2273
 msgid "Number of sparks per click (Pro feature)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1877
+#: src/admin/pages/cursor/multiple/controls.js:2277
 msgid "Number of sparks per click"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1887
+#: src/admin/pages/cursor/multiple/controls.js:2287
 msgid "Animation Duration"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1910
+#: src/admin/pages/cursor/multiple/controls.js:2310
 msgid "How long the spark animation lasts (Pro feature)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1914
+#: src/admin/pages/cursor/multiple/controls.js:2314
 msgid "How long the spark animation lasts"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1927
+#: src/admin/pages/cursor/multiple/controls.js:2327
 msgid "Particle Speed"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1952
+#: src/admin/pages/cursor/multiple/controls.js:2352
 msgid "Particle speed (Pro feature)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1956
+#: src/admin/pages/cursor/multiple/controls.js:2356
 msgid "Particle speed"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:1979
+#: src/admin/pages/cursor/multiple/controls.js:2379
 msgid "Image Size (px)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2157
+#: src/admin/pages/cursor/multiple/controls.js:2563
 msgid "Font Size (px)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2179
+#: src/admin/pages/cursor/multiple/controls.js:2585
 msgid "Spacing Vertical (px)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2198
+#: src/admin/pages/cursor/multiple/controls.js:2604
 msgid "Spacing Horizontal (px)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2228
+#: src/admin/pages/cursor/multiple/controls.js:2634
 msgid "Border Style"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2249
-#: src/admin/pages/cursor/multiple/controls.js:2373
+#: src/admin/pages/cursor/multiple/controls.js:2655
+#: src/admin/pages/cursor/multiple/controls.js:2779
 msgid "Border Color"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2266
-#: src/admin/pages/cursor/multiple/controls.js:2338
+#: src/admin/pages/cursor/multiple/controls.js:2672
+#: src/admin/pages/cursor/multiple/controls.js:2744
 msgid "Border Width (px)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2288
+#: src/admin/pages/cursor/multiple/controls.js:2694
 msgid "Border Radius (px)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2315
+#: src/admin/pages/cursor/multiple/controls.js:2721
 msgid "Shape Size"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2395
+#: src/admin/pages/cursor/multiple/controls.js:2801
 msgid "Bubble Size"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2413
+#: src/admin/pages/cursor/multiple/controls.js:2819
 msgid "Fill Color"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2428
+#: src/admin/pages/cursor/multiple/controls.js:2834
 msgid "Stroke Color"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2452
+#: src/admin/pages/cursor/multiple/controls.js:2858
 msgid "Splash Colors"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2474
-#: src/admin/pages/cursor/multiple/controls.js:2611
-#: src/admin/pages/cursor/multiple/controls.js:2751
+#: src/admin/pages/cursor/multiple/controls.js:2880
+#: src/admin/pages/cursor/multiple/controls.js:3017
+#: src/admin/pages/cursor/multiple/controls.js:3157
 msgid "Add Color"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2556
+#: src/admin/pages/cursor/multiple/controls.js:2962
 msgid "Splash Effects"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2560
+#: src/admin/pages/cursor/multiple/controls.js:2966
 msgid "Create vibrant splash trails with customizable colors, gradients, and smooth animations."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2565
+#: src/admin/pages/cursor/multiple/controls.js:2971
 msgid "Custom splash colors"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2569
-#: src/admin/pages/cursor/multiple/controls.js:2709
-#: src/admin/pages/cursor/multiple/controls.js:2896
+#: src/admin/pages/cursor/multiple/controls.js:2975
+#: src/admin/pages/cursor/multiple/controls.js:3115
+#: src/admin/pages/cursor/multiple/controls.js:3302
 msgid "Animation speed controls"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2573
-#: src/admin/pages/cursor/multiple/controls.js:2908
+#: src/admin/pages/cursor/multiple/controls.js:2979
+#: src/admin/pages/cursor/multiple/controls.js:3314
 msgid "Trail length adjustment"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2589
+#: src/admin/pages/cursor/multiple/controls.js:2995
 msgid "Character Colors"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2692
+#: src/admin/pages/cursor/multiple/controls.js:3098
 msgid "Character Cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2696
+#: src/admin/pages/cursor/multiple/controls.js:3102
 msgid "Create vibrant character cursor with customizable colors, characters, and smooth animations."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2701
+#: src/admin/pages/cursor/multiple/controls.js:3107
 msgid "Custom characters"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2705
+#: src/admin/pages/cursor/multiple/controls.js:3111
 msgid "Custom character colors"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2713
+#: src/admin/pages/cursor/multiple/controls.js:3119
 msgid "Delay character animation"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2729
+#: src/admin/pages/cursor/multiple/controls.js:3135
 msgid "Rainbow Colors"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2846
+#: src/admin/pages/cursor/multiple/controls.js:3252
 msgid "Rainbow Effects"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2859
+#: src/admin/pages/cursor/multiple/controls.js:3265
 msgid "Create vibrant rainbow trails with customizable colors, gradients, and smooth animations."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2872
+#: src/admin/pages/cursor/multiple/controls.js:3278
 msgid "Custom rainbow colors"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2884
+#: src/admin/pages/cursor/multiple/controls.js:3290
 msgid "Gradient trail effects"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2952
+#: src/admin/pages/cursor/multiple/controls.js:3358
 msgid "Spark Color"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:2969
+#: src/admin/pages/cursor/multiple/controls.js:3375
 msgid "Easing"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3001
+#: src/admin/pages/cursor/multiple/controls.js:3407
 msgid "Animation timing function"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3010
+#: src/admin/pages/cursor/multiple/controls.js:3416
 msgid "Extra Scale"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3027
+#: src/admin/pages/cursor/multiple/controls.js:3433
 msgid "Additional scaling factor for the effect"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3035
+#: src/admin/pages/cursor/multiple/controls.js:3441
 msgid "Spark Radius"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3052
+#: src/admin/pages/cursor/multiple/controls.js:3458
 msgid "Distance sparks travel from click point"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3060
+#: src/admin/pages/cursor/multiple/controls.js:3466
 msgid "ClickSpark Effects"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3064
+#: src/admin/pages/cursor/multiple/controls.js:3470
 msgid "Create stunning spark effects with customizable colors, sizes, and animations."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3069
+#: src/admin/pages/cursor/multiple/controls.js:3475
 msgid "Custom spark colors"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3073
+#: src/admin/pages/cursor/multiple/controls.js:3479
 msgid "Spark size controls"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3077
+#: src/admin/pages/cursor/multiple/controls.js:3483
 msgid "Spark count controls"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3081
+#: src/admin/pages/cursor/multiple/controls.js:3487
 msgid "Animation duration controls"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3113
+#: src/admin/pages/cursor/multiple/controls.js:3519
 msgid "ClickParticles Effects"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3117
+#: src/admin/pages/cursor/multiple/controls.js:3523
 msgid "Create stunning particle effects with customizable colors, sizes, and animations."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3122
+#: src/admin/pages/cursor/multiple/controls.js:3528
 msgid "Custom particle colors"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3126
+#: src/admin/pages/cursor/multiple/controls.js:3532
 msgid "Particle speed controls"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3130
+#: src/admin/pages/cursor/multiple/controls.js:3536
 msgid "Particle size controls"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3134
+#: src/admin/pages/cursor/multiple/controls.js:3540
 msgid "Particle Background controls"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3146
+#: src/admin/pages/cursor/multiple/controls.js:3552
 msgid "Advanced"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3154
+#: src/admin/pages/cursor/multiple/controls.js:3560
 msgid "Enable Transition"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3158
+#: src/admin/pages/cursor/multiple/controls.js:3564
 msgid "Apply smooth transition effect to cursor movement"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3179
+#: src/admin/pages/cursor/multiple/controls.js:3585
 msgid "Hide the browser's default cursor and show only your custom cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3199
+#: src/admin/pages/cursor/multiple/controls.js:3605
 msgid "Hide Cursor on Touch Devices"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3203
+#: src/admin/pages/cursor/multiple/controls.js:3609
 msgid "Hide the custom cursor on all touch-enabled devices (recommended)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3238
+#: src/admin/pages/cursor/multiple/controls.js:3644
 msgid "Hide on Small Screens (<600px)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3242
+#: src/admin/pages/cursor/multiple/controls.js:3648
 msgid "Hide on mobile-sized screens"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3261
+#: src/admin/pages/cursor/multiple/controls.js:3667
 msgid "Hide on Medium Screens (600-781px)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3265
+#: src/admin/pages/cursor/multiple/controls.js:3671
 msgid "Hide on tablet-sized screens"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3285
+#: src/admin/pages/cursor/multiple/controls.js:3691
 msgid "TARGET SCOPE"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3288
+#: src/admin/pages/cursor/multiple/controls.js:3694
 msgid "Apply Cursor On"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3322
+#: src/admin/pages/cursor/multiple/controls.js:3728
 msgid "Search and select pages where this cursor should appear."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3340
+#: src/admin/pages/cursor/multiple/controls.js:3746
 msgid "Type a CSS selector (e.g. .hero-section, #content) and press Enter to add it."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/controls.js:3354
+#: src/admin/pages/cursor/multiple/controls.js:3760
 msgid "Select from common elements or type custom ones."
 msgstr ""
 
 #: src/admin/pages/cursor/multiple/manager.js:69
-#: src/admin/pages/cursor/multiple/manager.js:530
+#: src/admin/pages/cursor/multiple/manager.js:533
 msgid "Manage Cursor Configurations"
 msgstr ""
 
 #: src/admin/pages/cursor/multiple/manager.js:75
-#: src/admin/pages/cursor/multiple/manager.js:536
+#: src/admin/pages/cursor/multiple/manager.js:539
 msgid "Create multiple cursor configurations for different parts of your website. Each configuration has its own cursor type and display settings."
 msgstr ""
 
 #: src/admin/pages/cursor/multiple/manager.js:121
-#: src/admin/pages/cursor/multiple/manager.js:582
+#: src/admin/pages/cursor/multiple/manager.js:585
 msgid "Add New Configuration"
 msgstr ""
 
 #: src/admin/pages/cursor/multiple/manager.js:195
-#: src/admin/pages/cursor/multiple/manager.js:701
+#: src/admin/pages/cursor/multiple/manager.js:704
 msgid "Elements:"
 msgstr ""
 
@@ -1727,11 +1814,11 @@ msgstr ""
 msgid "Disable Multiple Cursors"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/manager.js:676
+#: src/admin/pages/cursor/multiple/manager.js:679
 msgid "Selectors:"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/manager.js:791
+#: src/admin/pages/cursor/multiple/manager.js:794
 msgid "No cursor configurations saved. Click \"Add New Configuration\" to create one."
 msgstr ""
 

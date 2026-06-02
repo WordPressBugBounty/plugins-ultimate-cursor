@@ -1,5 +1,5 @@
 === Ultimate Cursor – Interactive and Animated Cursor and Background Effects Toolkit ===
-Version: 2.2.1
+Version: 2.2.2
 Author: WPXERO
 Author URI: https://wpxero.com/plugins/ultimate-cursor
 Donate link: https://wpxero.com/plugins/ultimate-cursor/pricing
@@ -7,7 +7,7 @@ Contributors: WPXERO
 Tags: cursor, mouse, pointer, custom cursor, cursor plugin
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 2.2.1
+Stable tag: 2.2.2
 Requires PHP: 7.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -141,22 +141,32 @@ Yes! We offer a 14-day money-back guarantee if you're not completely satisfied w
 Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configurations, element-specific targeting, advanced animations, premium background effects, and priority support. Transform your website with premium cursor and background effects that boost engagement and conversion rates!
 
 == Screenshots ==
-1. **Features Overview** 📊 – Text, Image, Icon, Shapes, Preset, Animated Cursor, and Background Effects options all available in one plugin.
-2. **Multiple Cursors Configurations** - Apply different cursor styles to different parts of your website.
-3. **Splash Cursor Preview** 💥 – Add eye-catching splash effects that activate on hover interactions.
-4. **SnowFlake Cursor Preview** ❄️ – Delight visitors with snowflake particles that follow cursor movement.
-5. **Trail Cursor Preview** ✨ – Create elegant trailing effects that follow cursor movement.
-6. **Rainbow Cursor Preview** 🌈 – Add colorful rainbow trails that make your cursor visually striking.
-7. **Bubble Cursor Preview** 🫧 – Implement playful bubble animations that float around your cursor.
-8. **Character Cursor Preview** 🔤 – Use custom characters that follow your cursor for unique visual effects.
-9. **Shapes Cursor Preview** 🔷 – Choose from 5 modern geometric cursor styles for visual enhancement.
-10. **Cursor Type Image** 🖼️ – Replace the default pointer with any custom image for a branded look.
-11. **Cursor Type Icon** 🖼️ – Replace the default pointer with any custom icon from your library.
-12. **Cursor Type Text** ✏️ – Use stylish text as your cursor for a sleek, modern touch.
-13. **Antigravity Background Effect** 🌌 – Add floating particle animations that create depth and movement.
-14. **Pillar Background Effect** 🏛️ – Implement stunning vertical pillar animations for dynamic visual impact.
+1. **General Settings — Select Cursor Type** 📊 – Choose Text, Image, Icon, Shapes, or Animated cursor from one central dashboard.
+2. **Multiple Cursor Configurations** 🎯 – Create and manage different cursor setups for pages, selectors, and elements (Pro).
+3. **Text Cursor Settings** ✏️ – Replace the pointer with custom text and preview it live in the settings panel.
+4. **Image Cursor Settings** 🖼️ – Upload any image as your cursor with a real-time preview.
+5. **Icon Cursor Library** 🎨 – Pick from a built-in icon library and see your selection instantly in the preview.
+6. **Shapes Cursor Selection** 🔷 – Choose from geometric shape cursors with dot, circle, star, arrow, and more.
+7. **Splash Cursor Settings** 💥 – Configure fluid splash size and force with an interactive live preview.
+8. **Bubble Cursor Settings** 🫧 – Add playful bubble animations that follow cursor movement.
+9. **Character Cursor Settings** 🔤 – Display custom characters or words that trail behind the cursor (Pro).
+10. **Snowflake Cursor Settings** ❄️ – Select emoji characters for animated snowflake-style cursor trails (Pro).
+11. **Rainbow Cursor Settings** 🌈 – Customize rainbow trail length and size for a colorful cursor effect (Pro).
+12. **Trail Cursor Settings** ✨ – Set a custom emoji for an animated cursor trail with live preview (Pro).
+13. **Click Spark Settings** ⚡ – Adjust spark size and count for click-triggered cursor effects.
+14. **Click Particles Settings** 🎆 – Fine-tune particle speed for burst effects on click.
+15. **Antigravity Particles Background** 🌌 – Customize particle colors, shape, and density with a live animation preview.
+16. **Light Pillar Background** 🏛️ – Configure pillar colors and width for a glowing vertical light effect.
+17. **Multiple Background Configurations** 🎬 – Manage separate background animations for different areas of your site (Pro).
 
 == Changelog ==
+
+#### 2.2.2 [June 2, 2026]
+- Added: Image cursor hotspot (Pro) — set which point of the image aligns with the real mouse position, like the tip of an arrow
+- Added: Visual hotspot picker with click/drag positioning on the cursor image
+- Added: Hotspot presets (center, corners) plus custom X/Y percentage controls and a 3×3 anchor grid
+- Improved: Major frontend cursor performance improvements with a modular architecture refactor
+- Improved: Image and bubble cursor rendering and movement smoothness
 
 #### 2.2.1 [May 15, 2026]
 - Improved: Compatibility with latest WordPress and PHP versions.

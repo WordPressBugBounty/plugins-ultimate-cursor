@@ -257,6 +257,24 @@
          "Counter Clockwise": [
             ""
          ],
+         "Center": [
+            ""
+         ],
+         "Top Left": [
+            ""
+         ],
+         "Top Right": [
+            ""
+         ],
+         "Bottom Left": [
+            ""
+         ],
+         "Bottom Right": [
+            ""
+         ],
+         "Custom": [
+            ""
+         ],
          "Entire Website": [
             ""
          ],
@@ -701,6 +719,12 @@
          "Select Cursor Type": [
             ""
          ],
+         "Cursor image hotspot position": [
+            ""
+         ],
+         "Cursor preview": [
+            ""
+         ],
          "Need Multiple Cursors?": [
             ""
          ],
@@ -747,6 +771,42 @@
             ""
          ],
          "Pro": [
+            ""
+         ],
+         "Top Center": [
+            ""
+         ],
+         "Middle Left": [
+            ""
+         ],
+         "Middle Right": [
+            ""
+         ],
+         "Bottom Center": [
+            ""
+         ],
+         "Cursor Hotspot": [
+            ""
+         ],
+         "Set which point of the image aligns with the real mouse position — like the tip of an arrow.": [
+            ""
+         ],
+         "Hotspot Position": [
+            ""
+         ],
+         "Choose which point of the image follows the mouse. Upgrade to Pro to unlock.": [
+            ""
+         ],
+         "Quick position": [
+            ""
+         ],
+         "X (%)": [
+            ""
+         ],
+         "Y (%)": [
+            ""
+         ],
+         "Reset to center": [
             ""
          ],
          "Type": [
