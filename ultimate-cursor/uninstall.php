@@ -23,10 +23,11 @@ delete_transient('_ultimate_cursor_welcome_screen_activation_redirect');
 
 // For multisite installations, delete options from all sites
 if (is_multisite()) {
-	global $wpdb;
-
-	// Get all blog IDs
-	$ultimate_cursor_blog_ids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
+	// Get all blog IDs via the core API (avoids a direct, uncached DB query).
+	$ultimate_cursor_blog_ids = get_sites(array(
+		'fields' => 'ids',
+		'number' => 0,
+	));
 
 	foreach ($ultimate_cursor_blog_ids as $ultimate_cursor_blog_id) {
 		switch_to_blog($ultimate_cursor_blog_id);

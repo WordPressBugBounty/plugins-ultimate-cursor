@@ -2,14 +2,14 @@
 # This file is distributed under the GPL3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Cursor – Interactive and Animated Cursor and Background Effects Toolkit 2.2.2\n"
+"Project-Id-Version: Ultimate Cursor – Interactive and Animated Cursor and Background Effects Toolkit 2.2.3\n"
 "Report-Msgid-Bugs-To: https://github.com/WPXERO/ultimate-cursor/issues\n"
-"Last-Translator: Lazy Blocks Team\n"
+"Last-Translator: WPXERO\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-02T15:17:30+00:00\n"
+"POT-Creation-Date: 2026-06-27T15:45:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ultimate-cursor\n"
@@ -93,90 +93,90 @@ msgstr ""
 msgid "Discussions"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:89
+#: classes/class-dashboard-widget.php:91
 msgid "Multiple Cursor & Background Effects Configurations"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:90
+#: classes/class-dashboard-widget.php:92
 msgid "Element-Specific Cursors & Background Effects"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:91
+#: classes/class-dashboard-widget.php:93
 msgid "Custom Cursor & Background Effects for Specific Pages"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:92
+#: classes/class-dashboard-widget.php:94
 #: src/utils/ProFeaturesTable.js:83
 msgid "Advanced Animation Options"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:93
+#: classes/class-dashboard-widget.php:95
 msgid "Priority Support"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:103
+#: classes/class-dashboard-widget.php:105
 msgid "Ultimate Cursor — Halloween Sale 🎃"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:104
+#: classes/class-dashboard-widget.php:106
 msgid "Halloween Sale — Ultimate Cursor Pro"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:105
+#: classes/class-dashboard-widget.php:107
 msgid "Unlock spooky-good premium cursor effects, advanced customisation & priority support this Halloween!"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:106
-#: classes/class-dashboard-widget.php:125
+#: classes/class-dashboard-widget.php:108
+#: classes/class-dashboard-widget.php:127
 msgid "Grab 25% OFF"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:122
+#: classes/class-dashboard-widget.php:124
 msgid "Ultimate Cursor — Black Friday Sale 🔥"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:123
+#: classes/class-dashboard-widget.php:125
 msgid "Black Friday Sale — Ultimate Cursor Pro"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:124
+#: classes/class-dashboard-widget.php:126
 msgid "The biggest sale of the year! Unlock 10+ premium cursor effects, advanced customisation & priority support."
 msgstr ""
 
-#: classes/class-dashboard-widget.php:152
+#: classes/class-dashboard-widget.php:154
 msgid "Ultimate Cursor — Limited Offer 🚀"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:153
+#: classes/class-dashboard-widget.php:155
 msgid "Limited Time Offer — Ultimate Cursor Pro"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:154
+#: classes/class-dashboard-widget.php:156
 msgid "Upgrade to Ultimate Cursor Pro — premium effects, advanced customisation & priority support."
 msgstr ""
 
-#: classes/class-dashboard-widget.php:155
+#: classes/class-dashboard-widget.php:157
 msgid "Get Pro — 20% OFF"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:255
-#: classes/class-dashboard-widget.php:377
+#: classes/class-dashboard-widget.php:257
+#: classes/class-dashboard-widget.php:379
 msgid "Dismiss for 30 days"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:284
+#: classes/class-dashboard-widget.php:286
 msgid "Ends in:"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:289
+#: classes/class-dashboard-widget.php:291
 msgid "Use coupon:"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:292
+#: classes/class-dashboard-widget.php:294
 msgid "Copied!"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:933
+#: classes/class-dashboard-widget.php:935
 msgid "Ended"
 msgstr ""
 

@@ -17,20 +17,19 @@
 	"scripts": {
 		"dev": "wp-scripts start",
 		"build": "wp-scripts build",
-		"build:prod": "npm run make-pot && npm run make-json && npm run build && npm run plugin-zip",
+		"build:prod": "npm run build && npm run make-pot && npm run make-json && npm run plugin-zip",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"lint:php": "composer run phpcs",
-		"make-pot": "wp i18n make-pot ./ ./languages/ultimate-cursor.pot --skip-audit --exclude=vendor,vendors,tests,node_modules,build,dist-zip --headers='{\"Last-Translator\":\"Lazy Blocks Team\",\"Report-Msgid-Bugs-To\":\"https://github.com/WPXERO/ultimate-cursor/issues\"}'",
-		"make-json": "po2json ./languages/ultimate-cursor.pot ./languages/ultimate-cursor.json --format=jed1.x --pretty --domain=ultimate-cursor",
+		"make-pot": "wp i18n make-pot ./ ./languages/ultimate-cursor.pot --skip-audit --domain=ultimate-cursor --exclude=vendor,vendors,tests,node_modules,build,dist-zip --headers='{\"Last-Translator\":\"WPXERO\",\"Report-Msgid-Bugs-To\":\"https://github.com/WPXERO/ultimate-cursor/issues\"}'",
+		"make-json": "wp i18n make-json ./languages --no-purge && node bin/merge-script-translations.js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip"
 	},
   "devDependencies": {
     "@wordpress/scripts": "^31.5.0",
     "ajv": "^8.12.0",
-    "ajv-keywords": "^5.1.0",
-    "po2json": "^0.4.5"
+    "ajv-keywords": "^5.1.0"
   },
 	"dependencies": {
 		"@react-three/fiber": "^8.17.10",

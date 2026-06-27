@@ -126,6 +126,13 @@ class Ultimate_Cursor_Assets {
 				)
 			);
 
+			// Load JS translations for any __() strings rendered on the frontend.
+			wp_set_script_translations(
+				'ultimate-cursor-frontend',
+				'ultimate-cursor',
+				ultimate_cursor()->plugin_path . 'languages'
+			);
+
 			// CRITICAL: Inject public path BEFORE the main script loads
 			// This ensures webpack knows where to load dynamic chunks from
 			// even when the main script is cached/minified by WP Rocket, LiteSpeed, etc.
@@ -234,6 +241,13 @@ class Ultimate_Cursor_Assets {
 			)
 		);
 
+		// Load JS translations for any __() strings rendered by the background runtime.
+		wp_set_script_translations(
+			'ultimate-cursor-frontend-background',
+			'ultimate-cursor',
+			ultimate_cursor()->plugin_path . 'languages'
+		);
+
 		// Inject public path for chunk loading
 		$public_path_script = sprintf(
 			'window.__ultimateCursorBgPublicPath = %s;',
@@ -273,8 +287,8 @@ class Ultimate_Cursor_Assets {
 		}
 
 		$pages = array_map('trim', explode(',', $pages_string));
-		$current_url = $_SERVER['REQUEST_URI'];
-		$current_slug = trim(parse_url($current_url, PHP_URL_PATH), '/');
+		$current_url = isset($_SERVER['REQUEST_URI']) ? esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])) : '';
+		$current_slug = trim(wp_parse_url($current_url, PHP_URL_PATH), '/');
 
 		foreach ($pages as $page) {
 			$page = trim($page, '/');
@@ -330,6 +344,13 @@ class Ultimate_Cursor_Assets {
 			$asset_data['dependencies'],
 			$asset_data['version'],
 			true
+		);
+
+		// Load JS translations so the React dashboard's __() strings are translatable.
+		wp_set_script_translations(
+			'ultimate-cursor-admin',
+			'ultimate-cursor',
+			ultimate_cursor()->plugin_path . 'languages'
 		);
 
 		// Pass the cursor images

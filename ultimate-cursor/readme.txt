@@ -1,18 +1,18 @@
 === Ultimate Cursor – Interactive and Animated Cursor and Background Effects Toolkit ===
-Version: 2.2.2
+Version: 2.2.3
 Author: WPXERO
 Author URI: https://wpxero.com/plugins/ultimate-cursor
 Donate link: https://wpxero.com/plugins/ultimate-cursor/pricing
 Contributors: WPXERO
-Tags: cursor, mouse, pointer, custom cursor, cursor plugin
+Tags: custom cursor, animated cursor, mouse cursor, cursor effects, background effects
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 2.2.2
+Stable tag: 2.2.3
 Requires PHP: 7.4
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-**Enhance your site with Ultimate Cursor Plugin—customize your cursor pointer with icons, text & images, plus stunning background effects.**✅
+**Custom cursor plugin for WordPress: add animated mouse cursors with icons, text & images, plus stunning background effects. No code needed.**✅
 
 == Description ==
 
@@ -160,6 +160,12 @@ Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configur
 17. **Multiple Background Configurations** 🎬 – Manage separate background animations for different areas of your site (Pro).
 
 == Changelog ==
+
+#### 2.2.3 [June 27, 2026]
+- Added: Full translation (i18n) support for the React-based dashboard — every interface string is now translatable, including code-split components and frontend effects
+- Added: Translation-ready build pipeline with an updated .pot template and language files
+- Improved: Hardened the codebase to pass WordPress Plugin Check — added nonce/capability safeguards, output escaping, and input sanitization
+- Fixed: Replaced a direct database call and the deprecated parse_url() with WordPress-native functions for better reliability and cleaner multisite uninstall
 
 #### 2.2.2 [June 2, 2026]
 - Added: Image cursor hotspot (Pro) — set which point of the image aligns with the real mouse position, like the tip of an arrow

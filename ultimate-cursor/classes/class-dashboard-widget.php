@@ -80,7 +80,9 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 */
 	private function get_campaign() {
 		// Allow testing via URL parameter.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview toggle gated by capability check, no data is processed.
 		$test_halloween = isset($_GET['halloween']) && current_user_can('manage_options');
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview toggle gated by capability check, no data is processed.
 		$test_black_friday = isset($_GET['black_friday']) && current_user_can('manage_options');
 		$now  = current_time('Y-m-d');
 		$year = current_time('Y');
@@ -245,9 +247,9 @@ class Ultimate_Cursor_Dashboard_Widget {
 			return;
 		}
 		$nonce = wp_create_nonce('uc_dismiss_promo_widget');
-		$campaign_class = 'uc-campaign-' . esc_attr($c['key']);
+		$campaign_class = 'uc-campaign-' . $c['key'];
 ?>
-		<div class="uc-promo-widget <?php echo $campaign_class; ?>"
+		<div class="uc-promo-widget <?php echo esc_attr($campaign_class); ?>"
 			style="--uc-accent:<?php echo esc_attr($c['accent']); ?>;--uc-accent-secondary:<?php echo esc_attr($c['accent_secondary']); ?>;background:<?php echo esc_attr($c['gradient']); ?>">
 
 			<div class="uc-pw-glow"></div>
@@ -336,10 +338,10 @@ class Ultimate_Cursor_Dashboard_Widget {
 
 		$notice_id     = 'uc-promo-notice-' . $c['key'] . '-' . current_time('Y');
 		$nonce          = wp_create_nonce('uc_dismiss_promo_notice');
-		$campaign_class = 'uc-campaign-' . esc_attr($c['key']);
+		$campaign_class = 'uc-campaign-' . $c['key'];
 	?>
 		<div id="<?php echo esc_attr($notice_id); ?>"
-			class="notice uc-promo-notice <?php echo $campaign_class; ?>"
+			class="notice uc-promo-notice <?php echo esc_attr($campaign_class); ?>"
 			style="--uc-accent:<?php echo esc_attr($c['accent']); ?>;--uc-accent-secondary:<?php echo esc_attr($c['accent_secondary']); ?>;background:<?php echo esc_attr($c['gradient']); ?>"
 			data-campaign="<?php echo esc_attr($c['key']); ?>"
 			data-nonce="<?php echo esc_attr($nonce); ?>">

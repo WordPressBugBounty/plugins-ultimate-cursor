@@ -4,7 +4,7 @@
  * Plugin Name:                 Ultimate Cursor – Interactive and Animated Cursor and Background Effects Toolkit
  * Plugin URI:                  https://wordpress.org/plugins/ultimate-cursor
  * Description:                 Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀
- * Version:                     2.2.2
+ * Version:                     2.2.3
  * Author:                      WPXERO
  * Author URI:                  https://wpxero.com/plugins/ultimate-cursor
  * Requires at least:           6.0
@@ -12,6 +12,7 @@
  * License:                     GPL3
  * License URI:                 http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:                 ultimate-cursor
+ * Domain Path:                 /languages
  */
 
 
@@ -20,7 +21,7 @@ if (! defined('ABSPATH')) {
 }
 
 if (! defined('UCA_VERSION')) {
-	define('UCA_VERSION', '2.2.2');
+	define('UCA_VERSION', '2.2.3');
 }
 
 
@@ -104,7 +105,8 @@ class UltimateCursor {
 			// Skip Freemius init during plugin upgrade/install to prevent memory exhaustion.
 			if (
 				(defined('WP_INSTALLING') && WP_INSTALLING) ||
-				(isset($_REQUEST['action']) && in_array($_REQUEST['action'], array('upload-plugin', 'update-plugin', 'delete-plugin'), true))
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check of the core upgrader action to skip Freemius init, no data is processed.
+				(isset($_REQUEST['action']) && in_array(sanitize_text_field(wp_unslash($_REQUEST['action'])), array('upload-plugin', 'update-plugin', 'delete-plugin'), true))
 			) {
 				return $this->freemius;
 			}
@@ -143,6 +145,7 @@ class UltimateCursor {
 				} catch (Exception $e) {
 					// Log error but don't break the plugin
 					if (defined('WP_DEBUG') && WP_DEBUG) {
+						// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- Error logging gated behind WP_DEBUG for diagnostics only.
 						error_log('Ultimate Cursor Freemius Error: ' . $e->getMessage());
 					}
 				}
@@ -217,6 +220,7 @@ class UltimateCursor {
 			$result = $fs->can_use_premium_code();
 		} catch (\Exception $e) {
 			if (defined('WP_DEBUG') && WP_DEBUG) {
+				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- Error logging gated behind WP_DEBUG for diagnostics only.
 				error_log('Ultimate Cursor: Premium validation error - ' . $e->getMessage());
 			}
 			$result = false;
