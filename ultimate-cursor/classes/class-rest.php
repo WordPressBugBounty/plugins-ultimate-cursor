@@ -6,7 +6,7 @@
  * @package ultimate cursor
  */
 
-if (! defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -25,7 +25,7 @@ class Ultimate_Cursor_Rest extends WP_REST_Controller {
 	 * Get instance
 	 */
 	public static function instance() {
-		if (is_null(self::$instance)) {
+		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -48,7 +48,7 @@ class Ultimate_Cursor_Rest extends WP_REST_Controller {
 	 * Ultimate_Cursor_Rest constructor.
 	 */
 	private function __construct() {
-		add_action('rest_api_init', [$this, 'register_routes']);
+		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 	}
 
 	/**
@@ -57,89 +57,109 @@ class Ultimate_Cursor_Rest extends WP_REST_Controller {
 	public function register_routes() {
 		$namespace = $this->namespace . $this->version;
 
+		$settings_args = array(
+			'settings' => array(
+				'description' => __( 'Settings object to merge into the stored option.', 'ultimate-cursor' ),
+				'type'        => 'object',
+				'required'    => true,
+			),
+		);
+
 		// Update Settings.
 		register_rest_route(
 			$namespace,
 			'/update_settings/',
-			[
-				'methods'             => ['POST'],
-				'callback'            => [$this, 'update_settings'],
-				'permission_callback' => [$this, 'update_settings_permission'],
-			]
+			array(
+				'methods'             => array( 'POST' ),
+				'callback'            => array( $this, 'update_settings' ),
+				'permission_callback' => array( $this, 'update_settings_permission' ),
+				'args'                => $settings_args,
+			)
 		);
 
 		// Update Background Settings.
 		register_rest_route(
 			$namespace,
 			'/update_background_settings/',
-			[
-				'methods'             => ['POST'],
-				'callback'            => [$this, 'update_background_settings'],
-				'permission_callback' => [$this, 'update_settings_permission'],
-			]
+			array(
+				'methods'             => array( 'POST' ),
+				'callback'            => array( $this, 'update_background_settings' ),
+				'permission_callback' => array( $this, 'update_settings_permission' ),
+				'args'                => $settings_args,
+			)
 		);
 	}
 
 	/**
 	 * Get edit options permissions.
 	 *
-	 * @return bool
+	 * @return bool|WP_Error
 	 */
 	public function update_settings_permission() {
-		if (! current_user_can('manage_options')) {
-			return $this->error('user_dont_have_permission', __('User don\'t have permissions to change options.', 'ultimate-cursor'), true);
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return new WP_Error(
+				'rest_forbidden',
+				__( 'You do not have permission to change these options.', 'ultimate-cursor' ),
+				array( 'status' => rest_authorization_required_code() )
+			);
 		}
 
 		return true;
 	}
 
-
 	/**
 	 * Update Settings.
+	 *
+	 * Input runs the schema-allowlist + premium-input-gate pipeline in
+	 * Ultimate_Cursor_Settings_Schema::prepare_for_storage(). Unknown keys
+	 * are dropped; premium fields are stripped from the payload (not from
+	 * storage) when no valid license exists, so stored pro configuration
+	 * stays dormant across a license lapse instead of being destroyed.
 	 *
 	 * @param WP_REST_Request $req  request object.
 	 *
 	 * @return mixed
 	 */
-	public function update_settings(WP_REST_Request $req) {
-		$new_settings = $req->get_param('settings');
+	public function update_settings( WP_REST_Request $req ) {
+		$new_settings = $req->get_param( 'settings' );
 
-		if (is_array($new_settings)) {
-			// SERVER-SIDE PREMIUM GATE: Strip premium-only settings if no valid license.
-			// This prevents bypassing client-side UI restrictions via direct API calls.
-			$new_settings = UltimateCursor::sanitize_premium_settings($new_settings);
+		if ( is_array( $new_settings ) ) {
+			$merged = Ultimate_Cursor_Settings_Schema::prepare_for_storage(
+				$new_settings,
+				get_option( 'ultimate_cursor_settings', array() ),
+				'cursor'
+			);
 
-			$current_settings = get_option('ultimate_cursor_settings', []);
-			$merged = array_merge($current_settings, $new_settings);
-
-			// Double-check: sanitize the final merged result as well,
-			// in case existing DB values contained premium fields that should now be blocked.
-			$merged = UltimateCursor::sanitize_premium_settings($merged);
-
-			update_option('ultimate_cursor_settings', $merged);
+			update_option( 'ultimate_cursor_settings', $merged );
 		}
 
-		return $this->success(true);
+		return $this->success( true );
 	}
 
 
 	/**
 	 * Update Background Settings.
 	 *
+	 * Same pipeline as update_settings() — see there for the gating rationale.
+	 *
 	 * @param WP_REST_Request $req  request object.
 	 *
 	 * @return mixed
 	 */
-	public function update_background_settings(WP_REST_Request $req) {
-		$new_settings = $req->get_param('settings');
+	public function update_background_settings( WP_REST_Request $req ) {
+		$new_settings = $req->get_param( 'settings' );
 
-		if (is_array($new_settings)) {
-			$current_settings = get_option('ultimate_cursor_background_settings', []);
-			$merged = array_merge($current_settings, $new_settings);
-			update_option('ultimate_cursor_background_settings', $merged);
+		if ( is_array( $new_settings ) ) {
+			$merged = Ultimate_Cursor_Settings_Schema::prepare_for_storage(
+				$new_settings,
+				get_option( 'ultimate_cursor_background_settings', array() ),
+				'background'
+			);
+
+			update_option( 'ultimate_cursor_background_settings', $merged );
 		}
 
-		return $this->success(true);
+		return $this->success( true );
 	}
 
 	/**
@@ -148,12 +168,12 @@ class Ultimate_Cursor_Rest extends WP_REST_Controller {
 	 * @param mixed $response response data.
 	 * @return mixed
 	 */
-	public function success($response) {
+	public function success( $response ) {
 		return new WP_REST_Response(
-			[
+			array(
 				'success'  => true,
 				'response' => $response,
-			],
+			),
 			200
 		);
 	}
@@ -166,18 +186,18 @@ class Ultimate_Cursor_Rest extends WP_REST_Controller {
 	 * @param boolean $true_error use true error response to stop the code processing.
 	 * @return mixed
 	 */
-	public function error($code, $response, $true_error = false) {
-		if ($true_error) {
-			return new WP_Error($code, $response, ['status' => 401]);
+	public function error( $code, $response, $true_error = false ) {
+		if ( $true_error ) {
+			return new WP_Error( $code, $response, array( 'status' => 401 ) );
 		}
 
 		return new WP_REST_Response(
-			[
+			array(
 				'error'      => true,
 				'success'    => false,
 				'error_code' => $code,
 				'response'   => $response,
-			],
+			),
 			401
 		);
 	}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="140px" height="140px" viewBox="0 0 140 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Seal badge cursor shape -->
+    <title>Seal Badge</title>
+    <desc>Scalloped seal badge cursor shape</desc>
+    <defs></defs>
+    <g id="Seal-Badge" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="20" transform="translate(28.000000, 28.000000)">
+            <polygon id="Seal-bg" fill="#E5E5E5" stroke="#2A2A2A" stroke-width="3" points="78 42 67.2 50.6 72.2 62.9 59.3 62.9 55 75.1 42 67.2 29 75.1 24.7 62.9 11.8 62.9 16.8 50.6 6 42 16.8 33.4 11.8 21.1 24.7 21.1 29 8.9 42 16.8 55 8.9 59.3 21.1 72.2 21.1 67.2 33.4"></polygon>
+            <circle id="Seal-dot" fill="#2A2A2A" cx="42" cy="42" r="6"></circle>
+        </g>
+    </g>
+</svg>

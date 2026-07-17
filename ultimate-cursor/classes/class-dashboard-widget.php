@@ -11,7 +11,7 @@
  * @package ultimate-cursor
  */
 
-if (! defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -33,7 +33,7 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 * Get singleton instance.
 	 */
 	public static function instance() {
-		if (is_null(self::$instance)) {
+		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -44,18 +44,19 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 */
 	private function __construct() {
 		// Never show promos to Pro users.
-		if (class_exists('UltimateCursor') && UltimateCursor::is_premium_active()) {
+		if ( class_exists( 'UltimateCursor' ) && UltimateCursor::is_premium_active() ) {
 			return;
 		}
 
-		add_action('wp_dashboard_setup', [$this, 'add_dashboard_widget']);
-		add_action('admin_enqueue_scripts', [$this, 'enqueue_assets']);
-		add_action('admin_notices', [$this, 'show_promotional_notice']);
-		add_action('wp_ajax_uc_dismiss_promo_widget', [$this, 'ajax_dismiss_widget']);
-		add_action('wp_ajax_uc_dismiss_promo_notice', [$this, 'ajax_dismiss_notice']);
+		add_action( 'wp_dashboard_setup', array( $this, 'add_dashboard_widget' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+		add_action( 'admin_notices', array( $this, 'show_promotional_notice' ) );
+		add_action( 'wp_ajax_uc_dismiss_promo_widget', array( $this, 'ajax_dismiss_widget' ) );
+		add_action( 'wp_ajax_uc_dismiss_promo_notice', array( $this, 'ajax_dismiss_notice' ) );
 	}
 
-	/* ------------------------------------------------------------------
+	/*
+	------------------------------------------------------------------
 	 * Campaign configuration (single source of truth)
 	 * ----------------------------------------------------------------*/
 
@@ -74,101 +75,144 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 *     @type string $accent             Primary accent hex colour.
 	 *     @type string $accent_secondary   Secondary accent hex colour.
 	 *     @type string $gradient           CSS background gradient.
-	 *     @type string $icon               Campaign icon/emoji.
+	 *     @type string $icon               Campaign icon key (see get_icon_svg()).
 	 *     @type array  $features           Feature highlight list.
 	 * }
 	 */
 	private function get_campaign() {
 		// Allow testing via URL parameter.
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview toggle gated by capability check, no data is processed.
-		$test_halloween = isset($_GET['halloween']) && current_user_can('manage_options');
+		$test_halloween = isset( $_GET['halloween'] ) && current_user_can( 'manage_options' );
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview toggle gated by capability check, no data is processed.
-		$test_black_friday = isset($_GET['black_friday']) && current_user_can('manage_options');
-		$now  = current_time('Y-m-d');
-		$year = current_time('Y');
+		$test_black_friday = isset( $_GET['black_friday'] ) && current_user_can( 'manage_options' );
+		$now               = current_time( 'Y-m-d' );
+		$year              = current_time( 'Y' );
 
-		$features = [
-			__('Multiple Cursor & Background Effects Configurations', 'ultimate-cursor'),
-			__('Element-Specific Cursors & Background Effects', 'ultimate-cursor'),
-			__('Custom Cursor & Background Effects for Specific Pages', 'ultimate-cursor'),
-			__('Advanced Animation Options', 'ultimate-cursor'),
-			__('Priority Support', 'ultimate-cursor'),
-		];
+		$features = array(
+			__( 'Multiple Cursor & Background Effects Configurations', 'ultimate-cursor' ),
+			__( 'Element-Specific Cursors & Background Effects', 'ultimate-cursor' ),
+			__( 'Custom Cursor & Background Effects for Specific Pages', 'ultimate-cursor' ),
+			__( 'Advanced Animation Options', 'ultimate-cursor' ),
+			__( 'Priority Support', 'ultimate-cursor' ),
+		);
 
 		// Halloween: October 15 – October 31.
-		if ($test_halloween || ($now >= "$year-10-15" && $now <= "$year-10-31")) {
-			return [
+		if ( $test_halloween || ( $now >= "$year-10-15" && $now <= "$year-10-31" ) ) {
+			return array(
 				'key'              => 'halloween',
 				'discount'         => 25,
 				'end_date'         => "$year-10-31",
 				'coupon'           => 'HALLOWEEN',
-				'widget_title'     => __('Ultimate Cursor — Halloween Sale 🎃', 'ultimate-cursor'),
-				'notice_title'     => __('Halloween Sale — Ultimate Cursor Pro', 'ultimate-cursor'),
-				'description'      => __('Unlock spooky-good premium cursor effects, advanced customisation & priority support this Halloween!', 'ultimate-cursor'),
-				'button_text'      => __('Grab 25% OFF', 'ultimate-cursor'),
+				'widget_title'     => __( 'Ultimate Cursor — Halloween Sale', 'ultimate-cursor' ),
+				'notice_title'     => __( 'Halloween Sale — Ultimate Cursor Pro', 'ultimate-cursor' ),
+				'description'      => __( 'Unlock spooky-good premium cursor effects, advanced customisation & priority support this Halloween!', 'ultimate-cursor' ),
+				'button_text'      => __( 'Grab 25% OFF', 'ultimate-cursor' ),
 				'accent'           => '#ff6600',
 				'accent_secondary' => '#a855f7',
 				'gradient'         => 'linear-gradient(135deg, #1a0a2e 0%, #2d1150 35%, #4c1d95 70%, #7c3aed 100%)',
-				'icon'             => '🎃',
+				'icon'             => 'pumpkin',
 				'features'         => $features,
-			];
+			);
 		}
 
 		// Black Friday / Cyber Monday: November 1 – December 5.
-		if ($test_black_friday || ($now >= "$year-11-01" && $now <= "$year-12-05")) {
-			return [
+		if ( $test_black_friday || ( $now >= "$year-11-01" && $now <= "$year-12-05" ) ) {
+			return array(
 				'key'              => 'black_friday',
 				'discount'         => 25,
 				'end_date'         => "$year-12-05",
 				'coupon'           => 'BFCM',
-				'widget_title'     => __('Ultimate Cursor — Black Friday Sale 🔥', 'ultimate-cursor'),
-				'notice_title'     => __('Black Friday Sale — Ultimate Cursor Pro', 'ultimate-cursor'),
-				'description'      => __('The biggest sale of the year! Unlock 10+ premium cursor effects, advanced customisation & priority support.', 'ultimate-cursor'),
-				'button_text'      => __('Grab 25% OFF', 'ultimate-cursor'),
+				'widget_title'     => __( 'Ultimate Cursor — Black Friday Sale', 'ultimate-cursor' ),
+				'notice_title'     => __( 'Black Friday Sale — Ultimate Cursor Pro', 'ultimate-cursor' ),
+				'description'      => __( 'The biggest sale of the year! Unlock 10+ premium cursor effects, advanced customisation & priority support.', 'ultimate-cursor' ),
+				'button_text'      => __( 'Grab 25% OFF', 'ultimate-cursor' ),
 				'accent'           => '#f43f5e',
 				'accent_secondary' => '#ec4899',
 				'gradient'         => 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #581c87 75%, #7c3aed 100%)',
-				'icon'             => '🔥',
+				'icon'             => 'flame',
 				'features'         => $features,
-			];
+			);
 		}
 
 		// Regular promo windows: 20th of current month to 10th of next month.
-		$day   = (int) current_time('j');
-		$month = (int) current_time('n');
+		$day   = (int) current_time( 'j' );
+		$month = (int) current_time( 'n' );
 
-		if ($day >= 20 || $day <= 10) {
-			if ($day >= 20) {
+		if ( $day >= 20 || $day <= 10 ) {
+			if ( $day >= 20 ) {
 				$next_month = $month === 12 ? 1 : $month + 1;
 				$next_year  = $month === 12 ? (int) $year + 1 : (int) $year;
-				$end_date   = sprintf('%04d-%02d-10', $next_year, $next_month);
+				$end_date   = sprintf( '%04d-%02d-10', $next_year, $next_month );
 			} else {
-				$end_date = sprintf('%s-%02d-10', $year, $month);
+				$end_date = sprintf( '%s-%02d-10', $year, $month );
 			}
 
-			return [
+			return array(
 				'key'              => 'regular',
 				'discount'         => 20,
 				'end_date'         => $end_date,
 				'coupon'           => 'UNLOCKPRO',
-				'widget_title'     => __('Ultimate Cursor — Limited Offer 🚀', 'ultimate-cursor'),
-				'notice_title'     => __('Limited Time Offer — Ultimate Cursor Pro', 'ultimate-cursor'),
-				'description'      => __('Upgrade to Ultimate Cursor Pro — premium effects, advanced customisation & priority support.', 'ultimate-cursor'),
-				'button_text'      => __('Get Pro — 20% OFF', 'ultimate-cursor'),
+				'widget_title'     => __( 'Ultimate Cursor — Limited Offer', 'ultimate-cursor' ),
+				'notice_title'     => __( 'Limited Time Offer — Ultimate Cursor Pro', 'ultimate-cursor' ),
+				'description'      => __( 'Upgrade to Ultimate Cursor Pro — premium effects, advanced customisation & priority support.', 'ultimate-cursor' ),
+				'button_text'      => __( 'Get Pro — 20% OFF', 'ultimate-cursor' ),
 				'accent'           => '#6366f1',
 				'accent_secondary' => '#818cf8',
 				'gradient'         => 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
-				'icon'             => '🚀',
+				'icon'             => 'rocket',
 				'features'         => $features,
-			];
+			);
 		}
 
 		return null;
 	}
 
-	/* ------------------------------------------------------------------
+	/*
+	------------------------------------------------------------------
 	 * 30-day dismiss helpers (server-side via user meta)
 	 * ----------------------------------------------------------------*/
+
+	/**
+	 * Inline SVG for a campaign icon key.
+	 *
+	 * Emojis render inconsistently (or as tofu boxes) on some OS/browser
+	 * combinations, so campaign icons ship as SVGs drawn in the campaign
+	 * accent color instead.
+	 *
+	 * @param string $key Icon key: 'pumpkin', 'flame', or 'rocket'.
+	 * @return string SVG markup (safe, static; echo through wp_kses with
+	 *                self::get_svg_kses_allowed()).
+	 */
+	private function get_icon_svg( $key ) {
+		$icons = array(
+			'pumpkin' => '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="var(--uc-accent)" aria-hidden="true" focusable="false"><path d="M13.5 4.5c.8-1.4 2-2.2 3.5-2.3l.6 1.9c-1.1.1-2 .6-2.6 1.5 3.9.4 7 3.5 7 8 0 4.7-3.4 8.4-7.6 8.4-.9 0-1.7-.2-2.4-.5-.7.3-1.5.5-2.4.5C5.4 22 2 18.3 2 13.6c0-4.4 3-7.5 6.8-8 1.3-.7 2.9-1.1 4.7-1.1zM12 7.6c-.9 0-1.7 2.7-1.7 6s.8 6 1.7 6 1.7-2.7 1.7-6-.8-6-1.7-6z"/></svg>',
+			'flame'   => '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="var(--uc-accent)" aria-hidden="true" focusable="false"><path d="M12 2c.5 3.5-2.9 5.4-2.9 9a3.4 3.4 0 006.8.3c.7.9 1.1 2 1.1 3.2A5.5 5.5 0 0112 20a5.5 5.5 0 01-5.5-5.5c0-2.3 1.1-3.9 2.2-5.5C9.8 7.4 11.5 5.2 12 2zm5.8 7.2c1.4 1.6 2.2 3.5 2.2 5.3A8 8 0 0112 22a8 8 0 01-8-7.5c0-.2 0-.4 0-.6A7.6 7.6 0 0012 22a7.6 7.6 0 007.6-7.6c0-1.9-.7-3.7-1.8-5.2z"/></svg>',
+			'rocket'  => '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="var(--uc-accent)" aria-hidden="true" focusable="false"><path d="M12 2c3 1.8 5 5.5 5 9.6l2.2 3.3-3.2-.5c-.9 1.4-2.3 2.5-4 3.1-1.7-.6-3.1-1.7-4-3.1l-3.2.5L7 11.6C7 7.5 9 3.8 12 2zm0 5.2a1.9 1.9 0 100 3.8 1.9 1.9 0 000-3.8zM8.5 18.7c-.3 1.2-1.2 2.3-2.7 3.3.4-1.7.8-2.9 1.4-3.8.4.2.8.4 1.3.5zm7 0c.5-.1.9-.3 1.3-.5.6.9 1 2.1 1.4 3.8-1.5-1-2.4-2.1-2.7-3.3z"/></svg>',
+		);
+		return isset( $icons[ $key ] ) ? $icons[ $key ] : '';
+	}
+
+	/**
+	 * Allowed tags/attributes for echoing the campaign icon SVGs.
+	 *
+	 * @return array wp_kses allowed-HTML array.
+	 */
+	private function get_svg_kses_allowed() {
+		return array(
+			'svg'  => array(
+				'width'       => true,
+				'height'      => true,
+				'viewbox'     => true,
+				'fill'        => true,
+				'aria-hidden' => true,
+				'focusable'   => true,
+			),
+			'path' => array(
+				'd'    => true,
+				'fill' => true,
+			),
+		);
+	}
 
 	/**
 	 * Check if a promo type was dismissed within the last 30 days.
@@ -176,20 +220,20 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 * @param string $type 'widget' or 'notice'.
 	 * @return bool
 	 */
-	private function is_dismissed($type) {
+	private function is_dismissed( $type ) {
 		$meta_key  = 'uc_dismissed_promo_' . $type;
-		$dismissed = get_user_meta(get_current_user_id(), $meta_key, true);
+		$dismissed = get_user_meta( get_current_user_id(), $meta_key, true );
 
-		if (empty($dismissed)) {
+		if ( empty( $dismissed ) ) {
 			return false;
 		}
 
 		$dismissed_time = (int) $dismissed;
-		$elapsed_days   = (time() - $dismissed_time) / DAY_IN_SECONDS;
+		$elapsed_days   = ( time() - $dismissed_time ) / DAY_IN_SECONDS;
 
-		if ($elapsed_days >= self::DISMISS_DAYS) {
+		if ( $elapsed_days >= self::DISMISS_DAYS ) {
 			// Expired — remove stale meta and allow display.
-			delete_user_meta(get_current_user_id(), $meta_key);
+			delete_user_meta( get_current_user_id(), $meta_key );
 			return false;
 		}
 
@@ -201,12 +245,13 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 *
 	 * @param string $type 'widget' or 'notice'.
 	 */
-	private function dismiss($type) {
+	private function dismiss( $type ) {
 		$meta_key = 'uc_dismissed_promo_' . $type;
-		update_user_meta(get_current_user_id(), $meta_key, time());
+		update_user_meta( get_current_user_id(), $meta_key, time() );
 	}
 
-	/* ------------------------------------------------------------------
+	/*
+	------------------------------------------------------------------
 	 * Dashboard Widget
 	 * ----------------------------------------------------------------*/
 
@@ -214,23 +259,23 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 * Register the dashboard widget.
 	 */
 	public function add_dashboard_widget() {
-		if (!current_user_can('manage_options')) {
+		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
 
 		$campaign = $this->get_campaign();
-		if (!$campaign) {
+		if ( ! $campaign ) {
 			return;
 		}
 
-		if ($this->is_dismissed('widget')) {
+		if ( $this->is_dismissed( 'widget' ) ) {
 			return;
 		}
 
 		wp_add_dashboard_widget(
 			'ultimate_cursor_promo_widget',
 			$campaign['widget_title'],
-			[$this, 'render_dashboard_widget'],
+			array( $this, 'render_dashboard_widget' ),
 			null,
 			null,
 			'column4',
@@ -243,55 +288,55 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 */
 	public function render_dashboard_widget() {
 		$c = $this->get_campaign();
-		if (!$c) {
+		if ( ! $c ) {
 			return;
 		}
-		$nonce = wp_create_nonce('uc_dismiss_promo_widget');
+		$nonce          = wp_create_nonce( 'uc_dismiss_promo_widget' );
 		$campaign_class = 'uc-campaign-' . $c['key'];
-?>
-		<div class="uc-promo-widget <?php echo esc_attr($campaign_class); ?>"
-			style="--uc-accent:<?php echo esc_attr($c['accent']); ?>;--uc-accent-secondary:<?php echo esc_attr($c['accent_secondary']); ?>;background:<?php echo esc_attr($c['gradient']); ?>">
+		?>
+		<div class="uc-promo-widget <?php echo esc_attr( $campaign_class ); ?>"
+			style="--uc-accent:<?php echo esc_attr( $c['accent'] ); ?>;--uc-accent-secondary:<?php echo esc_attr( $c['accent_secondary'] ); ?>;background:<?php echo esc_attr( $c['gradient'] ); ?>">
 
 			<div class="uc-pw-glow"></div>
 
-			<button type="button" class="uc-pw-dismiss" data-nonce="<?php echo esc_attr($nonce); ?>" title="<?php esc_attr_e('Dismiss for 30 days', 'ultimate-cursor'); ?>">
+			<button type="button" class="uc-pw-dismiss" data-nonce="<?php echo esc_attr( $nonce ); ?>" title="<?php esc_attr_e( 'Dismiss for 30 days', 'ultimate-cursor' ); ?>">
 				<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
 					<path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
 				</svg>
 			</button>
 
 			<div class="uc-pw-header">
-				<span class="uc-pw-icon"><?php echo esc_html($c['icon']); ?></span>
-				<span class="uc-pw-badge"><?php echo esc_html($c['discount']); ?>% OFF</span>
+				<span class="uc-pw-icon"><?php echo wp_kses( $this->get_icon_svg( $c['icon'] ), $this->get_svg_kses_allowed() ); ?></span>
+				<span class="uc-pw-badge"><?php echo esc_html( $c['discount'] ); ?>% OFF</span>
 			</div>
 
-			<p class="uc-pw-desc"><?php echo esc_html($c['description']); ?></p>
+			<p class="uc-pw-desc"><?php echo esc_html( $c['description'] ); ?></p>
 
 			<ul class="uc-pw-features">
-				<?php foreach ($c['features'] as $feature) : ?>
+				<?php foreach ( $c['features'] as $feature ) : ?>
 					<li>
 						<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
 							<path d="M2.5 7l3 3 6-6" stroke="var(--uc-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
 						</svg>
-						<?php echo esc_html($feature); ?>
+						<?php echo esc_html( $feature ); ?>
 					</li>
 				<?php endforeach; ?>
 			</ul>
 
-			<div class="uc-pw-countdown" data-end="<?php echo esc_attr($c['end_date']); ?>">
+			<div class="uc-pw-countdown" data-end="<?php echo esc_attr( $c['end_date'] ); ?>">
 				<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
 					<circle cx="7" cy="7" r="6" stroke="#94a3b8" stroke-width="1.2" />
 					<path d="M7 4v3.5l2.5 1.5" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
 				</svg>
-				<span class="uc-pw-cd-label"><?php esc_html_e('Ends in:', 'ultimate-cursor'); ?></span>
+				<span class="uc-pw-cd-label"><?php esc_html_e( 'Ends in:', 'ultimate-cursor' ); ?></span>
 				<span class="uc-pw-cd-value" data-role="countdown">--</span>
 			</div>
 
 			<div class="uc-pw-coupon">
-				<span class="uc-pw-coupon-label"><?php esc_html_e('Use coupon:', 'ultimate-cursor'); ?></span>
-				<button type="button" class="uc-pw-coupon-code" data-code="<?php echo esc_attr($c['coupon']); ?>">
-					<span class="uc-pw-code-text"><?php echo esc_html($c['coupon']); ?></span>
-					<span class="uc-pw-code-copied"><?php esc_html_e('Copied!', 'ultimate-cursor'); ?></span>
+				<span class="uc-pw-coupon-label"><?php esc_html_e( 'Use coupon:', 'ultimate-cursor' ); ?></span>
+				<button type="button" class="uc-pw-coupon-code" data-code="<?php echo esc_attr( $c['coupon'] ); ?>">
+					<span class="uc-pw-code-text"><?php echo esc_html( $c['coupon'] ); ?></span>
+					<span class="uc-pw-code-copied"><?php esc_html_e( 'Copied!', 'ultimate-cursor' ); ?></span>
 					<svg class="uc-pw-copy-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
 						<rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2" />
 						<path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2" />
@@ -299,17 +344,18 @@ class Ultimate_Cursor_Dashboard_Widget {
 				</button>
 			</div>
 
-			<a href="<?php echo esc_url(self::PRICING_URL); ?>" class="uc-pw-cta" target="_blank" rel="noopener">
-				<?php echo esc_html($c['button_text']); ?>
+			<a href="<?php echo esc_url( self::PRICING_URL ); ?>" class="uc-pw-cta" target="_blank" rel="noopener">
+				<?php echo esc_html( $c['button_text'] ); ?>
 				<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
 					<path d="M3 7h8m0 0L8 4m3 3L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
 				</svg>
 			</a>
 		</div>
-	<?php
+		<?php
 	}
 
-	/* ------------------------------------------------------------------
+	/*
+	------------------------------------------------------------------
 	 * Admin Notice (non-dashboard pages)
 	 * ----------------------------------------------------------------*/
 
@@ -317,50 +363,50 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 * Show a slim promotional admin notice.
 	 */
 	public function show_promotional_notice() {
-		if (!current_user_can('manage_options')) {
+		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
 
 		// Don't show on dashboard — the widget is already there.
 		global $pagenow;
-		if ($pagenow === 'index.php') {
+		if ( $pagenow === 'index.php' ) {
 			return;
 		}
 
 		$c = $this->get_campaign();
-		if (!$c) {
+		if ( ! $c ) {
 			return;
 		}
 
-		if ($this->is_dismissed('notice')) {
+		if ( $this->is_dismissed( 'notice' ) ) {
 			return;
 		}
 
-		$notice_id     = 'uc-promo-notice-' . $c['key'] . '-' . current_time('Y');
-		$nonce          = wp_create_nonce('uc_dismiss_promo_notice');
+		$notice_id      = 'uc-promo-notice-' . $c['key'] . '-' . current_time( 'Y' );
+		$nonce          = wp_create_nonce( 'uc_dismiss_promo_notice' );
 		$campaign_class = 'uc-campaign-' . $c['key'];
-	?>
-		<div id="<?php echo esc_attr($notice_id); ?>"
-			class="notice uc-promo-notice <?php echo esc_attr($campaign_class); ?>"
-			style="--uc-accent:<?php echo esc_attr($c['accent']); ?>;--uc-accent-secondary:<?php echo esc_attr($c['accent_secondary']); ?>;background:<?php echo esc_attr($c['gradient']); ?>"
-			data-campaign="<?php echo esc_attr($c['key']); ?>"
-			data-nonce="<?php echo esc_attr($nonce); ?>">
+		?>
+		<div id="<?php echo esc_attr( $notice_id ); ?>"
+			class="notice uc-promo-notice <?php echo esc_attr( $campaign_class ); ?>"
+			style="--uc-accent:<?php echo esc_attr( $c['accent'] ); ?>;--uc-accent-secondary:<?php echo esc_attr( $c['accent_secondary'] ); ?>;background:<?php echo esc_attr( $c['gradient'] ); ?>"
+			data-campaign="<?php echo esc_attr( $c['key'] ); ?>"
+			data-nonce="<?php echo esc_attr( $nonce ); ?>">
 
 			<div class="uc-pn-glow"></div>
 
 			<div class="uc-pn-inner">
 				<div class="uc-pn-badge-wrap">
-					<span class="uc-pn-icon"><?php echo esc_html($c['icon']); ?></span>
-					<span class="uc-pn-discount"><?php echo esc_html($c['discount']); ?>% OFF</span>
+					<span class="uc-pn-icon"><?php echo wp_kses( $this->get_icon_svg( $c['icon'] ), $this->get_svg_kses_allowed() ); ?></span>
+					<span class="uc-pn-discount"><?php echo esc_html( $c['discount'] ); ?>% OFF</span>
 				</div>
 
 				<div class="uc-pn-content">
-					<strong class="uc-pn-title"><?php echo esc_html($c['notice_title']); ?></strong>
-					<span class="uc-pn-desc"><?php echo esc_html($c['description']); ?></span>
+					<strong class="uc-pn-title"><?php echo esc_html( $c['notice_title'] ); ?></strong>
+					<span class="uc-pn-desc"><?php echo esc_html( $c['description'] ); ?></span>
 				</div>
 
 				<div class="uc-pn-actions">
-					<span class="uc-pn-timer" data-end="<?php echo esc_attr($c['end_date']); ?>">
+					<span class="uc-pn-timer" data-end="<?php echo esc_attr( $c['end_date'] ); ?>">
 						<svg width="12" height="12" viewBox="0 0 14 14" fill="none">
 							<circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
 							<path d="M7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
@@ -368,25 +414,26 @@ class Ultimate_Cursor_Dashboard_Widget {
 						<strong data-role="countdown">--</strong>
 					</span>
 
-					<a href="<?php echo esc_url(self::PRICING_URL); ?>" class="uc-pn-btn" target="_blank" rel="noopener">
-						<?php echo esc_html($c['button_text']); ?>
+					<a href="<?php echo esc_url( self::PRICING_URL ); ?>" class="uc-pn-btn" target="_blank" rel="noopener">
+						<?php echo esc_html( $c['button_text'] ); ?>
 						<svg width="12" height="12" viewBox="0 0 14 14" fill="none">
 							<path d="M3 7h8m0 0L8 4m3 3L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
 						</svg>
 					</a>
 				</div>
 
-				<button type="button" class="uc-pn-dismiss" title="<?php esc_attr_e('Dismiss for 30 days', 'ultimate-cursor'); ?>">
+				<button type="button" class="uc-pn-dismiss" title="<?php esc_attr_e( 'Dismiss for 30 days', 'ultimate-cursor' ); ?>">
 					<svg width="12" height="12" viewBox="0 0 14 14" fill="none">
 						<path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
 					</svg>
 				</button>
 			</div>
 		</div>
-	<?php
+		<?php
 	}
 
-	/* ------------------------------------------------------------------
+	/*
+	------------------------------------------------------------------
 	 * AJAX dismiss handlers (30-day server-side persistence)
 	 * ----------------------------------------------------------------*/
 
@@ -394,13 +441,13 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 * Persist widget dismissal for 30 days.
 	 */
 	public function ajax_dismiss_widget() {
-		check_ajax_referer('uc_dismiss_promo_widget', 'nonce');
+		check_ajax_referer( 'uc_dismiss_promo_widget', 'nonce' );
 
-		if (!current_user_can('manage_options')) {
-			wp_send_json_error('Forbidden', 403);
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( 'Forbidden', 403 );
 		}
 
-		$this->dismiss('widget');
+		$this->dismiss( 'widget' );
 		wp_send_json_success();
 	}
 
@@ -408,38 +455,39 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 * Persist notice dismissal for 30 days.
 	 */
 	public function ajax_dismiss_notice() {
-		check_ajax_referer('uc_dismiss_promo_notice', 'nonce');
+		check_ajax_referer( 'uc_dismiss_promo_notice', 'nonce' );
 
-		if (!current_user_can('manage_options')) {
-			wp_send_json_error('Forbidden', 403);
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( 'Forbidden', 403 );
 		}
 
-		$this->dismiss('notice');
+		$this->dismiss( 'notice' );
 		wp_send_json_success();
 	}
 
-	/* ------------------------------------------------------------------
+	/*
+	------------------------------------------------------------------
 	 * Assets (CSS + JS)
 	 * ----------------------------------------------------------------*/
 
 	/**
 	 * Enqueue inline styles and footer scripts on relevant admin pages.
 	 */
-	public function enqueue_assets($hook) {
-		if (!current_user_can('manage_options')) {
+	public function enqueue_assets( $hook ) {
+		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
 
 		$campaign = $this->get_campaign();
-		if (!$campaign) {
+		if ( ! $campaign ) {
 			return;
 		}
 
 		// Attach inline CSS to an existing core handle.
-		wp_add_inline_style('wp-admin', $this->get_css());
+		wp_add_inline_style( 'wp-admin', $this->get_css() );
 
 		// Print JS in footer.
-		add_action('admin_footer', [$this, 'print_scripts']);
+		add_action( 'admin_footer', array( $this, 'print_scripts' ) );
 	}
 
 	/**
@@ -921,7 +969,7 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 * Minimal JS — handles countdowns, clipboard copy, and dismiss persistence.
 	 */
 	public function print_scripts() {
-	?>
+		?>
 		<script>
 			(function() {
 				/* --- Countdown helper --- */
@@ -932,7 +980,7 @@ class Ultimate_Cursor_Dashboard_Widget {
 						var end = new Date(container.getAttribute('data-end') + 'T23:59:59').getTime();
 						var diff = end - Date.now();
 						if (diff <= 0) {
-							el.textContent = '<?php echo esc_js(__('Ended', 'ultimate-cursor')); ?>';
+							el.textContent = '<?php echo esc_js( __( 'Ended', 'ultimate-cursor' ) ); ?>';
 							return;
 						}
 						var d = Math.floor(diff / 864e5);
@@ -992,7 +1040,7 @@ class Ultimate_Cursor_Dashboard_Widget {
 						}, 300);
 						var nonce = btn.getAttribute('data-nonce');
 						var xhr = new XMLHttpRequest();
-						xhr.open('POST', '<?php echo esc_url(admin_url('admin-ajax.php')); ?>');
+						xhr.open('POST', '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>');
 						xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 						xhr.send('action=uc_dismiss_promo_widget&nonce=' + encodeURIComponent(nonce));
 					});
@@ -1013,7 +1061,7 @@ class Ultimate_Cursor_Dashboard_Widget {
 						var nonce = notice ? notice.getAttribute('data-nonce') : '';
 						if (nonce) {
 							var xhr = new XMLHttpRequest();
-							xhr.open('POST', '<?php echo esc_url(admin_url('admin-ajax.php')); ?>');
+							xhr.open('POST', '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>');
 							xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 							xhr.send('action=uc_dismiss_promo_notice&nonce=' + encodeURIComponent(nonce));
 						}
@@ -1021,7 +1069,7 @@ class Ultimate_Cursor_Dashboard_Widget {
 				});
 			})();
 		</script>
-<?php
+		<?php
 	}
 }
 

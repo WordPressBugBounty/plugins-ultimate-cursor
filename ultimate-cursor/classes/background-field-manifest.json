@@ -1,0 +1,49 @@
+{
+	"$comment": "Single source of truth for the ultimate_cursor_background_settings allowlist. Same structure/rules as cursor-field-manifest.json: 'topLevel' fields exist only on the option root; 'config' fields exist on the root (legacy single-background format) and inside each backgroundConfigurations[] entry. Keep in sync with src/admin/pages/background/types/* defaultConfig blocks and SHARED_DISPLAY_DEFAULTS.",
+	"topLevel": {
+		"enabled": "bool",
+		"backgroundName": "text",
+		"enableMultipleBackgrounds": "bool",
+		"backgroundConfigurations": "configs",
+		"respectReducedMotion": "bool"
+	},
+	"config": {
+		"animationType": "token",
+
+		"scope": "token",
+		"specificPages": "text-long",
+		"cssSelector": "text-long",
+		"backgroundColor": "color",
+		"zIndex": "int",
+		"opacity": "float",
+		"position": "token",
+
+		"particleColor": "color",
+		"particleCount": "int",
+		"particleSize": "float",
+		"particleShape": "token",
+		"particleVariance": "float",
+		"magnetRadius": "float",
+		"ringRadius": "float",
+		"waveSpeed": "float",
+		"waveAmplitude": "float",
+		"lerpSpeed": "float",
+		"autoAnimate": "bool",
+		"rotationSpeed": "float",
+		"depthFactor": "float",
+		"pulseSpeed": "float",
+		"fieldStrength": "float",
+
+		"topColor": "color",
+		"bottomColor": "color",
+		"intensity": "float",
+		"interactive": "bool",
+		"glowAmount": "float",
+		"pillarWidth": "float",
+		"pillarHeight": "float",
+		"noiseIntensity": "float",
+		"mixBlendMode": "token",
+		"pillarRotation": "float",
+		"quality": "token"
+	}
+}

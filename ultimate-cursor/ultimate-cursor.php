@@ -4,7 +4,7 @@
  * Plugin Name:                 Ultimate Cursor – Interactive and Animated Cursor and Background Effects Toolkit
  * Plugin URI:                  https://wordpress.org/plugins/ultimate-cursor
  * Description:                 Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀
- * Version:                     2.2.3
+ * Version:                     2.3.0
  * Author:                      WPXERO
  * Author URI:                  https://wpxero.com/plugins/ultimate-cursor
  * Requires at least:           6.0
@@ -16,12 +16,12 @@
  */
 
 
-if (! defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if (! defined('UCA_VERSION')) {
-	define('UCA_VERSION', '2.2.3');
+if ( ! defined( 'UCA_VERSION' ) ) {
+	define( 'UCA_VERSION', '2.3.0' );
 }
 
 
@@ -32,6 +32,7 @@ if (! defined('UCA_VERSION')) {
 class UltimateCursor {
 	/**
 	 * Freemius instance
+	 *
 	 * @var object
 	 */
 	private $freemius;
@@ -40,7 +41,7 @@ class UltimateCursor {
 	 *
 	 * @var $instance
 	 */
-	private static $instance = null;
+	private static $instance        = null;
 	const VERSION                   = UCA_VERSION;
 	const MINIMUM_ELEMENTOR_VERSION = '3.0.0';
 	const MINIMUM_PHP_VERSION       = '7.0';
@@ -49,7 +50,7 @@ class UltimateCursor {
 	 * Ensures only one instance of this class exists in memory at any one time.
 	 */
 	public static function instance() {
-		if (is_null(self::$instance)) {
+		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
 			self::$instance->init();
 		}
@@ -83,70 +84,68 @@ class UltimateCursor {
 	 * Init options
 	 */
 	public function init() {
-		$this->plugin_path = plugin_dir_path(__FILE__);
-		$this->plugin_url  = plugin_dir_url(__FILE__);
+		$this->plugin_path               = plugin_dir_path( __FILE__ );
+		$this->plugin_url                = plugin_dir_url( __FILE__ );
 		$this->minimum_elementor_version = self::MINIMUM_ELEMENTOR_VERSION;
-		$this->minimum_php_version = self::MINIMUM_PHP_VERSION;
-
+		$this->minimum_php_version       = self::MINIMUM_PHP_VERSION;
 
 		// include helper files.
 		$this->include_dependencies();
 		$this->init_freemius();
-
-		// hooks.
-		add_filter('user_has_cap', [$this, 'user_has_cap'], 10, 4);
 	}
 
 	/**
 	 * Initialize Freemius SDK
 	 */
 	private function init_freemius() {
-		if (!isset($this->freemius)) {
+		if ( ! isset( $this->freemius ) ) {
 			// Skip Freemius init during plugin upgrade/install to prevent memory exhaustion.
 			if (
-				(defined('WP_INSTALLING') && WP_INSTALLING) ||
+				( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) ||
 				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check of the core upgrader action to skip Freemius init, no data is processed.
-				(isset($_REQUEST['action']) && in_array(sanitize_text_field(wp_unslash($_REQUEST['action'])), array('upload-plugin', 'update-plugin', 'delete-plugin'), true))
+				( isset( $_REQUEST['action'] ) && in_array( sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ), array( 'upload-plugin', 'update-plugin', 'delete-plugin' ), true ) )
 			) {
 				return $this->freemius;
 			}
 
 			// Include Freemius SDK
-			if (file_exists(dirname(__FILE__) . '/vendor/freemius/wordpress-sdk/start.php')) {
-				require_once dirname(__FILE__) . '/vendor/freemius/wordpress-sdk/start.php';
+			if ( file_exists( __DIR__ . '/vendor/freemius/wordpress-sdk/start.php' ) ) {
+				require_once __DIR__ . '/vendor/freemius/wordpress-sdk/start.php';
 
 				try {
-					$this->freemius = fs_dynamic_init(array(
-						'id'                  => '19720',
-						'slug'                => 'ultimate-cursor',
-						'premium_slug'        => 'ultimate-cursor-pro',
-						'type'                => 'plugin',
-						'public_key'          => 'pk_fb94765a4f619e83979c2825626c2',
-						'is_premium'          => false,
-						'is_premium_only'     => false,
-						'has_paid_plans'      => true,
-						'is_live'             => true,
-						'is_org_compliant'    => true,
-						'parallel_activation' => array(
-							'enabled'                  => true,
-							'premium_version_basename' => 'ultimate-cursor-pro/ultimate-cursor-pro.php',
-						),
-						'menu'                => array(
-							'slug'        => 'ultimate-cursor',
-							'first-path'  => 'admin.php?page=ultimate-cursor',
-							'support'     => false,
-							'contact'     => false,
-							'pricing'     => true,
-						),
-					));
+					$this->freemius = fs_dynamic_init(
+						array(
+							'id'                  => '19720',
+							'slug'                => 'ultimate-cursor',
+							'premium_slug'        => 'ultimate-cursor-pro',
+							'type'                => 'plugin',
+							'public_key'          => 'pk_fb94765a4f619e83979c2825626c2',
+							'is_premium'          => false,
+							'is_premium_only'     => false,
+							'has_paid_plans'      => true,
+							'is_live'             => true,
+							'is_org_compliant'    => true,
+							'parallel_activation' => array(
+								'enabled'                  => true,
+								'premium_version_basename' => 'ultimate-cursor-pro/ultimate-cursor-pro.php',
+							),
+							'menu'                => array(
+								'slug'       => 'ultimate-cursor',
+								'first-path' => 'admin.php?page=ultimate-cursor',
+								'support'    => false,
+								'contact'    => false,
+								'pricing'    => true,
+							),
+						)
+					);
 
 					// Signal that Freemius SDK is initiated
-					do_action('ultimate_cursor_fs_loaded');
-				} catch (Exception $e) {
+					do_action( 'ultimate_cursor_fs_loaded' );
+				} catch ( Exception $e ) {
 					// Log error but don't break the plugin
-					if (defined('WP_DEBUG') && WP_DEBUG) {
+					if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 						// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- Error logging gated behind WP_DEBUG for diagnostics only.
-						error_log('Ultimate Cursor Freemius Error: ' . $e->getMessage());
+						error_log( 'Ultimate Cursor Freemius Error: ' . $e->getMessage() );
 					}
 				}
 			}
@@ -167,146 +166,64 @@ class UltimateCursor {
 
 
 
-	public function user_has_cap($allcaps, $caps, $args, $user) {
-		if (is_user_logged_in() && in_array('upload_files', $caps)) {
-			$allcaps['upload_files'] = true;
-		}
-		return $allcaps;
-	}
-
 	/**
 	 * Check if the user has a valid premium license.
 	 *
-	 * This is the SINGLE SOURCE OF TRUTH for premium feature gating.
-	 * It verifies BOTH conditions:
-	 *   1. The pro plugin class is loaded (plugin is active)
-	 *   2. Freemius reports a valid license or trial
+	 * Delegates to Ultimate_Cursor_License_Gate — the single source of truth
+	 * for premium feature gating. Kept for backward compatibility.
 	 *
 	 * @return bool True only if pro plugin is active AND license is valid.
 	 */
 	public static function is_premium_active() {
-		// Cache the result to avoid repeated Freemius calls within a single request
-		static $result = null;
-		if ($result !== null) {
-			return $result;
-		}
-
-		// Condition 1: Pro plugin must be active
-		if (!class_exists('Ultimate_Cursor_Pro')) {
-			$result = false;
-			return $result;
-		}
-
-		// Condition 2: Freemius must confirm a valid license
-		try {
-			$fs = null;
-
-			// Try getting Freemius from the pro plugin first
-			if (function_exists('ultimate_cursor_pro_fs')) {
-				$fs = ultimate_cursor_pro_fs();
-			}
-
-			// Fallback to free plugin's Freemius instance
-			if (!$fs && function_exists('ultimate_cursor_fs')) {
-				$fs = ultimate_cursor_fs();
-			}
-
-			if (!$fs) {
-				$result = false;
-				return $result;
-			}
-
-			// can_use_premium_code() covers both paid licenses and trials
-			$result = $fs->can_use_premium_code();
-		} catch (\Exception $e) {
-			if (defined('WP_DEBUG') && WP_DEBUG) {
-				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- Error logging gated behind WP_DEBUG for diagnostics only.
-				error_log('Ultimate Cursor: Premium validation error - ' . $e->getMessage());
-			}
-			$result = false;
-		}
-
-		return $result;
+		return Ultimate_Cursor_License_Gate::is_premium_active();
 	}
 
 	/**
-	 * List of setting keys that are premium-only.
+	 * List of cursor setting keys that are premium-only.
 	 *
-	 * These settings will be stripped/blocked when no valid premium license exists.
+	 * Kept for backward compatibility; the registry lives in Ultimate_Cursor_License_Gate.
 	 *
 	 * @return array
 	 */
 	public static function get_premium_setting_keys() {
-		return array(
-			'enableMultipleCursors',
-			'cursorConfigurations',
-			// Image cursor hotspot (tip alignment) is a premium feature.
-			'imageHotspotPreset',
-			'imageHotspotX',
-			'imageHotspotY',
-		);
+		return Ultimate_Cursor_License_Gate::get_premium_keys( 'cursor' );
 	}
 
 	/**
-	 * List of setting values that are premium-only.
+	 * List of cursor setting values that are premium-only.
 	 *
-	 * Specific field => values that require a premium license.
+	 * Kept for backward compatibility; the registry lives in Ultimate_Cursor_License_Gate.
 	 *
 	 * @return array
 	 */
 	public static function get_premium_setting_values() {
-		return array(
-			'cursorScope' => array('specific-pages', 'css-selectors', 'html-elements'),
-		);
+		$values = array();
+		foreach ( Ultimate_Cursor_License_Gate::get_premium_values( 'cursor' ) as $field => $rule ) {
+			$values[ $field ] = $rule['blocked'];
+		}
+		return $values;
 	}
 
 	/**
-	 * Sanitize settings by stripping premium-only fields if no valid license.
+	 * Sanitize cursor settings by stripping premium-only fields if no valid license.
+	 *
+	 * Delegates to Ultimate_Cursor_License_Gate. Kept for backward compatibility.
 	 *
 	 * @param array $settings The settings array to sanitize.
 	 * @return array Sanitized settings.
 	 */
-	public static function sanitize_premium_settings($settings) {
-		if (!is_array($settings)) {
-			return $settings;
-		}
-
-		// If premium is active, allow everything
-		if (self::is_premium_active()) {
-			return $settings;
-		}
-
-		// Strip premium-only keys
-		$premium_keys = self::get_premium_setting_keys();
-		foreach ($premium_keys as $key) {
-			if (isset($settings[$key])) {
-				unset($settings[$key]);
-			}
-		}
-
-		// Strip premium-only values (revert to defaults)
-		$premium_values = self::get_premium_setting_values();
-		foreach ($premium_values as $field => $blocked_values) {
-			if (isset($settings[$field]) && in_array($settings[$field], $blocked_values, true)) {
-				$settings[$field] = 'entire-website'; // Safe default
-			}
-		}
-
-		// Also sanitize cursorConfigurations inside settings if somehow present
-		if (isset($settings['cursorConfigurations'])) {
-			unset($settings['cursorConfigurations']);
-		}
-
-		// Force disable multiple cursors
-		$settings['enableMultipleCursors'] = false;
-
-		return $settings;
+	public static function sanitize_premium_settings( $settings ) {
+		return Ultimate_Cursor_License_Gate::sanitize( $settings, 'cursor' );
 	}
 
 	/**
 	 * Include dependencies
 	 */
 	private function include_dependencies() {
+		// License gate must load first — admin/assets/rest all depend on it.
+		require_once $this->plugin_path . 'classes/class-license-gate.php';
+		// Settings schema (REST write allowlist) depends on the license gate.
+		require_once $this->plugin_path . 'classes/class-settings-schema.php';
 		require_once $this->plugin_path . 'classes/class-admin.php';
 		require_once $this->plugin_path . 'classes/class-assets.php';
 		require_once $this->plugin_path . 'classes/class-rest.php';
@@ -314,11 +231,11 @@ class UltimateCursor {
 		// CRITICAL: Handles CDN CORS headers and prevents "Delay JS" from breaking the cursor
 		// Do not remove this unless you want to break compatibility with WP Rocket, LiteSpeed, etc.
 		require_once $this->plugin_path . 'classes/class-cache-compatibility.php';
-		if (did_action('elementor/loaded')) {
+		if ( did_action( 'elementor/loaded' ) ) {
 			require_once $this->plugin_path . 'classes/class-elementor.php';
 		}
 
-		if (!class_exists('Ultimate_Cursor_Pro')) {
+		if ( ! class_exists( 'Ultimate_Cursor_Pro' ) ) {
 			require_once $this->plugin_path . 'classes/class-dashboard-widget.php';
 		}
 	}
@@ -328,7 +245,7 @@ class UltimateCursor {
 	 */
 	public function activation_hook() {
 		// Welcome Page Flag.
-		set_transient('_ultimate_cursor_welcome_screen_activation_redirect', true, 30);
+		set_transient( '_ultimate_cursor_welcome_screen_activation_redirect', true, 30 );
 	}
 
 	/**
@@ -337,7 +254,7 @@ class UltimateCursor {
 	 * Settings are preserved so users don't lose configuration when deactivating/reactivating.
 	 */
 	public function deactivation_hook() {
-		delete_transient('_ultimate_cursor_welcome_screen_activation_redirect');
+		delete_transient( '_ultimate_cursor_welcome_screen_activation_redirect' );
 		// Settings are intentionally NOT deleted here - they persist through deactivation
 		// Settings will only be deleted if user uninstalls (deletes) the plugin via uninstall.php
 	}
@@ -352,7 +269,7 @@ function ultimate_cursor() {
 	return UltimateCursor::instance();
 }
 
-add_action('plugins_loaded', 'ultimate_cursor');
+add_action( 'plugins_loaded', 'ultimate_cursor' );
 
 /**
  * Get Freemius instance for free plugin
@@ -378,5 +295,5 @@ function ultimate_cursor_deactivation_hook() {
 	ultimate_cursor()->deactivation_hook();
 }
 
-register_activation_hook(__FILE__, 'ultimate_cursor_activation_hook');
-register_deactivation_hook(__FILE__, 'ultimate_cursor_deactivation_hook');
+register_activation_hook( __FILE__, 'ultimate_cursor_activation_hook' );
+register_deactivation_hook( __FILE__, 'ultimate_cursor_deactivation_hook' );

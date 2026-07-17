@@ -1,144 +1,169 @@
 === Ultimate Cursor – Interactive and Animated Cursor and Background Effects Toolkit ===
-Version: 2.2.3
-Author: WPXERO
-Author URI: https://wpxero.com/plugins/ultimate-cursor
+Contributors: wpxero
 Donate link: https://wpxero.com/plugins/ultimate-cursor/pricing
-Contributors: WPXERO
 Tags: custom cursor, animated cursor, mouse cursor, cursor effects, background effects
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 2.2.3
+Stable tag: 2.3.0
 Requires PHP: 7.4
-License: GPL3
+License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-**Custom cursor plugin for WordPress: add animated mouse cursors with icons, text & images, plus stunning background effects. No code needed.**✅
+Add custom animated mouse cursors with text, icons, images and shapes, plus stunning background effects. Live preview, no code needed.
 
 == Description ==
 
 https://youtu.be/mGOVAyi9ip4
 
-== THE #1 CUSTOM CURSOR & BACKGROUND EFFECTS PLUGIN FOR WORDPRESS WEBSITES POWERING OVER 3000+ ACTIVE SITES WORLDWIDE. ==
+### The custom cursor and background effects toolkit trusted by 3,000+ WordPress websites
 
-Transform your **WordPress website** and captivate your audience with the **Ultimate Cursor Plugin**, the all-in-one solution for creating **custom cursors** and **stunning background effects** that enhance user interactions. This **feature-rich WordPress plugin** allows you to integrate **dynamic icons**, **interactive text**, **engaging images**, and **animated background effects** directly into your website, delivering an unforgettable browsing experience.
+Transform your **WordPress website** and captivate your audience with **Ultimate Cursor**, the all-in-one solution for creating **custom cursors** and **stunning background effects**. Replace the default mouse pointer with **animated cursors, dynamic icons, interactive text, engaging images, and geometric shapes** — and pair them with **animated background effects** — all from a live-preview dashboard, with **no coding required**.
 
-Designed for **all WordPress users**, the Ultimate Cursor Plugin works seamlessly with **Elementor, Gutenberg, WPBakery, and other page builders**. It allows you to add a personalized, interactive mouse cursor and captivating background animations that align with your **brand identity** and boost **website engagement**. Whether you're aiming to improve user navigation, increase interactivity, or add unique visual elements to your website with custom mouse effects and background animations, this plugin offers seamless customization right from the **WordPress interface**—no coding required.
+Ultimate Cursor works with **every theme** and with **Elementor, Gutenberg, WPBakery, Divi, and other page builders**. Whether you want to strengthen your **brand identity**, guide visitors with interactive feedback, or simply make your site unforgettable, you can style, preview, and publish a custom mouse cursor in minutes.
 
-Unlock all features with [Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing).
+Unlock every feature with [Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing).
 
-### 🏆 **WHY PROFESSIONALS CHOOSE ULTIMATE CURSOR PRO**
+### ✨ New in 2.3.0 — Interactive Hover
 
-Professional web designers and developers choose our premium version for:
+Your cursor now **reacts to the page**. When visitors hover links, buttons, or form fields, the cursor can:
 
-✅ **Multiple Cursor Configurations** - Create different cursor effects for different parts of your website
+✅ **Scale up smoothly** with configurable speed and size
 
-✅ **Element-Specific Targeting** - Apply custom cursors to specific elements, buttons, or sections
+✅ **Change color and glow** to highlight the interactive element
 
-✅ **Advanced Animation Controls** - Fine-tune every aspect of your cursor animations
+✅ **Snap magnetically** toward the element's center (Pro)
 
-✅ **Stunning Background Effects** - Add Antigravity, Pillar, and other animated background effects
+✅ **Show contextual labels** — "Open", "Play", "Type" — right inside the cursor (Pro)
 
-✅ **Priority Support** - Get expert help when you need it most
+✅ **Blend with the page** using CSS blend modes, and target your own CSS selectors (Pro)
 
-✅ **Regular Premium Updates** - Access to the latest mouse / cursor effects and features first
+Plus **9 brand-new cursor shapes** (Pro): Blob, Squircle, Sparkle, Seal Badge, Octagon, Pin, Play, Asterisk, and Shield — 25 shapes in total.
 
-### 🎯 **Key Features of Ultimate Cursor**
+### 🎯 Key Features of Ultimate Cursor
 
 * **Advanced Animated Cursor Effects:** Transform your website with cutting-edge cursor animations including **bubble effects, snowflake patterns, splash cursors, character cursors, rainbow trails**, and dynamic cursor follow text functionality.
 
 * **Comprehensive Cursor Type Library:** Access an extensive collection of cursor styles including **image cursors, icon cursors, shaped cursors, click spark effects, click particles**, and countless other animated cursor variations.
 
-* **Interactive Visual Feedback:** Enhance user interactions with **click spark animations, particle burst effects**, and responsive cursor transformations that react to user movements and clicks.
+* **Interactive Visual Feedback:** Enhance user interactions with **interactive hover effects, click spark animations, particle burst effects**, and responsive cursor transformations that react to user movements and clicks.
 
 * **Dynamic Character & Text Integration:** Implement **character cursors** and **cursor follow text** features that create engaging storytelling elements and interactive guidance throughout your website.
 
 * **Stunning Visual Effects:** Deploy **rainbow cursor trails, snowflake animations, bubble cursors**, and splash effects that add magical, eye-catching elements to every mouse movement.
 
-* **Seamless Integration with WordPress Page Builders:** Built to work with **Elementor, Gutenberg, WPBakery**, and other page builders, this plugin allows easy drag-and-drop customization of all advanced cursor animations.
+* **Stunning Icon Library:** Replace the standard cursor with **75+ built-in icons**. From custom designs to classic arrows, create an interactive element that grabs your visitors' attention.
 
-* **Performance-Optimized Animations:** All cursor effects including **splash cursors, click particles, and shaped cursors** are lightweight and optimized to maintain fast loading speeds.
+* **25 Geometric Shape Cursors:** From a minimal dot-and-ring to hearts, stars, blobs, squircles, pins, and shields — modern shape cursors with customizable colors, sizes, and borders.
 
-* **Selective Animation Application:** Apply specific cursor effects like **bubble cursors** to certain sections, **click spark** to buttons, and **rainbow trails** to navigation areas for targeted visual impact.
+* **Seamless Integration with WordPress Page Builders:** Built to work with **Elementor, Gutenberg, WPBakery, Divi**, and other page builders — no template changes needed.
 
-* **Multi-Effect Combinations:** Layer multiple cursor animations simultaneously - combine **snowflake effects with character cursors**, or **splash animations with click particles** for truly unique experiences.
+* **Performance-Optimized Animations:** Effects are code-split and loaded only when used, so your site stays fast. Cursor and background animations are GPU-accelerated for smooth 60fps motion.
 
-* ** Stunning Icon Library**: Replace the standard cursor with a wide array of icons. From custom designs to classic arrows, create an interactive element that grabs your visitors' attention.
+* **Selective Animation Application:** Apply specific cursor effects to **entire site, specific pages, CSS selectors, or HTML elements** for targeted visual impact (Pro).
 
-* **Works for All WordPress Users**: Compatible with **Elementor, Gutenberg, WPBakery, and other page builders**. Customize the cursor directly in your preferred page builder or via the WordPress Customizer.
+* **Accessibility Built In:** Custom cursors are automatically hidden on touch devices, and animations respect the visitor's reduced-motion preference.
 
-* ** Advanced Conditional Logic:** Apply different cursor effects based on specific pages, CSS selectors, HTML elements, user roles, device types, and custom conditions for precise targeting.
+* **Translation Ready:** The full dashboard and frontend are translatable — bring Ultimate Cursor to your audience in any language.
 
-### 🌟 **Background Effects Features**
+### 🌟 Background Effects Features
 
 * **Antigravity Background Effect:** Create mesmerizing floating particle animations that defy gravity, adding depth and movement to your website sections with customizable particle density, speed, and colors.
 
-* **Pillar Background Effect:** Implement stunning vertical pillar animations that create a dynamic, architectural visual effect perfect for hero sections, landing pages, and feature showcases.
+* **Pillar Background Effect:** Implement stunning vertical light pillar animations that create a dynamic, architectural visual effect perfect for hero sections, landing pages, and feature showcases.
 
 * **Customizable Animation Settings:** Fine-tune background effect parameters including animation speed, particle count, color schemes, opacity levels, and interaction behaviors.
 
-* **Section-Specific Application:** Apply different background effects to specific sections, pages, or elements for targeted visual enhancement without affecting overall site performance.
+* **Section-Specific Application:** Apply different background effects to specific sections, pages, or elements for targeted visual enhancement without affecting overall site performance (Pro).
 
 * **Responsive Background Animations:** All background effects are fully responsive and optimized for mobile, tablet, and desktop devices ensuring consistent visual experiences across all screen sizes.
 
-* **Performance-Optimized Rendering:** Background animations are GPU-accelerated and optimized to maintain smooth 60fps performance without impacting page load times or user experience.
+### 🆓 Free vs Pro
 
-### 🔥 **UPGRADE TO PRO AND UNLOCK PREMIUM FEATURES**
+**Free forever:**
 
-Take your website to the next level with [Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing):
+✅ Text, image, icon, shape, and animated cursor types
 
-👉 **Unlimited Cursor Configurations** - Create as many custom cursors as you need
+✅ 5 geometric shape cursors
 
-👉 **Advanced Animation Effects** - Access exclusive premium animations
+✅ Splash, bubble, click spark, click particles, character, and rainbow effects with core controls
 
-👉 **Premium Background Effects** - Unlock all background animation styles and customization options
+✅ Antigravity and Light Pillar background effects
 
-👉 **Element-Specific Targeting** - Apply different cursors to different elements
+✅ Live preview dashboard
 
-👉 **Priority Support** - Get expert help when you need it
+**[Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing) adds:**
 
-👉 **Regular Premium Updates** - Be the first to access new features
+✅ **Interactive Hover** — hover scale, colors, glow, magnetic attraction, cursor labels, blend modes, and custom CSS selector targeting
 
-[**UPGRADE TO PRO TODAY →**](https://wpxero.com/plugins/ultimate-cursor/pricing)
+✅ **Multiple Cursor Configurations** — different cursors for different pages, sections, or elements
+
+✅ **Element-Specific Targeting** — apply cursors to specific pages, CSS selectors, or HTML elements
+
+✅ **20 additional shape cursors** — including the new Blob, Squircle, Sparkle, Pin, and Shield
+
+✅ **Advanced Animation Controls** — fine-tune every effect: trail emojis, snowflake characters, spark colors, particle speed, image hotspots, and more
+
+✅ **Premium Background Controls** — intensity, quality, display position, and multiple background configurations
+
+✅ **Priority Support** — get expert help when you need it most
+
+✅ **14-Day Money-Back Guarantee** — try Pro completely risk-free
+
+[**Upgrade to Ultimate Cursor Pro →**](https://wpxero.com/plugins/ultimate-cursor/pricing)
 
 == Installation ==
 
-1. Upload the `ultimate-cursor` folder to the `/wp-content/plugins/` directory.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Start customizing your cursor and background effects from the **WordPress settings panel** or inside your preferred page builder (**Elementor, Gutenberg, WPBakery, etc.**).
+1. In your WordPress dashboard, go to **Plugins → Add New** and search for **"Ultimate Cursor"**, then click **Install Now** and **Activate**. (Or upload the `ultimate-cursor` folder to `/wp-content/plugins/` and activate it from the Plugins menu.)
+2. Open the new **Ultimate Cursor** menu in your dashboard.
+3. Pick a cursor type — Text, Image, Icon, Shapes, or Animated — style it with the live preview, and click **Save**.
+4. Optionally enable a **Background Effect** from the Background tab.
 
 == Frequently Asked Questions ==
 
+= How do I change the mouse cursor on my WordPress site? =
+
+Install Ultimate Cursor, open the Ultimate Cursor menu in your dashboard, choose a cursor type (text, image, icon, shape, or animated effect), customize it with the live preview, and save. Your custom cursor is live immediately — no code or CSS needed.
+
 = Will Ultimate Cursor slow down my website? =
 
-No! Ultimate Cursor is optimized for performance. Our code is lightweight and loads only what's needed, ensuring your site remains fast and responsive. Both cursor and background effects are GPU-accelerated for smooth animations.
+No. Ultimate Cursor is optimized for performance: scripts load only when an effect is enabled, effects are code-split so visitors download only what your configuration uses, and animations are GPU-accelerated for smooth 60fps motion.
 
 = Does it work with all themes and page builders? =
 
-Yes! Ultimate Cursor is compatible with all major WordPress themes and page builders including Elementor, Gutenberg, WPBakery, Divi, and more.
+Yes. Ultimate Cursor is compatible with all properly-coded WordPress themes and page builders including Elementor, Gutenberg, WPBakery, Divi, and more.
+
+= Does the custom cursor show on phones and tablets? =
+
+Touch devices have no mouse cursor, so Ultimate Cursor automatically hides itself there to keep your mobile experience clean. Background effects remain fully responsive on all devices.
+
+= What is Interactive Hover? =
+
+Interactive Hover (Pro) makes your cursor react when visitors point at links, buttons, and form fields: it can scale up, change color, glow, get pulled magnetically toward the element, and even display a contextual label like "Open" or "Play" inside the cursor.
 
 = What's the difference between the free and pro versions? =
 
-The free version includes essential cursor customization options and basic background effects. The pro version adds multiple cursor configurations, element-specific targeting, advanced animation controls, premium background effects, priority support, and regular premium updates.
+The free version includes all five cursor types, five shapes, core effect controls, and both background effects. Pro adds Interactive Hover, multiple cursor configurations, element/page/selector targeting, 20 extra shapes, advanced per-effect customization, premium background controls, and priority support.
 
 = Can I apply different cursors to different parts of my website? =
 
-Yes! With the pro version, you can create multiple cursor configurations and apply them to specific elements, pages, or sections of your website.
+Yes. With Pro you can create multiple cursor configurations and target them at specific pages, CSS selectors, or HTML elements — for example one cursor site-wide and a different one over your portfolio grid.
 
 = What background effects are available? =
 
-Ultimate Cursor includes stunning background effects such as Antigravity (floating particles) and Pillar (vertical animations) effects. These can be applied to specific sections or entire pages to create immersive visual experiences.
+Ultimate Cursor includes Antigravity (floating particles) and Light Pillar (glowing vertical light) effects. Both are customizable and can run site-wide or, with Pro, on specific pages and sections.
 
 = Can I use background effects and cursor effects together? =
 
-Absolutely! You can combine any cursor effect with any background effect to create unique, engaging visual experiences throughout your website.
+Absolutely. Any cursor effect can be combined with any background effect.
 
 = Is there a money-back guarantee? =
 
-Yes! We offer a 14-day money-back guarantee if you're not completely satisfied with the pro version.
+Yes. Ultimate Cursor Pro comes with a 14-day money-back guarantee — if you're not completely satisfied, you get a full refund.
 
 == Upgrade Notice ==
 
-Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configurations, element-specific targeting, advanced animations, premium background effects, and priority support. Transform your website with premium cursor and background effects that boost engagement and conversion rates!
+= 2.3.0 =
+Major update: Interactive Hover (Pro) — hover scale, colors, glow, magnetic attraction and cursor labels — plus 9 new cursor shapes and important shape fixes.
 
 == Screenshots ==
 1. **General Settings — Select Cursor Type** 📊 – Choose Text, Image, Icon, Shapes, or Animated cursor from one central dashboard.
@@ -161,39 +186,53 @@ Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configur
 
 == Changelog ==
 
-#### 2.2.3 [June 27, 2026]
+= 2.3.0 [July 17, 2026] =
+- Added: Interactive Hover (Pro) — cursors now react to links, buttons, and form fields with smooth scale, color, and glow effects
+- Added: Magnetic attraction (Pro) — the cursor is gently pulled toward the center of the hovered element
+- Added: Hover labels (Pro) — contextual action hints ("Open", "Play", "Type") appear on hover; shape cursors fill into a labeled disc and text cursors swap their text in place
+- Added: Hover customization (Pro) — hover color, text color, glow size and color, blend modes, and custom CSS selector targeting with Basic/Advanced modes
+- Added: 9 new cursor shapes (Pro) — Blob, Squircle, Sparkle, Seal Badge, Octagon, Pin, Play, Asterisk, and Shield
+- Improved: Redesigned settings dashboard with a refreshed, more consistent visual design
+- Improved: All dashboard emojis replaced with crisp SVG icons for consistent rendering on every OS and browser
+- Improved: Shape cursors now apply the hover color to filled shapes, not just outlined ones
+- Improved: Accessibility — hover animations respect the reduced-motion preference, and label text automatically adjusts for contrast
+- Improved: Hardened server-side license gating now covers all per-effect premium fields
+- Fixed: Hexagon shape was missing from the shape picker
+- Fixed: Shape backgrounds now render correctly with shorthand hex (#abc) and named colors
+
+= 2.2.3 [June 27, 2026] =
 - Added: Full translation (i18n) support for the React-based dashboard — every interface string is now translatable, including code-split components and frontend effects
 - Added: Translation-ready build pipeline with an updated .pot template and language files
 - Improved: Hardened the codebase to pass WordPress Plugin Check — added nonce/capability safeguards, output escaping, and input sanitization
 - Fixed: Replaced a direct database call and the deprecated parse_url() with WordPress-native functions for better reliability and cleaner multisite uninstall
 
-#### 2.2.2 [June 2, 2026]
+= 2.2.2 [June 2, 2026] =
 - Added: Image cursor hotspot (Pro) — set which point of the image aligns with the real mouse position, like the tip of an arrow
 - Added: Visual hotspot picker with click/drag positioning on the cursor image
 - Added: Hotspot presets (center, corners) plus custom X/Y percentage controls and a 3×3 anchor grid
 - Improved: Major frontend cursor performance improvements with a modular architecture refactor
 - Improved: Image and bubble cursor rendering and movement smoothness
 
-#### 2.2.1 [May 15, 2026]
+= 2.2.1 [May 15, 2026] =
 - Improved: Compatibility with latest WordPress and PHP versions.
 - Fixed: Minor issues and stability improvements.
 
-#### 2.2.0 [April 16, 2026]
+= 2.2.0 [April 16, 2026] =
 - Added: Support for animated cursor targeting on specific elements and CSS selectors for enhanced customization flexibility
 - Enhanced: Overall plugin performance and stability improvements
 - Thanks: Special appreciation to [shelleysimpson](https://wordpress.org/support/topic/target-element-not-showing/) for reporting this feature request
 
-#### 2.1.1 [April 11, 2026]
+= 2.1.1 [April 11, 2026] =
 - Improved: Compatibility with latest WordPress and PHP versions.
 - Fixed: Issues with some features not working properly.
 
-#### 2.1.0 [April 03, 2026]
+= 2.1.0 [April 03, 2026] =
 - Added: New Background Animation feature with Antigravity and Pillar effects for enhanced visual website customization
 - Added: Background effects customization options including particle density, speed, colors, and opacity
 - Added: Section-specific background effect application for targeted visual enhancement
 - Added: Responsive background animations optimized for all device types
 
-#### 2.0.0 [March 07, 2026]
+= 2.0.0 [March 07, 2026] =
 - Added: Completely redesigned Dashboard UI for a cleaner, more intuitive experience
 - Fixed: Shape cursor sizing issues that caused incorrect display on some configurations
 - Fixed: Splash cursor colors not applying correctly from color picker
@@ -201,101 +240,101 @@ Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configur
 - Improved: Significantly enhanced cursor performance and responsiveness
 - Improved: Reduced memory usage for smoother animations across all cursor types
 
-#### 1.9.2 [February 20, 2026]
+= 1.9.2 [February 20, 2026] =
 - Improved: Enhanced cursor performance and reduced memory usage
 
-#### 1.9.1 [February 4, 2026]
+= 1.9.1 [February 4, 2026] =
 - Fixed: Resolved compatibility issues with caching plugins to ensure consistent cursor behavior
 - Improved: WordPress 6.9.1 compatibility added
 
-#### 1.9.0 [January 18, 2026]
+= 1.9.0 [January 18, 2026] =
 - Fixed: Resolved multiple cursor configurations not applying correctly across different page sections (Thanks to Lisa)
 - Fixed: Multiple cursor instances loading simultaneously on frontend causing performance issues
 - Enhanced: Improved cursor configuration management for better reliability
 - Improved: Optimized frontend asset loading to prevent duplicate cursor initializations
 
-#### 1.8.0 [January 16, 2026]
+= 1.8.0 [January 16, 2026] =
 - Added: New Circular Background styling option for Text Cursor type, enabling enhanced visual customization
 
-#### 1.7.12 [January 9, 2026]
+= 1.7.12 [January 9, 2026] =
 - Improved: All plugin settings are now removed when the plugin is deactivated for a cleaner uninstall experience. (Thanks to [Rocky](https://wordpress.org/support/topic/works-with-limitations-3/))
 
-#### 1.7.11 [December 26, 2025]
+= 1.7.11 [December 26, 2025] =
 - Improved: Assets loading optimization
 - Enhanced: Optimized memory usage for smoother cursor animations
 
-#### 1.7.10 [December 5, 2025]
+= 1.7.10 [December 5, 2025] =
 - Improved: WordPress 6.9 compatibility added
 
-#### 1.7.9 [November 16, 2025]
+= 1.7.9 [November 16, 2025] =
 - Improved cursor performance and enhanced compatibility with various WordPress themes.
 - Resolved minor issues and made some internal improvements to enhance the overall user experience.
 - Tweaked: removed enable transition and hide default cursor from animated cursor
 
-#### 1.7.8 [11th November 2025]
+= 1.7.8 [11th November 2025] =
 - Resolved: Astra theme compatibility issue
 
-#### 1.7.7 [27th October 2025]
+= 1.7.7 [27th October 2025] =
 - Resolved: disabled default cursor not working for the link, button input field ect. (thanks to [Daria](https://wordpress.org/support/users/dariatym/))
 
-#### 1.7.6 [25th October 2025]
+= 1.7.6 [25th October 2025] =
 - Resolved: Disabled admin notice for the Pro version to maintain a professional and uncluttered user experience.
 
-#### 1.7.5 [25th October 2025]
+= 1.7.5 [25th October 2025] =
 - Enhanced: Offer launched for Ultimate Cursor Pro Halloween and Black Friday promotions, aligned with WordPress's commitment to promotional events during the holiday season.
 
-#### 1.7.4 [5th October 2025]
+= 1.7.4 [5th October 2025] =
 - Enhanced: The Freemius SDK has been updated to ensure the plugin's reliance on the SDK is maintained in a professional manner.
 
-#### 1.7.3 [2nd October 2025]
+= 1.7.3 [2nd October 2025] =
 - Enhanced: Additional 10+ cursor shapes have been added to the premium version
 - Fixed: Minor issues in the settings panel have been resolved to improve overall usability.
 
-#### 1.7.2 [17th September 2025]
+= 1.7.2 [17th September 2025] =
 - Fixed: Custom cursor now properly displays in all modal overlays and popup elements across all themes by ensuring correct z-index layering
 - Thanks: Special appreciation to [logaen](https://wordpress.org/support/users/logaen/) for reporting this issue
 
-#### 1.7.1 [15th September 2025]
+= 1.7.1 [15th September 2025] =
 - Enhanced: The Freemius SDK has been updated to ensure the plugin's reliance on the SDK is maintained in a professional manner.
 
-#### 1.7.0 [14th September 2025]
+= 1.7.0 [14th September 2025] =
 - Added: New Cursor Type Click Particles feature added
 - Added: New Cursor Type Click Particles customization options added (premium version)
 - Improved: Improve license system
 - Enhanced: Significant performance optimization for all cursor animations
 
-#### 1.6.1 [3rd September 2025]
+= 1.6.1 [3rd September 2025] =
 - Fixed: Resolved Click Spark cursor effects compatibility issues with default WordPress themes
 - Enhanced: Optimized plugin initialization sequence for improved cross-theme compatibility
 - Improved: Enhanced cursor rendering performance across various WordPress environments
 
-#### 1.6.0 [31st August 2025]
+= 1.6.0 [31st August 2025] =
 - Added: Click Spark feature added
 - Added: Click Spark customization options added (premium version)
 - Added: Compatibility with Elementor latest version
 - Enhanced: Significant performance optimization for all cursor animations
 
-#### 1.5.2 [16th August 2025]
+= 1.5.2 [16th August 2025] =
 - Added: Splash Cursor Size option added
 - Added: Compatibility with Elementor latest version
 - Improved: Performance optimization for cursor animations
 - Updated: Translation files with new strings
 
-#### 1.5.1 [9th July 2025]
+= 1.5.1 [9th July 2025] =
 - Fixed: Security vulnerabilities in cursor rendering functions
 - Fixed: XSS protection for custom cursor text content
 - Improved: Code structure and documentation for better maintainability
 - Improved: Admin panel responsiveness on mobile devices
 - Improved: Compatibility with popular caching plugins
 
-#### 1.5.0 [6th July 2025]
+= 1.5.0 [6th July 2025] =
 - Added: Comprehensive Pro features customization options integrated into premium version
 - Enhanced: Significant performance optimization for all cursor animations
 - Enhanced: Reduced JavaScript footprint for faster page loading
 - Fixed: Compatibility issues with latest WordPress 6.8.1
 - Fixed: Edge cases in cursor positioning on complex layouts
 
-#### 1.4.4 [20th June 2025]
+= 1.4.4 [20th June 2025] =
 - Added: New Magnetic cursor functionality with smooth attraction effects
 - Added: Enhanced cursor trail effects with customizable particle systems
 - Added: Advanced cursor scaling options for different interaction states
@@ -303,78 +342,78 @@ Upgrade to the **Ultimate Cursor Pro** today and unlock multiple cursor configur
 - Fixed: Resolved compatibility issues with latest WordPress 6.9
 - Fixed: Optimized memory usage for better overall plugin performance
 
-#### 1.4.3 [14th June 2025]
+= 1.4.3 [14th June 2025] =
 - Added: New Trail cursor functionality for enhanced user interaction
 - Added: Advanced customization options for Shaped Cursor including color and size parameters
 - Enhanced: Optimized cursor performance and reduced latency for smoother operation
 - Fixed: Refined UI/UX elements in the settings panel for improved usability
 - Fixed: Resolved compatibility issues with the latest WordPress version
 
-#### 1.4.2 [30th May 2025]
+= 1.4.2 [30th May 2025] =
 - Added: New loading cursor animation with smooth transitions
 - Added: Option to hide custom cursor on touch devices, mobile, and tablets for better user experience
 - Enhanced: Improved cursor performance and reduced lag
 
-#### 1.4.1 [26th May 2025]
+= 1.4.1 [26th May 2025] =
 - Fixed: Various control-related bugs and UI inconsistencies
 - Fixed: Color picker and unit control issues in the settings panel
 - Fixed: Border style application for text cursors
 
-#### 1.4.0 [15th May 2025]
+= 1.4.0 [15th May 2025] =
 - Added: New Shapes cursor feature with 5 modern cursor styles for enhanced visual customization
 - Added: Multiple cursor configurations - now you can have different cursor effects on different parts of your website
 - Added: Selective cursor application - now you can choose to display the custom cursor on specific pages, CSS selectors, or HTML elements
 - Enhanced: User experience with more control over where cursor effects are applied
 - Fixed: Minor UI/UX improvements in settings panel
 
-#### 1.3.8 [1st May 2025]
+= 1.3.8 [1st May 2025] =
 - Added: Animated cursor bubble customization options added.
 - Fixed: compatibility issues with Elementor.
 - Fixed: compatibility issues with WordPress 6.8.1
 
-#### 1.3.7 [20th April 2025]
+= 1.3.7 [20th April 2025] =
 - Added: Cursor Type Icon feature with 75+ built-in icons for enhanced customization.
 - Enhanced: Redesigned Dashboard UI for improved user experience and suppressed unnecessary notices for a cleaner interface.
 
-#### 1.3.6 [15th April 2025]
+= 1.3.6 [15th April 2025] =
 - Fixed: Style not applied to the image cursor.
 
-#### 1.3.5 [14th April 2025]
+= 1.3.5 [14th April 2025] =
 - Added: Cursor Type Image features added
 - Fixed: Border Style issue to the cursor type text
 
-#### 1.3.4 [11th April 2025]
+= 1.3.4 [11th April 2025] =
 - Added: cursor Type text styling options added.
 - Enhancement: Improved Dashboard design for better user experience.
 - Fixed: some minor issues are fixed.
 - Fixed: compatibility issues with Elementor.
 - Fixed: compatibility issues with WordPress 6.8
 
-#### 1.3.3 [26th March 2025]
+= 1.3.3 [26th March 2025] =
 - Fixed: Some minor issues are fixed.
 - Fixed compatibility issues with Elementor.
 
-#### 1.3.0 [12th March 2025]
+= 1.3.0 [12th March 2025] =
 -  Splash Cursor feature added to the global Cursor
 -  Bubble Cursor feature added to the global Cursor
 -  Cursor Follow Text feature added to the global Cursor
 
-#### 1.2.3 [30th January 2025]
+= 1.2.3 [30th January 2025] =
 - Compatibility updates for the latest versions of WordPress and Elementor.
 
-#### 1.2.2 [21st December 2024]
+= 1.2.2 [21st December 2024] =
 - System improvements
 - Compatibility updates for the latest versions of WordPress and Elementor.
 
-#### 1.2.1 [21st October 2024]
+= 1.2.1 [21st October 2024] =
 - Compatibility updates for the latest versions of WordPress and Elementor.
 
-#### 1.2.0 [8th October 2023]
+= 1.2.0 [8th October 2023] =
 - Fixed compatibility issues with Elementor.
 - Minor bug fixes.
 
-#### 1.1.0 [15th March 2023]
+= 1.1.0 [15th March 2023] =
 - Addressed Elementor compatibility issues.
 
-#### 1.0.0 [Initial Release]
+= 1.0.0 [Initial Release] =
 - Initial release of Ultimate Cursor plugin
