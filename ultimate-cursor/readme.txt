@@ -4,7 +4,7 @@ Donate link: https://wpxero.com/plugins/ultimate-cursor/pricing
 Tags: custom cursor, animated cursor, mouse cursor, cursor effects, background effects
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 2.3.0
+Stable tag: 2.3.1
 Requires PHP: 7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -186,234 +186,239 @@ Major update: Interactive Hover (Pro) — hover scale, colors, glow, magnetic at
 
 == Changelog ==
 
-= 2.3.0 [July 17, 2026] =
-- Added: Interactive Hover (Pro) — cursors now react to links, buttons, and form fields with smooth scale, color, and glow effects
-- Added: Magnetic attraction (Pro) — the cursor is gently pulled toward the center of the hovered element
-- Added: Hover labels (Pro) — contextual action hints ("Open", "Play", "Type") appear on hover; shape cursors fill into a labeled disc and text cursors swap their text in place
-- Added: Hover customization (Pro) — hover color, text color, glow size and color, blend modes, and custom CSS selector targeting with Basic/Advanced modes
-- Added: 9 new cursor shapes (Pro) — Blob, Squircle, Sparkle, Seal Badge, Octagon, Pin, Play, Asterisk, and Shield
-- Improved: Redesigned settings dashboard with a refreshed, more consistent visual design
-- Improved: All dashboard emojis replaced with crisp SVG icons for consistent rendering on every OS and browser
-- Improved: Shape cursors now apply the hover color to filled shapes, not just outlined ones
-- Improved: Accessibility — hover animations respect the reduced-motion preference, and label text automatically adjusts for contrast
-- Improved: Hardened server-side license gating now covers all per-effect premium fields
-- Fixed: Hexagon shape was missing from the shape picker
-- Fixed: Shape backgrounds now render correctly with shorthand hex (#abc) and named colors
+= 2.3.1 – July 23, 2026 =
+* Fixed: Save confirmation sometimes appeared without the "View your site" link — it now always shows
+* Fixed: Sticky save bar no longer appears while a cursor or background's own editor is still open (before Apply is clicked)
+* Improved: Apply and Save Changes buttons now briefly pulse to draw attention to unsaved changes
 
-= 2.2.3 [June 27, 2026] =
-- Added: Full translation (i18n) support for the React-based dashboard — every interface string is now translatable, including code-split components and frontend effects
-- Added: Translation-ready build pipeline with an updated .pot template and language files
-- Improved: Hardened the codebase to pass WordPress Plugin Check — added nonce/capability safeguards, output escaping, and input sanitization
-- Fixed: Replaced a direct database call and the deprecated parse_url() with WordPress-native functions for better reliability and cleaner multisite uninstall
+= 2.3.0 – July 17, 2026 =
+* New: Interactive Hover (Pro) — cursors now react to links, buttons, and form fields with smooth scale, color, and glow effects
+* New: Magnetic attraction (Pro) — the cursor is gently pulled toward the center of the hovered element
+* New: Hover labels (Pro) — contextual action hints ("Open", "Play", "Type") appear on hover; shape cursors fill into a labeled disc and text cursors swap their text in place
+* New: Hover customization (Pro) — hover color, text color, glow size and color, blend modes, and custom CSS selector targeting with Basic/Advanced modes
+* New: 9 new cursor shapes (Pro) — Blob, Squircle, Sparkle, Seal Badge, Octagon, Pin, Play, Asterisk, and Shield
+* Improved: Redesigned settings dashboard with a refreshed, more consistent visual design
+* Improved: All dashboard emojis replaced with crisp SVG icons for consistent rendering on every OS and browser
+* Improved: Shape cursors now apply the hover color to filled shapes, not just outlined ones
+* Improved: Accessibility — hover animations respect the reduced-motion preference, and label text automatically adjusts for contrast
+* Improved: Hardened server-side license gating now covers all per-effect premium fields
+* Fixed: Hexagon shape was missing from the shape picker
+* Fixed: Shape backgrounds now render correctly with shorthand hex (#abc) and named colors
 
-= 2.2.2 [June 2, 2026] =
-- Added: Image cursor hotspot (Pro) — set which point of the image aligns with the real mouse position, like the tip of an arrow
-- Added: Visual hotspot picker with click/drag positioning on the cursor image
-- Added: Hotspot presets (center, corners) plus custom X/Y percentage controls and a 3×3 anchor grid
-- Improved: Major frontend cursor performance improvements with a modular architecture refactor
-- Improved: Image and bubble cursor rendering and movement smoothness
+= 2.2.3 – June 27, 2026 =
+* New: Full translation (i18n) support for the React-based dashboard — every interface string is now translatable, including code-split components and frontend effects
+* New: Translation-ready build pipeline with an updated .pot template and language files
+* Improved: Hardened the codebase to pass WordPress Plugin Check — added nonce/capability safeguards, output escaping, and input sanitization
+* Fixed: Replaced a direct database call and the deprecated parse_url() with WordPress-native functions for better reliability and cleaner multisite uninstall
 
-= 2.2.1 [May 15, 2026] =
-- Improved: Compatibility with latest WordPress and PHP versions.
-- Fixed: Minor issues and stability improvements.
+= 2.2.2 – June 2, 2026 =
+* New: Image cursor hotspot (Pro) — set which point of the image aligns with the real mouse position, like the tip of an arrow
+* New: Visual hotspot picker with click/drag positioning on the cursor image
+* New: Hotspot presets (center, corners) plus custom X/Y percentage controls and a 3×3 anchor grid
+* Improved: Major frontend cursor performance improvements with a modular architecture refactor
+* Improved: Image and bubble cursor rendering and movement smoothness
 
-= 2.2.0 [April 16, 2026] =
-- Added: Support for animated cursor targeting on specific elements and CSS selectors for enhanced customization flexibility
-- Enhanced: Overall plugin performance and stability improvements
-- Thanks: Special appreciation to [shelleysimpson](https://wordpress.org/support/topic/target-element-not-showing/) for reporting this feature request
+= 2.2.1 – May 15, 2026 =
+* Improved: Compatibility with latest WordPress and PHP versions.
+* Fixed: Minor issues and stability improvements.
 
-= 2.1.1 [April 11, 2026] =
-- Improved: Compatibility with latest WordPress and PHP versions.
-- Fixed: Issues with some features not working properly.
+= 2.2.0 – April 16, 2026 =
+* New: Support for animated cursor targeting on specific elements and CSS selectors for enhanced customization flexibility
+* Improved: Overall plugin performance and stability improvements
+* Thanks: Special appreciation to [shelleysimpson](https://wordpress.org/support/topic/target-element-not-showing/) for reporting this feature request
 
-= 2.1.0 [April 03, 2026] =
-- Added: New Background Animation feature with Antigravity and Pillar effects for enhanced visual website customization
-- Added: Background effects customization options including particle density, speed, colors, and opacity
-- Added: Section-specific background effect application for targeted visual enhancement
-- Added: Responsive background animations optimized for all device types
+= 2.1.1 – April 11, 2026 =
+* Improved: Compatibility with latest WordPress and PHP versions.
+* Fixed: Issues with some features not working properly.
 
-= 2.0.0 [March 07, 2026] =
-- Added: Completely redesigned Dashboard UI for a cleaner, more intuitive experience
-- Fixed: Shape cursor sizing issues that caused incorrect display on some configurations
-- Fixed: Splash cursor colors not applying correctly from color picker
-- Fixed: Trail cursor not updating in real-time when changing settings
-- Improved: Significantly enhanced cursor performance and responsiveness
-- Improved: Reduced memory usage for smoother animations across all cursor types
+= 2.1.0 – April 03, 2026 =
+* New: New Background Animation feature with Antigravity and Pillar effects for enhanced visual website customization
+* New: Background effects customization options including particle density, speed, colors, and opacity
+* New: Section-specific background effect application for targeted visual enhancement
+* New: Responsive background animations optimized for all device types
 
-= 1.9.2 [February 20, 2026] =
-- Improved: Enhanced cursor performance and reduced memory usage
+= 2.0.0 – March 07, 2026 =
+* New: Completely redesigned Dashboard UI for a cleaner, more intuitive experience
+* Fixed: Shape cursor sizing issues that caused incorrect display on some configurations
+* Fixed: Splash cursor colors not applying correctly from color picker
+* Fixed: Trail cursor not updating in real-time when changing settings
+* Improved: Significantly enhanced cursor performance and responsiveness
+* Improved: Reduced memory usage for smoother animations across all cursor types
 
-= 1.9.1 [February 4, 2026] =
-- Fixed: Resolved compatibility issues with caching plugins to ensure consistent cursor behavior
-- Improved: WordPress 6.9.1 compatibility added
+= 1.9.2 – February 20, 2026 =
+* Improved: Enhanced cursor performance and reduced memory usage
 
-= 1.9.0 [January 18, 2026] =
-- Fixed: Resolved multiple cursor configurations not applying correctly across different page sections (Thanks to Lisa)
-- Fixed: Multiple cursor instances loading simultaneously on frontend causing performance issues
-- Enhanced: Improved cursor configuration management for better reliability
-- Improved: Optimized frontend asset loading to prevent duplicate cursor initializations
+= 1.9.1 – February 4, 2026 =
+* Fixed: Resolved compatibility issues with caching plugins to ensure consistent cursor behavior
+* Improved: WordPress 6.9.1 compatibility added
 
-= 1.8.0 [January 16, 2026] =
-- Added: New Circular Background styling option for Text Cursor type, enabling enhanced visual customization
+= 1.9.0 – January 18, 2026 =
+* Fixed: Resolved multiple cursor configurations not applying correctly across different page sections (Thanks to Lisa)
+* Fixed: Multiple cursor instances loading simultaneously on frontend causing performance issues
+* Improved: Improved cursor configuration management for better reliability
+* Improved: Optimized frontend asset loading to prevent duplicate cursor initializations
 
-= 1.7.12 [January 9, 2026] =
-- Improved: All plugin settings are now removed when the plugin is deactivated for a cleaner uninstall experience. (Thanks to [Rocky](https://wordpress.org/support/topic/works-with-limitations-3/))
+= 1.8.0 – January 16, 2026 =
+* New: New Circular Background styling option for Text Cursor type, enabling enhanced visual customization
 
-= 1.7.11 [December 26, 2025] =
-- Improved: Assets loading optimization
-- Enhanced: Optimized memory usage for smoother cursor animations
+= 1.7.12 – January 9, 2026 =
+* Improved: All plugin settings are now removed when the plugin is deactivated for a cleaner uninstall experience. (Thanks to [Rocky](https://wordpress.org/support/topic/works-with-limitations-3/))
 
-= 1.7.10 [December 5, 2025] =
-- Improved: WordPress 6.9 compatibility added
+= 1.7.11 – December 26, 2025 =
+* Improved: Assets loading optimization
+* Improved: Optimized memory usage for smoother cursor animations
 
-= 1.7.9 [November 16, 2025] =
-- Improved cursor performance and enhanced compatibility with various WordPress themes.
-- Resolved minor issues and made some internal improvements to enhance the overall user experience.
-- Tweaked: removed enable transition and hide default cursor from animated cursor
+= 1.7.10 – December 5, 2025 =
+* Improved: WordPress 6.9 compatibility added
 
-= 1.7.8 [11th November 2025] =
-- Resolved: Astra theme compatibility issue
+= 1.7.9 – November 16, 2025 =
+* Improved: cursor performance and enhanced compatibility with various WordPress themes.
+* Fixed: minor issues and made some internal improvements to enhance the overall user experience.
+* Improved: removed enable transition and hide default cursor from animated cursor
 
-= 1.7.7 [27th October 2025] =
-- Resolved: disabled default cursor not working for the link, button input field ect. (thanks to [Daria](https://wordpress.org/support/users/dariatym/))
+= 1.7.8 – 11th November 2025 =
+* Fixed: Astra theme compatibility issue
 
-= 1.7.6 [25th October 2025] =
-- Resolved: Disabled admin notice for the Pro version to maintain a professional and uncluttered user experience.
+= 1.7.7 – 27th October 2025 =
+* Fixed: disabled default cursor not working for the link, button input field ect. (thanks to [Daria](https://wordpress.org/support/users/dariatym/))
 
-= 1.7.5 [25th October 2025] =
-- Enhanced: Offer launched for Ultimate Cursor Pro Halloween and Black Friday promotions, aligned with WordPress's commitment to promotional events during the holiday season.
+= 1.7.6 – 25th October 2025 =
+* Fixed: Disabled admin notice for the Pro version to maintain a professional and uncluttered user experience.
 
-= 1.7.4 [5th October 2025] =
-- Enhanced: The Freemius SDK has been updated to ensure the plugin's reliance on the SDK is maintained in a professional manner.
+= 1.7.5 – 25th October 2025 =
+* Improved: Offer launched for Ultimate Cursor Pro Halloween and Black Friday promotions, aligned with WordPress's commitment to promotional events during the holiday season.
 
-= 1.7.3 [2nd October 2025] =
-- Enhanced: Additional 10+ cursor shapes have been added to the premium version
-- Fixed: Minor issues in the settings panel have been resolved to improve overall usability.
+= 1.7.4 – 5th October 2025 =
+* Improved: The Freemius SDK has been updated to ensure the plugin's reliance on the SDK is maintained in a professional manner.
 
-= 1.7.2 [17th September 2025] =
-- Fixed: Custom cursor now properly displays in all modal overlays and popup elements across all themes by ensuring correct z-index layering
-- Thanks: Special appreciation to [logaen](https://wordpress.org/support/users/logaen/) for reporting this issue
+= 1.7.3 – 2nd October 2025 =
+* Improved: Additional 10+ cursor shapes have been added to the premium version
+* Fixed: Minor issues in the settings panel have been resolved to improve overall usability.
 
-= 1.7.1 [15th September 2025] =
-- Enhanced: The Freemius SDK has been updated to ensure the plugin's reliance on the SDK is maintained in a professional manner.
+= 1.7.2 – 17th September 2025 =
+* Fixed: Custom cursor now properly displays in all modal overlays and popup elements across all themes by ensuring correct z-index layering
+* Thanks: Special appreciation to [logaen](https://wordpress.org/support/users/logaen/) for reporting this issue
 
-= 1.7.0 [14th September 2025] =
-- Added: New Cursor Type Click Particles feature added
-- Added: New Cursor Type Click Particles customization options added (premium version)
-- Improved: Improve license system
-- Enhanced: Significant performance optimization for all cursor animations
+= 1.7.1 – 15th September 2025 =
+* Improved: The Freemius SDK has been updated to ensure the plugin's reliance on the SDK is maintained in a professional manner.
 
-= 1.6.1 [3rd September 2025] =
-- Fixed: Resolved Click Spark cursor effects compatibility issues with default WordPress themes
-- Enhanced: Optimized plugin initialization sequence for improved cross-theme compatibility
-- Improved: Enhanced cursor rendering performance across various WordPress environments
+= 1.7.0 – 14th September 2025 =
+* New: New Cursor Type Click Particles feature added
+* New: New Cursor Type Click Particles customization options added (premium version)
+* Improved: Improve license system
+* Improved: Significant performance optimization for all cursor animations
 
-= 1.6.0 [31st August 2025] =
-- Added: Click Spark feature added
-- Added: Click Spark customization options added (premium version)
-- Added: Compatibility with Elementor latest version
-- Enhanced: Significant performance optimization for all cursor animations
+= 1.6.1 – 3rd September 2025 =
+* Fixed: Resolved Click Spark cursor effects compatibility issues with default WordPress themes
+* Improved: Optimized plugin initialization sequence for improved cross-theme compatibility
+* Improved: Enhanced cursor rendering performance across various WordPress environments
 
-= 1.5.2 [16th August 2025] =
-- Added: Splash Cursor Size option added
-- Added: Compatibility with Elementor latest version
-- Improved: Performance optimization for cursor animations
-- Updated: Translation files with new strings
+= 1.6.0 – 31st August 2025 =
+* New: Click Spark feature added
+* New: Click Spark customization options added (premium version)
+* New: Compatibility with Elementor latest version
+* Improved: Significant performance optimization for all cursor animations
 
-= 1.5.1 [9th July 2025] =
-- Fixed: Security vulnerabilities in cursor rendering functions
-- Fixed: XSS protection for custom cursor text content
-- Improved: Code structure and documentation for better maintainability
-- Improved: Admin panel responsiveness on mobile devices
-- Improved: Compatibility with popular caching plugins
+= 1.5.2 – 16th August 2025 =
+* New: Splash Cursor Size option added
+* New: Compatibility with Elementor latest version
+* Improved: Performance optimization for cursor animations
+* Improved: Translation files with new strings
 
-= 1.5.0 [6th July 2025] =
-- Added: Comprehensive Pro features customization options integrated into premium version
-- Enhanced: Significant performance optimization for all cursor animations
-- Enhanced: Reduced JavaScript footprint for faster page loading
-- Fixed: Compatibility issues with latest WordPress 6.8.1
-- Fixed: Edge cases in cursor positioning on complex layouts
+= 1.5.1 – 9th July 2025 =
+* Fixed: Security vulnerabilities in cursor rendering functions
+* Fixed: XSS protection for custom cursor text content
+* Improved: Code structure and documentation for better maintainability
+* Improved: Admin panel responsiveness on mobile devices
+* Improved: Compatibility with popular caching plugins
 
-= 1.4.4 [20th June 2025] =
-- Added: New Magnetic cursor functionality with smooth attraction effects
-- Added: Enhanced cursor trail effects with customizable particle systems
-- Added: Advanced cursor scaling options for different interaction states
-- Enhanced: Improved performance optimization for all cursor animations
-- Fixed: Resolved compatibility issues with latest WordPress 6.9
-- Fixed: Optimized memory usage for better overall plugin performance
+= 1.5.0 – 6th July 2025 =
+* New: Comprehensive Pro features customization options integrated into premium version
+* Improved: Significant performance optimization for all cursor animations
+* Improved: Reduced JavaScript footprint for faster page loading
+* Fixed: Compatibility issues with latest WordPress 6.8.1
+* Fixed: Edge cases in cursor positioning on complex layouts
 
-= 1.4.3 [14th June 2025] =
-- Added: New Trail cursor functionality for enhanced user interaction
-- Added: Advanced customization options for Shaped Cursor including color and size parameters
-- Enhanced: Optimized cursor performance and reduced latency for smoother operation
-- Fixed: Refined UI/UX elements in the settings panel for improved usability
-- Fixed: Resolved compatibility issues with the latest WordPress version
+= 1.4.4 – 20th June 2025 =
+* New: New Magnetic cursor functionality with smooth attraction effects
+* New: Enhanced cursor trail effects with customizable particle systems
+* New: Advanced cursor scaling options for different interaction states
+* Improved: Improved performance optimization for all cursor animations
+* Fixed: Resolved compatibility issues with latest WordPress 6.9
+* Fixed: Optimized memory usage for better overall plugin performance
 
-= 1.4.2 [30th May 2025] =
-- Added: New loading cursor animation with smooth transitions
-- Added: Option to hide custom cursor on touch devices, mobile, and tablets for better user experience
-- Enhanced: Improved cursor performance and reduced lag
+= 1.4.3 – 14th June 2025 =
+* New: New Trail cursor functionality for enhanced user interaction
+* New: Advanced customization options for Shaped Cursor including color and size parameters
+* Improved: Optimized cursor performance and reduced latency for smoother operation
+* Fixed: Refined UI/UX elements in the settings panel for improved usability
+* Fixed: Resolved compatibility issues with the latest WordPress version
 
-= 1.4.1 [26th May 2025] =
-- Fixed: Various control-related bugs and UI inconsistencies
-- Fixed: Color picker and unit control issues in the settings panel
-- Fixed: Border style application for text cursors
+= 1.4.2 – 30th May 2025 =
+* New: New loading cursor animation with smooth transitions
+* New: Option to hide custom cursor on touch devices, mobile, and tablets for better user experience
+* Improved: Improved cursor performance and reduced lag
 
-= 1.4.0 [15th May 2025] =
-- Added: New Shapes cursor feature with 5 modern cursor styles for enhanced visual customization
-- Added: Multiple cursor configurations - now you can have different cursor effects on different parts of your website
-- Added: Selective cursor application - now you can choose to display the custom cursor on specific pages, CSS selectors, or HTML elements
-- Enhanced: User experience with more control over where cursor effects are applied
-- Fixed: Minor UI/UX improvements in settings panel
+= 1.4.1 – 26th May 2025 =
+* Fixed: Various control-related bugs and UI inconsistencies
+* Fixed: Color picker and unit control issues in the settings panel
+* Fixed: Border style application for text cursors
 
-= 1.3.8 [1st May 2025] =
-- Added: Animated cursor bubble customization options added.
-- Fixed: compatibility issues with Elementor.
-- Fixed: compatibility issues with WordPress 6.8.1
+= 1.4.0 – 15th May 2025 =
+* New: New Shapes cursor feature with 5 modern cursor styles for enhanced visual customization
+* New: Multiple cursor configurations - now you can have different cursor effects on different parts of your website
+* New: Selective cursor application - now you can choose to display the custom cursor on specific pages, CSS selectors, or HTML elements
+* Improved: User experience with more control over where cursor effects are applied
+* Fixed: Minor UI/UX improvements in settings panel
 
-= 1.3.7 [20th April 2025] =
-- Added: Cursor Type Icon feature with 75+ built-in icons for enhanced customization.
-- Enhanced: Redesigned Dashboard UI for improved user experience and suppressed unnecessary notices for a cleaner interface.
+= 1.3.8 – 1st May 2025 =
+* New: Animated cursor bubble customization options added.
+* Fixed: compatibility issues with Elementor.
+* Fixed: compatibility issues with WordPress 6.8.1
 
-= 1.3.6 [15th April 2025] =
-- Fixed: Style not applied to the image cursor.
+= 1.3.7 – 20th April 2025 =
+* New: Cursor Type Icon feature with 75+ built-in icons for enhanced customization.
+* Improved: Redesigned Dashboard UI for improved user experience and suppressed unnecessary notices for a cleaner interface.
 
-= 1.3.5 [14th April 2025] =
-- Added: Cursor Type Image features added
-- Fixed: Border Style issue to the cursor type text
+= 1.3.6 – 15th April 2025 =
+* Fixed: Style not applied to the image cursor.
 
-= 1.3.4 [11th April 2025] =
-- Added: cursor Type text styling options added.
-- Enhancement: Improved Dashboard design for better user experience.
-- Fixed: some minor issues are fixed.
-- Fixed: compatibility issues with Elementor.
-- Fixed: compatibility issues with WordPress 6.8
+= 1.3.5 – 14th April 2025 =
+* New: Cursor Type Image features added
+* Fixed: Border Style issue to the cursor type text
 
-= 1.3.3 [26th March 2025] =
-- Fixed: Some minor issues are fixed.
-- Fixed compatibility issues with Elementor.
+= 1.3.4 – 11th April 2025 =
+* New: cursor Type text styling options added.
+* Improved: Improved Dashboard design for better user experience.
+* Fixed: some minor issues are fixed.
+* Fixed: compatibility issues with Elementor.
+* Fixed: compatibility issues with WordPress 6.8
 
-= 1.3.0 [12th March 2025] =
--  Splash Cursor feature added to the global Cursor
--  Bubble Cursor feature added to the global Cursor
--  Cursor Follow Text feature added to the global Cursor
+= 1.3.3 – 26th March 2025 =
+* Fixed: Some minor issues are fixed.
+* Fixed: compatibility issues with Elementor.
 
-= 1.2.3 [30th January 2025] =
-- Compatibility updates for the latest versions of WordPress and Elementor.
+= 1.3.0 – 12th March 2025 =
+* New: Splash Cursor feature added to the global Cursor
+* New: Bubble Cursor feature added to the global Cursor
+* New: Cursor Follow Text feature added to the global Cursor
 
-= 1.2.2 [21st December 2024] =
-- System improvements
-- Compatibility updates for the latest versions of WordPress and Elementor.
+= 1.2.3 – 30th January 2025 =
+* Improved: Compatibility updates for the latest versions of WordPress and Elementor.
 
-= 1.2.1 [21st October 2024] =
-- Compatibility updates for the latest versions of WordPress and Elementor.
+= 1.2.2 – 21st December 2024 =
+* Improved: System improvements
+* Improved: Compatibility updates for the latest versions of WordPress and Elementor.
 
-= 1.2.0 [8th October 2023] =
-- Fixed compatibility issues with Elementor.
-- Minor bug fixes.
+= 1.2.1 – 21st October 2024 =
+* Improved: Compatibility updates for the latest versions of WordPress and Elementor.
 
-= 1.1.0 [15th March 2023] =
-- Addressed Elementor compatibility issues.
+= 1.2.0 – 8th October 2023 =
+* Fixed: compatibility issues with Elementor.
+* Fixed: Minor bug fixes.
 
-= 1.0.0 [Initial Release] =
-- Initial release of Ultimate Cursor plugin
+= 1.1.0 – 15th March 2023 =
+* Fixed: Addressed Elementor compatibility issues.
+
+= 1.0.0 – Initial Release =
+* New: Initial release of Ultimate Cursor plugin

@@ -231,7 +231,7 @@ class Ultimate_Cursor_Admin {
 	public function admin_body_class( $classes ) {
 		$screen = get_current_screen();
 
-		if ( 'toplevel_page_ultimate-cursor' !== $screen->id ) {
+		if ( ! $screen || 'toplevel_page_ultimate-cursor' !== $screen->id ) {
 			return $classes;
 		}
 

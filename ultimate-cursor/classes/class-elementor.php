@@ -31,6 +31,16 @@ class Extend_Cursor {
 	static $should_script_enqueue = false;
 
 	private function __construct() {
+		// Check for required Elementor version first — the hooks below
+		// enqueue/render Elementor-specific integration and must not
+		// register at all on an incompatible version (previously this
+		// check ran after registering them, so the version gate was
+		// decorative: notice-only, hooks fired regardless).
+		if ( ! version_compare( ELEMENTOR_VERSION, ultimate_cursor()->minimum_elementor_version, '>=' ) ) {
+			add_action( 'admin_notices', array( $this, 'admin_notice_minimum_elementor_version' ) );
+			return;
+		}
+
 		// The Elementor per-widget cursor controls are a legacy system, superseded
 		// by the main Ultimate Cursor dashboard. New installs no longer see the
 		// editor controls (soft-deprecation), but widgets that already have a saved
@@ -42,12 +52,6 @@ class Extend_Cursor {
 		}
 		add_action( 'elementor/frontend/widget/before_render', array( $this, 'should_script_enqueue' ) );
 		add_action( 'elementor/preview/enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-
-		// Check for required Elementor version
-		if ( ! version_compare( ELEMENTOR_VERSION, ultimate_cursor()->minimum_elementor_version, '>=' ) ) {
-			add_action( 'admin_notices', array( $this, 'admin_notice_minimum_elementor_version' ) );
-			return;
-		}
 	}
 	public function enqueue_scripts() {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
