@@ -45,6 +45,11 @@ class Ultimate_Cursor_Admin {
 
 		add_filter( 'plugin_action_links_ultimate-cursor/ultimate-cursor.php', array( $this, 'ultimate_cursor_settings_link' ) );
 		add_action( 'wp_ajax_ultimate_cursor_install_plugin', array( $this, 'ajax_install_plugin' ) );
+
+		// Registered on 'admin_init' (same hook the Freemius SDK uses for its own
+		// action links) — 'ultimate_cursor_fs_loaded' fires during 'plugins_loaded',
+		// too early to call __() without tripping the _load_textdomain_just_in_time notice.
+		add_action( 'admin_init', array( $this, 'add_promotional_action_link' ) );
 	}
 
 
@@ -60,6 +65,39 @@ class Ultimate_Cursor_Admin {
 		$settings_link = '<a href="' . esc_url( admin_url( 'admin.php?page=ultimate-cursor&sub_page=settings' ) ) . '">' . esc_html__( 'Settings', 'ultimate-cursor' ) . '</a>';
 		array_unshift( $links, $settings_link );
 		return $links;
+	}
+
+	/**
+	 * Add an "Upgrade to Pro" promotional link to the plugin's row actions on
+	 * wp-admin/plugins.php, via the Freemius SDK so it merges correctly with
+	 * the SDK's own action links. Styled inline since add_plugin_action_link()
+	 * renders the label raw with no class hook to target from CSS.
+	 */
+	public function add_promotional_action_link() {
+		if ( Ultimate_Cursor_License_Gate::is_premium_active() ) {
+			return;
+		}
+
+		$fs = ultimate_cursor_fs();
+		if ( ! $fs ) {
+			return;
+		}
+
+		// WP core's standard admin green — Freemius's own submenu "Upgrade" green
+		// (.fs-submenu-item.pricing.upgrade-mode, #adff2f) is tuned for the dark
+		// admin-menu background and washes out on the light plugin row here.
+		$label = '<span style="color:#00a32a;font-weight:600;">' . esc_html__( 'Upgrade to Pro', 'ultimate-cursor' ) . '</span>';
+
+		// Live pricing page, not $fs->get_upgrade_url() (that resolves to the local
+		// in-dashboard checkout URL). Mirrors Ultimate_Cursor_Dashboard_Widget::PRICING_URL —
+		// not referenced directly since that class isn't loaded when the pro plugin is active.
+		$fs->add_plugin_action_link(
+			$label,
+			esc_url( 'https://wpxero.com/plugins/ultimate-cursor/pricing' ),
+			true,
+			7,
+			'get-pro'
+		);
 	}
 
 	public function enqueue_media_uploader() {

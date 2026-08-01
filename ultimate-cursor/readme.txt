@@ -4,7 +4,7 @@ Donate link: https://wpxero.com/plugins/ultimate-cursor/pricing
 Tags: custom cursor, animated cursor, mouse cursor, cursor effects, background effects
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 Requires PHP: 7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -185,6 +185,15 @@ Major update: Interactive Hover (Pro) — hover scale, colors, glow, magnetic at
 17. **Multiple Background Configurations** 🎬 – Manage separate background animations for different areas of your site (Pro).
 
 == Changelog ==
+
+= 2.3.2 – August 1, 2026 =
+* New: Splash cursor size and force controls
+* New: "Upgrade to Pro" link on the Plugins list page
+* Improved: Redesigned the cursor customization panel with clearer Style/Type sections
+* Improved: Redesigned image upload control with a drag-and-drop style dropzone and thumbnail preview
+* Improved: Color-coded cursor type cards and preset gallery icons for faster scanning
+* Improved: Refreshed the Free vs Pro feature comparison table with more detail
+* Fixed: Plugin uninstall event now correctly reaches the Freemius dashboard
 
 = 2.3.1 – July 23, 2026 =
 * Fixed: Save confirmation sometimes appeared without the "View your site" link — it now always shows
