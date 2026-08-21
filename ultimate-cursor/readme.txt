@@ -3,8 +3,8 @@ Contributors: wpxero
 Donate link: https://wpxero.com/plugins/ultimate-cursor/pricing
 Tags: custom cursor, animated cursor, mouse cursor, cursor effects, background effects
 Requires at least: 6.0
-Tested up to: 7.0
-Stable tag: 2.3.2
+Tested up to: 7.1
+Stable tag: 2.3.3
 Requires PHP: 7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -185,6 +185,10 @@ Major update: Interactive Hover (Pro) — hover scale, colors, glow, magnetic at
 17. **Multiple Background Configurations** 🎬 – Manage separate background animations for different areas of your site (Pro).
 
 == Changelog ==
+
+= 2.3.3 – August 21, 2026 =
+* Fixed: "Disable Default Cursor" now takes effect in the live preview — the browser's native pointer no longer shows alongside your custom cursor while editing
+* Improved: Tested with WordPress 7.1
 
 = 2.3.2 – August 1, 2026 =
 * New: Splash cursor size and force controls
