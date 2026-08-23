@@ -133,6 +133,18 @@ class Ultimate_Cursor_License_Gate {
 				// frontend component defaults).
 				'circularBackground',
 				'circularBackgroundSize',
+				// Circular text (rotating badge) is a premium text-cursor
+				// style. The style itself is blocked via get_premium_values()
+				// (textStyle => circular); these are its customization knobs.
+				// Absent values fall back to the frontend component defaults.
+				'circularTextPreset',
+				'circularTextRadius',
+				'circularTextRotate',
+				'circularTextDirection',
+				'circularTextShowCircle',
+				'circularTextCircleSize',
+				'circularTextAutoRotate',
+				'circularTextRotationSpeed',
 				// Interactive Hover is a fully premium feature: the enable
 				// toggle, scale, speed and colors are all premium, alongside
 				// the advanced knobs below. Absent values = feature off in the
@@ -186,6 +198,12 @@ class Ultimate_Cursor_License_Gate {
 				'cursorScope' => array(
 					'blocked' => array( 'specific-pages', 'css-selectors', 'html-elements' ),
 					'default' => 'entire-website',
+				),
+				// Circular text style is premium; free text cursors render
+				// the normal (straight) style.
+				'textStyle'   => array(
+					'blocked' => array( 'circular' ),
+					'default' => 'normal',
 				),
 				// Shapes 6-25 are premium; 1-5 are free.
 				'cursorShape' => array(
