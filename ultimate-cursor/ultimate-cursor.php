@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Plugin Name:                 Ultimate Cursor – Interactive and Animated Cursor and Background Effects Toolkit
+ * Plugin Name:                 Ultimate Cursor – Interactive and Animated Custom Cursor and Background Effects Toolkit
  * Plugin URI:                  https://wpxero.com/plugins/ultimate-cursor
  * Description:                 Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀
- * Version:                     2.4.0
+ * Version:                     2.4.1
  * Author:                      WPXERO
  * Author URI:                  https://wpxero.com/plugins/ultimate-cursor
  * Requires at least:           6.0
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'UCA_VERSION' ) ) {
-	define( 'UCA_VERSION', '2.4.0' );
+	define( 'UCA_VERSION', '2.4.1' );
 }
 
 
