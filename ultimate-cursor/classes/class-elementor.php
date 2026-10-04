@@ -49,9 +49,11 @@ class Extend_Cursor {
 		// add_filter('ultimate_cursor_enable_elementor_controls', '__return_true');
 		if ( apply_filters( 'ultimate_cursor_enable_elementor_controls', false ) ) {
 			add_action( 'elementor/element/common/_section_style/after_section_end', array( $this, 'add_controls_section' ), 1 );
+			// The editor preview only needs the legacy scripts (jQuery + Cotton)
+			// when the legacy controls are available to edit with.
+			add_action( 'elementor/preview/enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		}
 		add_action( 'elementor/frontend/widget/before_render', array( $this, 'should_script_enqueue' ) );
-		add_action( 'elementor/preview/enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
 	public function enqueue_scripts() {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
@@ -61,6 +63,16 @@ class Extend_Cursor {
 	}
 	public function should_script_enqueue( $element ) {
 		if ( self::$should_script_enqueue ) {
+			return;
+		}
+		// Inside the editor canvas a saved legacy widget cursor would hide the
+		// pointer over that widget while editing. Only render it there when
+		// the legacy controls are enabled (i.e. someone is editing it).
+		if (
+			! apply_filters( 'ultimate_cursor_enable_elementor_controls', false ) &&
+			isset( \Elementor\Plugin::$instance->preview ) &&
+			\Elementor\Plugin::$instance->preview->is_preview_mode()
+		) {
 			return;
 		}
 		if ( 'yes' === $element->get_settings_for_display( 'ultimate_cursor_show' ) ) {

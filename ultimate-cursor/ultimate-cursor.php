@@ -4,7 +4,7 @@
  * Plugin Name:                 Ultimate Cursor – Interactive and Animated Custom Cursor and Background Effects Toolkit
  * Plugin URI:                  https://wpxero.com/plugins/ultimate-cursor
  * Description:                 Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀
- * Version:                     2.4.1
+ * Version:                     2.5.0
  * Author:                      WPXERO
  * Author URI:                  https://wpxero.com/plugins/ultimate-cursor
  * Requires at least:           6.0
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'UCA_VERSION' ) ) {
-	define( 'UCA_VERSION', '2.4.1' );
+	define( 'UCA_VERSION', '2.5.0' );
 }
 
 
@@ -45,6 +45,31 @@ class UltimateCursor {
 	const VERSION                   = UCA_VERSION;
 	const MINIMUM_ELEMENTOR_VERSION = '3.0.0';
 	const MINIMUM_PHP_VERSION       = '7.0';
+	const PRO_URL                   = 'https://wpxero.com/plugins/ultimate-cursor/pricing';
+
+	/**
+	 * Build the pricing URL for a given placement.
+	 *
+	 * Every upgrade link goes through here (or its JS mirror,
+	 * src/utils/pro-url.js) so each touchpoint carries its own campaign tag.
+	 * These are plain query parameters on a link the user chooses to open —
+	 * nothing is requested or sent from inside WordPress.
+	 *
+	 * @param string $campaign Short name of the UI spot (e.g. 'plugins-row-link').
+	 * @param string $medium   Surface the link lives on.
+	 * @return string Pricing URL tagged with utm_source / utm_medium / utm_campaign.
+	 */
+	public static function get_pro_url( $campaign, $medium = 'dashboard' ) {
+		return add_query_arg(
+			array(
+				'utm_source'   => 'plugin',
+				'utm_medium'   => sanitize_key( $medium ),
+				'utm_campaign' => sanitize_key( $campaign ),
+			),
+			self::PRO_URL
+		);
+	}
+
 	/**
 	 * Main Instance
 	 * Ensures only one instance of this class exists in memory at any one time.
@@ -139,6 +164,8 @@ class UltimateCursor {
 						)
 					);
 
+					$this->skip_first_run_opt_in();
+
 					// Signal that Freemius SDK is initiated
 					do_action( 'ultimate_cursor_fs_loaded' );
 				} catch ( Exception $e ) {
@@ -156,6 +183,72 @@ class UltimateCursor {
 
 
 	/**
+	 * Don't put the Freemius opt-in screen in front of the plugin.
+	 *
+	 * By default the SDK replaces the plugin's page with its opt-in screen
+	 * (and adds a "one step away" admin notice) until the user answers. For a
+	 * user who has not answered yet, record the same choice the "Skip" button
+	 * makes — a local flag only; nothing is sent to Freemius — so the first
+	 * screen is the product. Opt-in stays available and explicit: through the
+	 * SDK's "Opt In" link on the Plugins screen, and through a one-time
+	 * invitation in the dashboard after a week of use
+	 * (src/admin/components/review-prompt.js → OptInPrompt).
+	 *
+	 * Not applied while the Pro add-on is active: a buyer needs the opt-in /
+	 * license screen to activate their license.
+	 */
+	private function skip_first_run_opt_in() {
+		$fs = $this->freemius;
+
+		if ( ! is_object( $fs ) || class_exists( 'Ultimate_Cursor_Pro' ) ) {
+			return;
+		}
+
+		/**
+		 * Filter whether the Freemius opt-in screen is skipped on first run.
+		 *
+		 * @param bool $skip Whether to skip. Default true.
+		 */
+		if ( ! apply_filters( 'ultimate_cursor_skip_first_run_opt_in', true ) ) {
+			return;
+		}
+
+		if (
+			! method_exists( $fs, 'skip_connection' ) ||
+			$fs->is_registered() ||
+			$fs->is_anonymous() ||
+			$fs->is_pending_activation()
+		) {
+			return;
+		}
+
+		$fs->skip_connection();
+	}
+
+	/**
+	 * URL of the Freemius opt-in screen for a user who has not opted in, or
+	 * '' when opting in is not applicable (already connected, Pro active, or
+	 * the SDK is unavailable).
+	 *
+	 * @return string
+	 */
+	public function get_opt_in_url() {
+		$fs = $this->freemius;
+
+		if (
+			! is_object( $fs ) ||
+			class_exists( 'Ultimate_Cursor_Pro' ) ||
+			! method_exists( $fs, 'get_reconnect_url' ) ||
+			$fs->is_registered() ||
+			! $fs->is_anonymous()
+		) {
+			return '';
+		}
+
+		return $fs->get_reconnect_url();
+	}
+
+	/**
 	 * Get Freemius instance
 	 *
 	 * @return object|null
@@ -167,62 +260,85 @@ class UltimateCursor {
 
 
 	/**
-	 * Check if the user has a valid premium license.
+	 * Timestamp of the plugin's first activation on this site.
 	 *
-	 * Delegates to Ultimate_Cursor_License_Gate — the single source of truth
-	 * for premium feature gating. Kept for backward compatibility.
+	 * Stored once and never updated (survives deactivate/reactivate). Used to
+	 * hold back upgrade promotion until the user has had time with the plugin.
+	 * Sites that were already set up before this was tracked have no known
+	 * install date; they are recorded as 1 ("installed long ago").
 	 *
-	 * @return bool True only if pro plugin is active AND license is valid.
+	 * @return int Unix timestamp, or 1 when the install predates tracking.
+	 */
+	public static function get_installed_at() {
+		$installed_at = get_option( 'ultimate_cursor_installed_at' );
+
+		if ( false === $installed_at ) {
+			$has_existing_setup = false !== get_option( 'ultimate_cursor_settings' )
+				|| false !== get_option( 'ultimate_cursor_background_settings' );
+			$installed_at       = $has_existing_setup ? 1 : time();
+			add_option( 'ultimate_cursor_installed_at', $installed_at, '', false );
+		}
+
+		return (int) $installed_at;
+	}
+
+	/**
+	 * Whether an add-on reports that Pro features are available.
+	 *
+	 * The free plugin does not check licenses. The Pro add-on answers this
+	 * filter (after doing its own license check) and registers its fields
+	 * with Ultimate_Cursor_Settings_Schema. Used here only for presentation:
+	 * hiding upgrade prompts and the Pro Features page.
+	 *
+	 * @return bool
 	 */
 	public static function is_premium_active() {
-		return Ultimate_Cursor_License_Gate::is_premium_active();
+		/**
+		 * Filter whether Pro features are available.
+		 *
+		 * @param bool $active Default false.
+		 */
+		return (bool) apply_filters( 'ultimate_cursor_is_premium_active', false );
 	}
 
 	/**
-	 * List of cursor setting keys that are premium-only.
+	 * Deprecated: the free plugin no longer keeps a list of premium keys.
 	 *
-	 * Kept for backward compatibility; the registry lives in Ultimate_Cursor_License_Gate.
-	 *
-	 * @return array
+	 * @deprecated Add-on fields are registered through the
+	 *             'ultimate_cursor_cursor_field_manifest' filter.
+	 * @return array Always empty.
 	 */
 	public static function get_premium_setting_keys() {
-		return Ultimate_Cursor_License_Gate::get_premium_keys( 'cursor' );
+		return array();
 	}
 
 	/**
-	 * List of cursor setting values that are premium-only.
+	 * Deprecated: the free plugin no longer keeps a list of premium values.
 	 *
-	 * Kept for backward compatibility; the registry lives in Ultimate_Cursor_License_Gate.
-	 *
-	 * @return array
+	 * @deprecated See Ultimate_Cursor_Settings_Schema::get_allowed_values().
+	 * @return array Always empty.
 	 */
 	public static function get_premium_setting_values() {
-		$values = array();
-		foreach ( Ultimate_Cursor_License_Gate::get_premium_values( 'cursor' ) as $field => $rule ) {
-			$values[ $field ] = $rule['blocked'];
-		}
-		return $values;
+		return array();
 	}
 
 	/**
-	 * Sanitize cursor settings by stripping premium-only fields if no valid license.
+	 * Deprecated alias of Ultimate_Cursor_Settings_Schema::filter_for_output().
 	 *
-	 * Delegates to Ultimate_Cursor_License_Gate. Kept for backward compatibility.
-	 *
-	 * @param array $settings The settings array to sanitize.
-	 * @return array Sanitized settings.
+	 * @deprecated
+	 * @param array $settings The settings array to filter.
+	 * @return array Settings limited to currently registered fields.
 	 */
 	public static function sanitize_premium_settings( $settings ) {
-		return Ultimate_Cursor_License_Gate::sanitize( $settings, 'cursor' );
+		return Ultimate_Cursor_Settings_Schema::filter_for_output( $settings, 'cursor' );
 	}
 
 	/**
 	 * Include dependencies
 	 */
 	private function include_dependencies() {
-		// License gate must load first — admin/assets/rest all depend on it.
-		require_once $this->plugin_path . 'classes/class-license-gate.php';
-		// Settings schema (REST write allowlist) depends on the license gate.
+		// Settings schema (field allowlist for REST writes and browser output)
+		// must load first — admin/assets/rest all depend on it.
 		require_once $this->plugin_path . 'classes/class-settings-schema.php';
 		require_once $this->plugin_path . 'classes/class-admin.php';
 		require_once $this->plugin_path . 'classes/class-assets.php';
@@ -235,9 +351,13 @@ class UltimateCursor {
 			require_once $this->plugin_path . 'classes/class-elementor.php';
 		}
 
-		if ( ! class_exists( 'Ultimate_Cursor_Pro' ) ) {
-			require_once $this->plugin_path . 'classes/class-dashboard-widget.php';
-		}
+		// Decides at render time whether to show anything (it stays silent
+		// when an add-on reports Pro features are available).
+		require_once $this->plugin_path . 'classes/class-promo-notice.php';
+
+		// Promotional widget on the WordPress Dashboard (also silent while an
+		// add-on reports Pro features are available).
+		require_once $this->plugin_path . 'classes/class-dashboard-widget.php';
 	}
 
 	/**
@@ -246,6 +366,8 @@ class UltimateCursor {
 	public function activation_hook() {
 		// Welcome Page Flag.
 		set_transient( '_ultimate_cursor_welcome_screen_activation_redirect', true, 30 );
+		// Record the first-activation time (no-op on later activations).
+		self::get_installed_at();
 	}
 
 	/**

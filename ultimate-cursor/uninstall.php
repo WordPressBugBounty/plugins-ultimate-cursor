@@ -75,9 +75,18 @@ function ultimate_cursor_delete_site_data() {
 	delete_option( 'ultimate_cursor_background_settings' );
 	delete_transient( '_ultimate_cursor_welcome_screen_activation_redirect' );
 
-	// Remove per-user promo-dismissal meta (keys: uc_dismissed_promo_*).
+	delete_option( 'ultimate_cursor_installed_at' );
+
+	// Remove per-user promo-dismissal meta, including keys written by older
+	// versions (uc_dismissed_promo_*, and the year-suffixed widget key).
+	delete_metadata( 'user', 0, 'ultimate_cursor_dismissed_promos', '', true );
+	delete_metadata( 'user', 0, 'ultimate_cursor_review_dismissed', '', true );
+	delete_metadata( 'user', 0, 'ultimate_cursor_optin_dismissed', '', true );
 	delete_metadata( 'user', 0, 'uc_dismissed_promo_widget', '', true );
 	delete_metadata( 'user', 0, 'uc_dismissed_promo_notice', '', true );
+	for ( $ultimate_cursor_year = 2024; $ultimate_cursor_year <= (int) gmdate( 'Y' ); $ultimate_cursor_year++ ) {
+		delete_metadata( 'user', 0, 'uc_dismissed_promo_widget_' . $ultimate_cursor_year, '', true );
+	}
 }
 
 // Delete plugin data for the current site.

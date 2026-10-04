@@ -2,7 +2,8 @@
 /**
  * Cache Plugin Compatibility
  *
- * Handles compatibility with WP Rocket, LiteSpeed, Cloudflare, and other cache plugins.
+ * Handles compatibility with WP Rocket, LiteSpeed, SiteGround Optimizer, Perfmatters,
+ * Autoptimize, WP-Optimize, W3 Total Cache and Cloudflare Rocket Loader.
  * Ensures JavaScript files are not delayed/deferred/combined to prevent chunk loading errors.
  *
  * @package ultimate-cursor
@@ -22,6 +23,16 @@ class Ultimate_Cursor_Cache_Compatibility {
 	 * @var $instance
 	 */
 	private static $instance = null;
+
+	/**
+	 * Handles of the scripts this plugin enqueues on the frontend.
+	 *
+	 * @var string[]
+	 */
+	const SCRIPT_HANDLES = array(
+		'ultimate-cursor-frontend',
+		'ultimate-cursor-frontend-background',
+	);
 
 	/**
 	 * Get instance
@@ -50,17 +61,32 @@ class Ultimate_Cursor_Cache_Compatibility {
 		add_filter( 'rocket_delay_js_exclusions', array( $this, 'exclude_from_delay' ), 10, 1 );
 		add_filter( 'rocket_excluded_inline_js_content', array( $this, 'exclude_inline_js' ), 10, 1 );
 
-		// LiteSpeed Cache compatibility
+		// LiteSpeed Cache compatibility: combine/minify, and defer/delay.
 		add_filter( 'litespeed_optimize_js_excludes', array( $this, 'exclude_from_combine' ), 10, 1 );
+		add_filter( 'litespeed_optm_js_defer_exc', array( $this, 'exclude_from_delay' ), 10, 1 );
+
+		// SiteGround Optimizer (these filters take script HANDLES).
+		add_filter( 'sgo_js_minify_exclude', array( $this, 'exclude_handles' ), 10, 1 );
+		add_filter( 'sgo_javascript_combine_exclude', array( $this, 'exclude_handles' ), 10, 1 );
+		add_filter( 'sgo_js_async_exclude', array( $this, 'exclude_handles' ), 10, 1 );
+		add_filter( 'sgo_javascript_combine_excluded_inline_content', array( $this, 'exclude_inline_js' ), 10, 1 );
+
+		// Perfmatters "Delay JavaScript".
+		add_filter( 'perfmatters_delay_js_exclusions', array( $this, 'exclude_from_delay' ), 10, 1 );
+
+		// WP-Optimize minify/merge.
+		add_filter( 'wp-optimize-minify-default-exclusions', array( $this, 'exclude_from_combine' ), 10, 1 );
+
+		// Cloudflare Rocket Loader: opt our script tags AND their inline data
+		// out together (excluding only one would run them out of order).
+		add_filter( 'script_loader_tag', array( $this, 'add_cfasync_attribute' ), 10, 2 );
+		add_filter( 'wp_inline_script_attributes', array( $this, 'add_cfasync_to_inline' ), 10, 1 );
 
 		// Autoptimize compatibility
 		add_filter( 'autoptimize_filter_js_exclude', array( $this, 'exclude_from_autoptimize' ), 10, 1 );
 
 		// W3 Total Cache compatibility
 		add_filter( 'w3tc_minify_js_do_tag_minification', array( $this, 'w3tc_exclude_minify' ), 10, 3 );
-
-		// WP Fastest Cache compatibility
-		add_filter( 'wpfc_exclude_current_page', array( $this, 'wpfc_check_scripts' ), 10, 1 );
 
 		// Add CORS headers for CDN compatibility
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_cors_headers' ), 20 );
@@ -118,9 +144,71 @@ class Ultimate_Cursor_Cache_Compatibility {
 		// Exclude the plugin from delay JS execution
 		$excluded_patterns[] = 'ultimate-cursor';
 		$excluded_patterns[] = 'ultimateCursorData';
+		$excluded_patterns[] = 'ultimateCursorLoader';
 		$excluded_patterns[] = '__ultimateCursorPublicPath';
+		$excluded_patterns[] = 'ultimateCursorBgData';
+		$excluded_patterns[] = 'ultimateCursorBgLoader';
+		$excluded_patterns[] = '__ultimateCursorBgPublicPath';
 
 		return $excluded_patterns;
+	}
+
+	/**
+	 * Exclude our script handles (for optimizers that match by handle).
+	 *
+	 * @param array $handles Excluded script handles.
+	 * @return array Modified array
+	 */
+	public function exclude_handles( $handles ) {
+		if ( ! is_array( $handles ) ) {
+			$handles = array();
+		}
+
+		foreach ( self::SCRIPT_HANDLES as $handle ) {
+			$handles[] = $handle;
+		}
+
+		return $handles;
+	}
+
+	/**
+	 * Add data-cfasync="false" to our script tags so Cloudflare Rocket Loader
+	 * leaves them alone.
+	 *
+	 * @param string $tag    The script tag.
+	 * @param string $handle The script handle.
+	 * @return string Modified script tag.
+	 */
+	public function add_cfasync_attribute( $tag, $handle ) {
+		// $tag also contains the handle's inline scripts (which get the
+		// attribute separately), so look for it on the src tag specifically.
+		if ( in_array( $handle, self::SCRIPT_HANDLES, true ) && false === strpos( $tag, 'data-cfasync="false" src=' ) ) {
+			$tag = str_replace( ' src=', ' data-cfasync="false" src=', $tag );
+		}
+		return $tag;
+	}
+
+	/**
+	 * Add data-cfasync="false" to the inline scripts that carry our settings
+	 * (ids `{handle}-js-before` / `-js-after` / `-js-extra` / `-js-translations`),
+	 * so they keep running ahead of the script they belong to.
+	 *
+	 * @param array $attributes Inline script tag attributes.
+	 * @return array Modified attributes.
+	 */
+	public function add_cfasync_to_inline( $attributes ) {
+		if ( ! is_array( $attributes ) || empty( $attributes['id'] ) ) {
+			return $attributes;
+		}
+
+		foreach ( self::SCRIPT_HANDLES as $handle ) {
+			if ( 0 === strpos( $attributes['id'], $handle . '-js-' ) ) {
+				$attributes['data-cfasync'] = 'false';
+				break;
+			}
+		}
+
+		return $attributes;
 	}
 
 	/**
@@ -137,6 +225,10 @@ class Ultimate_Cursor_Cache_Compatibility {
 		// Exclude our inline public path script
 		$excluded_patterns[] = '__ultimateCursorPublicPath';
 		$excluded_patterns[] = 'ultimateCursorData';
+		$excluded_patterns[] = 'ultimateCursorLoader';
+		$excluded_patterns[] = '__ultimateCursorBgPublicPath';
+		$excluded_patterns[] = 'ultimateCursorBgData';
+		$excluded_patterns[] = 'ultimateCursorBgLoader';
 
 		return $excluded_patterns;
 	}
@@ -173,21 +265,6 @@ class Ultimate_Cursor_Cache_Compatibility {
 	}
 
 	/**
-	 * WP Fastest Cache - check if our scripts are on page
-	 *
-	 * @param bool $exclude Whether to exclude current page
-	 * @return bool Modified exclusion
-	 */
-	public function wpfc_check_scripts( $exclude ) {
-		// Check if our plugin scripts are enqueued
-		if ( wp_script_is( 'ultimate-cursor-frontend', 'enqueued' ) ) {
-			// Don't exclude, but ensure proper handling
-			return $exclude;
-		}
-		return $exclude;
-	}
-
-	/**
 	 * Add CORS headers for CDN/Cloudflare compatibility
 	 * Ensures chunks can be loaded cross-origin
 	 */
@@ -205,6 +282,20 @@ class Ultimate_Cursor_Cache_Compatibility {
 	 * @return string Modified script tag
 	 */
 	public function add_crossorigin_attribute( $tag, $handle, $src ) {
+		/**
+		 * Filter whether the frontend script tag gets crossorigin="anonymous".
+		 *
+		 * Off by default: with the attribute, a CDN that serves the file from
+		 * another host WITHOUT an Access-Control-Allow-Origin header makes the
+		 * browser block the script outright, so the cursor never loads. Only
+		 * enable it for a CDN that is known to send CORS headers for JS.
+		 *
+		 * @param bool $add Whether to add the attribute. Default false.
+		 */
+		if ( ! apply_filters( 'ultimate_cursor_script_crossorigin', false ) ) {
+			return $tag;
+		}
+
 		// Only add to our frontend script
 		if ( $handle === 'ultimate-cursor-frontend' ) {
 			// Check if crossorigin is not already set

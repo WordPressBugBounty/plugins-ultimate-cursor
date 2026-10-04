@@ -43,16 +43,25 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 * Constructor — register hooks.
 	 */
 	private function __construct() {
-		// Never show promos to Pro users.
-		if ( class_exists( 'UltimateCursor' ) && UltimateCursor::is_premium_active() ) {
-			return;
-		}
-
+		// Whether Pro is active is asked when the widget is about to show
+		// (should_show()), not here: the Pro add-on answers through a filter
+		// that may not be registered yet while plugins are still loading.
 		add_action( 'wp_dashboard_setup', array( $this, 'add_dashboard_widget' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
-		add_action( 'admin_notices', array( $this, 'show_promotional_notice' ) );
 		add_action( 'wp_ajax_uc_dismiss_promo_widget', array( $this, 'ajax_dismiss_widget' ) );
-		add_action( 'wp_ajax_uc_dismiss_promo_notice', array( $this, 'ajax_dismiss_notice' ) );
+	}
+
+	/**
+	 * Whether the current user may see the widget: administrators, and never
+	 * while Pro features are available.
+	 *
+	 * @return bool
+	 */
+	private function should_show() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return false;
+		}
+		return ! ( class_exists( 'UltimateCursor' ) && UltimateCursor::is_premium_active() );
 	}
 
 	/*
@@ -70,6 +79,7 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 *     @type string $coupon             Coupon code.
 	 *     @type string $widget_title       Dashboard widget title.
 	 *     @type string $notice_title       Admin notice headline.
+	 *     @type string $headline           Widget headline.
 	 *     @type string $description        Short CTA text.
 	 *     @type string $button_text        CTA button label.
 	 *     @type string $accent             Primary accent hex colour.
@@ -89,11 +99,10 @@ class Ultimate_Cursor_Dashboard_Widget {
 		$year              = current_time( 'Y' );
 
 		$features = array(
-			__( 'Multiple Cursor & Background Effects Configurations', 'ultimate-cursor' ),
-			__( 'Element-Specific Cursors & Background Effects', 'ultimate-cursor' ),
-			__( 'Custom Cursor & Background Effects for Specific Pages', 'ultimate-cursor' ),
-			__( 'Advanced Animation Options', 'ultimate-cursor' ),
-			__( 'Priority Support', 'ultimate-cursor' ),
+			__( 'Interactive Hover: the cursor reacts to links and buttons', 'ultimate-cursor' ),
+			__( 'Multiple cursors, shown on the pages and elements you choose', 'ultimate-cursor' ),
+			__( '20 more shapes, circular text and image hotspot', 'ultimate-cursor' ),
+			__( 'Settings for every animated effect and background', 'ultimate-cursor' ),
 		);
 
 		// Halloween: October 15 – October 31.
@@ -105,11 +114,12 @@ class Ultimate_Cursor_Dashboard_Widget {
 				'coupon'           => 'HALLOWEEN',
 				'widget_title'     => __( 'Ultimate Cursor — Halloween Sale', 'ultimate-cursor' ),
 				'notice_title'     => __( 'Halloween Sale — Ultimate Cursor Pro', 'ultimate-cursor' ),
-				'description'      => __( 'Unlock spooky-good premium cursor effects, advanced customisation & priority support this Halloween!', 'ultimate-cursor' ),
+				'headline'         => __( 'Spooky-good cursors for less', 'ultimate-cursor' ),
+				'description'      => __( 'Everything in Ultimate Cursor Pro, at the Halloween price.', 'ultimate-cursor' ),
 				'button_text'      => __( 'Grab 25% OFF', 'ultimate-cursor' ),
 				'accent'           => '#ff6600',
 				'accent_secondary' => '#a855f7',
-				'gradient'         => 'linear-gradient(135deg, #1a0a2e 0%, #2d1150 35%, #4c1d95 70%, #7c3aed 100%)',
+				'gradient'         => '#F76707',
 				'icon'             => 'pumpkin',
 				'features'         => $features,
 			);
@@ -124,11 +134,12 @@ class Ultimate_Cursor_Dashboard_Widget {
 				'coupon'           => 'BFCM',
 				'widget_title'     => __( 'Ultimate Cursor — Black Friday Sale', 'ultimate-cursor' ),
 				'notice_title'     => __( 'Black Friday Sale — Ultimate Cursor Pro', 'ultimate-cursor' ),
-				'description'      => __( 'The biggest sale of the year! Unlock 10+ premium cursor effects, advanced customisation & priority support.', 'ultimate-cursor' ),
+				'headline'         => __( 'Our biggest sale of the year', 'ultimate-cursor' ),
+				'description'      => __( 'Everything in Ultimate Cursor Pro, at the Black Friday price.', 'ultimate-cursor' ),
 				'button_text'      => __( 'Grab 25% OFF', 'ultimate-cursor' ),
 				'accent'           => '#f43f5e',
 				'accent_secondary' => '#ec4899',
-				'gradient'         => 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #581c87 75%, #7c3aed 100%)',
+				'gradient'         => '#111111',
 				'icon'             => 'flame',
 				'features'         => $features,
 			);
@@ -154,11 +165,12 @@ class Ultimate_Cursor_Dashboard_Widget {
 				'coupon'           => 'UNLOCKPRO',
 				'widget_title'     => __( 'Ultimate Cursor — Limited Offer', 'ultimate-cursor' ),
 				'notice_title'     => __( 'Limited Time Offer — Ultimate Cursor Pro', 'ultimate-cursor' ),
-				'description'      => __( 'Upgrade to Ultimate Cursor Pro — premium effects, advanced customisation & priority support.', 'ultimate-cursor' ),
+				'headline'         => __( 'A cursor that reacts to your site', 'ultimate-cursor' ),
+				'description'      => __( 'Take the cursor you built further with Ultimate Cursor Pro.', 'ultimate-cursor' ),
 				'button_text'      => __( 'Get Pro — 20% OFF', 'ultimate-cursor' ),
 				'accent'           => '#6366f1',
 				'accent_secondary' => '#818cf8',
-				'gradient'         => 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
+				'gradient'         => '#5C33FF',
 				'icon'             => 'rocket',
 				'features'         => $features,
 			);
@@ -208,8 +220,12 @@ class Ultimate_Cursor_Dashboard_Widget {
 				'focusable'   => true,
 			),
 			'path' => array(
-				'd'    => true,
-				'fill' => true,
+				'd'               => true,
+				'fill'            => true,
+				'stroke'          => true,
+				'stroke-width'    => true,
+				'stroke-linecap'  => true,
+				'stroke-linejoin' => true,
 			),
 		);
 	}
@@ -259,7 +275,7 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 * Register the dashboard widget.
 	 */
 	public function add_dashboard_widget() {
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! $this->should_show() ) {
 			return;
 		}
 
@@ -284,6 +300,21 @@ class Ultimate_Cursor_Dashboard_Widget {
 	}
 
 	/**
+	 * Pricing URL with the campaign's coupon attached, so the discount is
+	 * applied at checkout without the visitor copying a code.
+	 *
+	 * @param array $campaign Campaign configuration.
+	 * @return string
+	 */
+	private function get_offer_url( $campaign ) {
+		$url = self::PRICING_URL;
+		if ( ! empty( $campaign['coupon'] ) ) {
+			$url = add_query_arg( 'coupon', rawurlencode( $campaign['coupon'] ), $url );
+		}
+		return $url;
+	}
+
+	/**
 	 * Render the dashboard widget body.
 	 */
 	public function render_dashboard_widget() {
@@ -293,148 +324,76 @@ class Ultimate_Cursor_Dashboard_Widget {
 		}
 		$nonce          = wp_create_nonce( 'uc_dismiss_promo_widget' );
 		$campaign_class = 'uc-campaign-' . $c['key'];
+		$check          = '<svg width="10" height="10" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M2.5 7.2l3 3 6-6.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>';
+		$units          = array(
+			'd' => __( 'days', 'ultimate-cursor' ),
+			'h' => __( 'hrs', 'ultimate-cursor' ),
+			'm' => __( 'min', 'ultimate-cursor' ),
+			's' => __( 'sec', 'ultimate-cursor' ),
+		);
 		?>
 		<div class="uc-promo-widget <?php echo esc_attr( $campaign_class ); ?>"
-			style="--uc-accent:<?php echo esc_attr( $c['accent'] ); ?>;--uc-accent-secondary:<?php echo esc_attr( $c['accent_secondary'] ); ?>;background:<?php echo esc_attr( $c['gradient'] ); ?>">
+			style="--uc-accent:<?php echo esc_attr( $c['accent'] ); ?>;--uc-accent-secondary:<?php echo esc_attr( $c['accent_secondary'] ); ?>;--uc-bg:<?php echo esc_attr( $c['gradient'] ); ?>">
 
-			<div class="uc-pw-glow"></div>
-
-			<button type="button" class="uc-pw-dismiss" data-nonce="<?php echo esc_attr( $nonce ); ?>" title="<?php esc_attr_e( 'Dismiss for 30 days', 'ultimate-cursor' ); ?>">
-				<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-					<path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+			<button type="button" class="uc-pw-dismiss" data-nonce="<?php echo esc_attr( $nonce ); ?>" title="<?php esc_attr_e( 'Dismiss for 30 days', 'ultimate-cursor' ); ?>" aria-label="<?php esc_attr_e( 'Dismiss for 30 days', 'ultimate-cursor' ); ?>">
+				<svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
+					<path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
 				</svg>
 			</button>
 
-			<div class="uc-pw-header">
-				<span class="uc-pw-icon"><?php echo wp_kses( $this->get_icon_svg( $c['icon'] ), $this->get_svg_kses_allowed() ); ?></span>
-				<span class="uc-pw-badge"><?php echo esc_html( $c['discount'] ); ?>% OFF</span>
+			<div class="uc-pw-top">
+				<span class="uc-pw-mark"><?php echo wp_kses( $this->get_icon_svg( $c['icon'] ), $this->get_svg_kses_allowed() ); ?></span>
+				<span class="uc-pw-brand"><?php esc_html_e( 'Ultimate Cursor Pro', 'ultimate-cursor' ); ?></span>
+				<span class="uc-pw-badge">
+					<?php
+					/* translators: %d: discount percentage. */
+					echo esc_html( sprintf( __( '%d%% OFF', 'ultimate-cursor' ), (int) $c['discount'] ) );
+					?>
+				</span>
 			</div>
 
+			<h3 class="uc-pw-title"><?php echo esc_html( $c['headline'] ); ?></h3>
 			<p class="uc-pw-desc"><?php echo esc_html( $c['description'] ); ?></p>
 
 			<ul class="uc-pw-features">
 				<?php foreach ( $c['features'] as $feature ) : ?>
 					<li>
-						<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-							<path d="M2.5 7l3 3 6-6" stroke="var(--uc-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
+						<span class="uc-pw-check"><?php echo wp_kses( $check, $this->get_svg_kses_allowed() ); ?></span>
 						<?php echo esc_html( $feature ); ?>
 					</li>
 				<?php endforeach; ?>
 			</ul>
 
-			<div class="uc-pw-countdown" data-end="<?php echo esc_attr( $c['end_date'] ); ?>">
-				<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-					<circle cx="7" cy="7" r="6" stroke="#94a3b8" stroke-width="1.2" />
-					<path d="M7 4v3.5l2.5 1.5" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-				</svg>
-				<span class="uc-pw-cd-label"><?php esc_html_e( 'Ends in:', 'ultimate-cursor' ); ?></span>
-				<span class="uc-pw-cd-value" data-role="countdown">--</span>
+			<div class="uc-pw-timer" data-end="<?php echo esc_attr( $c['end_date'] ); ?>">
+				<span class="uc-pw-timer-label"><?php esc_html_e( 'Offer ends in', 'ultimate-cursor' ); ?></span>
+				<div class="uc-pw-tiles">
+					<?php foreach ( $units as $unit => $label ) : ?>
+						<span class="uc-pw-tile">
+							<b data-unit="<?php echo esc_attr( $unit ); ?>">--</b>
+							<i><?php echo esc_html( $label ); ?></i>
+						</span>
+					<?php endforeach; ?>
+				</div>
 			</div>
 
-			<div class="uc-pw-coupon">
-				<span class="uc-pw-coupon-label"><?php esc_html_e( 'Use coupon:', 'ultimate-cursor' ); ?></span>
-				<button type="button" class="uc-pw-coupon-code" data-code="<?php echo esc_attr( $c['coupon'] ); ?>">
-					<span class="uc-pw-code-text"><?php echo esc_html( $c['coupon'] ); ?></span>
-					<span class="uc-pw-code-copied"><?php esc_html_e( 'Copied!', 'ultimate-cursor' ); ?></span>
-					<svg class="uc-pw-copy-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
-						<rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2" />
-						<path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" stroke-width="1.2" />
-					</svg>
-				</button>
-			</div>
-
-			<a href="<?php echo esc_url( self::PRICING_URL ); ?>" class="uc-pw-cta" target="_blank" rel="noopener">
+			<a href="<?php echo esc_url( $this->get_offer_url( $c ) ); ?>" class="uc-pw-cta" target="_blank" rel="noopener">
 				<?php echo esc_html( $c['button_text'] ); ?>
-				<svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-					<path d="M3 7h8m0 0L8 4m3 3L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+				<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
+					<path d="M3 7h8m0 0L8 4m3 3L8 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
 				</svg>
 			</a>
+
+			<p class="uc-pw-foot">
+				<?php esc_html_e( 'Discount applied at checkout.', 'ultimate-cursor' ); ?>
+				<a href="<?php echo esc_url( admin_url( 'admin.php?page=ultimate-cursor&sub_page=pro' ) ); ?>"><?php esc_html_e( 'See what Pro adds', 'ultimate-cursor' ); ?></a>
+			</p>
 		</div>
 		<?php
 	}
 
 	/*
 	------------------------------------------------------------------
-	 * Admin Notice (non-dashboard pages)
-	 * ----------------------------------------------------------------*/
-
-	/**
-	 * Show a slim promotional admin notice.
-	 */
-	public function show_promotional_notice() {
-		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
-		}
-
-		// Don't show on dashboard — the widget is already there.
-		global $pagenow;
-		if ( $pagenow === 'index.php' ) {
-			return;
-		}
-
-		$c = $this->get_campaign();
-		if ( ! $c ) {
-			return;
-		}
-
-		if ( $this->is_dismissed( 'notice' ) ) {
-			return;
-		}
-
-		$notice_id      = 'uc-promo-notice-' . $c['key'] . '-' . current_time( 'Y' );
-		$nonce          = wp_create_nonce( 'uc_dismiss_promo_notice' );
-		$campaign_class = 'uc-campaign-' . $c['key'];
-		?>
-		<div id="<?php echo esc_attr( $notice_id ); ?>"
-			class="notice uc-promo-notice <?php echo esc_attr( $campaign_class ); ?>"
-			style="--uc-accent:<?php echo esc_attr( $c['accent'] ); ?>;--uc-accent-secondary:<?php echo esc_attr( $c['accent_secondary'] ); ?>;background:<?php echo esc_attr( $c['gradient'] ); ?>"
-			data-campaign="<?php echo esc_attr( $c['key'] ); ?>"
-			data-nonce="<?php echo esc_attr( $nonce ); ?>">
-
-			<div class="uc-pn-glow"></div>
-
-			<div class="uc-pn-inner">
-				<div class="uc-pn-badge-wrap">
-					<span class="uc-pn-icon"><?php echo wp_kses( $this->get_icon_svg( $c['icon'] ), $this->get_svg_kses_allowed() ); ?></span>
-					<span class="uc-pn-discount"><?php echo esc_html( $c['discount'] ); ?>% OFF</span>
-				</div>
-
-				<div class="uc-pn-content">
-					<strong class="uc-pn-title"><?php echo esc_html( $c['notice_title'] ); ?></strong>
-					<span class="uc-pn-desc"><?php echo esc_html( $c['description'] ); ?></span>
-				</div>
-
-				<div class="uc-pn-actions">
-					<span class="uc-pn-timer" data-end="<?php echo esc_attr( $c['end_date'] ); ?>">
-						<svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-							<circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
-							<path d="M7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-						<strong data-role="countdown">--</strong>
-					</span>
-
-					<a href="<?php echo esc_url( self::PRICING_URL ); ?>" class="uc-pn-btn" target="_blank" rel="noopener">
-						<?php echo esc_html( $c['button_text'] ); ?>
-						<svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-							<path d="M3 7h8m0 0L8 4m3 3L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</a>
-				</div>
-
-				<button type="button" class="uc-pn-dismiss" title="<?php esc_attr_e( 'Dismiss for 30 days', 'ultimate-cursor' ); ?>">
-					<svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-						<path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-					</svg>
-				</button>
-			</div>
-		</div>
-		<?php
-	}
-
-	/*
-	------------------------------------------------------------------
-	 * AJAX dismiss handlers (30-day server-side persistence)
+	 * AJAX
 	 * ----------------------------------------------------------------*/
 
 	/**
@@ -451,20 +410,6 @@ class Ultimate_Cursor_Dashboard_Widget {
 		wp_send_json_success();
 	}
 
-	/**
-	 * Persist notice dismissal for 30 days.
-	 */
-	public function ajax_dismiss_notice() {
-		check_ajax_referer( 'uc_dismiss_promo_notice', 'nonce' );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( 'Forbidden', 403 );
-		}
-
-		$this->dismiss( 'notice' );
-		wp_send_json_success();
-	}
-
 	/*
 	------------------------------------------------------------------
 	 * Assets (CSS + JS)
@@ -474,7 +419,9 @@ class Ultimate_Cursor_Dashboard_Widget {
 	 * Enqueue inline styles and footer scripts on relevant admin pages.
 	 */
 	public function enqueue_assets( $hook ) {
-		if ( ! current_user_can( 'manage_options' ) ) {
+		// The widget lives on the Dashboard only; its styles and countdown
+		// script are not needed anywhere else.
+		if ( 'index.php' !== $hook || ! $this->should_show() ) {
 			return;
 		}
 
@@ -491,478 +438,282 @@ class Ultimate_Cursor_Dashboard_Widget {
 	}
 
 	/**
-	 * All CSS in one method — widget + notice.
+	 * Widget styles. Calm by design: no looping animation, and the hover
+	 * transitions are dropped under prefers-reduced-motion.
+	 *
+	 * @return string CSS.
 	 */
 	private function get_css() {
 		return '
-/* === Ultimate Cursor Promo Widget === */
-#ultimate_cursor_promo_widget .inside { padding: 0; margin:0;  }
+/* === Ultimate Cursor promo widget (WordPress Dashboard) === */
+#ultimate_cursor_promo_widget { border: 0; background: transparent; box-shadow: none; }
+#ultimate_cursor_promo_widget .inside { padding: 0; margin: 0; }
 #ultimate_cursor_promo_widget .postbox-header { display: none; }
 
 .uc-promo-widget {
 	position: relative;
-	color: #f1f5f9;
-	// border-radius: 14px;
-	padding: 28px 22px 22px;
-	text-align: center;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
 	overflow: hidden;
+	padding: 22px 22px 18px;
+	border-radius: 14px;
+	color: #fff;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+	text-align: left;
+	/* Regular campaign: brand violet with yellow. Overridden per campaign below. */
+	--uc-shadow: rgba(92, 51, 255, 0.35);
+	--uc-pop: #FFD43B;
+	--uc-pop-ink: #111827;
+	--uc-num: #5C33FF;
+	background: var(--uc-bg);
+	box-shadow: 0 14px 30px var(--uc-shadow);
 }
 
-/* Ambient glow effect */
-.uc-pw-glow {
-	position: absolute;
-	top: -40%;
-	right: -20%;
-	width: 200px;
-	height: 200px;
-	background: var(--uc-accent, #6366f1);
-	border-radius: 50%;
-	opacity: 0.12;
-	filter: blur(60px);
-	pointer-events: none;
-	animation: uc-glow-pulse 4s ease-in-out infinite;
-}
-
-@keyframes uc-glow-pulse {
-	0%, 100% { opacity: 0.10; transform: scale(1); }
-	50% { opacity: 0.20; transform: scale(1.15); }
-}
-
-/* Header */
-.uc-pw-header {
+/* Top row: mark, name, discount */
+.uc-pw-top {
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	gap: 10px;
+	gap: 9px;
 	margin-bottom: 16px;
+	padding-right: 28px;
 }
 
-.uc-pw-icon {
-	font-size: 28px;
-	line-height: 1;
-	animation: uc-icon-bounce 2s ease-in-out infinite;
+.uc-pw-mark {
+	display: grid;
+	place-items: center;
+	flex: none;
+	width: 30px;
+	height: 30px;
+	border-radius: 9px;
+	background: #fff;
+	font-size: 16px;
+	line-height: 0;
 }
 
-@keyframes uc-icon-bounce {
-	0%, 100% { transform: translateY(0); }
-	50% { transform: translateY(-4px); }
+.uc-pw-brand {
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	color: rgba(255, 255, 255, 0.85);
 }
 
 .uc-pw-badge {
-	display: inline-flex;
-	align-items: center;
-	background: var(--uc-accent, #6366f1);
-	color: #fff;
-	font-size: 12px;
+	margin-left: auto;
+	padding: 4px 10px;
+	border-radius: 999px;
+	background: var(--uc-pop);
+	color: var(--uc-pop-ink);
+	font-size: 11.5px;
 	font-weight: 800;
-	padding: 5px 14px;
-	border-radius: 20px;
-	letter-spacing: 0.8px;
-	text-transform: uppercase;
-	box-shadow: 0 2px 12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.15);
-	animation: uc-badge-glow 3s ease-in-out infinite;
+	letter-spacing: 0.04em;
+	white-space: nowrap;
 }
 
-@keyframes uc-badge-glow {
-	0%, 100% { box-shadow: 0 2px 12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.15); }
-	50% { box-shadow: 0 2px 20px var(--uc-accent, rgba(99,102,241,0.5)), inset 0 1px 0 rgba(255,255,255,0.15); }
+#ultimate_cursor_promo_widget .uc-pw-title {
+	margin: 0 0 6px;
+	padding: 0;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 1.25;
+	letter-spacing: -0.01em;
 }
 
-/* Description */
-.uc-pw-desc {
-	font-size: 13px;
-	line-height: 1.65;
-	color: #cbd5e1;
+#ultimate_cursor_promo_widget .uc-pw-desc {
 	margin: 0 0 16px;
+	color: rgba(255, 255, 255, 0.85);
+	font-size: 13px;
+	line-height: 1.5;
 }
 
 /* Feature list */
-.uc-pw-features {
-	list-style: none;
+#ultimate_cursor_promo_widget .uc-pw-features {
+	display: grid;
+	gap: 9px;
 	margin: 0 0 18px;
 	padding: 0;
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
+	list-style: none;
 }
 
-.uc-pw-features li {
+#ultimate_cursor_promo_widget .uc-pw-features li {
 	display: flex;
-	align-items: center;
-	gap: 8px;
-	font-size: 12px;
-	color: #e2e8f0;
-	justify-content: center;
+	align-items: flex-start;
+	gap: 9px;
+	margin: 0;
+	color: #fff;
+	font-size: 12.5px;
+	line-height: 1.45;
 }
 
-.uc-pw-features li svg {
-	flex-shrink: 0;
+.uc-pw-check {
+	display: grid;
+	place-items: center;
+	flex: none;
+	width: 18px;
+	height: 18px;
+	margin-top: 1px;
+	border-radius: 50%;
+	background: #fff;
+	color: var(--uc-num);
+	line-height: 0;
 }
 
 /* Countdown */
-.uc-pw-countdown {
-	display: inline-flex;
+.uc-pw-timer {
+	display: flex;
 	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 14px;
+	padding: 10px 12px;
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.14);
+}
+
+.uc-pw-timer-label {
+	color: rgba(255, 255, 255, 0.85);
+	font-size: 11.5px;
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.uc-pw-tiles {
+	display: flex;
 	gap: 6px;
-	font-size: 12px;
-	color: #94a3b8;
-	margin-bottom: 16px;
-	background: rgba(255,255,255,0.05);
-	padding: 6px 14px;
-	border-radius: 8px;
-	border: 1px solid rgba(255,255,255,0.08);
 }
 
-.uc-pw-cd-value {
-	color: #f8fafc;
-	font-weight: 700;
-	font-variant-numeric: tabular-nums;
-	font-size: 13px;
-}
-
-/* Coupon */
-.uc-pw-coupon {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 8px;
-	margin-bottom: 18px;
-	font-size: 12px;
-	color: #94a3b8;
-}
-
-.uc-pw-coupon-code {
-	position: relative;
-	display: inline-flex;
-	align-items: center;
-	gap: 6px;
-	background: rgba(255,255,255,0.08);
-	border: 1px dashed rgba(255,255,255,0.25);
-	color: #f8fafc;
-	font-family: "SF Mono", "Fira Code", "Courier New", monospace;
-	font-size: 13px;
-	font-weight: 700;
-	letter-spacing: 2px;
-	padding: 6px 14px;
-	border-radius: 8px;
-	cursor: pointer;
-	transition: all 0.25s ease;
-}
-
-.uc-pw-coupon-code:hover {
-	background: rgba(255,255,255,0.15);
-	border-color: rgba(255,255,255,0.4);
-	transform: translateY(-1px);
-}
-
-.uc-pw-copy-icon { opacity: 0.6; transition: opacity 0.2s; }
-.uc-pw-coupon-code:hover .uc-pw-copy-icon { opacity: 1; }
-
-.uc-pw-code-copied {
-	display: none;
-	position: absolute;
-	inset: 0;
-	background: #22c55e;
-	color: #fff;
-	border-radius: 7px;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-	font-size: 11px;
-	font-weight: 600;
-	letter-spacing: 0;
-	align-items: center;
-	justify-content: center;
-}
-
-.uc-pw-coupon-code.is-copied .uc-pw-code-copied { display: flex; }
-.uc-pw-coupon-code.is-copied .uc-pw-code-text,
-.uc-pw-coupon-code.is-copied .uc-pw-copy-icon { visibility: hidden; }
-
-/* CTA Button */
-.uc-pw-cta {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: 6px;
-	background: var(--uc-accent, #6366f1);
-	color: #fff !important;
-	text-decoration: none !important;
-	font-weight: 700;
-	font-size: 13px;
-	padding: 11px 28px;
-	border-radius: 10px;
-	transition: all 0.25s ease;
-	box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-	width: 100%;
-	box-sizing: border-box;
-}
-
-.uc-pw-cta:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-	color: #fff !important;
-	filter: brightness(1.1);
-}
-
-.uc-pw-cta:active {
-	transform: translateY(0);
-}
-
-/* Dismiss button */
-.uc-pw-dismiss {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	background: rgba(255,255,255,0.08);
-	border: none;
-	color: #64748b;
-	font-size: 14px;
-	cursor: pointer;
-	line-height: 1;
-	padding: 5px;
-	border-radius: 6px;
-	transition: all 0.2s;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 2;
-}
-
-.uc-pw-dismiss:hover {
-	color: #f1f5f9;
-	background: rgba(255,255,255,0.15);
-}
-
-/* === Campaign-specific widget styles === */
-
-/* Halloween */
-.uc-campaign-halloween .uc-pw-glow {
-	background: #ff6600;
-}
-
-.uc-campaign-halloween .uc-pw-badge {
-	background: linear-gradient(135deg, #ff6600, #ff8c00);
-}
-
-.uc-campaign-halloween .uc-pw-cta {
-	background: linear-gradient(135deg, #ff6600, #ff8c00);
-}
-
-/* Black Friday */
-.uc-campaign-black_friday .uc-pw-glow {
-	background: #f43f5e;
-}
-
-.uc-campaign-black_friday .uc-pw-badge {
-	background: linear-gradient(135deg, #f43f5e, #ec4899);
-}
-
-.uc-campaign-black_friday .uc-pw-cta {
-	background: linear-gradient(135deg, #f43f5e, #ec4899);
-}
-
-/* Regular */
-.uc-campaign-regular .uc-pw-glow {
-	background: #6366f1;
-}
-
-.uc-campaign-regular .uc-pw-badge {
-	background: linear-gradient(135deg, #6366f1, #818cf8);
-}
-
-.uc-campaign-regular .uc-pw-cta {
-	background: linear-gradient(135deg, #6366f1, #818cf8);
-}
-
-/* === Ultimate Cursor Promo Notice === */
-.uc-promo-notice {
-	border: none !important;
-	border-radius: 8px !important;
-	padding: 0 !important;
-	overflow: hidden;
-	margin: 15px 0 !important;
-	position: relative;
-	box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-}
-
-.uc-pn-glow {
-	position: absolute;
-	top: -50%;
-	right: -10%;
-	width: 160px;
-	height: 160px;
-	background: var(--uc-accent, #6366f1);
-	border-radius: 50%;
-	opacity: 0.1;
-	filter: blur(50px);
-	pointer-events: none;
-	animation: uc-glow-pulse 4s ease-in-out infinite;
-}
-
-.uc-pn-inner {
-	display: flex;
-	align-items: center;
-	gap: 16px;
-	padding: 14px 20px;
-	color: #f1f5f9;
-	flex-wrap: wrap;
-	position: relative;
-}
-
-.uc-pn-badge-wrap {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	flex-shrink: 0;
-}
-
-.uc-pn-icon {
-	font-size: 22px;
-	line-height: 1;
-	animation: uc-icon-bounce 2s ease-in-out infinite;
-}
-
-.uc-pn-discount {
-	display: inline-flex;
-	align-items: center;
-	background: var(--uc-accent, #6366f1);
-	color: #fff;
-	font-size: 11px;
-	font-weight: 800;
-	padding: 4px 10px;
-	border-radius: 14px;
-	letter-spacing: 0.6px;
-	text-transform: uppercase;
-	box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-.uc-pn-content {
+.uc-pw-tile {
 	display: flex;
 	flex-direction: column;
-	gap: 2px;
-	flex: 1;
-	min-width: 200px;
-}
-
-.uc-pn-title {
-	font-size: 13px;
-	font-weight: 700;
-	color: #fff;
-	line-height: 1.3;
-}
-
-.uc-pn-desc {
-	font-size: 12px;
-	color: #cbd5e1;
-	line-height: 1.4;
-}
-
-.uc-pn-actions {
-	display: flex;
 	align-items: center;
-	gap: 14px;
-	flex-shrink: 0;
-	margin-right:30px;
-}
-
-.uc-pn-timer {
-	display: inline-flex;
-	align-items: center;
-	gap: 5px;
-	font-size: 12px;
-	color: #94a3b8;
-	white-space: nowrap;
-	background: rgba(255,255,255,0.06);
-	padding: 5px 10px;
-	border-radius: 6px;
-}
-
-.uc-pn-timer svg { opacity: 0.7; }
-
-.uc-pn-timer strong {
-	color: #fff;
-	font-variant-numeric: tabular-nums;
-}
-
-.uc-pn-btn {
-	display: inline-flex;
-	align-items: center;
-	gap: 5px;
-	background: var(--uc-accent, #6366f1) !important;
-	color: #fff !important;
-	text-decoration: none !important;
-	font-size: 12px;
-	font-weight: 700;
-	padding: 8px 18px;
+	min-width: 34px;
+	padding: 5px 4px 4px;
 	border-radius: 8px;
-	white-space: nowrap;
-	transition: all 0.25s ease;
-	box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+	background: #fff;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
-.uc-pn-btn:hover {
-	transform: translateY(-1px);
-	box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-	color: #fff !important;
-	filter: brightness(1.1);
+.uc-pw-tile b {
+	color: var(--uc-num);
+	font-size: 15px;
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+	line-height: 1.1;
 }
 
-.uc-pn-dismiss {
-	position: absolute;
-	top: 10px;
-	right: 0px;
-	transform: translateY(-50%);
-	background: rgba(255,255,255,0.08);
-	border: none;
+.uc-pw-tile i {
+	margin-top: 2px;
 	color: #64748b;
-	cursor: pointer;
-	padding: 5px;
-	border-radius: 6px;
-	transition: all 0.2s;
+	font-size: 9px;
+	font-style: normal;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+/* Call to action */
+.uc-promo-widget .uc-pw-cta {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	z-index: 2;
+	gap: 8px;
+	padding: 13px 16px;
+	border-radius: 11px;
+	background: var(--uc-pop);
+	color: var(--uc-pop-ink);
+	font-size: 14px;
+	font-weight: 800;
+	text-decoration: none;
+	transition: transform 0.18s ease, background 0.18s ease;
 }
 
-.uc-pn-dismiss:hover {
-	color: #f1f5f9;
-	background: rgba(255,255,255,0.15);
+.uc-promo-widget .uc-pw-cta:hover,
+.uc-promo-widget .uc-pw-cta:focus-visible {
+	background: #fff;
+	color: #111827;
+	transform: translateY(-2px);
 }
 
-/* Campaign-specific notice styles */
-.uc-promo-notice.uc-campaign-halloween .uc-pn-discount {
-	background: linear-gradient(135deg, #ff6600, #ff8c00);
-}
-.uc-promo-notice.uc-campaign-halloween .uc-pn-btn {
-	background: linear-gradient(135deg, #ff6600, #ff8c00) !important;
+.uc-campaign-halloween .uc-pw-cta:hover,
+.uc-campaign-halloween .uc-pw-cta:focus-visible {
+	background: #fff;
+	color: #1a1a1a;
 }
 
-.uc-promo-notice.uc-campaign-black_friday .uc-pn-discount {
-	background: linear-gradient(135deg, #f43f5e, #ec4899);
-}
-.uc-promo-notice.uc-campaign-black_friday .uc-pn-btn {
-	background: linear-gradient(135deg, #f43f5e, #ec4899) !important;
+.uc-promo-widget .uc-pw-cta:focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: 2px;
 }
 
-.uc-promo-notice.uc-campaign-regular .uc-pn-discount {
-	background: linear-gradient(135deg, #6366f1, #818cf8);
-}
-.uc-promo-notice.uc-campaign-regular .uc-pn-btn {
-	background: linear-gradient(135deg, #6366f1, #818cf8) !important;
+.uc-promo-widget .uc-pw-cta svg {
+	transition: transform 0.18s ease;
 }
 
-@media (max-width: 782px) {
-	.uc-pn-inner {
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 10px;
-		padding: 14px 44px 14px 16px;
-	}
-	.uc-pn-actions { flex-wrap: wrap; gap: 8px; }
-	.uc-pn-btn { margin-left: 0; }
+.uc-promo-widget .uc-pw-cta:hover svg {
+	transform: translateX(3px);
 }
-		';
+
+#ultimate_cursor_promo_widget .uc-pw-foot {
+	margin: 11px 0 0;
+	color: rgba(255, 255, 255, 0.85);
+	font-size: 11.5px;
+	line-height: 1.5;
+	text-align: center;
+}
+
+#ultimate_cursor_promo_widget .uc-pw-foot a {
+	color: #fff;
+	font-weight: 700;
+	text-decoration: underline;
+	text-decoration-color: rgba(255, 255, 255, 0.55);
+	text-underline-offset: 2px;
+}
+
+#ultimate_cursor_promo_widget .uc-pw-foot a:hover {
+	text-decoration-color: currentColor;
+}
+
+/* Dismiss */
+.uc-pw-dismiss {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	display: grid;
+	place-items: center;
+	width: 26px;
+	height: 26px;
+	padding: 0;
+	border: 0;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.18);
+	color: #fff;
+	cursor: pointer;
+	transition: background 0.18s ease, color 0.18s ease;
+}
+
+.uc-pw-dismiss:hover,
+.uc-pw-dismiss:focus-visible {
+	background: rgba(255, 255, 255, 0.35);
+	color: #fff;
+}
+
+/* Halloween: pumpkin orange with black. */
+.uc-campaign-halloween {
+	--uc-shadow: rgba(247, 103, 7, 0.4);
+	--uc-pop: #1a1a1a;
+	--uc-pop-ink: #fff;
+	--uc-num: #D9480F;
+}
+
+/* Black Friday: black with yellow. */
+.uc-campaign-black_friday {
+	--uc-shadow: rgba(0, 0, 0, 0.4);
+	--uc-pop: #FFD43B;
+	--uc-pop-ink: #111111;
+	--uc-num: #111111;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.uc-promo-widget * { transition: none !important; }
+}
+';
 	}
 
 	/**
@@ -972,58 +723,34 @@ class Ultimate_Cursor_Dashboard_Widget {
 		?>
 		<script>
 			(function() {
-				/* --- Countdown helper --- */
+				/* --- Countdown tiles --- */
+				function ucPad(n) {
+					return (n < 10 ? '0' : '') + n;
+				}
 				function ucUpdateCountdowns() {
-					document.querySelectorAll('[data-role="countdown"]').forEach(function(el) {
-						var container = el.closest('[data-end]');
-						if (!container) return;
-						var end = new Date(container.getAttribute('data-end') + 'T23:59:59').getTime();
+					document.querySelectorAll('.uc-pw-timer[data-end]').forEach(function(timer) {
+						var end = new Date(timer.getAttribute('data-end') + 'T23:59:59').getTime();
 						var diff = end - Date.now();
 						if (diff <= 0) {
-							el.textContent = '<?php echo esc_js( __( 'Ended', 'ultimate-cursor' ) ); ?>';
+							timer.style.display = 'none';
 							return;
 						}
-						var d = Math.floor(diff / 864e5);
-						var h = Math.floor((diff % 864e5) / 36e5);
-						var m = Math.floor((diff % 36e5) / 6e4);
-						var s = Math.floor((diff % 6e4) / 1e3);
-						if (d > 0) {
-							el.textContent = d + 'd ' + h + 'h ' + m + 'm';
-						} else {
-							el.textContent = h + 'h ' + m + 'm ' + s + 's';
-						}
+						var values = {
+							d: Math.floor(diff / 86400000),
+							h: Math.floor((diff % 86400000) / 3600000),
+							m: Math.floor((diff % 3600000) / 60000),
+							s: Math.floor((diff % 60000) / 1000)
+						};
+						Object.keys(values).forEach(function(unit) {
+							var el = timer.querySelector('[data-unit="' + unit + '"]');
+							if (el) {
+								el.textContent = ucPad(values[unit]);
+							}
+						});
 					});
 				}
 				ucUpdateCountdowns();
 				setInterval(ucUpdateCountdowns, 1000);
-
-				/* --- Coupon copy --- */
-				document.querySelectorAll('.uc-pw-coupon-code').forEach(function(btn) {
-					btn.addEventListener('click', function() {
-						var code = btn.getAttribute('data-code');
-						if (!code) return;
-						var done = function() {
-							btn.classList.add('is-copied');
-							setTimeout(function() {
-								btn.classList.remove('is-copied');
-							}, 1500);
-						};
-						if (navigator.clipboard) {
-							navigator.clipboard.writeText(code).then(done).catch(done);
-						} else {
-							var ta = document.createElement('textarea');
-							ta.value = code;
-							ta.style.cssText = 'position:fixed;left:-9999px';
-							document.body.appendChild(ta);
-							ta.select();
-							try {
-								document.execCommand('copy');
-							} catch (e) {}
-							document.body.removeChild(ta);
-							done();
-						}
-					});
-				});
 
 				/* --- Widget dismiss (AJAX — 30-day server-side) --- */
 				document.querySelectorAll('.uc-pw-dismiss').forEach(function(btn) {
@@ -1043,28 +770,6 @@ class Ultimate_Cursor_Dashboard_Widget {
 						xhr.open('POST', '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>');
 						xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 						xhr.send('action=uc_dismiss_promo_widget&nonce=' + encodeURIComponent(nonce));
-					});
-				});
-
-				/* --- Notice dismiss (AJAX — 30-day server-side) --- */
-				document.querySelectorAll('.uc-pn-dismiss').forEach(function(btn) {
-					btn.addEventListener('click', function() {
-						var notice = btn.closest('.uc-promo-notice');
-						if (notice) {
-							notice.style.opacity = '0';
-							notice.style.transform = 'translateY(-10px)';
-							notice.style.transition = 'all 0.3s ease';
-							setTimeout(function() {
-								notice.style.display = 'none';
-							}, 300);
-						}
-						var nonce = notice ? notice.getAttribute('data-nonce') : '';
-						if (nonce) {
-							var xhr = new XMLHttpRequest();
-							xhr.open('POST', '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>');
-							xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-							xhr.send('action=uc_dismiss_promo_notice&nonce=' + encodeURIComponent(nonce));
-						}
 					});
 				});
 			})();

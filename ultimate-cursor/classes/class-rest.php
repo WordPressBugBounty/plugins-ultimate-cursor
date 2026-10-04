@@ -131,9 +131,11 @@ class Ultimate_Cursor_Rest extends WP_REST_Controller {
 			);
 
 			update_option( 'ultimate_cursor_settings', $merged );
+
+			return $this->success( true );
 		}
 
-		return $this->success( true );
+		return $this->invalid_settings_error();
 	}
 
 
@@ -157,9 +159,25 @@ class Ultimate_Cursor_Rest extends WP_REST_Controller {
 			);
 
 			update_option( 'ultimate_cursor_background_settings', $merged );
+
+			return $this->success( true );
 		}
 
-		return $this->success( true );
+		return $this->invalid_settings_error();
+	}
+
+	/**
+	 * Error returned when the `settings` param is not an object — nothing was
+	 * saved, so the dashboard must not report success.
+	 *
+	 * @return WP_Error
+	 */
+	private function invalid_settings_error() {
+		return new WP_Error(
+			'ultimate_cursor_invalid_settings',
+			__( 'Settings could not be saved: the request was not in the expected format.', 'ultimate-cursor' ),
+			array( 'status' => 400 )
+		);
 	}
 
 	/**

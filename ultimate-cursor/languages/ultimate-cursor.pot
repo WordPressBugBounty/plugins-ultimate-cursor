@@ -2,14 +2,14 @@
 # This file is distributed under the GPL3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Cursor – Interactive and Animated Custom Cursor and Background Effects Toolkit 2.4.1\n"
+"Project-Id-Version: Ultimate Cursor – Interactive and Animated Custom Cursor and Background Effects Toolkit 2.5.0\n"
 "Report-Msgid-Bugs-To: https://github.com/WPXERO/ultimate-cursor/issues\n"
 "Last-Translator: WPXERO\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-05T14:05:31+00:00\n"
+"POT-Creation-Date: 2026-10-04T16:49:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ultimate-cursor\n"
@@ -35,269 +35,334 @@ msgstr ""
 msgid "WPXERO"
 msgstr ""
 
-#: classes/class-admin.php:65
+#. translators: 1: required Pro version, 2: installed Pro version
+#: classes/class-admin.php:93
+#, php-format
+msgid "Ultimate Cursor Pro %2$s is too old for this version of Ultimate Cursor. Update Ultimate Cursor Pro to %1$s or newer to keep using Pro features — your Pro settings are kept in the meantime."
+msgstr ""
+
+#: classes/class-admin.php:131
 msgid "Settings"
 msgstr ""
 
-#: classes/class-admin.php:89
-#: src/admin/components/pro-modal/index.js:63
-#: src/admin/pages/background/editor.js:174
-#: src/admin/pages/background/types/antigravity.js:129
-#: src/admin/pages/background/types/light-pillar.js:120
-#: src/admin/pages/background/types/light-pillar.js:207
-#: src/admin/pages/cursor/multiple/kit.js:494
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:78
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1011
+#: classes/class-admin.php:155
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: classes/class-admin.php:117
+#: classes/class-admin.php:182
 msgid "You do not have permission to install plugins."
 msgstr ""
 
-#: classes/class-admin.php:122
+#: classes/class-admin.php:187
 msgid "No plugin slug provided."
 msgstr ""
 
-#: classes/class-admin.php:152
+#: classes/class-admin.php:217
 msgid "Installation failed."
 msgstr ""
 
-#: classes/class-admin.php:167
-#: src/admin/pages/welcome/index.js:98
+#: classes/class-admin.php:232
+#: src/admin/pages/welcome/index.js:85
 msgid "Plugin installed and activated successfully!"
 msgstr ""
 
-#: classes/class-admin.php:170
+#: classes/class-admin.php:235
 msgid "Could not locate the plugin file after installation."
 msgstr ""
 
-#: classes/class-admin.php:218
-#: classes/class-admin.php:219
-#: classes/class-elementor.php:79
-#: classes/class-elementor.php:182
+#: classes/class-admin.php:263
+msgid "You do not have permission to do this."
+msgstr ""
+
+#: classes/class-admin.php:315
+#: classes/class-admin.php:316
+#: classes/class-elementor.php:91
+#: classes/class-elementor.php:194
 #: src/admin/index.js:261
 #: src/admin/pages/about/index.js:154
-#: src/admin/pages/welcome/index.js:203
+#: src/admin/pages/welcome/index.js:182
 msgid "Ultimate Cursor"
 msgstr ""
 
-#: classes/class-admin.php:234
-#: classes/class-admin.php:235
-#: src/admin/pages/index.js:66
+#: classes/class-admin.php:331
+#: classes/class-admin.php:332
+#: src/admin/pages/index.js:70
 msgid "Cursors"
 msgstr ""
 
-#: classes/class-admin.php:241
-#: classes/class-admin.php:242
-#: classes/class-elementor.php:336
-#: src/admin/pages/background/config-list.js:303
-#: src/admin/pages/background/config-list.js:375
-#: src/admin/pages/background/config-list.js:399
-#: src/admin/pages/background/config-list.js:766
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:38
-#: src/admin/pages/index.js:71
+#: classes/class-admin.php:338
+#: classes/class-admin.php:339
+#: classes/class-elementor.php:348
+#: src/admin/pages/background/config-list.js:308
+#: src/admin/pages/background/config-list.js:382
+#: src/admin/pages/background/config-list.js:406
+#: src/admin/pages/background/config-list.js:797
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:34
+#: src/admin/pages/index.js:75
 msgid "Background"
 msgstr ""
 
-#: classes/class-admin.php:248
-#: classes/class-admin.php:249
+#: classes/class-admin.php:347
+#: classes/class-admin.php:348
+#: src/admin/pages/index.js:94
+msgid "Pro Features"
+msgstr ""
+
+#: classes/class-admin.php:355
+#: classes/class-admin.php:356
 msgid "Support"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:92
-msgid "Multiple Cursor & Background Effects Configurations"
+#: classes/class-dashboard-widget.php:102
+msgid "Interactive Hover: the cursor reacts to links and buttons"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:93
-msgid "Element-Specific Cursors & Background Effects"
+#: classes/class-dashboard-widget.php:103
+msgid "Multiple cursors, shown on the pages and elements you choose"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:94
-msgid "Custom Cursor & Background Effects for Specific Pages"
+#: classes/class-dashboard-widget.php:104
+msgid "20 more shapes, circular text and image hotspot"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:95
-msgid "Advanced Animation Options"
+#: classes/class-dashboard-widget.php:105
+msgid "Settings for every animated effect and background"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:96
-msgid "Priority Support"
-msgstr ""
-
-#: classes/class-dashboard-widget.php:106
+#: classes/class-dashboard-widget.php:115
 msgid "Ultimate Cursor — Halloween Sale"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:107
+#: classes/class-dashboard-widget.php:116
+#: classes/class-promo-notice.php:111
 msgid "Halloween Sale — Ultimate Cursor Pro"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:108
-msgid "Unlock spooky-good premium cursor effects, advanced customisation & priority support this Halloween!"
+#: classes/class-dashboard-widget.php:117
+msgid "Spooky-good cursors for less"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:109
-#: classes/class-dashboard-widget.php:128
+#: classes/class-dashboard-widget.php:118
+msgid "Everything in Ultimate Cursor Pro, at the Halloween price."
+msgstr ""
+
+#: classes/class-dashboard-widget.php:119
+#: classes/class-dashboard-widget.php:139
+#: classes/class-promo-notice.php:113
+#: classes/class-promo-notice.php:129
 msgid "Grab 25% OFF"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:125
+#: classes/class-dashboard-widget.php:135
 msgid "Ultimate Cursor — Black Friday Sale"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:126
+#: classes/class-dashboard-widget.php:136
+#: classes/class-promo-notice.php:127
 msgid "Black Friday Sale — Ultimate Cursor Pro"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:127
-msgid "The biggest sale of the year! Unlock 10+ premium cursor effects, advanced customisation & priority support."
+#: classes/class-dashboard-widget.php:137
+msgid "Our biggest sale of the year"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:155
+#: classes/class-dashboard-widget.php:138
+msgid "Everything in Ultimate Cursor Pro, at the Black Friday price."
+msgstr ""
+
+#: classes/class-dashboard-widget.php:166
 msgid "Ultimate Cursor — Limited Offer"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:156
+#: classes/class-dashboard-widget.php:167
 msgid "Limited Time Offer — Ultimate Cursor Pro"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:157
-msgid "Upgrade to Ultimate Cursor Pro — premium effects, advanced customisation & priority support."
+#: classes/class-dashboard-widget.php:168
+msgid "A cursor that reacts to your site"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:158
+#: classes/class-dashboard-widget.php:169
+msgid "Take the cursor you built further with Ultimate Cursor Pro."
+msgstr ""
+
+#: classes/class-dashboard-widget.php:170
+#: classes/class-promo-notice.php:149
 msgid "Get Pro — 20% OFF"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:302
-#: classes/class-dashboard-widget.php:425
-msgid "Dismiss for 30 days"
+#: classes/class-dashboard-widget.php:329
+msgid "days"
+msgstr ""
+
+#: classes/class-dashboard-widget.php:330
+msgid "hrs"
 msgstr ""
 
 #: classes/class-dashboard-widget.php:331
-msgid "Ends in:"
+msgid "min"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:336
-msgid "Use coupon:"
+#: classes/class-dashboard-widget.php:332
+msgid "sec"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:339
-msgid "Copied!"
+#: classes/class-dashboard-widget.php:338
+msgid "Dismiss for 30 days"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:983
-msgid "Ended"
+#: classes/class-dashboard-widget.php:346
+#: src/admin/pages/pro/index.js:169
+msgid "Ultimate Cursor Pro"
 msgstr ""
 
-#: classes/class-elementor.php:87
+#. translators: %d: discount percentage.
+#: classes/class-dashboard-widget.php:350
+#, php-format
+msgid "%d%% OFF"
+msgstr ""
+
+#: classes/class-dashboard-widget.php:368
+msgid "Offer ends in"
+msgstr ""
+
+#: classes/class-dashboard-widget.php:387
+msgid "Discount applied at checkout."
+msgstr ""
+
+#: classes/class-dashboard-widget.php:388
+msgid "See what Pro adds"
+msgstr ""
+
+#: classes/class-elementor.php:99
 msgid "Enable Cursors?"
 msgstr ""
 
-#: classes/class-elementor.php:102
+#: classes/class-elementor.php:114
 msgid "Layout"
 msgstr ""
 
-#: classes/class-elementor.php:111
+#: classes/class-elementor.php:123
 #: src/admin/pages/cursor/type-picker.js:237
 msgid "Cursor Type"
 msgstr ""
 
-#: classes/class-elementor.php:117
+#: classes/class-elementor.php:129
 msgid "Default"
 msgstr ""
 
-#: classes/class-elementor.php:118
+#: classes/class-elementor.php:130
 #: src/admin/constants/index.js:23
-#: src/admin/pages/cursor/config-list.js:441
+#: src/admin/pages/cursor/config-list.js:440
 msgid "Text"
 msgstr ""
 
-#: classes/class-elementor.php:119
-#: classes/class-elementor.php:130
+#: classes/class-elementor.php:131
+#: classes/class-elementor.php:142
 #: src/admin/constants/index.js:28
-#: src/admin/pages/cursor/config-list.js:446
+#: src/admin/pages/cursor/config-list.js:445
 msgid "Image"
 msgstr ""
 
-#: classes/class-elementor.php:120
-#: classes/class-elementor.php:145
+#: classes/class-elementor.php:132
+#: classes/class-elementor.php:157
 msgid "Icons"
 msgstr ""
 
-#: classes/class-elementor.php:161
-#: classes/class-elementor.php:238
+#: classes/class-elementor.php:173
+#: classes/class-elementor.php:250
 msgid "Style"
 msgstr ""
 
-#: classes/class-elementor.php:165
+#: classes/class-elementor.php:177
 msgid "Style 1"
 msgstr ""
 
-#: classes/class-elementor.php:166
+#: classes/class-elementor.php:178
 msgid "Style 2"
 msgstr ""
 
-#: classes/class-elementor.php:167
+#: classes/class-elementor.php:179
 msgid "Style 3"
 msgstr ""
 
-#: classes/class-elementor.php:180
+#: classes/class-elementor.php:192
 msgid "Text Label"
 msgstr ""
 
-#: classes/class-elementor.php:196
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:648
+#: classes/class-elementor.php:208
 msgid "Speed"
 msgstr ""
 
-#: classes/class-elementor.php:222
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:51
+#: classes/class-elementor.php:234
+#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:45
 msgid "Disable Default Cursor"
 msgstr ""
 
-#: classes/class-elementor.php:247
+#: classes/class-elementor.php:259
 msgid "Primary"
 msgstr ""
 
-#: classes/class-elementor.php:258
-#: classes/class-elementor.php:295
-#: classes/class-elementor.php:322
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:31
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:249
+#: classes/class-elementor.php:270
+#: classes/class-elementor.php:307
+#: classes/class-elementor.php:334
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:27
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:245
 msgid "Color"
 msgstr ""
 
-#: classes/class-elementor.php:271
-#: classes/class-elementor.php:308
-#: classes/class-elementor.php:397
-#: classes/class-elementor.php:436
-#: src/admin/pages/background/types/antigravity.js:80
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:847
+#: classes/class-elementor.php:283
+#: classes/class-elementor.php:320
+#: classes/class-elementor.php:409
+#: classes/class-elementor.php:448
+#: src/admin/pages/background/types/antigravity.js:74
 msgid "Size"
 msgstr ""
 
-#: classes/class-elementor.php:284
+#: classes/class-elementor.php:296
 msgid "Secondary"
 msgstr ""
 
-#: classes/class-elementor.php:347
+#: classes/class-elementor.php:359
 msgid "Padding"
 msgstr ""
 
-#: classes/class-elementor.php:362
-#: classes/class-elementor.php:411
+#: classes/class-elementor.php:374
+#: classes/class-elementor.php:423
 msgid "Border"
 msgstr ""
 
-#: classes/class-elementor.php:372
-#: classes/class-elementor.php:421
+#: classes/class-elementor.php:384
+#: classes/class-elementor.php:433
 msgid "Border Radius"
 msgstr ""
 
-#: classes/class-elementor.php:387
+#: classes/class-elementor.php:399
 msgid "Typography"
+msgstr ""
+
+#: classes/class-promo-notice.php:112
+msgid "Unlock spooky-good premium cursor effects, advanced customisation & priority support this Halloween!"
+msgstr ""
+
+#: classes/class-promo-notice.php:128
+msgid "The biggest sale of the year! Unlock 10+ premium cursor effects, advanced customisation & priority support."
+msgstr ""
+
+#: classes/class-promo-notice.php:147
+msgid "Ultimate Cursor Pro — 20% off"
+msgstr ""
+
+#: classes/class-promo-notice.php:148
+msgid "Upgrade to Ultimate Cursor Pro — premium effects, advanced customisation & priority support."
+msgstr ""
+
+#: classes/class-promo-notice.php:339
+msgid "Dismiss this offer"
+msgstr ""
+
+#: classes/class-promo-notice.php:591
+msgid "Ended"
 msgstr ""
 
 #: classes/class-rest.php:62
@@ -308,22 +373,37 @@ msgstr ""
 msgid "You do not have permission to change these options."
 msgstr ""
 
-#: src/admin/components/control-rows.js:48
-msgid "More information"
+#: classes/class-rest.php:178
+msgid "Settings could not be saved: the request was not in the expected format."
 msgstr ""
 
-#: src/admin/components/control-rows.js:76
-#: src/admin/pages/background/config-list.js:905
-#: src/admin/pages/cursor/config-list.js:1353
-#: src/admin/pages/cursor/multiple/hotspot.js:151
+#: src/admin/components/add-pro-tile.js:33
 msgid "PRO"
 msgstr ""
 
+#: src/admin/components/add-pro-tile.js:40
+msgid "(a Pro feature — opens the Pro Features page)"
+msgstr ""
+
+#: src/admin/components/control-rows.js:47
+msgid "More information"
+msgstr ""
+
 #. translators: 1: field label, 2: current color value.
-#: src/admin/components/control-rows.js:332
+#: src/admin/components/control-rows.js:320
 #: src/admin/pages/cursor/multiple/kit.js:395
 #, js-format
 msgid "%1$s: %2$s. Open color picker."
+msgstr ""
+
+#: src/admin/components/demo-link.js:34
+msgid "See it live"
+msgstr ""
+
+#: src/admin/components/demo-link.js:37
+#: src/admin/components/pro-note.js:107
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:408
+msgid "(opens in a new tab)"
 msgstr ""
 
 #. translators: <heart/> renders a heart icon.
@@ -359,12 +439,52 @@ msgstr ""
 msgid "Search and select pages…"
 msgstr ""
 
-#: src/admin/components/pro-modal/index.js:38
-msgid "Ultimate Cursor: Free vs Pro"
+#: src/admin/components/pro-note.js:103
+#: src/admin/pages/cursor/index.js:166
+#: src/admin/pages/cursor/upgrade-banner.js:21
+msgid "See it in action"
 msgstr ""
 
-#: src/admin/components/pro-modal/index.js:54
-msgid "Maybe Later"
+#: src/admin/components/pro-note.js:104
+#: src/admin/pages/welcome/index.js:297
+msgid "See Pro features"
+msgstr ""
+
+#: src/admin/components/review-prompt.js:108
+msgid "Review request"
+msgstr ""
+
+#: src/admin/components/review-prompt.js:112
+msgid "Your cursor has been live for a while."
+msgstr ""
+
+#: src/admin/components/review-prompt.js:117
+msgid "If Ultimate Cursor is working well for you, a short review on WordPress.org helps other site owners find it."
+msgstr ""
+
+#: src/admin/components/review-prompt.js:130
+msgid "Leave a review"
+msgstr ""
+
+#: src/admin/components/review-prompt.js:133
+#: src/admin/components/review-prompt.js:186
+msgid "No thanks"
+msgstr ""
+
+#: src/admin/components/review-prompt.js:167
+msgid "Usage sharing invitation"
+msgstr ""
+
+#: src/admin/components/review-prompt.js:171
+msgid "Help improve Ultimate Cursor?"
+msgstr ""
+
+#: src/admin/components/review-prompt.js:173
+msgid "You can choose to share basic site and plugin information with the developer through Freemius. The next screen lists exactly what is shared, and nothing is sent unless you agree there."
+msgstr ""
+
+#: src/admin/components/review-prompt.js:183
+msgid "See what is shared"
 msgstr ""
 
 #: src/admin/components/skeleton.js:34
@@ -380,7 +500,6 @@ msgid "You have unsaved changes"
 msgstr ""
 
 #: src/admin/components/sticky-save-bar/index.js:94
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1127
 msgid "Reset"
 msgstr ""
 
@@ -393,7 +512,7 @@ msgid "Use any image as your cursor"
 msgstr ""
 
 #: src/admin/constants/index.js:33
-#: src/admin/pages/cursor/config-list.js:451
+#: src/admin/pages/cursor/config-list.js:450
 msgid "Icon"
 msgstr ""
 
@@ -410,7 +529,7 @@ msgid "Geometric shapes as cursors"
 msgstr ""
 
 #: src/admin/constants/index.js:43
-#: src/admin/pages/cursor/config-list.js:456
+#: src/admin/pages/cursor/config-list.js:455
 msgid "Animated"
 msgstr ""
 
@@ -468,85 +587,6 @@ msgstr ""
 msgid "Capitalize"
 msgstr ""
 
-#: src/admin/constants/index.js:174
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:35
-msgid "Normal"
-msgstr ""
-
-#: src/admin/constants/index.js:175
-msgid "Circular"
-msgstr ""
-
-#: src/admin/constants/index.js:182
-msgid "Clockwise"
-msgstr ""
-
-#: src/admin/constants/index.js:184
-msgid "Counter Clockwise"
-msgstr ""
-
-#: src/admin/constants/index.js:197
-#: src/admin/pages/cursor/multiple/hotspot.js:60
-msgid "Center"
-msgstr ""
-
-#: src/admin/constants/index.js:199
-#: src/admin/pages/cursor/multiple/hotspot.js:36
-msgid "Top Left"
-msgstr ""
-
-#: src/admin/constants/index.js:205
-#: src/admin/pages/cursor/multiple/hotspot.js:48
-msgid "Top Right"
-msgstr ""
-
-#: src/admin/constants/index.js:211
-#: src/admin/pages/cursor/multiple/hotspot.js:72
-msgid "Bottom Left"
-msgstr ""
-
-#: src/admin/constants/index.js:217
-#: src/admin/pages/cursor/multiple/hotspot.js:84
-msgid "Bottom Right"
-msgstr ""
-
-#: src/admin/constants/index.js:222
-#: src/admin/pages/cursor/multiple/hotspot.js:249
-msgid "Custom"
-msgstr ""
-
-#: src/admin/constants/index.js:256
-#: src/admin/pages/background/editor.js:56
-msgid "Entire Website"
-msgstr ""
-
-#: src/admin/constants/index.js:261
-msgid "Specific Pages (pro feature)"
-msgstr ""
-
-#: src/admin/constants/index.js:262
-#: src/admin/pages/background/editor.js:62
-msgid "Specific Pages"
-msgstr ""
-
-#: src/admin/constants/index.js:268
-msgid "CSS Selectors (pro feature)"
-msgstr ""
-
-#: src/admin/constants/index.js:269
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:215
-msgid "CSS Selectors"
-msgstr ""
-
-#: src/admin/constants/index.js:275
-msgid "HTML Elements (pro feature)"
-msgstr ""
-
-#: src/admin/constants/index.js:276
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:229
-msgid "HTML Elements"
-msgstr ""
-
 #: src/admin/pages/about/index.js:42
 msgid "More cursor animation effects"
 msgstr ""
@@ -576,7 +616,7 @@ msgid "Crafted with Passion"
 msgstr ""
 
 #: src/admin/pages/about/index.js:145
-#: src/admin/pages/index.js:79
+#: src/admin/pages/index.js:83
 msgid "About"
 msgstr ""
 
@@ -664,880 +704,644 @@ msgstr ""
 msgid "Go to Settings"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:96
+#: src/admin/pages/background/config-list.js:103
 msgid "My Background"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:184
+#: src/admin/pages/background/config-list.js:189
 msgid "Preview unavailable."
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:230
+#: src/admin/pages/background/config-list.js:235
 msgid "Loading preview…"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:243
+#: src/admin/pages/background/config-list.js:248
 msgid "Selector:"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:244
-#: src/admin/pages/cursor/config-list.js:469
+#: src/admin/pages/background/config-list.js:249
+#: src/admin/pages/cursor/config-list.js:468
 msgid "Pages:"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:256
+#: src/admin/pages/background/config-list.js:261
 msgid "Site-wide"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:260
+#: src/admin/pages/background/config-list.js:265
 msgid "Specific pages"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:264
+#: src/admin/pages/background/config-list.js:269
 msgid "Inside a selector"
 msgstr ""
 
 #. translators: %s: comma-separated background names.
-#: src/admin/pages/background/config-list.js:315
+#: src/admin/pages/background/config-list.js:320
 #, js-format
 msgid "%s display on the same pages — they will render stacked, and usually only the top layer is visible."
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:399
-#: src/admin/pages/cursor/config-list.js:786
+#: src/admin/pages/background/config-list.js:406
+#: src/admin/pages/cursor/config-list.js:791
 msgid "(copy)"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:457
-#: src/admin/pages/background/config-list.js:522
-#: src/admin/pages/cursor/config-list.js:899
-#: src/admin/pages/cursor/config-list.js:965
+#: src/admin/pages/background/config-list.js:468
+#: src/admin/pages/background/config-list.js:533
+#: src/admin/pages/cursor/config-list.js:889
+#: src/admin/pages/cursor/config-list.js:955
 msgid "Discard changes?"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:458
-#: src/admin/pages/background/config-list.js:523
+#: src/admin/pages/background/config-list.js:469
+#: src/admin/pages/background/config-list.js:534
 msgid "Your unsaved edits to this background will be lost."
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:462
-#: src/admin/pages/background/config-list.js:527
-#: src/admin/pages/cursor/config-list.js:904
-#: src/admin/pages/cursor/config-list.js:970
+#: src/admin/pages/background/config-list.js:473
+#: src/admin/pages/background/config-list.js:538
+#: src/admin/pages/cursor/config-list.js:894
+#: src/admin/pages/cursor/config-list.js:960
 msgid "Discard"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:463
-#: src/admin/pages/background/config-list.js:528
-#: src/admin/pages/background/index.js:119
-#: src/admin/pages/cursor/config-list.js:905
-#: src/admin/pages/cursor/config-list.js:971
+#: src/admin/pages/background/config-list.js:474
+#: src/admin/pages/background/config-list.js:539
+#: src/admin/pages/background/index.js:121
+#: src/admin/pages/cursor/config-list.js:895
+#: src/admin/pages/cursor/config-list.js:961
 msgid "Keep editing"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:472
+#: src/admin/pages/background/config-list.js:483
 msgid "Back to background list (discards changes)"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:484
+#: src/admin/pages/background/config-list.js:495
 msgid "Back to background list"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:494
+#: src/admin/pages/background/config-list.js:505
 msgid "Edit Background"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:495
+#: src/admin/pages/background/config-list.js:506
 msgid "New Background"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:498
+#: src/admin/pages/background/config-list.js:509
 msgid "Pick an effect and choose where it appears."
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:510
+#: src/admin/pages/background/config-list.js:521
 msgid "e.g. Hero section background"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:514
-#: src/admin/pages/cursor/config-list.js:957
+#: src/admin/pages/background/config-list.js:525
+#: src/admin/pages/cursor/config-list.js:947
 msgid "Name"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:533
-#: src/admin/pages/background/config-list.js:538
-#: src/admin/pages/background/config-list.js:839
-#: src/admin/pages/background/index.js:334
-#: src/admin/pages/cursor/config-list.js:865
-#: src/admin/pages/cursor/config-list.js:976
-#: src/admin/pages/cursor/config-list.js:981
-#: src/admin/pages/cursor/config-list.js:1290
-#: src/admin/pages/cursor/index.js:371
+#: src/admin/pages/background/config-list.js:544
+#: src/admin/pages/background/config-list.js:549
+#: src/admin/pages/background/config-list.js:872
+#: src/admin/pages/background/index.js:340
+#: src/admin/pages/cursor/config-list.js:870
+#: src/admin/pages/cursor/config-list.js:966
+#: src/admin/pages/cursor/config-list.js:971
+#: src/admin/pages/cursor/config-list.js:1284
+#: src/admin/pages/cursor/index.js:413
 msgid "Cancel"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:551
-#: src/admin/pages/cursor/config-list.js:994
+#: src/admin/pages/background/config-list.js:562
+#: src/admin/pages/cursor/config-list.js:984
 msgid "Apply"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:565
+#: src/admin/pages/background/config-list.js:576
 msgid "Effect"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:570
+#: src/admin/pages/background/config-list.js:581
 #: src/admin/pages/cursor/type-picker.js:258
 msgid "Choose an Effect"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:615
-#: src/admin/pages/cursor/index.js:235
+#: src/admin/pages/background/config-list.js:626
+#: src/admin/pages/cursor/index.js:266
 #: src/admin/pages/cursor/multiple/controls.js:93
 msgid "Customize"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:631
+#: src/admin/pages/background/config-list.js:642
 msgid "This effect has no extra options."
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:642
+#: src/admin/pages/background/config-list.js:650
+msgid "This background covers the whole site. Pro adds motion and rendering controls, position, stacking order and opacity, and page or selector targeting."
+msgstr ""
+
+#: src/admin/pages/background/config-list.js:665
 msgid "Display"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:657
-#: src/admin/pages/cursor/config-list.js:1016
+#: src/admin/pages/background/config-list.js:681
+#: src/admin/pages/cursor/config-list.js:1006
 msgid "Preview"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:697
+#: src/admin/pages/background/config-list.js:726
 msgid "Your Backgrounds"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:701
-msgid "Free plan includes one background. Upgrade to Pro to target different backgrounds at specific sections or pages."
+#: src/admin/pages/background/config-list.js:730
+msgid "Your background is shown across the whole site."
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:705
+#: src/admin/pages/background/config-list.js:734
 msgid "Each background has its own animation and display rules."
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:718
-msgid "Add Background (Pro)"
-msgstr ""
-
-#: src/admin/pages/background/config-list.js:719
+#: src/admin/pages/background/config-list.js:749
 msgid "Add Background"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:729
+#: src/admin/pages/background/config-list.js:760
 msgid "Some backgrounds overlap"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:799
+#: src/admin/pages/background/config-list.js:830
 msgid "Entire website"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:811
+#: src/admin/pages/background/config-list.js:842
 msgid "Edit background"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:821
+#: src/admin/pages/background/config-list.js:853
 msgid "Duplicate background"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:831
+#: src/admin/pages/background/config-list.js:864
 msgid "Delete this background?"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:835
-#: src/admin/pages/cursor/config-list.js:1286
+#: src/admin/pages/background/config-list.js:868
+#: src/admin/pages/cursor/config-list.js:1280
 msgid "Delete"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:855
+#: src/admin/pages/background/config-list.js:888
 msgid "Delete background"
 msgstr ""
 
-#: src/admin/pages/background/config-list.js:877
-msgid "Add another background (Pro feature)"
-msgstr ""
-
-#: src/admin/pages/background/config-list.js:897
-msgid "Add another background"
+#: src/admin/pages/background/config-list.js:908
+msgid "Add more backgrounds"
 msgstr ""
 
 #: src/admin/pages/background/config-list.js:912
-msgid "Different animations for different sections or pages."
-msgstr ""
-
-#: src/admin/pages/background/editor.js:61
-msgid "Specific Pages (Pro)"
-msgstr ""
-
-#: src/admin/pages/background/editor.js:68
-msgid "CSS Selector (Pro)"
-msgstr ""
-
-#: src/admin/pages/background/editor.js:69
-#: src/admin/pages/background/editor.js:131
-msgid "CSS Selector"
-msgstr ""
-
-#: src/admin/pages/background/editor.js:98
-msgid "Where to Display"
-msgstr ""
-
-#: src/admin/pages/background/editor.js:104
-msgid "Display Scope"
-msgstr ""
-
-#: src/admin/pages/background/editor.js:112
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:200
-msgid "Select Pages"
-msgstr ""
-
-#: src/admin/pages/background/editor.js:113
-msgid "Search and select pages where the background animation should appear."
-msgstr ""
-
-#: src/admin/pages/background/editor.js:132
-msgid "Enter CSS selectors where the background animation should appear. The animation will be contained within these elements."
-msgstr ""
-
-#: src/admin/pages/background/editor.js:162
-msgid "Display Settings"
-msgstr ""
-
-#: src/admin/pages/background/editor.js:185
-msgid "Position"
-msgstr ""
-
-#: src/admin/pages/background/editor.js:191
-msgid "Fixed (stays in viewport)"
-msgstr ""
-
-#: src/admin/pages/background/editor.js:198
-msgid "Absolute (scrolls with content)"
-msgstr ""
-
-#: src/admin/pages/background/editor.js:208
-msgid "Z-Index"
-msgstr ""
-
-#: src/admin/pages/background/editor.js:209
-msgid "Use negative values to place the animation behind content, or positive values to overlay."
-msgstr ""
-
-#: src/admin/pages/background/editor.js:226
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1324
-msgid "Opacity"
+msgid "Run several backgrounds, each on its own pages or sections."
 msgstr ""
 
 #: src/admin/pages/background/effect-picker.js:90
-#: src/admin/pages/welcome/index.js:658
+#: src/admin/pages/welcome/index.js:329
 msgid "New"
 msgstr ""
 
-#: src/admin/pages/background/index.js:113
+#: src/admin/pages/background/index.js:115
 msgid "Discard unsaved changes?"
 msgstr ""
 
-#: src/admin/pages/background/index.js:114
+#: src/admin/pages/background/index.js:116
 msgid "You have an unsaved background edit open. Turning off Background Animation will close it and discard those changes."
 msgstr ""
 
-#: src/admin/pages/background/index.js:118
+#: src/admin/pages/background/index.js:120
 msgid "Discard and turn off"
 msgstr ""
 
-#: src/admin/pages/background/index.js:164
+#: src/admin/pages/background/index.js:166
 msgid "Background settings saved."
 msgstr ""
 
-#: src/admin/pages/background/index.js:170
-#: src/admin/pages/cursor/index.js:153
+#: src/admin/pages/background/index.js:172
+#: src/admin/pages/cursor/index.js:195
 msgid "Could not save settings. Please try again."
 msgstr ""
 
-#: src/admin/pages/background/index.js:191
+#: src/admin/pages/background/index.js:193
 msgid "Background animation deactivated."
 msgstr ""
 
-#: src/admin/pages/background/index.js:197
+#: src/admin/pages/background/index.js:199
 msgid "Could not deactivate background. Please try again."
 msgstr ""
 
-#: src/admin/pages/background/index.js:209
+#: src/admin/pages/background/index.js:211
 msgid "Background Animation"
 msgstr ""
 
-#: src/admin/pages/background/index.js:211
+#: src/admin/pages/background/index.js:213
 msgid "Add beautiful, interactive background animations to your website without impacting performance."
 msgstr ""
 
-#: src/admin/pages/background/index.js:220
+#: src/admin/pages/background/index.js:222
 msgid "Enable Background Animation"
 msgstr ""
 
-#: src/admin/pages/background/index.js:304
+#: src/admin/pages/background/index.js:310
 msgid "Background Animation is Disabled"
 msgstr ""
 
-#: src/admin/pages/background/index.js:310
+#: src/admin/pages/background/index.js:316
 msgid "Enable the toggle above to add interactive background animations to your website. The animation is performance-optimized and only loads on pages where it is needed."
 msgstr ""
 
-#: src/admin/pages/background/index.js:325
+#: src/admin/pages/background/index.js:331
 msgid "Deactivate background animation?"
 msgstr ""
 
-#: src/admin/pages/background/index.js:329
+#: src/admin/pages/background/index.js:335
 msgid "This removes the background animation from your site and resets its settings."
 msgstr ""
 
-#: src/admin/pages/background/index.js:333
-#: src/admin/pages/cursor/index.js:370
+#: src/admin/pages/background/index.js:339
+#: src/admin/pages/cursor/index.js:412
 msgid "Deactivate"
 msgstr ""
 
-#: src/admin/pages/background/index.js:339
+#: src/admin/pages/background/index.js:345
 msgid "Deactivate Background"
 msgstr ""
 
-#: src/admin/pages/background/types/antigravity.js:25
+#: src/admin/pages/background/types/antigravity.js:23
 msgid "Capsule"
 msgstr ""
 
-#: src/admin/pages/background/types/antigravity.js:26
+#: src/admin/pages/background/types/antigravity.js:24
 msgid "Sphere"
 msgstr ""
 
-#: src/admin/pages/background/types/antigravity.js:27
+#: src/admin/pages/background/types/antigravity.js:25
 msgid "Box"
 msgstr ""
 
-#: src/admin/pages/background/types/antigravity.js:28
+#: src/admin/pages/background/types/antigravity.js:26
 msgid "Tetrahedron"
 msgstr ""
 
-#: src/admin/pages/background/types/antigravity.js:43
-#: src/admin/pages/background/types/light-pillar.js:42
+#: src/admin/pages/background/types/antigravity.js:37
+#: src/admin/pages/background/types/light-pillar.js:19
 msgid "Colors"
 msgstr ""
 
-#: src/admin/pages/background/types/antigravity.js:48
+#: src/admin/pages/background/types/antigravity.js:42
 msgid "Background Color"
 msgstr ""
 
-#: src/admin/pages/background/types/antigravity.js:53
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1230
+#: src/admin/pages/background/types/antigravity.js:47
 msgid "Particle Color"
 msgstr ""
 
-#: src/admin/pages/background/types/antigravity.js:61
+#: src/admin/pages/background/types/antigravity.js:55
 msgid "Particle Settings"
 msgstr ""
 
-#: src/admin/pages/background/types/antigravity.js:66
-#: src/admin/pages/cursor/config-list.js:461
+#: src/admin/pages/background/types/antigravity.js:60
+#: src/admin/pages/cursor/config-list.js:460
 msgid "Shape"
 msgstr ""
 
-#: src/admin/pages/background/types/antigravity.js:72
+#: src/admin/pages/background/types/antigravity.js:66
 msgid "Count"
 msgstr ""
 
-#: src/admin/pages/background/types/antigravity.js:88
+#: src/admin/pages/background/types/antigravity.js:82
 msgid "Variance"
 msgstr ""
 
-#: src/admin/pages/background/types/antigravity.js:109
-msgid "Interaction & Motion"
-msgstr ""
-
-#: src/admin/pages/background/types/antigravity.js:139
-msgid "Magnet Radius"
-msgstr ""
-
-#: src/admin/pages/background/types/antigravity.js:149
-msgid "Ring Radius"
-msgstr ""
-
-#: src/admin/pages/background/types/antigravity.js:159
-msgid "Field Strength"
-msgstr ""
-
-#: src/admin/pages/background/types/antigravity.js:169
-msgid "Wave Speed"
-msgstr ""
-
-#: src/admin/pages/background/types/antigravity.js:179
-msgid "Wave Amplitude"
-msgstr ""
-
-#: src/admin/pages/background/types/antigravity.js:189
-msgid "Lerp Speed"
-msgstr ""
-
-#: src/admin/pages/background/types/antigravity.js:199
-msgid "Pulse Speed"
-msgstr ""
-
-#: src/admin/pages/background/types/antigravity.js:209
-msgid "Depth Factor"
-msgstr ""
-
-#: src/admin/pages/background/types/antigravity.js:219
-#: src/admin/pages/background/types/light-pillar.js:140
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:661
-msgid "Rotation Speed"
-msgstr ""
-
-#: src/admin/pages/background/types/antigravity.js:229
-msgid "Auto Animate (when idle)"
-msgstr ""
-
-#: src/admin/pages/background/types/antigravity.js:265
+#: src/admin/pages/background/types/antigravity.js:116
 msgid "Antigravity Particles"
 msgstr ""
 
-#: src/admin/pages/background/types/antigravity.js:266
+#: src/admin/pages/background/types/antigravity.js:117
 msgid "Interactive floating particles that respond to mouse movement"
 msgstr ""
 
-#: src/admin/pages/background/types/light-pillar.js:22
-msgid "Low"
-msgstr ""
-
-#: src/admin/pages/background/types/light-pillar.js:23
-msgid "Medium"
-msgstr ""
-
 #: src/admin/pages/background/types/light-pillar.js:24
-msgid "High"
-msgstr ""
-
-#: src/admin/pages/background/types/light-pillar.js:47
 msgid "Top Color"
 msgstr ""
 
-#: src/admin/pages/background/types/light-pillar.js:52
+#: src/admin/pages/background/types/light-pillar.js:29
 msgid "Bottom Color"
 msgstr ""
 
-#: src/admin/pages/background/types/light-pillar.js:59
+#: src/admin/pages/background/types/light-pillar.js:36
 msgid "Pillar Shape"
 msgstr ""
 
-#: src/admin/pages/background/types/light-pillar.js:64
+#: src/admin/pages/background/types/light-pillar.js:41
 msgid "Pillar Width"
 msgstr ""
 
-#: src/admin/pages/background/types/light-pillar.js:72
+#: src/admin/pages/background/types/light-pillar.js:49
 msgid "Pillar Height"
 msgstr ""
 
-#: src/admin/pages/background/types/light-pillar.js:80
+#: src/admin/pages/background/types/light-pillar.js:57
 msgid "Pillar Rotation"
 msgstr ""
 
-#: src/admin/pages/background/types/light-pillar.js:100
-msgid "Motion & Atmosphere"
-msgstr ""
-
-#: src/admin/pages/background/types/light-pillar.js:130
-msgid "Intensity"
-msgstr ""
-
-#: src/admin/pages/background/types/light-pillar.js:150
-msgid "Glow Amount"
-msgstr ""
-
-#: src/admin/pages/background/types/light-pillar.js:160
-msgid "Noise Intensity"
-msgstr ""
-
-#: src/admin/pages/background/types/light-pillar.js:170
-msgid "Interactive"
-msgstr ""
-
-#: src/admin/pages/background/types/light-pillar.js:188
-msgid "Rendering"
-msgstr ""
-
-#: src/admin/pages/background/types/light-pillar.js:217
-msgid "Mix Blend Mode"
-msgstr ""
-
-#: src/admin/pages/background/types/light-pillar.js:225
-msgid "Quality"
-msgstr ""
-
-#: src/admin/pages/background/types/light-pillar.js:256
+#: src/admin/pages/background/types/light-pillar.js:88
 msgid "Light Pillar"
 msgstr ""
 
-#: src/admin/pages/background/types/light-pillar.js:257
+#: src/admin/pages/background/types/light-pillar.js:89
 msgid "Ethereal rotating light pillar for hero and atmospheric sections"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:327
+#: src/admin/pages/cursor/config-list.js:326
 msgid "Features"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:334
+#: src/admin/pages/cursor/config-list.js:333
 msgid "Pricing"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:343
+#: src/admin/pages/cursor/config-list.js:342
 msgid "Sign up"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:348
+#: src/admin/pages/cursor/config-list.js:347
 msgid "Ship 10× faster"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:351
+#: src/admin/pages/cursor/config-list.js:350
 msgid "The all-in-one platform for modern product teams."
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:362
+#: src/admin/pages/cursor/config-list.js:361
+#: src/admin/pages/pro/demos.js:47
 msgid "Get started"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:375
+#: src/admin/pages/cursor/config-list.js:374
 msgid "Live demo"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:383
-#: src/admin/pages/cursor/config-list.js:401
-#: src/utils/hover/detect.js:162
+#: src/admin/pages/cursor/config-list.js:382
+#: src/admin/pages/cursor/config-list.js:400
+#: src/admin/pages/pro/demos.js:50
 msgid "Open"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:392
+#: src/admin/pages/cursor/config-list.js:391
 msgid "Lightning fast"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:395
+#: src/admin/pages/cursor/config-list.js:394
 msgid "Instant page loads"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:408
+#: src/admin/pages/cursor/config-list.js:407
 msgid "Secure"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:411
+#: src/admin/pages/cursor/config-list.js:410
 msgid "Private by default"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:419
+#: src/admin/pages/cursor/config-list.js:418
 msgid "you@email.com"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:430
+#: src/admin/pages/cursor/config-list.js:429
 msgid "Join"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:467
+#: src/admin/pages/cursor/config-list.js:466
 msgid "Selectors:"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:468
+#: src/admin/pages/cursor/config-list.js:467
 msgid "Elements:"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:482
+#: src/admin/pages/cursor/config-list.js:481
 msgid "Site-wide default"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:483
+#: src/admin/pages/cursor/config-list.js:482
 msgid "Shows everywhere, unless a page or hover override below takes priority."
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:490
+#: src/admin/pages/cursor/config-list.js:489
 msgid "Page override"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:491
+#: src/admin/pages/cursor/config-list.js:490
 msgid "Replaces the site-wide cursor on its pages."
+msgstr ""
+
+#: src/admin/pages/cursor/config-list.js:497
+#: src/admin/pages/cursor/config-list.js:505
+msgid "Hover override"
 msgstr ""
 
 #: src/admin/pages/cursor/config-list.js:498
 #: src/admin/pages/cursor/config-list.js:506
-msgid "Hover override"
-msgstr ""
-
-#: src/admin/pages/cursor/config-list.js:499
-#: src/admin/pages/cursor/config-list.js:507
 msgid "Replaces the active cursor while hovering its targets."
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:553
-#: src/admin/pages/cursor/config-list.js:762
-#: src/admin/pages/cursor/config-list.js:786
-#: src/admin/pages/cursor/config-list.js:1183
+#: src/admin/pages/cursor/config-list.js:552
+#: src/admin/pages/cursor/config-list.js:767
+#: src/admin/pages/cursor/config-list.js:791
+#: src/admin/pages/cursor/config-list.js:1175
 #: src/admin/pages/cursor/multiple/controls.js:76
 msgid "Cursor"
 msgstr ""
 
 #. translators: %s: comma-separated cursor names.
-#: src/admin/pages/cursor/config-list.js:570
+#: src/admin/pages/cursor/config-list.js:569
 #, js-format
 msgid "%s are all set to the entire website — only one site-wide cursor can be active at a time."
 msgstr ""
 
 #. translators: %s: comma-separated cursor names.
-#: src/admin/pages/cursor/config-list.js:578
+#: src/admin/pages/cursor/config-list.js:577
 #, js-format
 msgid "%s target the same pages or elements — only one of them will show there."
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:606
+#: src/admin/pages/cursor/config-list.js:611
 msgid "My Cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:859
+#: src/admin/pages/cursor/config-list.js:864
 msgid "Switch cursor type?"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:860
+#: src/admin/pages/cursor/config-list.js:865
 msgid "Your current style settings for this cursor will be reset."
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:864
+#: src/admin/pages/cursor/config-list.js:869
 msgid "Switch"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:900
-#: src/admin/pages/cursor/config-list.js:966
+#: src/admin/pages/cursor/config-list.js:890
+#: src/admin/pages/cursor/config-list.js:956
 msgid "Your unsaved edits to this cursor will be lost."
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:914
+#: src/admin/pages/cursor/config-list.js:904
 msgid "Back to cursor list (discards changes)"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:926
+#: src/admin/pages/cursor/config-list.js:916
 msgid "Back to cursor list"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:940
+#: src/admin/pages/cursor/config-list.js:930
 msgid "Edit Cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:941
+#: src/admin/pages/cursor/config-list.js:931
 msgid "New Cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:944
+#: src/admin/pages/cursor/config-list.js:934
 msgid "Style your cursor and choose where it appears."
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:956
+#: src/admin/pages/cursor/config-list.js:946
 msgid "e.g. Button hover cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:1034
+#: src/admin/pages/cursor/config-list.js:1024
 msgid "Click here to preview"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:1038
+#: src/admin/pages/cursor/config-list.js:1028
 msgid "Move your cursor here to preview"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:1079
+#: src/admin/pages/cursor/config-list.js:1069
 msgid "Your Cursors"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:1083
-msgid "Free plan includes one cursor. Upgrade to Pro to target different cursors at specific pages and elements."
+#: src/admin/pages/cursor/config-list.js:1073
+msgid "Your cursor is shown across the whole site."
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:1087
+#: src/admin/pages/cursor/config-list.js:1077
 msgid "Each cursor has its own style and targeting rules."
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:1100
-msgid "Add Cursor (Pro)"
-msgstr ""
-
-#: src/admin/pages/cursor/config-list.js:1101
+#: src/admin/pages/cursor/config-list.js:1092
 msgid "Add Cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:1111
+#: src/admin/pages/cursor/config-list.js:1103
 msgid "Some cursors compete for the same area"
 msgstr ""
 
 #. translators: %s: cursor name.
-#: src/admin/pages/cursor/config-list.js:1136
+#: src/admin/pages/cursor/config-list.js:1128
 #, js-format
 msgid "Edit %s"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:1234
+#: src/admin/pages/cursor/config-list.js:1226
 msgid "Shows everywhere no other cursor applies."
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:1263
+#: src/admin/pages/cursor/config-list.js:1255
 msgid "Edit cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:1273
+#: src/admin/pages/cursor/config-list.js:1266
 msgid "Duplicate cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:1282
+#: src/admin/pages/cursor/config-list.js:1276
 msgid "Delete this cursor?"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:1304
+#: src/admin/pages/cursor/config-list.js:1298
 msgid "Delete cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:1325
-msgid "Add another cursor (Pro feature)"
+#: src/admin/pages/cursor/config-list.js:1317
+msgid "Add more cursors"
 msgstr ""
 
-#: src/admin/pages/cursor/config-list.js:1345
-msgid "Add another cursor"
-msgstr ""
-
-#: src/admin/pages/cursor/config-list.js:1360
-msgid "Different cursors for buttons, images, or specific pages."
+#: src/admin/pages/cursor/config-list.js:1318
+msgid "Give each page, section or element its own cursor."
 msgstr ""
 
 #: src/admin/pages/cursor/cursorTypes.js:45
 msgid "Select Cursor Type"
 msgstr ""
 
-#: src/admin/pages/cursor/hotspot-picker.js:111
-msgid "Cursor image hotspot position"
-msgstr ""
-
-#. translators: 1: horizontal position percent, 2: vertical position percent.
-#: src/admin/pages/cursor/hotspot-picker.js:117
-#, js-format
-msgid "Horizontal %1$d%%, vertical %2$d%%"
-msgstr ""
-
-#: src/admin/pages/cursor/hotspot-picker.js:151
-msgid "Cursor preview"
-msgstr ""
-
-#: src/admin/pages/cursor/index.js:124
+#: src/admin/pages/cursor/index.js:137
 msgid "Your cursor is live!"
 msgstr ""
 
-#: src/admin/pages/cursor/index.js:125
+#: src/admin/pages/cursor/index.js:138
 msgid "Cursor settings saved."
 msgstr ""
 
-#: src/admin/pages/cursor/index.js:129
+#: src/admin/pages/cursor/index.js:144
 msgid "Visit your site to see it in action."
 msgstr ""
 
-#: src/admin/pages/cursor/index.js:141
+#: src/admin/pages/cursor/index.js:183
 #: src/admin/pages/cursor/troubleshoot.js:136
 msgid "View your site"
 msgstr ""
 
-#: src/admin/pages/cursor/index.js:172
+#: src/admin/pages/cursor/index.js:214
 msgid "Cursor deactivated."
 msgstr ""
 
-#: src/admin/pages/cursor/index.js:179
+#: src/admin/pages/cursor/index.js:221
 msgid "Could not deactivate cursor. Please try again."
 msgstr ""
 
-#: src/admin/pages/cursor/index.js:229
+#: src/admin/pages/cursor/index.js:260
 msgid "Choose a style"
 msgstr ""
 
-#: src/admin/pages/cursor/index.js:238
+#: src/admin/pages/cursor/index.js:269
 msgid "Save & go live"
 msgstr ""
 
-#: src/admin/pages/cursor/index.js:261
+#: src/admin/pages/cursor/index.js:292
 msgid "Start with a preset"
 msgstr ""
 
-#: src/admin/pages/cursor/index.js:273
+#: src/admin/pages/cursor/index.js:304
 msgid "Pick a ready-made cursor and tweak it — or choose a type below to start from scratch."
 msgstr ""
 
-#: src/admin/pages/cursor/index.js:365
+#: src/admin/pages/cursor/index.js:407
 msgid "Deactivate cursor?"
 msgstr ""
 
-#: src/admin/pages/cursor/index.js:366
+#: src/admin/pages/cursor/index.js:408
 msgid "This removes your cursor from the site and deletes all cursor configurations."
 msgstr ""
 
-#: src/admin/pages/cursor/index.js:376
+#: src/admin/pages/cursor/index.js:418
 msgid "Deactivate Cursor"
 msgstr ""
 
 #: src/admin/pages/cursor/multiple/controls.js:123
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:293
 msgid "Advanced"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/hotspot.js:42
-msgid "Top Center"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/hotspot.js:54
-msgid "Middle Left"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/hotspot.js:66
-msgid "Middle Right"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/hotspot.js:78
-msgid "Bottom Center"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/hotspot.js:147
-msgid "Cursor Hotspot"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/hotspot.js:177
-msgid "Set which point of the image aligns with the real mouse position — like the tip of an arrow."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/hotspot.js:186
-msgid "Hotspot Position"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/hotspot.js:194
-msgid "Choose which point of the image follows the mouse. Upgrade to Pro to unlock."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/hotspot.js:233
-msgid "Quick position"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/hotspot.js:338
-msgid "X (%)"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/hotspot.js:352
-msgid "Hotspot X position, percent"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/hotspot.js:367
-msgid "Y (%)"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/hotspot.js:381
-msgid "Hotspot Y position, percent"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/hotspot.js:395
-msgid "Reset to center"
 msgstr ""
 
 #: src/admin/pages/cursor/multiple/kit.js:164
@@ -1648,992 +1452,421 @@ msgstr ""
 msgid "Type CSS selectors and press Enter…"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/kit.js:463
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:63
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:929
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:360
-#: src/admin/pages/cursor/presets.js:322
-#: src/utils/ProFeaturesTable.js:23
-msgid "Pro"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:30
+#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:24
 msgid "Enable Transition"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:34
+#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:28
 msgid "Apply smooth transition effect to cursor movement"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:55
+#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:49
 msgid "Hide the browser's default cursor and show only your custom cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:75
+#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:67
+msgid "Keep Text Cursor in Form Fields"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:71
+msgid "Show the normal text cursor inside inputs, text areas and drop-downs, so visitors can see where they are typing (recommended)"
+msgstr ""
+
+#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:94
 msgid "Hide Cursor on Touch Devices"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:79
+#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:98
 msgid "Hide the custom cursor on all touch-enabled devices (recommended)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:114
+#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:133
 msgid "Hide on Small Screens (<600px)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:118
+#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:137
 msgid "Hide on mobile-sized screens"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:137
+#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:156
 msgid "Hide on Medium Screens (600–781px)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:141
+#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:160
 msgid "Hide on tablet-sized screens"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:161
+#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:180
 msgid "TARGET SCOPE"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:170
-msgid "Choose where this cursor shows up — everywhere on your site, only on certain pages, or only when someone hovers specific elements."
+#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:182
+msgid "This cursor is shown across the whole site. With Pro you can show it only on chosen pages, or only over elements you pick — and run a different cursor elsewhere."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:177
-msgid "Apply Cursor On"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:201
-msgid "Search and select pages where this cursor should appear."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:216
-msgid "Type a CSS selector (e.g. .hero-section, #content) and press Enter to add it."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/advanced-panel.js:230
-msgid "Select from common elements or type custom ones."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:36
-msgid "Difference"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:37
-msgid "Exclusion"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:38
-msgid "Multiply"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:39
-msgid "Screen"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:40
-msgid "Overlay"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:61
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:265
-msgid "Interactive Hover"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:67
-msgid "Make the cursor react to links & buttons — grow, recolor, glow and snap magnetically."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:96
-msgid "Hover Scale"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:97
-msgid "How much the cursor grows over interactive elements."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:116
-msgid "Hover Speed"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:117
-msgid "How quickly the hover animation eases in and out (higher is snappier)."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:135
-msgid "Hover Background Color"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:136
-msgid "Cursor background/fill color while hovering an interactive element."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:147
-msgid "Hover Text Color"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:148
-msgid "Text color while hovering (text cursors only). Falls back to the base text color when unset."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:164
-msgid "Magnetic Strength"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:165
-msgid "Pulls the cursor toward the center of the hovered element. 0 disables it."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:184
-msgid "Hover Glow (px)"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:185
-msgid "Soft glow radius around the cursor on hover. 0 disables it."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:203
-msgid "Glow Color"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:204
-msgid "Color of the hover glow. Defaults to the hover color."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:215
-msgid "Hover Labels"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:216
-msgid "Show a small label (View / Click / Open / Drag) on hover. Override per element with data-uc-hover-label."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:228
-msgid "Blend Mode"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:229
-msgid "Blends the cursor's color with whatever is underneath it — useful for keeping the cursor visible on any background. Uses the CSS mix-blend-mode property, so it may look different from theme to theme."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:242
-msgid "Custom Hover Selectors"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:243
-msgid "Extra CSS selectors that should trigger the hover effect."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:258
+#: src/admin/pages/cursor/multiple/panels/hover-panel.js:32
 msgid "HOVER EFFECTS"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:266
-msgid "Grow and style the cursor over links, buttons, images and other interactive elements. Detection is automatic."
+#: src/admin/pages/cursor/multiple/panels/hover-panel.js:34
+msgid "With Pro this cursor reacts to links, buttons and form fields: it grows, changes color, glows, snaps to the element and can show a label such as “Open”."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/hover-panel.js:284
-msgid "Basic"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:46
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:42
 msgid "Font Size (px)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:68
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:64
 msgid "Spacing Vertical (px)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:87
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:83
 msgid "Spacing Horizontal (px)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:117
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:113
 msgid "Border Style"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:138
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:262
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:134
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:258
 msgid "Border Color"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:155
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:227
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:151
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:223
 msgid "Border Width (px)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:177
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:173
 msgid "Border Radius (px)"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:204
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:200
 msgid "Shape Size"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:284
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:280
 msgid "Bubble Size"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:302
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:298
 msgid "Fill Color"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:317
+#: src/admin/pages/cursor/multiple/panels/style-panel.js:313
 msgid "Stroke Color"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:341
-msgid "Splash Colors"
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:26
+msgid "This effect runs with its built-in style. With Pro you choose the trail emoji, its size, how many particles follow, their speed and opacity."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:363
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:544
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:745
-msgid "Add Color"
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:30
+msgid "This effect runs with its built-in style. With Pro you choose the emojis, their size, how many fall and how long they last."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:445
-msgid "Splash Size"
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:34
+msgid "This effect runs with its built-in style. With Pro you choose the splash colors, radius and force."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:467
-msgid "Splash Force"
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:38
+msgid "This effect runs with its built-in style. With Pro you use your own characters and colors."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:489
-msgid "Splash Effects"
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:42
+msgid "This effect runs with its built-in style. With Pro you choose the colors, length and size of the trail."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:493
-msgid "Create vibrant splash trails with customizable colors, gradients, and smooth animations."
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:46
+msgid "This effect runs with its built-in style. With Pro you choose the spark color, size, radius, count and duration."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:498
-msgid "Custom splash colors"
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:50
+msgid "This effect runs with its built-in style. With Pro you choose the particle color and speed."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:502
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:703
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:973
-msgid "Animation speed controls"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:506
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:985
-msgid "Trail length adjustment"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:522
-msgid "Character Colors"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:624
-msgid "Characters"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:667
-msgid "Delay"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:686
-msgid "Character Cursor"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:690
-msgid "Create vibrant character cursor with customizable colors, characters, and smooth animations."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:695
-msgid "Custom characters"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:699
-msgid "Custom character colors"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:707
-msgid "Delay character animation"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:723
-msgid "Rainbow Colors"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:826
-msgid "Length"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:868
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1301
-msgid "Trail Speed"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:890
-msgid "Blur"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:923
-msgid "Rainbow Effects"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:936
-msgid "Create vibrant rainbow trails with customizable colors, gradients, and smooth animations."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:949
-msgid "Custom rainbow colors"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:961
-msgid "Gradient trail effects"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1029
-msgid "Spark Color"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1046
-msgid "Easing"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1078
-msgid "Animation timing function"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1087
-msgid "Extra Scale"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1104
-msgid "Additional scaling factor for the effect"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1112
-msgid "Spark Radius"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1129
-msgid "Distance sparks travel from click point"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1137
-msgid "Spark Size"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1156
-msgid "Spark Count"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1175
-msgid "Animation Duration"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1194
-msgid "ClickSpark Effects"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1198
-msgid "Create stunning spark effects with customizable colors, sizes, and animations."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1203
-msgid "Custom spark colors"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1207
-msgid "Spark size controls"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1211
-msgid "Spark count controls"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1215
-msgid "Animation duration controls"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1247
-msgid "Particle Speed"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1269
-msgid "ClickParticles Effects"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1273
-msgid "Create stunning particle effects with customizable colors, sizes, and animations."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1278
-msgid "Custom particle colors"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1282
-msgid "Particle speed controls"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1286
-msgid "Particle size controls"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/style-panel.js:1290
-msgid "Particle Background controls"
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:57
+msgid "This effect runs with its built-in style. Pro adds settings for it."
 msgstr ""
 
 #. translators: %s: flag number.
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:76
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:103
 #, js-format
 msgid "Flag %s"
 msgstr ""
 
 #. translators: 1: country name, 2: variant number.
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:86
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:113
 #, js-format
 msgid "%1$s Flag (%2$s)"
 msgstr ""
 
 #. translators: %s: country name.
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:94
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:121
 #, js-format
 msgid "%s Flag"
 msgstr ""
 
 #. translators: %d: cursor image number.
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:103
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:110
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:130
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:137
 #, js-format
 msgid "Cursor %d"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:119
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:146
 msgid "Target"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:120
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:147
 msgid "Dot"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:121
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:148
 msgid "Halo"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:122
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:149
 msgid "Overlap"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:123
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:150
 msgid "Ring"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:124
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:151
 msgid "Triangle"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:125
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:152
 msgid "Diamond"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:126
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:153
 msgid "Semi-circle"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:127
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:154
 msgid "Star"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:128
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:155
 msgid "Hexagon"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:129
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:156
 msgid "Cross"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:130
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:157
 msgid "Heart"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:131
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:158
 msgid "Arrow"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:132
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:159
 msgid "Lightning"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:133
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:160
 msgid "Eye"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:134
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:161
 msgid "Square"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:135
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:162
 msgid "Blob"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:136
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:163
 msgid "Squircle"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:137
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:164
 msgid "Sparkle"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:138
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:165
 msgid "Seal Badge"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:139
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:166
 msgid "Octagon"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:140
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:167
 msgid "Pin"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:141
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:168
 msgid "Play"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:142
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:169
 msgid "Asterisk"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:143
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:170
 msgid "Shield"
 msgstr ""
 
 #. translators: %d: shape number.
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:150
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:177
 #, js-format
 msgid "Shape %d"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:177
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:204
 msgid "Cursor Text"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:197
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:224
 msgid "Cursor Image"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:212
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:239
 msgid "Choose an Icon"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:274
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:301
 msgid "Choose a Shape"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:404
-msgid "Text Style"
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:396
+msgid "20 more shapes in Pro"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:415
-msgid "Circular (Pro)"
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:406
+msgid "See them all"
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:427
-msgid "Circular spins the text around the cursor. This is a pro feature."
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:460
+msgid "With Pro this text can wrap around the cursor as a rotating badge, or sit on a circular background."
 msgstr ""
 
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:431
-msgid "Normal renders a pill label; Circular spins the text around the cursor."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:439
-msgid "Circular Background"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:457
-msgid "Use circular background instead of rectangular. This is a pro feature."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:461
-msgid "Use circular background instead of rectangular"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:471
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:534
-msgid "Circle Size"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:491
-msgid "Diameter of the circular background (Pro feature)"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:495
-msgid "Diameter of the circular background"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:508
-msgid "Circle Radius"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:526
-msgid "Radius of the circular text path"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:552
-msgid "Size of the background circle"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:560
-msgid "Rotation"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:578
-msgid "Rotation angle in degrees"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:586
-msgid "Direction"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:608
-msgid "Show Circle"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:626
-msgid "Show background circle behind text"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:634
-msgid "Auto Rotate"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:652
-msgid "Enable automatic rotation animation"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:679
-msgid "Speed of the rotation animation"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:687
-msgid "Circular Text"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:691
-msgid "Spin your label around the cursor as a rotating badge with full control over the motion."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:696
-msgid "Rotating text badge"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:700
-msgid "Radius and circle size controls"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:704
-msgid "Spin direction and speed"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:708
-msgid "Optional circle backing"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:726
-msgid "Emoji Characters"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:730
-msgid "Click to select emoji characters for snowflakes. This is a pro feature."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:747
-msgid "selected"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:753
-msgid "No emojis selected"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:774
-msgid "Clear All"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:791
-msgid "Remove emoji"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:842
-msgid "Maximum Reached"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:846
-msgid "Add Emoji"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:863
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:883
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1168
-msgid "Select Emoji"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:889
-msgid "Click an emoji to add it to your snowflakes (max 8)"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:946
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1218
-msgid "Search emojis…"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:967
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1239
-msgid "Done"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:979
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1251
-msgid "Emoji Size"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:995
-msgid "Size of the snowflake emoji. This is a pro feature."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1004
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1276
-msgid "Particle Count"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1020
-msgid "Number of snowflakes to show per cursor movement. This is a pro feature."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1029
-msgid "Lifespan"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1045
-msgid "How long snowflakes remain visible. This is a pro feature."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1053
-msgid "Snowfall Effects"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1057
-msgid "Customize falling snowflakes with your own emoji, size, count, and lifespan."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1062
-msgid "Custom emoji characters (up to 8)"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1066
-msgid "Snowflake size control"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1070
-msgid "Particle count control"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1074
-msgid "Lifespan control"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1087
-msgid "Trail Emoji"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1091
-msgid "Select an emoji character for the cursor trail. This is a pro feature."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1100
-msgid "Current emoji:"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1109
-msgid "No emoji selected"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1151
-msgid "Choose Emoji"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1186
-msgid "Select Trail Emoji"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1192
-msgid "Click an emoji to use for your cursor trail"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1267
-msgid "Size of the trail emoji. This is a pro feature."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1292
-msgid "Number of particles in the trail. This is a pro feature."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1315
-msgid "Speed of the cursor trail. This is a pro feature."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1338
-msgid "Opacity of the trail particles. This is a pro feature."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1346
-msgid "Trail Cursor Effects"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1350
-msgid "Customize your cursor trail with a custom emoji, size, particle count, speed, and opacity."
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1355
-msgid "Custom trail emoji"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1359
-msgid "Particle count & size control"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1363
-msgid "Speed & opacity control"
-msgstr ""
-
-#: src/admin/pages/cursor/multiple/panels/type-panel.js:1380
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:492
 msgid "Image Size (px)"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:50
+#: src/admin/pages/cursor/multiple/panels/type-panel.js:514
+msgid "The center of the image follows the mouse. With Pro you choose the point — the tip of an arrow, for example."
+msgstr ""
+
+#: src/admin/pages/cursor/presets.js:48
 msgid "View Badge"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:51
+#: src/admin/pages/cursor/presets.js:49
 msgid "A small “view” pill that follows the cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:70
+#: src/admin/pages/cursor/presets.js:68
 msgid "Splash Cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:71
+#: src/admin/pages/cursor/presets.js:69
 msgid "Colorful fluid splash follows the cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:86
+#: src/admin/pages/cursor/presets.js:84
 msgid "Sparkle Trail"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:87
+#: src/admin/pages/cursor/presets.js:85
 msgid "Sparkles trail behind the cursor as it moves"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:101
+#: src/admin/pages/cursor/presets.js:98
 msgid "Snowfall"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:102
+#: src/admin/pages/cursor/presets.js:99
 msgid "Snowflakes drift down from the cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:116
+#: src/admin/pages/cursor/presets.js:113
 msgid "Bubble Pop"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:117
+#: src/admin/pages/cursor/presets.js:114
 msgid "Soft bubbles float up from the cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:130
+#: src/admin/pages/cursor/presets.js:127
 msgid "Rainbow Ribbon"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:131
+#: src/admin/pages/cursor/presets.js:128
 msgid "A colorful ribbon follows the cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:144
+#: src/admin/pages/cursor/presets.js:141
 msgid "Click Sparks"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:145
+#: src/admin/pages/cursor/presets.js:142
 msgid "Spark burst on every click"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:159
+#: src/admin/pages/cursor/presets.js:152
 msgid "Minimal Shape"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:160
+#: src/admin/pages/cursor/presets.js:153
 msgid "A clean geometric shape replaces the cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:175
+#: src/admin/pages/cursor/presets.js:168
 msgid "Letter Flutter"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:176
+#: src/admin/pages/cursor/presets.js:169
 msgid "Letters flutter away as the cursor moves"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:191
+#: src/admin/pages/cursor/presets.js:184
 msgid "Click Confetti"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:192
+#: src/admin/pages/cursor/presets.js:185
 msgid "Particles burst out on every click"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:210
-msgid "Spinning Badge"
-msgstr ""
-
-#: src/admin/pages/cursor/presets.js:211
-msgid "Text spins in a circle around the cursor"
-msgstr ""
-
-#: src/admin/pages/cursor/presets.js:230
+#: src/admin/pages/cursor/presets.js:200
 msgid "Rocket Pointer"
 msgstr ""
 
-#: src/admin/pages/cursor/presets.js:231
+#: src/admin/pages/cursor/presets.js:201
 msgid "A rocket emoji replaces the cursor"
 msgstr ""
 
-#: src/admin/pages/cursor/preview/preview.js:60
+#: src/admin/pages/cursor/preview/preview.js:74
 msgid "Preview unavailable on this device — your cursor will still work on the site."
 msgstr ""
 
-#: src/admin/pages/cursor/promotional-banner.js:56
-msgid "Ultimate Cursor Pro promotional offer"
+#: src/admin/pages/cursor/pro-hint.js:19
+msgid "With Pro, this text can wrap around the cursor as a rotating badge and react to links and buttons."
 msgstr ""
 
-#: src/admin/pages/cursor/promotional-banner.js:65
-msgid "OFF"
+#: src/admin/pages/cursor/pro-hint.js:27
+msgid "With Pro, this shape reacts to links and buttons — it grows, changes color and shows a label — and you get 20 more shapes."
 msgstr ""
 
-#: src/admin/pages/cursor/promotional-banner.js:70
-msgid "Save 20% on Ultimate Cursor Pro"
+#: src/admin/pages/cursor/pro-hint.js:36
+msgid "With Pro, this cursor reacts to links and buttons, and you choose which point of the image follows the mouse."
 msgstr ""
 
-#: src/admin/pages/cursor/promotional-banner.js:76
-msgid "Unlock multiple cursors, element targeting, and premium animations."
+#: src/admin/pages/cursor/pro-hint.js:44
+msgid "With Pro, you can restyle this effect — its colors, sizes, emojis and speed — and show it only where you want."
 msgstr ""
 
-#: src/admin/pages/cursor/promotional-banner.js:83
-msgid "Coupon code:"
-msgstr ""
-
-#: src/admin/pages/cursor/promotional-banner.js:93
-msgid "Upgrade Now"
-msgstr ""
-
-#: src/admin/pages/cursor/promotional-banner.js:96
-msgid "Dismiss"
+#: src/admin/pages/cursor/pro-hint.js:52
+msgid "Pro adds Interactive Hover, multiple cursors, page and element targeting, and more."
 msgstr ""
 
 #: src/admin/pages/cursor/troubleshoot.js:52
@@ -2664,177 +1897,238 @@ msgstr ""
 msgid "Why isn’t my cursor showing?"
 msgstr ""
 
-#: src/admin/pages/cursor/upgrade-banner.js:10
-msgid "Unlock Advanced Cursor Features"
+#: src/admin/pages/cursor/upgrade-banner.js:12
+msgid "Take this cursor further"
 msgstr ""
 
-#: src/admin/pages/cursor/upgrade-banner.js:13
-msgid "Get multiple cursor configurations, element-specific cursors, and more premium features."
-msgstr ""
-
-#: src/admin/pages/cursor/upgrade-banner.js:21
+#: src/admin/pages/cursor/upgrade-banner.js:22
 msgid "View Pro Features"
 msgstr ""
 
-#: src/admin/pages/index.js:56
+#: src/admin/pages/index.js:60
 msgid "Welcome"
 msgstr ""
 
-#: src/admin/pages/index.js:60
+#: src/admin/pages/index.js:64
 msgid "Get started with Ultimate Cursor"
 msgstr ""
 
-#: src/admin/pages/index.js:68
+#: src/admin/pages/index.js:72
 msgid "Configure your cursor settings"
 msgstr ""
 
-#: src/admin/pages/index.js:73
+#: src/admin/pages/index.js:77
 msgid "Configure background animation settings"
 msgstr ""
 
-#: src/admin/pages/index.js:81
+#: src/admin/pages/index.js:85
 msgid "Learn more about Ultimate Cursor"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:65
+#: src/admin/pages/index.js:96
+msgid "See what Ultimate Cursor Pro adds"
+msgstr ""
+
+#: src/admin/pages/pro/demos.js:64
+msgid "View"
+msgstr ""
+
+#: src/admin/pages/pro/demos.js:130
+msgid "READ MORE"
+msgstr ""
+
+#: src/admin/pages/pro/index.js:48
+msgid "Interactive Hover"
+msgstr ""
+
+#: src/admin/pages/pro/index.js:49
+msgid "The cursor reacts to links, buttons and form fields: it grows, changes color, glows, snaps magnetically to the element and can show a label such as “Open” or “Play”."
+msgstr ""
+
+#: src/admin/pages/pro/index.js:57
+msgid "Multiple cursors"
+msgstr ""
+
+#: src/admin/pages/pro/index.js:58
+msgid "Create as many cursors as you need and run them side by side — one site-wide, others where you choose."
+msgstr ""
+
+#: src/admin/pages/pro/index.js:66
+msgid "Page and element targeting"
+msgstr ""
+
+#: src/admin/pages/pro/index.js:67
+msgid "Show a cursor only on specific pages, or only over the elements you pick with a CSS selector or an HTML tag."
+msgstr ""
+
+#: src/admin/pages/pro/index.js:75
+msgid "Settings for every animated effect"
+msgstr ""
+
+#: src/admin/pages/pro/index.js:76
+msgid "Each effect runs with a ready-made style in the free plugin. Pro adds its controls: trail and snowflake emojis, sizes, counts and speed, splash radius, force and colors, spark and particle options, rainbow colors, and custom characters."
+msgstr ""
+
+#: src/admin/pages/pro/index.js:84
+msgid "20 more shapes"
+msgstr ""
+
+#: src/admin/pages/pro/index.js:85
+msgid "Blob, squircle, sparkle, seal badge, pin, shield and more, on top of the 5 free shapes."
+msgstr ""
+
+#: src/admin/pages/pro/index.js:93
+msgid "Circular text"
+msgstr ""
+
+#: src/admin/pages/pro/index.js:94
+msgid "Wrap your text around the cursor as a rotating badge, with presets, radius, direction and a circular background."
+msgstr ""
+
+#: src/admin/pages/pro/index.js:102
+msgid "Image and icon hotspot"
+msgstr ""
+
+#: src/admin/pages/pro/index.js:103
+msgid "Choose which point of the image follows the mouse — the tip of an arrow instead of its center."
+msgstr ""
+
+#: src/admin/pages/pro/index.js:111
+msgid "Background motion controls"
+msgstr ""
+
+#: src/admin/pages/pro/index.js:112
+msgid "Antigravity: magnet and ring radius, field strength, wave, pulse, depth, rotation and auto-animate. Light Pillar: intensity, rotation speed, glow, noise, mouse interaction, blend mode and render quality."
+msgstr ""
+
+#: src/admin/pages/pro/index.js:120
+msgid "Background placement"
+msgstr ""
+
+#: src/admin/pages/pro/index.js:121
+msgid "Set position, stacking order and opacity, limit a background to specific pages or a CSS selector, and run several backgrounds at once."
+msgstr ""
+
+#: src/admin/pages/pro/index.js:129
+msgid "Priority support"
+msgstr ""
+
+#: src/admin/pages/pro/index.js:130
+msgid "Direct help from the developer, with a 14-day money-back guarantee."
+msgstr ""
+
+#: src/admin/pages/pro/index.js:171
+msgid "Everything in the free plugin keeps working as it does today. Pro adds the features below — each one is shown here and links to a live demo you can try before deciding."
+msgstr ""
+
+#: src/admin/pages/pro/index.js:184
+#: src/admin/pages/pro/index.js:231
+msgid "See plans and pricing"
+msgstr ""
+
+#: src/admin/pages/pro/index.js:188
+msgid "Open the live demo"
+msgstr ""
+
+#: src/admin/pages/pro/index.js:218
+msgid "Free and Pro side by side"
+msgstr ""
+
+#: src/admin/pages/welcome/index.js:52
 msgid "Unable to install plugin. Missing configuration."
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:106
+#: src/admin/pages/welcome/index.js:93
 msgid "Failed to install plugin."
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:112
+#: src/admin/pages/welcome/index.js:99
 msgid "An unexpected error occurred."
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:195
+#: src/admin/pages/welcome/index.js:174
 msgid "Ultimate Cursor Pro is Active!"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:218
+#: src/admin/pages/welcome/index.js:197
 msgid "Transform Your Website's"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:228
+#: src/admin/pages/welcome/index.js:207
 msgid "Interactive Experience"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:247
+#: src/admin/pages/welcome/index.js:226
 msgid "Engage your visitors with <strong>captivating custom cursors</strong>. Choose from interactive shapes, images, or animations to create a memorable browsing journey."
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:269
+#: src/admin/pages/welcome/index.js:248
 msgid "You have full access to multiple cursors, element targeting, and premium animations."
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:294
+#: src/admin/pages/welcome/index.js:273
 msgid "Customize Your Cursor"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:364
-msgid "ULTIMATE CURSOR PRO"
+#: src/admin/pages/welcome/index.js:286
+msgid "Need several cursors, page or element targeting, or Interactive Hover?"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:379
-msgid "Unlock Limitless Creativity"
-msgstr ""
-
-#: src/admin/pages/welcome/index.js:393
-msgid "Move beyond basic cursors. Create multiple cursor configurations, target specific elements, and use premium animations to dramatically boost user engagement."
-msgstr ""
-
-#: src/admin/pages/welcome/index.js:406
-msgid "Target specific elements & buttons"
-msgstr ""
-
-#: src/admin/pages/welcome/index.js:413
-msgid "Different cursors per page"
-msgstr ""
-
-#: src/admin/pages/welcome/index.js:420
-msgid "Premium trail animations"
-msgstr ""
-
-#: src/admin/pages/welcome/index.js:427
-msgid "Priority VIP Support"
-msgstr ""
-
-#: src/admin/pages/welcome/index.js:478
-msgid "Upgrade to Pro Now"
-msgstr ""
-
-#: src/admin/pages/welcome/index.js:495
-msgid "View all features"
-msgstr ""
-
-#: src/admin/pages/welcome/index.js:545
-msgid "Button Hover"
-msgstr ""
-
-#: src/admin/pages/welcome/index.js:579
-msgid "Pricing Page"
-msgstr ""
-
-#: src/admin/pages/welcome/index.js:614
-msgid "Custom Trails"
-msgstr ""
-
-#: src/admin/pages/welcome/index.js:650
+#: src/admin/pages/welcome/index.js:321
 msgid "Try our other plugins?"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:666
+#: src/admin/pages/welcome/index.js:337
 msgid "ExtenderX"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:667
+#: src/admin/pages/welcome/index.js:338
 msgid "Animate blocks, enable dark mode & protect content. 60+ tools: disable right-click, copy & inspect. Works with any theme or builder. Fast & no-code!"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:676
+#: src/admin/pages/welcome/index.js:347
 msgid "Trending"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:684
+#: src/admin/pages/welcome/index.js:355
 msgid "MarqueeX"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:685
+#: src/admin/pages/welcome/index.js:356
 msgid "Smooth horizontal & vertical marquees, news tickers, infinite sliders — perfect marquee addons for Elementor & Gutenberg page builders"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:694
+#: src/admin/pages/welcome/index.js:365
 msgid "Hot"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:702
+#: src/admin/pages/welcome/index.js:373
 msgid "SlideVerse"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:703
+#: src/admin/pages/welcome/index.js:374
 msgid "Create stunning responsive sliders, carousels & image sliders with SlideVerse - the best WordPress slider plugin for Gutenberg. Powered by Swiper.js."
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:779
+#: src/admin/pages/welcome/index.js:450
 msgid "Dashboard"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:789
-#: src/admin/pages/welcome/index.js:825
+#: src/admin/pages/welcome/index.js:460
+#: src/admin/pages/welcome/index.js:496
 msgid "View Details"
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:811
+#: src/admin/pages/welcome/index.js:482
 msgid "Installing..."
 msgstr ""
 
-#: src/admin/pages/welcome/index.js:815
+#: src/admin/pages/welcome/index.js:486
 msgid "Install Now (Free)"
 msgstr ""
 
-#: src/admin/store/background-settings/actions.js:34
-#: src/admin/store/settings/actions.js:35
+#: src/admin/store/background-settings/actions.js:35
+#: src/admin/store/settings/actions.js:36
 msgid "Something went wrong, please try again…"
 msgstr ""
 
@@ -2842,25 +2136,8 @@ msgstr ""
 msgid "WebGL not supported"
 msgstr ""
 
-#: src/utils/cursor/default-cursor/index.js:352
+#: src/utils/cursor/default-cursor/index.js:196
 msgid "Custom cursor"
-msgstr ""
-
-#: src/utils/hover/detect.js:136
-#: src/utils/hover/detect.js:168
-msgid "View"
-msgstr ""
-
-#: src/utils/hover/detect.js:150
-msgid "Drag"
-msgstr ""
-
-#: src/utils/hover/detect.js:159
-msgid "Click"
-msgstr ""
-
-#: src/utils/hover/detect.js:165
-msgid "Type"
 msgstr ""
 
 #: src/utils/MediaUploader.js:61
@@ -2871,116 +2148,120 @@ msgstr ""
 msgid "Upload Image"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:17
+#: src/utils/ProFeaturesTable.js:18
 msgid "Feature"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:20
+#: src/utils/ProFeaturesTable.js:21
 msgid "Free"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:29
+#: src/utils/ProFeaturesTable.js:24
+msgid "Pro"
+msgstr ""
+
+#: src/utils/ProFeaturesTable.js:30
 msgid "Basic Cursor Customization"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:41
+#: src/utils/ProFeaturesTable.js:42
 msgid "Text & Image Cursors"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:43
+#: src/utils/ProFeaturesTable.js:44
 msgid "Pro adds custom image hotspot / tip alignment"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:59
+#: src/utils/ProFeaturesTable.js:64
 msgid "Cursor Shape Library"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:61
+#: src/utils/ProFeaturesTable.js:66
 msgid "Icon-style cursor shapes to choose from"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:69
+#: src/utils/ProFeaturesTable.js:78
 msgid "5 Shapes"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:74
+#: src/utils/ProFeaturesTable.js:83
 msgid "25+ Shapes"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:81
+#: src/utils/ProFeaturesTable.js:90
 msgid "Animated Cursor Effects"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:83
+#: src/utils/ProFeaturesTable.js:92
 msgid "Splash, Trail, Rainbow, Snowflake, Character & more"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:91
-#: src/utils/ProFeaturesTable.js:131
+#: src/utils/ProFeaturesTable.js:101
+#: src/utils/ProFeaturesTable.js:149
 msgid "Default Style"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:96
-#: src/utils/ProFeaturesTable.js:136
+#: src/utils/ProFeaturesTable.js:106
+#: src/utils/ProFeaturesTable.js:154
 msgid "Full Customization"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:103
+#: src/utils/ProFeaturesTable.js:113
 msgid "Interactive Hover Effects"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:105
+#: src/utils/ProFeaturesTable.js:115
 msgid "Magnetic pull, glow and labels on buttons & links"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:121
+#: src/utils/ProFeaturesTable.js:135
 msgid "3D Background Effects"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:123
+#: src/utils/ProFeaturesTable.js:137
 msgid "Antigravity & Light Pillar animated backgrounds"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:143
+#: src/utils/ProFeaturesTable.js:161
 msgid "Background Position & Layering"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:148
+#: src/utils/ProFeaturesTable.js:166
 msgid "Control position, z-index and opacity"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:164
+#: src/utils/ProFeaturesTable.js:182
 msgid "Multiple Cursor Configurations"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:169
+#: src/utils/ProFeaturesTable.js:187
 msgid "Use different cursor types for different elements"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:185
+#: src/utils/ProFeaturesTable.js:207
 msgid "Multiple Background Configurations"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:190
+#: src/utils/ProFeaturesTable.js:212
 msgid "Different background effects for different pages"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:206
+#: src/utils/ProFeaturesTable.js:228
 msgid "Element-Specific Cursors"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:208
+#: src/utils/ProFeaturesTable.js:230
 msgid "Apply unique cursors to buttons, images, etc."
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:224
+#: src/utils/ProFeaturesTable.js:250
 msgid "Page-Specific Cursors"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:226
+#: src/utils/ProFeaturesTable.js:252
 msgid "Different cursors for different pages"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:242
+#: src/utils/ProFeaturesTable.js:268
 msgid "Premium Support"
 msgstr ""

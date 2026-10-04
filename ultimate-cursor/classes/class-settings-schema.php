@@ -1,19 +1,31 @@
 <?php
 
 /**
- * Settings schema — allowlist + per-field sanitization for REST writes.
+ * Settings schema — the allowlist of fields (and of values, for a few
+ * fields) this plugin supports, applied to REST writes AND to everything
+ * sent to the browser.
  *
  * Field lists live in the JSON manifests (classes/cursor-field-manifest.json,
  * classes/background-field-manifest.json) so the allowlist has ONE source of
- * truth. Unknown keys are DROPPED on write; keys already stored in the DB
- * survive (writes merge into the stored option), so legacy data is never
- * destroyed — it just can't be (re)written unless it's in the manifest.
+ * truth. They list what the free plugin itself offers. An add-on (the Pro
+ * plugin) extends them through filters:
+ *   - ultimate_cursor_{group}_field_manifest  — more fields
+ *   - ultimate_cursor_{group}_allowed_values  — more values for a field
+ * This class knows nothing about licenses: a field either is registered or
+ * it is not.
+ *
+ * Unknown keys are DROPPED on write; keys already stored in the DB survive
+ * (writes merge into the stored option), so data saved while an add-on was
+ * active is never destroyed — it stays dormant, and is filtered out of
+ * browser output, until that add-on registers its fields again.
  *
  * The full storage pipeline for a REST write is prepare_for_storage():
- *   1. schema allowlist + typed sanitization (this class)
- *   2. premium input strip (Ultimate_Cursor_License_Gate::strip_premium_input)
+ *   1. schema allowlist + typed sanitization
+ *   2. values not currently allowed are removed from the payload
  *   3. merge into the stored option
  *   4. data-integrity guard (multiple-mode flag without configs is coerced off)
+ *
+ * The output path (admin localize + frontend enqueue) is filter_for_output().
  *
  * Pure logic by design: no WordPress classes, only core sanitization
  * functions (stubbed in tests/bootstrap.php), so the exact storage path is
@@ -73,14 +85,13 @@ class Ultimate_Cursor_Settings_Schema {
 		// 1. Allowlist + typed sanitization. Unknown keys are dropped.
 		$clean = self::sanitize_against_schema( $input, self::get_top_level_schema( $group ) );
 
-		// 2. SERVER-SIDE PREMIUM GATE (input only): premium fields are removed
-		// from the incoming payload when there is no valid license, so direct
-		// API calls can't inject them. Premium data already stored in the DB is
-		// intentionally left untouched — it stays dormant and comes back when
-		// the license returns. The output paths (admin localize + frontend
-		// enqueue in class-assets.php) run the full License Gate sanitize, so
-		// dormant values never reach the browser without a license.
-		$clean = Ultimate_Cursor_License_Gate::strip_premium_input( $clean, $group );
+		// 2. Values that are not currently allowed (see get_allowed_values())
+		// are removed from the payload — removed, not replaced, so a value
+		// stored while an add-on allowed it is not overwritten and comes back
+		// with that add-on. Fields the schema does not know were already
+		// dropped in step 1. Output is filtered separately, in
+		// filter_for_output(), so dormant data never reaches the browser.
+		$clean = self::apply_allowed_values( $clean, $group, false );
 
 		// 3. Merge into the stored option (partial writes are supported).
 		$merged = array_merge( $current, $clean );
@@ -90,13 +101,195 @@ class Ultimate_Cursor_Settings_Schema {
 		// It can arise when the input gate strips the configurations while the
 		// flag survives the merge. Coerce the flag off so the legacy single
 		// top-level config is used instead.
-		$flag_key    = ( 'background' === $group ) ? 'enableMultipleBackgrounds' : 'enableMultipleCursors';
-		$configs_key = ( 'background' === $group ) ? 'backgroundConfigurations' : 'cursorConfigurations';
-		if ( ! empty( $merged[ $flag_key ] ) && empty( $merged[ $configs_key ] ) ) {
-			$merged[ $flag_key ] = false;
+		return self::guard_multiple_mode( $merged, $group );
+	}
+
+	/**
+	 * Filter a stored option for the browser (admin dashboard data and the
+	 * frontend runtime): only fields the schema currently knows are kept,
+	 * and values that are not currently allowed are replaced by the field's
+	 * default.
+	 *
+	 * Never run this against storage — it reverts values and would destroy
+	 * dormant add-on data. Storage goes through prepare_for_storage().
+	 *
+	 * @param mixed  $settings Stored option value.
+	 * @param string $group    Settings group: 'cursor' or 'background'.
+	 * @return mixed Filtered settings (non-arrays are returned unchanged).
+	 */
+	public static function filter_for_output( $settings, $group ) {
+		if ( ! is_array( $settings ) ) {
+			return $settings;
 		}
 
-		return $merged;
+		$legacy = self::get_legacy_output_keys( $group );
+		$out    = self::keep_known_keys( $settings, self::get_top_level_schema( $group ), $legacy );
+
+		$configs_key = self::get_configs_key( $group );
+		if ( isset( $out[ $configs_key ] ) && is_array( $out[ $configs_key ] ) ) {
+			$config_schema = self::get_config_schema( $group );
+			$entries       = array();
+			foreach ( $out[ $configs_key ] as $entry ) {
+				if ( is_array( $entry ) ) {
+					$entries[] = self::keep_known_keys( $entry, $config_schema, $legacy );
+				}
+			}
+			$out[ $configs_key ] = $entries;
+		}
+
+		$out = self::apply_allowed_values( $out, $group, true );
+
+		return self::guard_multiple_mode( $out, $group );
+	}
+
+	/**
+	 * Fields whose VALUE is restricted, and the values currently allowed.
+	 *
+	 * The first value of each list is the field's default (used when an
+	 * unsupported stored value has to be replaced for output). An add-on
+	 * widens a list through the filter.
+	 *
+	 * @param string $group Settings group: 'cursor' or 'background'.
+	 * @return array field => list of allowed values.
+	 */
+	public static function get_allowed_values( $group ) {
+		$values = array(
+			'cursor'     => array(
+				'cursorScope' => array( 'entire-website' ),
+				'textStyle'   => array( 'normal' ),
+				'cursorShape' => array( '1.svg', '2.svg', '3.svg', '4.svg', '5.svg' ),
+			),
+			'background' => array(
+				'scope' => array( 'entire-website' ),
+			),
+		);
+
+		$group_values = isset( $values[ $group ] ) ? $values[ $group ] : array();
+
+		/**
+		 * Filter the allowed values of value-restricted fields.
+		 *
+		 * @param array  $group_values field => list of allowed values.
+		 * @param string $group        Settings group.
+		 */
+		return apply_filters( "ultimate_cursor_{$group}_allowed_values", $group_values, $group );
+	}
+
+	/**
+	 * Enforce get_allowed_values() on a settings array and on each entry of
+	 * its configurations list.
+	 *
+	 * @param array  $settings Settings array.
+	 * @param string $group    Settings group.
+	 * @param bool   $revert   True: replace an unsupported value with the
+	 *                         field's default (output). False: remove the
+	 *                         key (input), leaving the stored value alone.
+	 * @return array
+	 */
+	private static function apply_allowed_values( $settings, $group, $revert ) {
+		$allowed = self::get_allowed_values( $group );
+		if ( empty( $allowed ) ) {
+			return $settings;
+		}
+
+		$settings = self::apply_allowed_values_to( $settings, $allowed, $revert );
+
+		$configs_key = self::get_configs_key( $group );
+		if ( isset( $settings[ $configs_key ] ) && is_array( $settings[ $configs_key ] ) ) {
+			foreach ( $settings[ $configs_key ] as $index => $entry ) {
+				if ( is_array( $entry ) ) {
+					$settings[ $configs_key ][ $index ] = self::apply_allowed_values_to( $entry, $allowed, $revert );
+				}
+			}
+		}
+
+		return $settings;
+	}
+
+	/**
+	 * Enforce allowed values on one flat array of fields.
+	 *
+	 * @param array $fields  Field values.
+	 * @param array $allowed field => list of allowed values.
+	 * @param bool  $revert  See apply_allowed_values().
+	 * @return array
+	 */
+	private static function apply_allowed_values_to( $fields, $allowed, $revert ) {
+		foreach ( $allowed as $field => $values ) {
+			if ( ! isset( $fields[ $field ] ) || '' === $fields[ $field ] || empty( $values ) ) {
+				continue;
+			}
+			if ( in_array( $fields[ $field ], $values, true ) ) {
+				continue;
+			}
+			if ( $revert ) {
+				$fields[ $field ] = reset( $values );
+			} else {
+				unset( $fields[ $field ] );
+			}
+		}
+
+		return $fields;
+	}
+
+	/**
+	 * Keep only the keys a schema (or the legacy pass-through list) knows.
+	 * Values are not re-sanitized — they were sanitized when written.
+	 *
+	 * @param array $fields Field values.
+	 * @param array $schema field => callback.
+	 * @param array $legacy Extra keys to let through.
+	 * @return array
+	 */
+	private static function keep_known_keys( $fields, $schema, $legacy ) {
+		$kept = array();
+		foreach ( $fields as $key => $value ) {
+			if ( isset( $schema[ $key ] ) || in_array( $key, $legacy, true ) ) {
+				$kept[ $key ] = $value;
+			}
+		}
+		return $kept;
+	}
+
+	/**
+	 * Keys older versions stored and the runtime still reads. They pass
+	 * through filter_for_output() but cannot be written any more.
+	 *
+	 * @param string $group Settings group.
+	 * @return string[]
+	 */
+	private static function get_legacy_output_keys( $group ) {
+		$manifest = self::get_manifest( $group );
+		return $manifest['legacyOutput'];
+	}
+
+	/**
+	 * Name of the configurations list for a group.
+	 *
+	 * @param string $group Settings group.
+	 * @return string
+	 */
+	private static function get_configs_key( $group ) {
+		return ( 'background' === $group ) ? 'backgroundConfigurations' : 'cursorConfigurations';
+	}
+
+	/**
+	 * "Multiple" mode without at least one configuration is a broken state
+	 * (the frontend would render nothing) — coerce the flag off so the single
+	 * top-level config is used instead.
+	 *
+	 * @param array  $settings Settings array.
+	 * @param string $group    Settings group.
+	 * @return array
+	 */
+	private static function guard_multiple_mode( $settings, $group ) {
+		$flag_key    = ( 'background' === $group ) ? 'enableMultipleBackgrounds' : 'enableMultipleCursors';
+		$configs_key = self::get_configs_key( $group );
+		if ( ! empty( $settings[ $flag_key ] ) && empty( $settings[ $configs_key ] ) ) {
+			$settings[ $flag_key ] = false;
+		}
+
+		return $settings;
 	}
 
 	/**
@@ -113,8 +306,8 @@ class Ultimate_Cursor_Settings_Schema {
 		/**
 		 * Filter the top-level settings allowlist for a group.
 		 *
-		 * Add-ons (the pro plugin) can register extra fields (and their
-		 * sanitizer callbacks) here so those fields survive the allowlist.
+		 * Lower-level than ultimate_cursor_{group}_field_manifest: here an
+		 * add-on can attach a custom sanitizer callback to a field.
 		 *
 		 * @param array  $schema field => callable.
 		 * @param string $group  Settings group.
@@ -177,6 +370,50 @@ class Ultimate_Cursor_Settings_Schema {
 	 * @return array { topLevel: array, config: array }
 	 */
 	private static function get_manifest( $group ) {
+		return self::extend_manifest( self::load_manifest_file( $group ), $group );
+	}
+
+	/**
+	 * Let add-ons register their fields.
+	 *
+	 * @param array  $manifest { topLevel, config, legacyOutput } from the file.
+	 * @param string $group    Settings group.
+	 * @return array Same shape, always complete.
+	 */
+	private static function extend_manifest( $manifest, $group ) {
+		/**
+		 * Filter a group's field manifest.
+		 *
+		 * An add-on adds its fields here as `name => type keyword` under
+		 * 'topLevel' (option root only) or 'config' (root and each
+		 * configurations[] entry). Type keywords are those handled by
+		 * build_schema(): text, text-long, bool, int, float, token,
+		 * token-null, color, color-list, text-list, url, configs.
+		 *
+		 * @param array  $manifest { topLevel: array, config: array, legacyOutput: string[] }.
+		 * @param string $group    Settings group: 'cursor' or 'background'.
+		 */
+		$filtered = apply_filters( "ultimate_cursor_{$group}_field_manifest", $manifest, $group );
+
+		if ( ! is_array( $filtered ) ) {
+			return $manifest;
+		}
+		foreach ( array( 'topLevel', 'config', 'legacyOutput' ) as $section ) {
+			if ( ! isset( $filtered[ $section ] ) || ! is_array( $filtered[ $section ] ) ) {
+				$filtered[ $section ] = $manifest[ $section ];
+			}
+		}
+
+		return $filtered;
+	}
+
+	/**
+	 * Read (and cache) a group's manifest file.
+	 *
+	 * @param string $group Settings group: 'cursor' or 'background'.
+	 * @return array { topLevel: array, config: array, legacyOutput: string[] }
+	 */
+	private static function load_manifest_file( $group ) {
 		if ( isset( self::$manifests[ $group ] ) ) {
 			return self::$manifests[ $group ];
 		}
@@ -184,8 +421,9 @@ class Ultimate_Cursor_Settings_Schema {
 		$file     = ( 'background' === $group ) ? 'background-field-manifest.json' : 'cursor-field-manifest.json';
 		$path     = __DIR__ . '/' . $file;
 		$manifest = array(
-			'topLevel' => array(),
-			'config'   => array(),
+			'topLevel'     => array(),
+			'config'       => array(),
+			'legacyOutput' => array(),
 		);
 
 		if ( file_exists( $path ) ) {
@@ -196,7 +434,7 @@ class Ultimate_Cursor_Settings_Schema {
 				$decoded = json_decode( file_get_contents( $path ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Local plugin file, WP_Filesystem is not warranted.
 			}
 			if ( is_array( $decoded ) ) {
-				foreach ( array( 'topLevel', 'config' ) as $section ) {
+				foreach ( array( 'topLevel', 'config', 'legacyOutput' ) as $section ) {
 					if ( ! empty( $decoded[ $section ] ) && is_array( $decoded[ $section ] ) ) {
 						$manifest[ $section ] = $decoded[ $section ];
 					}

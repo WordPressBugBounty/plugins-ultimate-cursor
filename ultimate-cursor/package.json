@@ -26,11 +26,12 @@
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip"
 	},
-  "devDependencies": {
-    "@wordpress/scripts": "^31.5.0",
-    "ajv": "^8.12.0",
-    "ajv-keywords": "^5.1.0"
-  },
+	"devDependencies": {
+		"@wordpress/scripts": "^31.5.0",
+		"ajv": "^8.12.0",
+		"ajv-keywords": "^5.1.0",
+		"typescript": "~5.9.0"
+	},
 	"dependencies": {
 		"@react-three/fiber": "^8.17.10",
 		"@wordpress/icons": "^11.7.0",
