@@ -1,6 +1,5 @@
 === Ultimate Cursor – Interactive and Animated Custom Cursor and Background Effects Toolkit ===
 Contributors: wpxero
-Donate link: https://wpxero.com/plugins/ultimate-cursor/pricing
 Tags: custom cursor, animated cursor, mouse cursor, cursor effects, background effects
 Requires at least: 6.0
 Tested up to: 7.1
@@ -9,181 +8,239 @@ Requires PHP: 7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Add custom animated mouse cursors with text, icons, images and shapes, plus stunning background effects. Live preview, no code needed.
+Create custom cursors, animated cursor effects, and animated background effects in WordPress with a live preview. No coding required.
 
 == Description ==
 
 https://youtu.be/mGOVAyi9ip4
 
-🔗 **[Try the interactive demo →](https://cursor.wpxero.com/)** Test every cursor type and background effect live in your browser before you install.
+**[Try the live demo](https://cursor.wpxero.com/)** – test every cursor type and background effect in your browser before you install.
 
-### The custom cursor and background effects toolkit trusted by 3,000+ WordPress websites
+**Ultimate Cursor** is a custom cursor WordPress plugin. It replaces the default mouse pointer with a custom mouse cursor – text, an image, an icon, a shape, or an animated cursor effect – and it can add an animated background effect to your site. You set everything up in a dashboard with a live preview. No coding is required.
 
-Transform your **WordPress website** and captivate your audience with **Ultimate Cursor**, the all-in-one solution for creating **custom cursors** and **stunning background effects**. Replace the default mouse pointer with **animated cursors, dynamic icons, interactive text, engaging images, and geometric shapes** — and pair them with **animated background effects** — all from a live-preview dashboard, with **no coding required**.
+The free plugin is complete on its own: every cursor type, every animated effect, and both background effects are included, and nothing in the dashboard is locked or disabled. [Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing) is an optional add-on for sites that need interactive hover effects, several cursors, or targeting by page and element.
 
-Ultimate Cursor works with **every theme** and with **Elementor, Gutenberg, WPBakery, Divi, and other page builders**. Whether you want to strengthen your **brand identity**, guide visitors with interactive feedback, or simply make your site unforgettable, you can style, preview, and publish a custom mouse cursor in minutes.
+### What you can build
 
-Unlock every feature with [Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing).
+* A **WordPress custom cursor** that matches your brand: your own text, image, icon, or shape.
+* An **animated cursor** that reacts to mouse movement and clicks.
+* An **animated background effect** behind your pages.
+* With Pro, an **interactive cursor** that reacts to links, buttons, and form fields.
 
-### ✨ Pro highlight — Interactive Hover
+### Key Features
 
-With [Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing), your cursor [**reacts to the page**](https://cursor.wpxero.com/effects/shape-cursor/). When visitors hover links, buttons, or form fields, the cursor can:
+* **Five cursor types** – Text, Image, Icon, Shape, and Animated. Choose one and style it in the live preview.
+* **[Icon library](https://cursor.wpxero.com/effects/icon-cursor/)** – 113 built-in icons. The whole library is free.
+* **[Shape cursors](https://cursor.wpxero.com/effects/shape-cursor/)** – 5 geometric shapes with adjustable color, size, and border.
+* **Eight animated cursor effects** – [Bubble](https://cursor.wpxero.com/effects/bubble-cursor/), [Splash](https://cursor.wpxero.com/effects/splash-cursor/), [Snowflake](https://cursor.wpxero.com/effects/snowflake-cursor/), Trail, [Character](https://cursor.wpxero.com/effects/character-cursor/), [Rainbow](https://cursor.wpxero.com/effects/rainbow-cursor/), [Click Spark](https://cursor.wpxero.com/effects/click-spark/), and [Click Particles](https://cursor.wpxero.com/effects/click-particles/).
+* **Two animated background effects** – [Antigravity](https://cursor.wpxero.com/effects/antigravity-background/) (floating particles) and [Light Pillar](https://cursor.wpxero.com/effects/light-pillar-background/) (a glowing vertical light).
+* **Live preview** – see every change in the dashboard before you save.
+* **Loads only what you use** – scripts load only when an effect is enabled, and each effect is a separate file that is downloaded only when your configuration needs it. When the cursor is hidden on a device, its scripts are not downloaded there.
+* **Accessibility** – the custom cursor is hidden on touch devices, and animations respect the visitor's reduced-motion preference.
+* **Translation ready** – the dashboard and the frontend are fully translatable.
 
-✅ **Scale up smoothly** with configurable speed and size
+### Free Features
 
-✅ **Change color and glow** to highlight the interactive element
+Everything in this list is included in the free plugin.
 
-✅ **Snap magnetically** toward the element's center
+* Text cursor
+* Image cursor
+* Icon cursor, with 113 built-in icons
+* Shape cursor, with 5 geometric shapes
+* Animated cursor, with 8 effects: Bubble, Splash, Snowflake, Trail, Character, Rainbow, Click Spark, and Click Particles. Each effect has a ready-made style. Bubble size and colors are adjustable.
+* Antigravity background effect, with color, particle count, size, and shape settings
+* Light Pillar background effect, with color, width, height, and rotation settings
+* One cursor configuration and one background configuration, applied to the whole site
+* Live preview dashboard
+* Responsive behavior: the cursor is hidden on touch devices
+* Reduced-motion support
+* Translation-ready interface
 
-✅ **Show contextual labels** — "Open", "Play", "Type" — right inside the cursor
+### Pro Features
 
-✅ **Blend with the page** using CSS blend modes, and target your own CSS selectors
+[Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing) is a separate add-on. It adds the following features to the free plugin.
 
-All Interactive Hover options are part of Pro.
+* **Interactive Hover** – the cursor reacts when a visitor points at a link, a button, or a form field. It can grow, change color, glow, move toward the center of the element, and show a label such as "Open". This helps visitors see what they can click. ([See it live](https://cursor.wpxero.com/effects/shape-cursor/))
+* **Multiple cursor configurations** – run several cursors on one site, for example one for the whole site and another for your portfolio. ([See it live](https://cursor.wpxero.com/effects/multiple-cursors/))
+* **Page targeting** – show a cursor only on the pages you choose.
+* **CSS selector targeting** – show a cursor only over elements that match a CSS selector.
+* **HTML element targeting** – show a cursor only over the HTML tags you choose.
+* **20 more shape cursors** – 25 shapes in total, including heart, star, diamond, arrow, blob, squircle, sparkle, pin, and shield. ([See them](https://cursor.wpxero.com/effects/geometry/))
+* **Circular Text cursor** – wrap your text around the cursor as a rotating badge. ([See it live](https://cursor.wpxero.com/effects/text-cursor/))
+* **Image and icon hotspot** – choose which point of the image follows the mouse, such as the tip of an arrow. ([See it live](https://cursor.wpxero.com/effects/image-cursor/))
+* **Settings for every animated effect** – emojis, sizes, counts, and speed for Trail and Snowflake; colors, radius, and force for Splash; options for Click Spark and Click Particles; colors for Rainbow; custom characters for Character.
+* **Background motion controls** – magnet and ring radius, field strength, wave, pulse, and rotation for Antigravity; intensity, glow, noise, mouse interaction, blend mode, and quality for Light Pillar.
+* **Background placement** – position, stacking order, and opacity. Limit a background to chosen pages or to a CSS selector.
+* **Multiple background configurations** – run several backgrounds at the same time.
+* **Priority support**
+* **14-day money-back guarantee**
 
-Plus **9 brand-new cursor shapes** (Pro): Blob, Squircle, Sparkle, Seal Badge, Octagon, Pin, Play, Asterisk, and Shield — [25 shapes in total](https://cursor.wpxero.com/effects/geometry/).
+### Free vs Pro
 
-### 🎯 Key Features of Ultimate Cursor
+* **Text cursor** – Free: yes. Pro: yes, plus Circular Text.
+* **Image cursor** – Free: yes. Pro: yes, plus hotspot positioning.
+* **Icon cursor** – Free: yes, 113 icons. Pro: yes, plus hotspot positioning.
+* **Shape cursor** – Free: 5 shapes. Pro: 25 shapes.
+* **Animated cursor effects** – Free: 8 effects with ready-made styles. Pro: 8 effects with settings for each effect.
+* **Interactive Hover** – Free: no. Pro: yes.
+* **Multiple cursors** – Free: one cursor. Pro: yes.
+* **Page, CSS selector, and HTML element targeting** – Free: whole site. Pro: yes.
+* **Antigravity background** – Free: yes, with color, count, size, and shape. Pro: adds motion controls.
+* **Light Pillar background** – Free: yes, with color, width, height, and rotation. Pro: adds motion and rendering controls.
+* **Background placement and targeting** – Free: whole site. Pro: yes.
+* **Multiple backgrounds** – Free: one background. Pro: yes.
+* **Priority support** – Free: community support forum. Pro: yes.
 
-* **Advanced Animated Cursor Effects:** Transform your website with cutting-edge cursor animations including **bubble effects, snowflake patterns, splash cursors, character cursors, rainbow trails**, and dynamic cursor follow text functionality.
+### Usage
 
-* **Comprehensive Cursor Type Library:** Access an extensive collection of cursor styles including [image cursors](https://cursor.wpxero.com/effects/image-cursor/), [icon cursors](https://cursor.wpxero.com/effects/icon-cursor/), [shaped cursors](https://cursor.wpxero.com/effects/shape-cursor/), [click spark effects](https://cursor.wpxero.com/effects/click-spark/), [click particles](https://cursor.wpxero.com/effects/click-particles/), and countless other animated cursor variations.
+1. Open **Ultimate Cursor** in your WordPress dashboard.
+2. Choose a cursor type: Text, Image, Icon, Shapes, or Animated.
+3. Change the settings. The live preview shows the result.
+4. Click **Save**. The cursor is now active on your site.
+5. To add a background effect, open the **Background** tab, choose Antigravity or Light Pillar, and save.
 
-* **Interactive Visual Feedback:** Enhance user interactions with **click spark animations and particle burst effects** that react to user movements and clicks — plus **interactive hover effects** with Pro.
+### Shortcodes
 
-* **Dynamic Character & Text Integration:** Implement [character cursors](https://cursor.wpxero.com/effects/character-cursor/) and [cursor follow text](https://cursor.wpxero.com/effects/text-cursor/) features that create engaging storytelling elements and interactive guidance throughout your website.
+Ultimate Cursor does not provide shortcodes, and you do not need any. Cursors and backgrounds are applied from the plugin dashboard.
 
-* **Stunning Visual Effects:** Deploy [rainbow cursor trails](https://cursor.wpxero.com/effects/rainbow-cursor/), [snowflake animations](https://cursor.wpxero.com/effects/snowflake-cursor/), [bubble cursors](https://cursor.wpxero.com/effects/bubble-cursor/), and [splash effects](https://cursor.wpxero.com/effects/splash-cursor/) that add magical, eye-catching elements to every mouse movement.
+### Widgets
 
-* **Stunning Icon Library:** Replace the standard cursor with [113 built-in icons](https://cursor.wpxero.com/effects/icon-cursor/) — the whole library is free. From custom designs to classic arrows, create an interactive element that grabs your visitors' attention.
+Ultimate Cursor does not provide widgets or blocks, and you do not need any. Cursors and backgrounds are applied from the plugin dashboard.
 
-* **[25 Geometric Shape Cursors](https://cursor.wpxero.com/effects/geometry/):** From a minimal dot-and-ring to hearts, stars, blobs, squircles, pins, and shields — modern shape cursors with customizable colors, sizes, and borders. 5 shapes are free; the other 20 come with Pro.
+### Requirements
 
-* **Seamless Integration with WordPress Page Builders:** Built to work with **Elementor, Gutenberg, WPBakery, Divi**, and other page builders — no template changes needed.
+* WordPress 6.0 or newer
+* PHP 7.4 or newer
+* A device with a mouse or trackpad to see the custom cursor. Background effects need a browser with WebGL.
 
-* **Performance-Optimized Animations:** Effects are code-split and loaded only when used, so your site stays fast. Cursor and background animations are GPU-accelerated for smooth 60fps motion.
+### Compatibility
 
-* **Selective Animation Application:** Apply specific cursor effects to **entire site, specific pages, CSS selectors, or HTML elements** for targeted visual impact — see [multiple cursor targeting](https://cursor.wpxero.com/effects/multiple-cursors/) in action (Pro).
+Ultimate Cursor works with properly coded WordPress themes. It works on pages built with **Gutenberg** (the block editor), **Elementor**, **WPBakery**, **Divi**, and other page builders, because the cursor and background are added to the page itself and need no template changes. The cursor does not load inside page-builder editors or the Customizer preview, so it does not interfere with editing.
 
-* **Accessibility Built In:** Custom cursors are automatically hidden on touch devices, and animations respect the visitor's reduced-motion preference.
+The plugin includes compatibility handling for common caching and optimization plugins, including WP Rocket, LiteSpeed Cache, SiteGround Optimizer, Perfmatters, WP-Optimize, and Cloudflare Rocket Loader.
 
-* **Translation Ready:** The full dashboard and frontend are translatable — bring Ultimate Cursor to your audience in any language.
+### Privacy
 
-### 🌟 Background Effects Features
+The cursor and background effects make no external requests. All scripts, icons, and shapes are bundled with the plugin. The plugin includes the Freemius SDK; see the **External Services** section for what it does and when.
 
-* **[Antigravity Background Effect](https://cursor.wpxero.com/effects/antigravity-background/):** Create mesmerizing floating particle animations that defy gravity, adding depth and movement to your website sections with customizable particle count, size, shape, and colors.
+### Explore Ultimate Cursor Pro
 
-* **[Pillar Background Effect](https://cursor.wpxero.com/effects/light-pillar-background/):** Implement stunning vertical light pillar animations that create a dynamic, architectural visual effect perfect for hero sections, landing pages, and feature showcases.
+The free plugin is yours to use for as long as you like. Consider Pro when you need:
 
-* **Customizable Animation Settings:** Set colors, particle count, size and shape for Antigravity, and colors, width, height and rotation for Light Pillar. Pro adds motion and speed controls, intensity, render quality, opacity, stacking position, and mouse interaction.
+* More control over each animated effect and each background
+* Several cursor configurations on one site
+* A cursor that reacts to links, buttons, and form fields
+* Precise targeting by page, CSS selector, or HTML element
+* Priority support
 
-* **Section-Specific Application:** Apply different background effects to specific sections, pages, or elements for targeted visual enhancement without affecting overall site performance (Pro).
+To see what Pro adds before you decide, open **Ultimate Cursor → Pro Features** in your dashboard. Every Pro feature is shown there with an animated preview and a link to its live demo. Pro comes with a 14-day money-back guarantee.
 
-* **Responsive Background Animations:** All background effects are fully responsive and optimized for mobile, tablet, and desktop devices ensuring consistent visual experiences across all screen sizes.
-
-### 🆓 Free vs Pro
-
-**Free forever:**
-
-✅ Text, image, icon, shape, and animated cursor types
-
-✅ 5 geometric shape cursors
-
-✅ All 8 animated effects — bubble, splash, snowflake, trail, character, rainbow, click spark, and click particles — each with a ready-made style (bubble size and colors are adjustable; per-effect settings for the others are Pro)
-
-✅ Antigravity and Light Pillar background effects with color, size, and shape settings
-
-✅ One cursor and one background, applied site-wide
-
-✅ Live preview dashboard
-
-**[Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing) adds:**
-
-✅ **Interactive Hover** — the cursor reacts to links, buttons and form fields: it grows, changes color, glows, snaps magnetically and shows a label such as "Open" ([see it live](https://cursor.wpxero.com/effects/shape-cursor/))
-
-✅ **Multiple cursors** — as many cursors as you need, running side by side ([see it live](https://cursor.wpxero.com/effects/multiple-cursors/))
-
-✅ **Page and element targeting** — show a cursor only on chosen pages, or only over the elements you pick with a CSS selector or HTML tag
-
-✅ **20 more shape cursors** — heart, star, diamond, arrow, blob, squircle, sparkle, pin, shield and more ([see them](https://cursor.wpxero.com/effects/geometry/))
-
-✅ **Circular text** — wrap your text around the cursor as a rotating badge ([see it live](https://cursor.wpxero.com/effects/text-cursor/))
-
-✅ **Image and icon hotspot** — choose which point of the image follows the mouse, such as the tip of an arrow ([see it live](https://cursor.wpxero.com/effects/image-cursor/))
-
-✅ **Settings for every animated effect** — trail and snowflake emojis, sizes, counts and speed; splash colors, radius and force; spark and particle options; rainbow colors; custom characters
-
-✅ **Background motion controls** — magnet and ring radius, field strength, wave, pulse and rotation for Antigravity; intensity, glow, noise, mouse interaction, blend mode and quality for Light Pillar ([see it live](https://cursor.wpxero.com/effects/antigravity-background/))
-
-✅ **Background placement** — position, stacking order and opacity; limit a background to chosen pages or a CSS selector; run several backgrounds at once
-
-✅ **Priority support** and a **14-day money-back guarantee**
-
-**See before you buy:** after installing, open **Ultimate Cursor → Pro Features** in your dashboard — every Pro feature is shown there with an animated preview and a link to its live demo. Nothing in the free plugin is locked or disabled.
-
-[**Upgrade to Ultimate Cursor Pro →**](https://wpxero.com/plugins/ultimate-cursor/pricing)
+**[Explore Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing)**
 
 == Installation ==
 
-1. In your WordPress dashboard, go to **Plugins → Add New** and search for **"Ultimate Cursor"**, then click **Install Now** and **Activate**. (Or upload the `ultimate-cursor` folder to `/wp-content/plugins/` and activate it from the Plugins menu.)
+1. In your WordPress dashboard, go to **Plugins → Add New**, search for **Ultimate Cursor**, then click **Install Now** and **Activate**. You can also upload the `ultimate-cursor` folder to `/wp-content/plugins/` and activate the plugin from the Plugins screen.
 2. Open the new **Ultimate Cursor** menu in your dashboard.
-3. Pick a cursor type — Text, Image, Icon, Shapes, or Animated — style it with the live preview, and click **Save**.
-4. Optionally enable a **Background Effect** from the Background tab.
-5. Not sure which effect to pick? [Preview every effect live](https://cursor.wpxero.com/) first, then set up the same effect in your dashboard.
+3. Choose a cursor type – Text, Image, Icon, Shapes, or Animated – style it with the live preview, and click **Save**.
+4. Optional: enable a background effect from the **Background** tab.
+5. Optional: [preview every effect live](https://cursor.wpxero.com/) first, then set up the same effect in your dashboard.
 
 == Frequently Asked Questions ==
 
 = How do I change the mouse cursor on my WordPress site? =
 
-Install Ultimate Cursor, open the Ultimate Cursor menu in your dashboard, choose a cursor type (text, image, icon, shape, or animated effect), customize it with the live preview, and save. Your custom cursor is live immediately — no code or CSS needed.
+Install Ultimate Cursor, open the Ultimate Cursor menu in your dashboard, choose a cursor type (text, image, icon, shape, or animated effect), adjust it in the live preview, and save. The custom cursor is active as soon as you save. No code or CSS is needed.
 
 = Will Ultimate Cursor slow down my website? =
 
-No. Ultimate Cursor is optimized for performance: scripts load only when an effect is enabled, effects are code-split so visitors download only what your configuration uses, and animations are GPU-accelerated for smooth 60fps motion.
+The plugin is built to keep its impact small. Scripts load only when an effect is enabled. Each effect is a separate file, so visitors download only what your configuration uses. When the cursor is hidden on a device, its scripts are not downloaded there. Cursor animation pauses while the pointer is still.
 
-= Does it work with all themes and page builders? =
+= Does it work with Elementor? =
 
-Yes. Ultimate Cursor is compatible with all properly-coded WordPress themes and page builders including Elementor, Gutenberg, WPBakery, Divi, and more.
+Yes. The custom cursor and background effects appear on pages built with Elementor. The cursor does not load inside the Elementor editor, so editing is not affected.
 
-= Does the custom cursor show on phones and tablets? =
+= Does it work with Gutenberg? =
 
-Touch devices have no mouse cursor, so Ultimate Cursor automatically hides itself there to keep your mobile experience clean. Background effects remain fully responsive on all devices.
+Yes. Ultimate Cursor works on pages and posts built with the block editor. No block is needed.
+
+= Does it work with other page builders? =
+
+Yes. It works with properly coded themes and page builders, including WPBakery and Divi. The cursor does not load inside page-builder editors.
+
+= Does the custom cursor work on mobile? =
+
+Touch devices have no mouse cursor, so the custom cursor is hidden there. Background effects are responsive and can run on all screen sizes.
 
 = What is Interactive Hover? =
 
-Interactive Hover (Pro) makes your cursor react when visitors point at links, buttons, and form fields: it can scale up, change color, glow, get pulled magnetically toward the element, and even display a contextual label like "Open" or "Play" inside the cursor.
+Interactive Hover is a Pro feature. It makes the cursor react when a visitor points at a link, a button, or a form field. The cursor can grow, change color, glow, move toward the center of the element, and show a label such as "Open" or "Play".
 
-= What's the difference between the free and pro versions? =
+= Can I create different cursors for different pages? =
 
-The free version includes all five cursor types, five shapes, all eight animated effects with their ready-made styles, and both background effects with basic settings, for one cursor and one background applied site-wide. Pro adds Interactive Hover, multiple cursors, page and element targeting, 20 extra shapes, circular text, image hotspot, settings for every animated effect, background motion and placement controls, and priority support. Nothing in the free plugin is locked or disabled — the **Pro Features** page in the dashboard shows each Pro feature with a preview.
+Yes, with Pro. You can create multiple cursor configurations and show each one on the pages you choose. The free plugin applies one cursor to the whole site.
 
-= Can I apply different cursors to different parts of my website? =
+= Can I target specific CSS selectors? =
 
-Yes. With Pro you can create multiple cursor configurations and target them at specific pages, CSS selectors, or HTML elements — for example one cursor site-wide and a different one over your portfolio grid.
+Yes, with Pro. A cursor can be limited to elements that match a CSS selector or to specific HTML elements. Interactive Hover also accepts your own CSS selectors.
 
-= What background effects are available? =
+= What background effects are included? =
 
-Ultimate Cursor includes Antigravity (floating particles) and Light Pillar (glowing vertical light) effects. Both are customizable and can run site-wide or, with Pro, on specific pages and sections.
+Antigravity (floating particles) and Light Pillar (a glowing vertical light). Both are included in the free plugin with color, size, and shape settings. Pro adds motion controls, placement, targeting, and multiple backgrounds.
 
-= Can I use background effects and cursor effects together? =
+= Can cursor and background effects be used together? =
 
-Absolutely. Any cursor effect can be combined with any background effect.
+Yes. Any cursor can be combined with any background effect.
 
-= How can I see what Pro adds before buying? =
+= How can I preview Pro features? =
 
-Three ways: the **Pro Features** page inside the plugin shows every Pro feature with an animated preview; each feature links to a [live demo](https://cursor.wpxero.com/) you can try in your browser; and Pro comes with a 14-day money-back guarantee.
+Open **Ultimate Cursor → Pro Features** in your dashboard. Each Pro feature has an animated preview and a link to a [live demo](https://cursor.wpxero.com/) that you can try in your browser.
 
 = Is there a money-back guarantee? =
 
-Yes. Ultimate Cursor Pro comes with a 14-day money-back guarantee — if you're not completely satisfied, you get a full refund.
+Yes. Ultimate Cursor Pro comes with a 14-day money-back guarantee.
 
-= Can I try Ultimate Cursor before installing it? =
+= Is Ultimate Cursor translation ready? =
 
-Yes. Every cursor type and background effect has a live, interactive demo at [cursor.wpxero.com](https://cursor.wpxero.com/) — try each effect in your browser, then choose the same effect in your WordPress dashboard. Some demos use Pro settings.
+Yes. All dashboard and frontend strings are translatable, and a translation template is included.
+
+= Does the plugin respect reduced-motion preferences? =
+
+Yes. When a visitor has asked their device to reduce motion, cursor and hover animations respect that setting, and background effects do not download their scripts.
+
+= What is the difference between the free and Pro versions? =
+
+The free plugin includes all five cursor types, five shapes, all eight animated effects with their ready-made styles, and both background effects with basic settings, for one cursor and one background applied to the whole site. Pro adds Interactive Hover, multiple cursors, page and element targeting, 20 more shapes, Circular Text, image hotspot, settings for every animated effect, background motion and placement controls, multiple backgrounds, and priority support.
+
+== Screenshots ==
+
+1. Choose a cursor type — Text, Image, Icon, Shapes, or Animated — and see it in the live preview.
+2. Style the text cursor: color, background, font size, spacing, and border.
+3. Use any image as your cursor.
+4. Pick a cursor from the built-in icon library.
+5. Choose a geometric shape cursor (5 shapes are free; Pro adds 20 more).
+6. Set shape size and color. Interactive Hover options appear below (Pro).
+7. Interactive Hover (Pro): the cursor reacts to links and buttons with scale, glow, magnetic pull, and labels.
+8. Bubble effect: bubbles follow the cursor.
+9. Character effect: characters trail behind the cursor.
+10. Rainbow effect: a rainbow trail follows the cursor.
+11. Snowflake effect: snowflakes fall from the cursor.
+12. Splash effect: a fluid color splash follows the cursor.
+13. Click Spark effect: sparks appear on every click.
+14. Trail effect: a trail follows the cursor.
+15. Settings for an animated effect, here Trail: emoji, size, particle count, speed, and opacity (Pro).
+16. Multiple cursors (Pro): each cursor has its own style and targeting rules.
+17. Targeting (Pro): apply a cursor to the entire website, specific pages, CSS selectors, or HTML elements.
+18. CSS selector targeting (Pro): show a cursor only over the elements you choose.
+19. Background effects: enable a background and manage it from one list.
+20. Antigravity background: floating particles with a live preview.
+21. Light Pillar background: a glowing beam of light with a live preview.
+22. Light Pillar settings: colors, width, height, and rotation. Pro adds motion and atmosphere controls.
+23. Background display (Pro): choose where a background appears, its position, stacking order, and opacity.
+24. The Welcome page of the Ultimate Cursor dashboard.
 
 == External Services ==
 
-Ultimate Cursor includes the [Freemius](https://freemius.com/) SDK, which handles the optional usage opt-in, plugin feedback, and Pro licensing.
+Ultimate Cursor includes the [Freemius](https://freemius.com/) SDK. Freemius handles the optional usage opt-in, plugin feedback, and Pro licensing, pricing, and account pages.
 
 * **Nothing is sent to Freemius unless you choose to.** The plugin does not ask you to opt in when you first use it. You can opt in at any time with the Opt In link on the Plugins screen, and after a week of use the plugin may invite you once from its own page. The plugin works the same either way.
 * **If you opt in,** Freemius receives the items listed on the opt-in screen: your WordPress user's first and last name and email address; your site's homepage URL and title, WordPress and PHP versions, and site language; the plugin and SDK versions and whether the plugin is active or uninstalled; and the names, slugs, versions, and active state of your installed plugins and themes. You can opt out at any time from the plugin's Account page or the opt-in link on the Plugins screen.
@@ -201,25 +258,6 @@ If you use Ultimate Cursor Pro, update Pro to 2.1.0 or newer first. Cleaner dash
 
 = 2.3.0 =
 Major update: Interactive Hover (Pro) — hover scale, colors, glow, magnetic attraction and cursor labels — plus 9 new cursor shapes and important shape fixes.
-
-== Screenshots ==
-1. **General Settings — Select Cursor Type** 📊 – Choose Text, Image, Icon, Shapes, or Animated cursor from one central dashboard.
-2. **Multiple Cursor Configurations** 🎯 – Create and manage different cursor setups for pages, selectors, and elements (Pro).
-3. **Text Cursor Settings** ✏️ – Replace the pointer with custom text and preview it live in the settings panel.
-4. **Image Cursor Settings** 🖼️ – Upload any image as your cursor with a real-time preview.
-5. **Icon Cursor Library** 🎨 – Pick from a built-in icon library and see your selection instantly in the preview.
-6. **Shapes Cursor Selection** 🔷 – Choose from geometric shape cursors (5 shapes are free; star, arrow, heart and 17 more come with Pro).
-7. **Splash Cursor Settings** 💥 – Fluid splash effect with an interactive live preview (effect is free; size and force settings are Pro).
-8. **Bubble Cursor Settings** 🫧 – Add playful bubble animations that follow cursor movement.
-9. **Character Cursor Settings** 🔤 – Characters that trail behind the cursor (effect is free; custom characters and settings are Pro).
-10. **Snowflake Cursor Settings** ❄️ – Animated snowflake-style cursor trail (effect is free; emoji choice and settings are Pro).
-11. **Rainbow Cursor Settings** 🌈 – Colorful rainbow trail (effect is free; length and size settings are Pro).
-12. **Trail Cursor Settings** ✨ – Animated emoji cursor trail with live preview (effect is free; custom emoji and settings are Pro).
-13. **Click Spark Settings** ⚡ – Click-triggered spark effect (effect is free; spark size and count settings are Pro).
-14. **Click Particles Settings** 🎆 – Particle burst on click (effect is free; particle speed and color settings are Pro).
-15. **Antigravity Particles Background** 🌌 – Customize particle colors, shape, and density with a live animation preview.
-16. **Light Pillar Background** 🏛️ – Configure pillar colors and width for a glowing vertical light effect.
-17. **Multiple Background Configurations** 🎬 – Manage separate background animations for different areas of your site (Pro).
 
 == Changelog ==
 
