@@ -154,11 +154,11 @@ class Ultimate_Cursor_Admin {
 		// admin-menu background and washes out on the light plugin row here.
 		$label = '<span style="color:#00a32a;font-weight:600;">' . esc_html__( 'Upgrade to Pro', 'ultimate-cursor' ) . '</span>';
 
-		// Live pricing page, not $fs->get_upgrade_url() (that resolves to the local
+		// Live deals page, not $fs->get_upgrade_url() (that resolves to the local
 		// in-dashboard checkout URL).
 		$fs->add_plugin_action_link(
 			$label,
-			esc_url( UltimateCursor::get_pro_url( 'plugins-row-link', 'plugins-screen' ) ),
+			esc_url( UltimateCursor::get_pro_url() ),
 			true,
 			7,
 			'get-pro'

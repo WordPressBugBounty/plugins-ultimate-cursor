@@ -668,6 +668,8 @@ class Ultimate_Cursor_Assets {
 				// For the one-time opt-in invitation ('' = not applicable).
 				'optInUrl'           => esc_url_raw( ultimate_cursor()->get_opt_in_url() ),
 				'optInDismissed'     => (bool) get_user_meta( get_current_user_id(), 'ultimate_cursor_optin_dismissed', true ),
+				// Seasonal sale banner (src/admin/components/promo-banner.js); null = none.
+				'promoBanner'        => class_exists( 'Ultimate_Cursor_Promo_Notice' ) ? Ultimate_Cursor_Promo_Notice::instance()->get_dashboard_banner() : null,
 				'activePlugins'      => ( function () {
 					require_once ABSPATH . 'wp-admin/includes/plugin.php';
 					$active = get_option( 'active_plugins', array() );

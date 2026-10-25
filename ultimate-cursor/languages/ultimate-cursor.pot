@@ -2,14 +2,14 @@
 # This file is distributed under the GPL3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Cursor – Interactive and Animated Custom Cursor and Background Effects Toolkit 2.5.0\n"
+"Project-Id-Version: Ultimate Cursor – Interactive and Animated Custom Cursor and Background Effects Toolkit 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/WPXERO/ultimate-cursor/issues\n"
 "Last-Translator: WPXERO\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-04T16:49:28+00:00\n"
+"POT-Creation-Date: 2026-10-25T15:44:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: ultimate-cursor\n"
@@ -78,7 +78,7 @@ msgstr ""
 #: classes/class-admin.php:316
 #: classes/class-elementor.php:91
 #: classes/class-elementor.php:194
-#: src/admin/index.js:261
+#: src/admin/index.js:262
 #: src/admin/pages/about/index.js:154
 #: src/admin/pages/welcome/index.js:182
 msgid "Ultimate Cursor"
@@ -113,124 +113,124 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:102
+#: classes/class-dashboard-widget.php:101
 msgid "Interactive Hover: the cursor reacts to links and buttons"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:103
+#: classes/class-dashboard-widget.php:102
 msgid "Multiple cursors, shown on the pages and elements you choose"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:104
+#: classes/class-dashboard-widget.php:103
 msgid "20 more shapes, circular text and image hotspot"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:105
+#: classes/class-dashboard-widget.php:104
 msgid "Settings for every animated effect and background"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:115
+#: classes/class-dashboard-widget.php:114
 msgid "Ultimate Cursor — Halloween Sale"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:116
-#: classes/class-promo-notice.php:111
+#: classes/class-dashboard-widget.php:115
+#: classes/class-promo-notice.php:124
 msgid "Halloween Sale — Ultimate Cursor Pro"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:117
+#: classes/class-dashboard-widget.php:116
 msgid "Spooky-good cursors for less"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:118
+#: classes/class-dashboard-widget.php:117
 msgid "Everything in Ultimate Cursor Pro, at the Halloween price."
 msgstr ""
 
-#: classes/class-dashboard-widget.php:119
-#: classes/class-dashboard-widget.php:139
-#: classes/class-promo-notice.php:113
-#: classes/class-promo-notice.php:129
+#: classes/class-dashboard-widget.php:118
+#: classes/class-dashboard-widget.php:138
+#: classes/class-promo-notice.php:126
+#: classes/class-promo-notice.php:143
 msgid "Grab 25% OFF"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:135
+#: classes/class-dashboard-widget.php:134
 msgid "Ultimate Cursor — Black Friday Sale"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:136
-#: classes/class-promo-notice.php:127
+#: classes/class-dashboard-widget.php:135
+#: classes/class-promo-notice.php:141
 msgid "Black Friday Sale — Ultimate Cursor Pro"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:137
+#: classes/class-dashboard-widget.php:136
 msgid "Our biggest sale of the year"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:138
+#: classes/class-dashboard-widget.php:137
 msgid "Everything in Ultimate Cursor Pro, at the Black Friday price."
 msgstr ""
 
-#: classes/class-dashboard-widget.php:166
+#: classes/class-dashboard-widget.php:165
 msgid "Ultimate Cursor — Limited Offer"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:167
+#: classes/class-dashboard-widget.php:166
 msgid "Limited Time Offer — Ultimate Cursor Pro"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:168
+#: classes/class-dashboard-widget.php:167
 msgid "A cursor that reacts to your site"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:169
+#: classes/class-dashboard-widget.php:168
 msgid "Take the cursor you built further with Ultimate Cursor Pro."
 msgstr ""
 
-#: classes/class-dashboard-widget.php:170
-#: classes/class-promo-notice.php:149
+#: classes/class-dashboard-widget.php:169
+#: classes/class-promo-notice.php:164
 msgid "Get Pro — 20% OFF"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:329
+#: classes/class-dashboard-widget.php:313
 msgid "days"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:330
+#: classes/class-dashboard-widget.php:314
 msgid "hrs"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:331
+#: classes/class-dashboard-widget.php:315
 msgid "min"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:332
+#: classes/class-dashboard-widget.php:316
 msgid "sec"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:338
+#: classes/class-dashboard-widget.php:322
 msgid "Dismiss for 30 days"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:346
+#: classes/class-dashboard-widget.php:330
 #: src/admin/pages/pro/index.js:169
 msgid "Ultimate Cursor Pro"
 msgstr ""
 
 #. translators: %d: discount percentage.
-#: classes/class-dashboard-widget.php:350
+#: classes/class-dashboard-widget.php:334
 #, php-format
 msgid "%d%% OFF"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:368
+#: classes/class-dashboard-widget.php:352
 msgid "Offer ends in"
 msgstr ""
 
-#: classes/class-dashboard-widget.php:387
+#: classes/class-dashboard-widget.php:371
 msgid "Discount applied at checkout."
 msgstr ""
 
-#: classes/class-dashboard-widget.php:388
+#: classes/class-dashboard-widget.php:372
 msgid "See what Pro adds"
 msgstr ""
 
@@ -341,27 +341,40 @@ msgstr ""
 msgid "Typography"
 msgstr ""
 
-#: classes/class-promo-notice.php:112
+#: classes/class-promo-notice.php:125
 msgid "Unlock spooky-good premium cursor effects, advanced customisation & priority support this Halloween!"
 msgstr ""
 
-#: classes/class-promo-notice.php:128
+#: classes/class-promo-notice.php:142
 msgid "The biggest sale of the year! Unlock 10+ premium cursor effects, advanced customisation & priority support."
 msgstr ""
 
-#: classes/class-promo-notice.php:147
+#: classes/class-promo-notice.php:162
 msgid "Ultimate Cursor Pro — 20% off"
 msgstr ""
 
-#: classes/class-promo-notice.php:148
+#: classes/class-promo-notice.php:163
 msgid "Upgrade to Ultimate Cursor Pro — premium effects, advanced customisation & priority support."
 msgstr ""
 
-#: classes/class-promo-notice.php:339
+#. translators: %s: sale end date, e.g. "October 31".
+#: classes/class-promo-notice.php:334
+#, php-format
+msgid "Ends %s."
+msgstr ""
+
+#. translators: %s: sale end date, e.g. "October 31".
+#: classes/class-promo-notice.php:334
+msgid "F j"
+msgstr ""
+
+#: classes/class-promo-notice.php:398
+#: src/admin/components/promo-banner.js:108
+#: src/admin/components/promo-banner.js:109
 msgid "Dismiss this offer"
 msgstr ""
 
-#: classes/class-promo-notice.php:591
+#: classes/class-promo-notice.php:650
 msgid "Ended"
 msgstr ""
 
@@ -396,11 +409,11 @@ msgstr ""
 msgid "%1$s: %2$s. Open color picker."
 msgstr ""
 
-#: src/admin/components/demo-link.js:34
+#: src/admin/components/demo-link.js:33
 msgid "See it live"
 msgstr ""
 
-#: src/admin/components/demo-link.js:37
+#: src/admin/components/demo-link.js:36
 #: src/admin/components/pro-note.js:107
 #: src/admin/pages/cursor/multiple/panels/type-panel.js:408
 msgid "(opens in a new tab)"
@@ -448,6 +461,10 @@ msgstr ""
 #: src/admin/components/pro-note.js:104
 #: src/admin/pages/welcome/index.js:297
 msgid "See Pro features"
+msgstr ""
+
+#: src/admin/components/promo-banner.js:73
+msgid "Sale"
 msgstr ""
 
 #: src/admin/components/review-prompt.js:108
@@ -2022,15 +2039,15 @@ msgid "Everything in the free plugin keeps working as it does today. Pro adds th
 msgstr ""
 
 #: src/admin/pages/pro/index.js:184
-#: src/admin/pages/pro/index.js:231
+#: src/admin/pages/pro/index.js:227
 msgid "See plans and pricing"
 msgstr ""
 
-#: src/admin/pages/pro/index.js:188
+#: src/admin/pages/pro/index.js:187
 msgid "Open the live demo"
 msgstr ""
 
-#: src/admin/pages/pro/index.js:218
+#: src/admin/pages/pro/index.js:214
 msgid "Free and Pro side by side"
 msgstr ""
 
@@ -2172,96 +2189,96 @@ msgstr ""
 msgid "Pro adds custom image hotspot / tip alignment"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:64
+#: src/utils/ProFeaturesTable.js:61
 msgid "Cursor Shape Library"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:66
+#: src/utils/ProFeaturesTable.js:63
 msgid "Icon-style cursor shapes to choose from"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:78
+#: src/utils/ProFeaturesTable.js:72
 msgid "5 Shapes"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:83
+#: src/utils/ProFeaturesTable.js:77
 msgid "25+ Shapes"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:90
+#: src/utils/ProFeaturesTable.js:84
 msgid "Animated Cursor Effects"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:92
+#: src/utils/ProFeaturesTable.js:86
 msgid "Splash, Trail, Rainbow, Snowflake, Character & more"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:101
-#: src/utils/ProFeaturesTable.js:149
+#: src/utils/ProFeaturesTable.js:95
+#: src/utils/ProFeaturesTable.js:137
 msgid "Default Style"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:106
-#: src/utils/ProFeaturesTable.js:154
+#: src/utils/ProFeaturesTable.js:100
+#: src/utils/ProFeaturesTable.js:142
 msgid "Full Customization"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:113
+#: src/utils/ProFeaturesTable.js:107
 msgid "Interactive Hover Effects"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:115
+#: src/utils/ProFeaturesTable.js:109
 msgid "Magnetic pull, glow and labels on buttons & links"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:135
+#: src/utils/ProFeaturesTable.js:126
 msgid "3D Background Effects"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:137
+#: src/utils/ProFeaturesTable.js:128
 msgid "Antigravity & Light Pillar animated backgrounds"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:161
+#: src/utils/ProFeaturesTable.js:149
 msgid "Background Position & Layering"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:166
+#: src/utils/ProFeaturesTable.js:154
 msgid "Control position, z-index and opacity"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:182
+#: src/utils/ProFeaturesTable.js:170
 msgid "Multiple Cursor Configurations"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:187
+#: src/utils/ProFeaturesTable.js:175
 msgid "Use different cursor types for different elements"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:207
+#: src/utils/ProFeaturesTable.js:192
 msgid "Multiple Background Configurations"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:212
+#: src/utils/ProFeaturesTable.js:197
 msgid "Different background effects for different pages"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:228
+#: src/utils/ProFeaturesTable.js:213
 msgid "Element-Specific Cursors"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:230
+#: src/utils/ProFeaturesTable.js:215
 msgid "Apply unique cursors to buttons, images, etc."
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:250
+#: src/utils/ProFeaturesTable.js:232
 msgid "Page-Specific Cursors"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:252
+#: src/utils/ProFeaturesTable.js:234
 msgid "Different cursors for different pages"
 msgstr ""
 
-#: src/utils/ProFeaturesTable.js:268
+#: src/utils/ProFeaturesTable.js:250
 msgid "Premium Support"
 msgstr ""

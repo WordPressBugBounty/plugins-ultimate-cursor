@@ -1,9 +1,9 @@
 === Ultimate Cursor – Interactive and Animated Custom Cursor and Background Effects Toolkit ===
 Contributors: wpxero
-Tags: custom cursor, animated cursor, mouse cursor, cursor effects, background effects
+Tags: custom cursor, animated cursor, mouse cursor, cursor, background effects
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 Requires PHP: 7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -12,13 +12,13 @@ Create custom cursors, animated cursor effects, and animated background effects 
 
 == Description ==
 
-https://youtu.be/mGOVAyi9ip4
+https://youtu.be/ZDcxfDpbui4
 
 **[Try the live demo](https://cursor.wpxero.com/)** – test every cursor type and background effect in your browser before you install.
 
 **Ultimate Cursor** is a custom cursor WordPress plugin. It replaces the default mouse pointer with a custom mouse cursor – text, an image, an icon, a shape, or an animated cursor effect – and it can add an animated background effect to your site. You set everything up in a dashboard with a live preview. No coding is required.
 
-The free plugin is complete on its own: every cursor type, every animated effect, and both background effects are included, and nothing in the dashboard is locked or disabled. [Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing) is an optional add-on for sites that need interactive hover effects, several cursors, or targeting by page and element.
+The free plugin is complete on its own: every cursor type, every animated effect, and both background effects are included, and nothing in the dashboard is locked or disabled. [Ultimate Cursor Pro](https://www.wpxero.com/deals) is an optional add-on for sites that need interactive hover effects, several cursors, or targeting by page and element.
 
 ### What you can build
 
@@ -58,7 +58,7 @@ Everything in this list is included in the free plugin.
 
 ### Pro Features
 
-[Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing) is a separate add-on. It adds the following features to the free plugin.
+[Ultimate Cursor Pro](https://www.wpxero.com/deals) is a separate add-on. It adds the following features to the free plugin.
 
 * **Interactive Hover** – the cursor reacts when a visitor points at a link, a button, or a form field. It can grow, change color, glow, move toward the center of the element, and show a label such as "Open". This helps visitors see what they can click. ([See it live](https://cursor.wpxero.com/effects/shape-cursor/))
 * **Multiple cursor configurations** – run several cursors on one site, for example one for the whole site and another for your portfolio. ([See it live](https://cursor.wpxero.com/effects/multiple-cursors/))
@@ -135,7 +135,7 @@ The free plugin is yours to use for as long as you like. Consider Pro when you n
 
 To see what Pro adds before you decide, open **Ultimate Cursor → Pro Features** in your dashboard. Every Pro feature is shown there with an animated preview and a link to its live demo. Pro comes with a 14-day money-back guarantee.
 
-**[Explore Ultimate Cursor Pro](https://wpxero.com/plugins/ultimate-cursor/pricing)**
+**[Explore Ultimate Cursor Pro](https://www.wpxero.com/deals)**
 
 == Installation ==
 
@@ -253,6 +253,9 @@ Freemius [Terms of Service](https://freemius.com/terms/) and [Privacy Policy](ht
 
 == Upgrade Notice ==
 
+= 2.5.1 =
+Sale banner on the dashboard during seasonal sales, and upgrade links now open the deals page with the sale coupon applied.
+
 = 2.5.0 =
 If you use Ultimate Cursor Pro, update Pro to 2.1.0 or newer first. Cleaner dashboard, faster on mobile, and the default cursor can no longer get stuck hidden.
 
@@ -260,6 +263,11 @@ If you use Ultimate Cursor Pro, update Pro to 2.1.0 or newer first. Cleaner dash
 Major update: Interactive Hover (Pro) — hover scale, colors, glow, magnetic attraction and cursor labels — plus 9 new cursor shapes and important shape fixes.
 
 == Changelog ==
+
+= 2.5.1 – October 25, 2026 =
+* New: Seasonal sale banner at the top of the Ultimate Cursor dashboard during the Halloween and Black Friday sales — shown only to administrators without Pro, and stays dismissed once closed
+* Improved: Upgrade links now open the WPXERO deals page, with the current sale's coupon applied automatically
+* Improved: Upgrade and live-demo links no longer carry tracking parameters
 
 = 2.5.0 – October 4, 2026 =
 * New: Pro Features page — one place to see what Pro adds, each feature shown with an animated preview and a link to its live demo

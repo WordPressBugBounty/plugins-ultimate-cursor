@@ -23,9 +23,6 @@ class Ultimate_Cursor_Dashboard_Widget {
 	/** @var self|null Singleton instance. */
 	private static $instance = null;
 
-	/** @var string Pricing page URL. */
-	const PRICING_URL = 'https://wpxero.com/plugins/ultimate-cursor/pricing';
-
 	/** @var int Number of days before a dismissed promo re-appears. */
 	const DISMISS_DAYS = 30;
 
@@ -95,8 +92,10 @@ class Ultimate_Cursor_Dashboard_Widget {
 		$test_halloween = isset( $_GET['halloween'] ) && current_user_can( 'manage_options' );
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview toggle gated by capability check, no data is processed.
 		$test_black_friday = isset( $_GET['black_friday'] ) && current_user_can( 'manage_options' );
-		$now               = current_time( 'Y-m-d' );
-		$year              = current_time( 'Y' );
+		// Same fixed sale clock as the promo notice and wpxero.com.
+		$sale_now          = new DateTimeImmutable( 'now', new DateTimeZone( Ultimate_Cursor_Promo_Notice::SALE_UTC_OFFSET ) );
+		$now               = $sale_now->format( 'Y-m-d' );
+		$year              = $sale_now->format( 'Y' );
 
 		$features = array(
 			__( 'Interactive Hover: the cursor reacts to links and buttons', 'ultimate-cursor' ),
@@ -146,8 +145,8 @@ class Ultimate_Cursor_Dashboard_Widget {
 		}
 
 		// Regular promo windows: 20th of current month to 10th of next month.
-		$day   = (int) current_time( 'j' );
-		$month = (int) current_time( 'n' );
+		$day   = (int) $sale_now->format( 'j' );
+		$month = (int) $sale_now->format( 'n' );
 
 		if ( $day >= 20 || $day <= 10 ) {
 			if ( $day >= 20 ) {
@@ -300,21 +299,6 @@ class Ultimate_Cursor_Dashboard_Widget {
 	}
 
 	/**
-	 * Pricing URL with the campaign's coupon attached, so the discount is
-	 * applied at checkout without the visitor copying a code.
-	 *
-	 * @param array $campaign Campaign configuration.
-	 * @return string
-	 */
-	private function get_offer_url( $campaign ) {
-		$url = self::PRICING_URL;
-		if ( ! empty( $campaign['coupon'] ) ) {
-			$url = add_query_arg( 'coupon', rawurlencode( $campaign['coupon'] ), $url );
-		}
-		return $url;
-	}
-
-	/**
 	 * Render the dashboard widget body.
 	 */
 	public function render_dashboard_widget() {
@@ -364,7 +348,7 @@ class Ultimate_Cursor_Dashboard_Widget {
 				<?php endforeach; ?>
 			</ul>
 
-			<div class="uc-pw-timer" data-end="<?php echo esc_attr( $c['end_date'] ); ?>">
+			<div class="uc-pw-timer" data-end="<?php echo esc_attr( $c['end_date'] . 'T23:59:59' . Ultimate_Cursor_Promo_Notice::SALE_UTC_OFFSET ); ?>">
 				<span class="uc-pw-timer-label"><?php esc_html_e( 'Offer ends in', 'ultimate-cursor' ); ?></span>
 				<div class="uc-pw-tiles">
 					<?php foreach ( $units as $unit => $label ) : ?>
@@ -376,7 +360,7 @@ class Ultimate_Cursor_Dashboard_Widget {
 				</div>
 			</div>
 
-			<a href="<?php echo esc_url( $this->get_offer_url( $c ) ); ?>" class="uc-pw-cta" target="_blank" rel="noopener">
+			<a href="<?php echo esc_url( UltimateCursor::get_pro_url( $c['coupon'] ) ); ?>" class="uc-pw-cta" target="_blank" rel="noopener">
 				<?php echo esc_html( $c['button_text'] ); ?>
 				<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
 					<path d="M3 7h8m0 0L8 4m3 3L8 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
@@ -729,7 +713,7 @@ class Ultimate_Cursor_Dashboard_Widget {
 				}
 				function ucUpdateCountdowns() {
 					document.querySelectorAll('.uc-pw-timer[data-end]').forEach(function(timer) {
-						var end = new Date(timer.getAttribute('data-end') + 'T23:59:59').getTime();
+						var end = new Date(timer.getAttribute('data-end')).getTime();
 						var diff = end - Date.now();
 						if (diff <= 0) {
 							timer.style.display = 'none';

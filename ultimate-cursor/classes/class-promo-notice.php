@@ -38,6 +38,16 @@ class Ultimate_Cursor_Promo_Notice {
 	const DELAY_DAYS = 7;
 
 	/**
+	 * Fixed UTC offset every sale date is read in — US Eastern Standard Time,
+	 * the same clock as the wpxero.com sale calendar. Using the site's or the
+	 * visitor's time zone instead would start and end the sale (and its
+	 * countdown) at a different moment for every admin.
+	 *
+	 * @var string
+	 */
+	const SALE_UTC_OFFSET = '-05:00';
+
+	/**
 	 * User meta key holding the list of dismissed campaign ids.
 	 *
 	 * @var string
@@ -84,6 +94,7 @@ class Ultimate_Cursor_Promo_Notice {
 	 *     @type string      $id           Dismissal id (key, plus the year for seasonal sales).
 	 *     @type int         $discount     Discount percentage.
 	 *     @type string|null $end_date     Y-m-d sale end date, or null when there is no real deadline.
+	 *     @type string      $coupon       Coupon applied through the deals link.
 	 *     @type string      $notice_title Admin notice headline.
 	 *     @type string      $description  Short CTA text.
 	 *     @type string      $button_text  CTA button label.
@@ -98,8 +109,9 @@ class Ultimate_Cursor_Promo_Notice {
 		$test_halloween = isset( $_GET['halloween'] ) && current_user_can( 'manage_options' );
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview toggle gated by capability check, no data is processed.
 		$test_black_friday = isset( $_GET['black_friday'] ) && current_user_can( 'manage_options' );
-		$now               = current_time( 'Y-m-d' );
-		$year              = current_time( 'Y' );
+		$sale_now          = new DateTimeImmutable( 'now', new DateTimeZone( self::SALE_UTC_OFFSET ) );
+		$now               = $sale_now->format( 'Y-m-d' );
+		$year              = $sale_now->format( 'Y' );
 
 		// Halloween: October 15 – October 31.
 		if ( $test_halloween || ( $now >= "$year-10-15" && $now <= "$year-10-31" ) ) {
@@ -108,6 +120,7 @@ class Ultimate_Cursor_Promo_Notice {
 				'id'           => "halloween-$year",
 				'discount'     => 25,
 				'end_date'     => "$year-10-31",
+				'coupon'       => 'HALLOWEEN',
 				'notice_title' => __( 'Halloween Sale — Ultimate Cursor Pro', 'ultimate-cursor' ),
 				'description'  => __( 'Unlock spooky-good premium cursor effects, advanced customisation & priority support this Halloween!', 'ultimate-cursor' ),
 				'button_text'  => __( 'Grab 25% OFF', 'ultimate-cursor' ),
@@ -124,6 +137,7 @@ class Ultimate_Cursor_Promo_Notice {
 				'id'           => "black_friday-$year",
 				'discount'     => 25,
 				'end_date'     => "$year-12-05",
+				'coupon'       => 'BFCM',
 				'notice_title' => __( 'Black Friday Sale — Ultimate Cursor Pro', 'ultimate-cursor' ),
 				'description'  => __( 'The biggest sale of the year! Unlock 10+ premium cursor effects, advanced customisation & priority support.', 'ultimate-cursor' ),
 				'button_text'  => __( 'Grab 25% OFF', 'ultimate-cursor' ),
@@ -136,7 +150,7 @@ class Ultimate_Cursor_Promo_Notice {
 		// Recurring offer: 20th of the month to the 10th of the next. It has
 		// no real deadline, so it carries no end date (no countdown) and is
 		// not described as time-limited.
-		$day = (int) current_time( 'j' );
+		$day = (int) $sale_now->format( 'j' );
 
 		if ( $day >= 20 || $day <= 10 ) {
 			return array(
@@ -144,6 +158,7 @@ class Ultimate_Cursor_Promo_Notice {
 				'id'           => 'regular',
 				'discount'     => 20,
 				'end_date'     => null,
+				'coupon'       => 'UNLOCKPRO',
 				'notice_title' => __( 'Ultimate Cursor Pro — 20% off', 'ultimate-cursor' ),
 				'description'  => __( 'Upgrade to Ultimate Cursor Pro — premium effects, advanced customisation & priority support.', 'ultimate-cursor' ),
 				'button_text'  => __( 'Get Pro — 20% OFF', 'ultimate-cursor' ),
@@ -282,6 +297,50 @@ class Ultimate_Cursor_Promo_Notice {
 		return $campaign;
 	}
 
+	/**
+	 * Data for the sale banner at the top of the Ultimate Cursor dashboard
+	 * (src/admin/components/promo-banner.js), or null when nothing should show.
+	 *
+	 * Seasonal sales only — the recurring offer runs most of every month and
+	 * stays on the Plugins screen. Same audience and install delay as the
+	 * notice, dismissed separately (own id) and permanently per sale.
+	 *
+	 * @return array|null
+	 */
+	public function get_dashboard_banner() {
+		if ( ! current_user_can( 'manage_options' ) || UltimateCursor::is_premium_active() ) {
+			return null;
+		}
+
+		if ( ! $this->is_past_install_delay() ) {
+			return null;
+		}
+
+		$campaign = $this->get_campaign();
+		if ( ! $campaign || ! $campaign['end_date'] ) {
+			return null;
+		}
+
+		$id = 'dashboard-' . $campaign['id'];
+		if ( $this->is_dismissed( array_merge( $campaign, array( 'id' => $id ) ) ) ) {
+			return null;
+		}
+
+		return array(
+			'id'          => $id,
+			'key'         => $campaign['key'],
+			'discount'    => $campaign['discount'],
+			/* translators: %s: sale end date, e.g. "October 31". */
+			'endsText'    => sprintf( __( 'Ends %s.', 'ultimate-cursor' ), date_i18n( __( 'F j', 'ultimate-cursor' ), strtotime( $campaign['end_date'] ) ) ),
+			'title'       => $campaign['notice_title'],
+			'description' => $campaign['description'],
+			'buttonText'  => $campaign['button_text'],
+			'url'         => esc_url_raw( UltimateCursor::get_pro_url( $campaign['coupon'] ) ),
+			'nonce'       => wp_create_nonce( self::DISMISS_ACTION ),
+			'action'      => self::DISMISS_ACTION,
+		);
+	}
+
 	/*
 	------------------------------------------------------------------
 	 * Admin notice
@@ -319,7 +378,7 @@ class Ultimate_Cursor_Promo_Notice {
 
 				<div class="uc-pn-actions">
 					<?php if ( $c['end_date'] ) : ?>
-						<span class="uc-pn-timer" data-end="<?php echo esc_attr( $c['end_date'] ); ?>">
+						<span class="uc-pn-timer" data-end="<?php echo esc_attr( $c['end_date'] . 'T23:59:59' . self::SALE_UTC_OFFSET ); ?>">
 							<svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
 								<circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
 								<path d="M7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
@@ -328,7 +387,7 @@ class Ultimate_Cursor_Promo_Notice {
 						</span>
 					<?php endif; ?>
 
-					<a href="<?php echo esc_url( UltimateCursor::get_pro_url( 'admin-notice-' . $c['key'], 'admin-notice' ) ); ?>" class="uc-pn-btn" target="_blank" rel="noopener">
+					<a href="<?php echo esc_url( UltimateCursor::get_pro_url( $c['coupon'] ) ); ?>" class="uc-pn-btn" target="_blank" rel="noopener">
 						<?php echo esc_html( $c['button_text'] ); ?>
 						<svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
 							<path d="M3 7h8m0 0L8 4m3 3L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -362,7 +421,7 @@ class Ultimate_Cursor_Promo_Notice {
 
 		$campaign_id = isset( $_POST['campaign'] ) ? sanitize_text_field( wp_unslash( $_POST['campaign'] ) ) : '';
 
-		if ( preg_match( '/^(regular|(halloween|black_friday)-\d{4})$/', $campaign_id ) ) {
+		if ( preg_match( '/^(regular|(dashboard-)?(halloween|black_friday)-\d{4})$/', $campaign_id ) ) {
 			$user_id   = get_current_user_id();
 			$dismissed = get_user_meta( $user_id, self::DISMISSED_META, true );
 			if ( ! is_array( $dismissed ) ) {
@@ -584,7 +643,7 @@ class Ultimate_Cursor_Promo_Notice {
 				var timer = notice.querySelector('[data-end]');
 				if (timer) {
 					var out = timer.querySelector('[data-role="countdown"]');
-					var end = new Date(timer.getAttribute('data-end') + 'T23:59:59').getTime();
+					var end = new Date(timer.getAttribute('data-end')).getTime();
 					var tick = function() {
 						var diff = end - Date.now();
 						if (diff <= 0) {

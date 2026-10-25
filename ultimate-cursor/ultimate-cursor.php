@@ -4,7 +4,7 @@
  * Plugin Name:                 Ultimate Cursor – Interactive and Animated Custom Cursor and Background Effects Toolkit
  * Plugin URI:                  https://wpxero.com/plugins/ultimate-cursor
  * Description:                 Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀
- * Version:                     2.5.0
+ * Version:                     2.5.1
  * Author:                      WPXERO
  * Author URI:                  https://wpxero.com/plugins/ultimate-cursor
  * Requires at least:           6.0
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'UCA_VERSION' ) ) {
-	define( 'UCA_VERSION', '2.5.0' );
+	define( 'UCA_VERSION', '2.5.1' );
 }
 
 
@@ -45,29 +45,23 @@ class UltimateCursor {
 	const VERSION                   = UCA_VERSION;
 	const MINIMUM_ELEMENTOR_VERSION = '3.0.0';
 	const MINIMUM_PHP_VERSION       = '7.0';
-	const PRO_URL                   = 'https://wpxero.com/plugins/ultimate-cursor/pricing';
+	const PRO_URL                   = 'https://www.wpxero.com/deals';
 
 	/**
-	 * Build the pricing URL for a given placement.
+	 * Build the upgrade (deals page) URL.
 	 *
 	 * Every upgrade link goes through here (or its JS mirror,
-	 * src/utils/pro-url.js) so each touchpoint carries its own campaign tag.
-	 * These are plain query parameters on a link the user chooses to open —
-	 * nothing is requested or sent from inside WordPress.
+	 * src/utils/pro-url.js). No tracking parameters are added; a sale's
+	 * coupon rides along so it is applied without copying a code.
 	 *
-	 * @param string $campaign Short name of the UI spot (e.g. 'plugins-row-link').
-	 * @param string $medium   Surface the link lives on.
-	 * @return string Pricing URL tagged with utm_source / utm_medium / utm_campaign.
+	 * @param string $coupon Coupon code (e.g. 'HALLOWEEN'), or '' for none.
+	 * @return string Deals page URL.
 	 */
-	public static function get_pro_url( $campaign, $medium = 'dashboard' ) {
-		return add_query_arg(
-			array(
-				'utm_source'   => 'plugin',
-				'utm_medium'   => sanitize_key( $medium ),
-				'utm_campaign' => sanitize_key( $campaign ),
-			),
-			self::PRO_URL
-		);
+	public static function get_pro_url( $coupon = '' ) {
+		if ( '' === $coupon ) {
+			return self::PRO_URL;
+		}
+		return add_query_arg( 'coupon', rawurlencode( $coupon ), self::PRO_URL );
 	}
 
 	/**
