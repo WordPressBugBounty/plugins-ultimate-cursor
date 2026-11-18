@@ -3,7 +3,7 @@ Contributors: wpxero
 Tags: custom cursor, animated cursor, mouse cursor, cursor, background effects
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 2.5.2
+Stable tag: 2.5.3
 Requires PHP: 7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -253,6 +253,9 @@ Freemius [Terms of Service](https://freemius.com/terms/) and [Privacy Policy](ht
 
 == Upgrade Notice ==
 
+= 2.5.3 =
+Fixes license activation for Ultimate Cursor Pro when WordPress installed it in a folder with a random name.
+
 = 2.5.2 =
 One-click start for new setups, a clearer option to hide the normal mouse pointer, and fixes so backgrounds never hide your content and cursors stop freezing over embedded videos and maps.
 
@@ -266,6 +269,9 @@ If you use Ultimate Cursor Pro, update Pro to 2.1.0 or newer first. Cleaner dash
 Major update: Interactive Hover (Pro) — hover scale, colors, glow, magnetic attraction and cursor labels — plus 9 new cursor shapes and important shape fixes.
 
 == Changelog ==
+
+= 2.5.3 – November 18, 2026 =
+* Fixed: With Ultimate Cursor Pro installed in a folder other than ultimate-cursor-pro (WordPress 7 can add a random suffix when you upload the zip), the license can now be activated — the license screen was missing and Pro stayed locked
 
 = 2.5.2 – November 18, 2026 =
 * New: One-click start — on a new setup, turn on one of three ready-made cursors with a single click and see it on your site right away

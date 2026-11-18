@@ -56,9 +56,14 @@ function ultimate_cursor_fire_freemius_uninstall_event() {
 
 	// Don't fire when the sibling version (premium) is still active — this delete
 	// is a version swap, not a real uninstall. Mirrors Freemius::_uninstall_plugin_hook().
+	// The add-on may sit in a folder other than ultimate-cursor-pro/ (see
+	// classes/class-pro-locator.php), so look it up rather than assume.
+	require_once __DIR__ . '/classes/class-pro-locator.php';
+
 	if (
 		is_plugin_active( $fs->get_plugin_basename() ) ||
-		is_plugin_active( $fs->premium_plugin_basename() )
+		is_plugin_active( $fs->premium_plugin_basename() ) ||
+		is_plugin_active( Ultimate_Cursor_Pro_Locator::find() )
 	) {
 		return;
 	}

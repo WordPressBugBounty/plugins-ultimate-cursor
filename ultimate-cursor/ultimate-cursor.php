@@ -4,7 +4,7 @@
  * Plugin Name:                 Ultimate Cursor – Interactive and Animated Custom Cursor and Background Effects Toolkit
  * Plugin URI:                  https://wpxero.com/plugins/ultimate-cursor
  * Description:                 Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀
- * Version:                     2.5.2
+ * Version:                     2.5.3
  * Author:                      WPXERO
  * Author URI:                  https://wpxero.com/plugins/ultimate-cursor
  * Requires at least:           6.0
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'UCA_VERSION' ) ) {
-	define( 'UCA_VERSION', '2.5.2' );
+	define( 'UCA_VERSION', '2.5.3' );
 }
 
 
@@ -136,6 +136,7 @@ class UltimateCursor {
 			// Include Freemius SDK
 			if ( file_exists( __DIR__ . '/vendor/freemius/wordpress-sdk/start.php' ) ) {
 				require_once __DIR__ . '/vendor/freemius/wordpress-sdk/start.php';
+				require_once __DIR__ . '/classes/class-pro-locator.php';
 
 				try {
 					$this->freemius = fs_dynamic_init(
@@ -152,7 +153,9 @@ class UltimateCursor {
 							'is_org_compliant'    => true,
 							'parallel_activation' => array(
 								'enabled'                  => true,
-								'premium_version_basename' => 'ultimate-cursor-pro/ultimate-cursor-pro.php',
+								// Found among the active plugins, so a Pro installed in another folder
+								// (WordPress 7.x random upload folders) still unlocks the license screen.
+								'premium_version_basename' => Ultimate_Cursor_Pro_Locator::find(),
 							),
 							'menu'                => array(
 								'slug'       => 'ultimate-cursor',
