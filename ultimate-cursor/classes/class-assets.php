@@ -658,8 +658,11 @@ class Ultimate_Cursor_Assets {
 				// Reported by the Pro add-on (see UltimateCursor::is_premium_active()).
 				'isPro'              => UltimateCursor::is_premium_active(),
 				'isLicenseValid'     => UltimateCursor::is_premium_active(),
-				// Untagged base — src/utils/pro-url.js adds the per-placement UTM tags.
+				// Upgrade targets for src/utils/pro-url.js: deals page (takes ?coupon=) during a sale, pricing page otherwise.
 				'proUrl'             => UltimateCursor::PRO_URL,
+				'pricingUrl'         => UltimateCursor::PRICING_URL,
+				// Sale running now (coupon, discount, end) for upgrade links and the Pro page; null = none.
+				'proOffer'           => class_exists( 'Ultimate_Cursor_Promo_Notice' ) ? Ultimate_Cursor_Promo_Notice::instance()->get_active_offer() : null,
 				'ajaxUrl'            => admin_url( 'admin-ajax.php' ),
 				'nonce'              => wp_create_nonce( 'ultimate_cursor_admin_nonce' ),
 				// For the one-time review request (src/admin/components/review-prompt.js).

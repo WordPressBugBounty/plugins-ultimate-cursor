@@ -35,7 +35,7 @@ class Ultimate_Cursor_Promo_Notice {
 	 *
 	 * @var int
 	 */
-	const DELAY_DAYS = 7;
+	const DELAY_DAYS = 3;
 
 	/**
 	 * Fixed UTC offset every sale date is read in — US Eastern Standard Time,
@@ -295,6 +295,43 @@ class Ultimate_Cursor_Promo_Notice {
 		}
 
 		return $campaign;
+	}
+
+	/**
+	 * The sale running right now, for the dashboard's own upgrade links and
+	 * the Pro Features page — or null when there is none.
+	 *
+	 * Not subject to the install delay or to dismissals: it is not a prompt.
+	 * It only makes the links a user has chosen to follow carry the coupon
+	 * the checkout would otherwise charge full price without, and lets the
+	 * Pro Features page state the price that applies.
+	 *
+	 * @return array|null {
+	 *     @type string $key      Campaign key ('halloween', 'black_friday', 'regular').
+	 *     @type string $coupon   Coupon code applied at checkout.
+	 *     @type int    $discount Percent off.
+	 *     @type string $endsText "Ends October 31." or '' when open-ended.
+	 * }
+	 */
+	public function get_active_offer() {
+		if ( UltimateCursor::is_premium_active() ) {
+			return null;
+		}
+
+		$campaign = $this->get_campaign();
+		if ( ! $campaign ) {
+			return null;
+		}
+
+		return array(
+			'key'      => $campaign['key'],
+			'coupon'   => $campaign['coupon'],
+			'discount' => (int) $campaign['discount'],
+			'endsText' => $campaign['end_date']
+				/* translators: %s: sale end date, e.g. "October 31". */
+				? sprintf( __( 'Ends %s.', 'ultimate-cursor' ), date_i18n( __( 'F j', 'ultimate-cursor' ), strtotime( $campaign['end_date'] ) ) )
+				: '',
+		);
 	}
 
 	/**

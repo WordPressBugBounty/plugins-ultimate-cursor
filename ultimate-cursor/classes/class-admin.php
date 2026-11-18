@@ -96,6 +96,18 @@ class Ultimate_Cursor_Admin {
 				);
 				?>
 			</p>
+			<p>
+				<?php
+				// Updates need an active license; an expired one can't fetch
+				// the update this notice asks for. Plain link, no license check
+				// here (the free plugin has none, wp.org Guideline 5).
+				printf(
+					/* translators: %s: link to the Freemius customer portal */
+					esc_html__( 'No update available? Your license may have expired — renew it in your %s.', 'ultimate-cursor' ),
+					'<a href="https://users.freemius.com/" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Freemius account', 'ultimate-cursor' ) . '</a>'
+				);
+				?>
+			</p>
 		</div>
 		<?php
 	}
@@ -152,13 +164,20 @@ class Ultimate_Cursor_Admin {
 		// WP core's standard admin green — Freemius's own submenu "Upgrade" green
 		// (.fs-submenu-item.pricing.upgrade-mode, #adff2f) is tuned for the dark
 		// admin-menu background and washes out on the light plugin row here.
-		$label = '<span style="color:#00a32a;font-weight:600;">' . esc_html__( 'Upgrade to Pro', 'ultimate-cursor' ) . '</span>';
+		// During a sale the link names the discount and carries its coupon.
+		$offer = class_exists( 'Ultimate_Cursor_Promo_Notice' ) ? Ultimate_Cursor_Promo_Notice::instance()->get_active_offer() : null;
+		$text  = $offer
+			/* translators: %d: discount percentage, e.g. 25. */
+			? sprintf( __( 'Upgrade to Pro — %d%% off', 'ultimate-cursor' ), $offer['discount'] )
+			: __( 'Upgrade to Pro', 'ultimate-cursor' );
+		$label = '<span style="color:#00a32a;font-weight:600;">' . esc_html( $text ) . '</span>';
 
-		// Live deals page, not $fs->get_upgrade_url() (that resolves to the local
-		// in-dashboard checkout URL).
+		// wpxero.com (pricing page, or deals page during a sale — see
+		// UltimateCursor::get_pro_url()), not $fs->get_upgrade_url() (that
+		// resolves to the local in-dashboard checkout URL).
 		$fs->add_plugin_action_link(
 			$label,
-			esc_url( UltimateCursor::get_pro_url() ),
+			esc_url( UltimateCursor::get_pro_url( $offer ? $offer['coupon'] : '' ) ),
 			true,
 			7,
 			'get-pro'

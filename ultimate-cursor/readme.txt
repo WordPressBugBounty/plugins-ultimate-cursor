@@ -3,7 +3,7 @@ Contributors: wpxero
 Tags: custom cursor, animated cursor, mouse cursor, cursor, background effects
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 2.5.1
+Stable tag: 2.5.2
 Requires PHP: 7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -253,6 +253,9 @@ Freemius [Terms of Service](https://freemius.com/terms/) and [Privacy Policy](ht
 
 == Upgrade Notice ==
 
+= 2.5.2 =
+One-click start for new setups, a clearer option to hide the normal mouse pointer, and fixes so backgrounds never hide your content and cursors stop freezing over embedded videos and maps.
+
 = 2.5.1 =
 Sale banner on the dashboard during seasonal sales, and upgrade links now open the deals page with the sale coupon applied.
 
@@ -263,6 +266,24 @@ If you use Ultimate Cursor Pro, update Pro to 2.1.0 or newer first. Cleaner dash
 Major update: Interactive Hover (Pro) — hover scale, colors, glow, magnetic attraction and cursor labels — plus 9 new cursor shapes and important shape fixes.
 
 == Changelog ==
+
+= 2.5.2 – November 18, 2026 =
+* New: One-click start — on a new setup, turn on one of three ready-made cursors with a single click and see it on your site right away
+* Improved: "Hide the normal mouse pointer" (formerly "Disable Default Cursor") moved from the Advanced tab to the Cursor tab, with clearer wording
+* Improved: The "Minimal Shape" and "Rocket Pointer" presets now hide the normal mouse pointer, as their descriptions say
+* Improved: The invitation to receive security and feature update emails now appears once your first cursor is live, instead of after a week
+* Improved: Upgrade links carry the running sale's discount everywhere, and the Pro Features page states the discount and the money-back guarantee
+* Improved: Outside a sale, upgrade links open the Ultimate Cursor pricing page
+* Improved: When Ultimate Cursor Pro is too old for this version, the notice also links to renewing an expired license
+* Improved: With Ultimate Cursor Pro: the CSS selector field rejects invalid selectors and explains why
+* Fixed: Turning on a background no longer paints your site near-black — new backgrounds are transparent by default, so your theme's text stays readable. Light Pillar gets a Background Color setting, and both effects' background color can be cleared back to transparent
+* Fixed: Light Pillar now glows over your page instead of covering it in black
+* Fixed: The Trail effect draws sparkles, as the "Sparkle Trail" preset says, instead of grey arrow copies
+* Fixed: Click Spark and Click Particles now show on dark and light sections alike — each click picks a color that stands out (they always drew black before)
+* Fixed: The cursor no longer freezes at the edge of embedded videos, maps and other iframes, or when the mouse leaves the window
+* Fixed: The shape cursor's ring now grows over links and buttons added after the page loads, such as menus, popups and AJAX content
+* Fixed: The "View Badge" and "Rocket Pointer" presets now apply their font sizes
+* Fixed: With Ultimate Cursor Pro: backgrounds placed inside a page section now show instead of hiding behind the section's own background
 
 = 2.5.1 – October 25, 2026 =
 * New: Seasonal sale banner at the top of the Ultimate Cursor dashboard during the Halloween and Black Friday sales — shown only to administrators without Pro, and stays dismissed once closed

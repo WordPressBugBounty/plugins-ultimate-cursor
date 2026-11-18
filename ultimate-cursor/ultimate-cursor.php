@@ -4,7 +4,7 @@
  * Plugin Name:                 Ultimate Cursor – Interactive and Animated Custom Cursor and Background Effects Toolkit
  * Plugin URI:                  https://wpxero.com/plugins/ultimate-cursor
  * Description:                 Make Your Website Stand Out with Unique Cursor Effects and Smooth Animations!🚀
- * Version:                     2.5.1
+ * Version:                     2.5.2
  * Author:                      WPXERO
  * Author URI:                  https://wpxero.com/plugins/ultimate-cursor
  * Requires at least:           6.0
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'UCA_VERSION' ) ) {
-	define( 'UCA_VERSION', '2.5.1' );
+	define( 'UCA_VERSION', '2.5.2' );
 }
 
 
@@ -46,20 +46,26 @@ class UltimateCursor {
 	const MINIMUM_ELEMENTOR_VERSION = '3.0.0';
 	const MINIMUM_PHP_VERSION       = '7.0';
 	const PRO_URL                   = 'https://www.wpxero.com/deals';
+	const PRICING_URL               = 'https://wpxero.com/plugins/ultimate-cursor/pricing';
 
 	/**
-	 * Build the upgrade (deals page) URL.
+	 * Build the upgrade URL.
 	 *
 	 * Every upgrade link goes through here (or its JS mirror,
-	 * src/utils/pro-url.js). No tracking parameters are added; a sale's
-	 * coupon rides along so it is applied without copying a code.
+	 * src/utils/pro-url.js). No tracking parameters are added.
+	 *
+	 * Without a coupon it is Ultimate Cursor's own pricing page (one product,
+	 * one choice). With a sale's coupon it is the deals page, because only
+	 * that page applies `?coupon=` at checkout — the pricing page ignores it
+	 * and would show full price during a sale (checked 2026-11-17). Once the
+	 * pricing page reads `?coupon=`, both cases can point there.
 	 *
 	 * @param string $coupon Coupon code (e.g. 'HALLOWEEN'), or '' for none.
-	 * @return string Deals page URL.
+	 * @return string Pricing or deals page URL.
 	 */
 	public static function get_pro_url( $coupon = '' ) {
 		if ( '' === $coupon ) {
-			return self::PRO_URL;
+			return self::PRICING_URL;
 		}
 		return add_query_arg( 'coupon', rawurlencode( $coupon ), self::PRO_URL );
 	}
